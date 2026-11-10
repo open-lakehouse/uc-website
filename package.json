@@ -17,7 +17,9 @@
     "links": "bun scripts/check-links.mjs",
     "links:staged": "bun scripts/check-links.mjs --staged",
     "links:dist": "bun scripts/check-links.mjs --dist",
-    "prepare": "husky || true"
+    "strip-lock-proxy": "bun scripts/strip-bun-lock-proxy.ts",
+    "strip-lock-proxy:check": "bun scripts/strip-bun-lock-proxy.ts --check",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,mjs,cjs}": [
@@ -55,7 +57,6 @@
     "estree-util-value-to-estree": "3.5.0",
     "github-slugger": "2.0.0",
     "globals": "17.14.0",
-    "husky": "9.1.7",
     "lint-staged": "17.6.0",
     "mdast-util-mdx-jsx": "3.2.1",
     "mdast-util-mdxjs-esm": "2.0.1",

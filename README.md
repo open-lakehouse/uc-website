@@ -31,17 +31,24 @@ picks that preset automatically.
 After `bun add`, `bun update`, or any install that changes `bun.lock`, run:
 
 ```sh
-bun scripts/public-lockfile.ts
+bun run strip-lock-proxy         # blank proxy URLs in bun.lock
+bun run strip-lock-proxy:check   # exit 1 if any remain
 ```
 
 Bun records the full tarball URL for any registry other than npmjs.org. If
 your `.npmrc` points at an internal npm proxy, `bun.lock` ends up full of proxy
 URLs that Vercel and CI can't reach. The script blanks them, which means "the
 default registry". `test/lockfile.test.ts` fails until you run it. Versions
-are exact (`bunfig.toml`).
+are exact (`bunfig.toml`). See
+[.agents/rules/bun-clean-lock-rule.mdc](.agents/rules/bun-clean-lock-rule.mdc).
 
-The pre-commit hook (`.husky/pre-commit`, installed by `bun install`) runs
-lint-staged and the link check on what is being committed.
+The pre-commit hook (`.githooks/pre-commit`) runs any globally configured
+pre-commit hook (the repo-local `core.hooksPath` would otherwise skip it),
+strips proxy URLs from a staged `bun.lock`, and runs lint-staged and the link
+check on what is being committed. The pre-push hook (`.githooks/pre-push`)
+runs any global pre-push hook and blocks the push if `bun.lock` has proxy
+URLs in any pushed commit. `bun install` enables both through the `prepare`
+script; to enable them by hand, run `git config core.hooksPath .githooks`.
 
 ## Layout
 
@@ -61,7 +68,9 @@ lint-staged and the link check on what is being committed.
   routing).
 - `public/`: static files, including the favicon set and the LikeC4 bundle.
 - `scripts/`: the Pagefind post-build step, the link checker, and the lockfile
-  script.
+  proxy strip (`strip-bun-lock-proxy.ts`).
+- `AGENTS.md` and `.agents/rules/`: setup and rules for AI coding agents.
+  `CLAUDE.md` imports `AGENTS.md`, so Claude Code reads the same instructions.
 
 ## How it builds
 

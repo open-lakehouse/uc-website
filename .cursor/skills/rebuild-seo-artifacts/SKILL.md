@@ -78,11 +78,11 @@ Or run `bun run dev` and open `/llms.txt` on the URL it prints.
 
 [scripts/check-links.mjs](../../../scripts/check-links.mjs) has three modes:
 
-| Command                | Checks                                                                                                 | When                                   |
-| ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- |
-| `bun run links`        | Every internal and external link in `src/` and `site.config.mjs`                                       | While editing; no build needed         |
-| `bun run links:staged` | What is being committed                                                                                | Automatically, in `.husky/pre-commit`  |
-| `bun run links:dist`   | After `bun run build`: every page, anchor, the sitemap, `robots.txt`, and both llms files in the build | Before a PR, and after changing routes |
+| Command                | Checks                                                                                                 | When                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| `bun run links`        | Every internal and external link in `src/` and `site.config.mjs`                                       | While editing; no build needed           |
+| `bun run links:staged` | What is being committed                                                                                | Automatically, in `.githooks/pre-commit` |
+| `bun run links:dist`   | After `bun run build`: every page, anchor, the sitemap, `robots.txt`, and both llms files in the build | Before a PR, and after changing routes   |
 
 The pre-commit hook fails only on dead links the commit adds, or creates by
 deleting or renaming a page or image. Dead links already in untouched lines are

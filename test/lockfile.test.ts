@@ -8,6 +8,6 @@ test("bun.lock leaves tarball URLs to the default registry", async () => {
     ) ?? [];
   expect(
     pinned,
-    "Vercel can't reach a private registry. Run `bun scripts/public-lockfile.ts`.",
+    "Vercel can't reach a private registry. Run `bun run strip-lock-proxy`.",
   ).toEqual([]);
 });
