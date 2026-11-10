@@ -1,0 +1,117 @@
+{/* TryIt.tsx renders each <Example> as the panel of the tab with that id. */}
+
+<Example id="spark">
+
+```python frame="none"
+from pyspark.sql import SparkSession
+
+spark = (
+    SparkSession.builder.appName("uc-quickstart")
+    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
+    .config("spark.sql.catalog.unity", "io.unitycatalog.spark.UCSingleCatalog")
+    .config("spark.sql.catalog.unity.uri", "http://localhost:8080")
+    .config("spark.sql.defaultCatalog", "unity")
+    .getOrCreate()
+)
+
+spark.sql("SHOW SCHEMAS IN unity").show()
+
+(
+    spark.table("unity.default.numbers")
+    .where("as_int > 500")
+    .show()
+)
+```
+
+</Example>
+
+<Example id="duckdb">
+
+```python frame="none"
+import duckdb
+
+con = duckdb.connect()
+con.execute("INSTALL delta")
+con.execute("LOAD delta")
+con.execute("INSTALL unity_catalog")
+con.execute("LOAD unity_catalog")
+
+con.execute("""
+    CREATE SECRET (
+        TYPE unity_catalog,
+        TOKEN 'not-used',
+        ENDPOINT 'http://localhost:8080'
+    )
+""")
+con.execute("ATTACH 'retail' AS retail (TYPE unity_catalog, DEFAULT_SCHEMA 'sales')")
+
+con.sql("SELECT database, schema, name FROM (SHOW ALL TABLES)").show()
+
+con.sql("""
+    SELECT customer, amount
+    FROM retail.sales.orders
+    WHERE amount > 5
+    ORDER BY order_id
+""").show()
+```
+
+</Example>
+
+<Example id="pyiceberg">
+
+```python frame="none"
+import pyarrow as pa
+from pyiceberg.catalog import load_catalog
+from pyiceberg.expressions import EqualTo
+from pyiceberg.schema import Schema
+from pyiceberg.types import BooleanType, IntegerType, NestedField, StringType
+
+catalog = load_catalog(
+    "unity",
+    type="rest",
+    uri="http://localhost:8080/api/2.1/unity-catalog/iceberg",
+    warehouse="unity",
+)
+catalog.create_namespace_if_not_exists("quickstart")
+
+pets = catalog.create_table_if_not_exists(
+    "quickstart.pets",
+    schema=Schema(
+        NestedField(1, "name", StringType(), required=True),
+        NestedField(2, "age", IntegerType(), required=True),
+        NestedField(3, "adopted", BooleanType(), required=True),
+    ),
+)
+pets.append(pa.Table.from_pylist(
+    [{"name": "Biscuit", "age": 11, "adopted": False},
+     {"name": "Pepper", "age": 3, "adopted": True}],
+    schema=pets.schema().as_arrow(),
+))
+
+print(pets.scan(row_filter=EqualTo("adopted", False)).to_pandas())
+```
+
+</Example>
+
+<Example id="cli">
+
+```bash frame="none"
+# Browse the sample data
+uc catalog list --output jsonPretty
+uc schema list --catalog unity --output jsonPretty
+uc table read --full_name unity.default.numbers --max_results 5
+
+# Create a catalog, a schema, and a Delta table
+uc catalog create --name quickstart --comment "My first catalog"
+uc schema create --catalog quickstart --name sales --comment "Order data"
+uc table create --full_name quickstart.sales.orders \
+  --columns "order_id INT, customer STRING, amount DOUBLE" \
+  --format DELTA \
+  --storage_location file:///tmp/uc/orders
+
+# Write sample rows, then read them back
+uc table write --full_name quickstart.sales.orders
+uc table read --full_name quickstart.sales.orders --max_results 5
+```
+
+</Example>

@@ -1,0 +1,22 @@
+# build output and caches
+.output/
+.vercel/
+.nitro/
+.tanstack/
+.content-collections/
+
+# dependencies
+node_modules/
+
+# logs
+*.log
+
+# environment variables
+.env
+.env.*
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

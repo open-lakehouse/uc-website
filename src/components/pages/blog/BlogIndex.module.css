@@ -1,0 +1,162 @@
+.blog-index {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 7.5rem;
+  padding-bottom: 6rem;
+}
+
+.blog-index-aurora {
+  opacity: 0.55;
+}
+
+.blog-index-hero {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  overflow: visible;
+}
+
+@media (min-width: 900px) {
+  .blog-index-hero {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 3rem;
+  }
+}
+
+.blog-index-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 40rem;
+}
+
+.blog-index-hero-copy :global(.uc-h1) {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.blog-index-search {
+  position: relative;
+  z-index: 30;
+  min-height: 3.5rem;
+  /* Let the absolute search results panel paint over topics/cards below */
+  overflow: visible;
+}
+
+.blog-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--uc-line);
+}
+
+.blog-topic-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.blog-featured {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .blog-featured {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+}
+
+.blog-featured-side {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--uc-radius-lg);
+  border: 1px solid var(--uc-line);
+  background: var(--uc-surface);
+  overflow: hidden;
+}
+
+/* Two classes, so it outranks BlogCard's `.is-side { border: none }`. */
+.blog-featured-side-card + .blog-featured-side-card {
+  border-top: 1px solid var(--uc-line);
+}
+
+.blog-subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  border-radius: var(--uc-radius-lg);
+  border: 1px solid var(--uc-line-strong);
+  background:
+    radial-gradient(
+      ellipse 80% 120% at 0% 50%,
+      rgb(244 59 166 / 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 120% at 100% 50%,
+      rgb(255 188 0 / 0.12),
+      transparent 55%
+    ),
+    var(--uc-surface);
+}
+
+.blog-subscribe-copy {
+  max-width: 36rem;
+}
+
+.blog-subscribe-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--uc-text);
+}
+
+.blog-subscribe-copy p {
+  color: var(--uc-text-muted);
+  line-height: 1.55;
+}
+
+.blog-subscribe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.blog-latest-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-latest-count {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--uc-text-dim);
+}
+
+.blog-empty {
+  padding: 3rem 0;
+  text-align: center;
+  color: var(--uc-text-muted);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  gap: 0.5rem;
+}

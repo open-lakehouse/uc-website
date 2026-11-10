@@ -1,0 +1,86 @@
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 4rem;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius-lg);
+  overflow: hidden;
+  background: var(--uc-line);
+  gap: 1px;
+}
+
+@media (min-width: 640px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .benefits-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Doubled to outrank the `.reveal` transition in tokens.css, as Astro's
+   scoped selectors do. */
+.benefit.benefit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 2rem 1.75rem 2.25rem;
+  background: var(--uc-bg);
+  transition:
+    background-color 0.2s ease,
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.benefit.benefit:hover {
+  background: var(--uc-surface);
+}
+
+.benefit::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.benefit:hover::after {
+  opacity: 1;
+}
+
+.accent-sky {
+  --accent: var(--uc-sky);
+}
+.accent-yellow {
+  --accent: var(--uc-yellow);
+}
+.accent-pink {
+  --accent: var(--uc-pink);
+}
+.accent-violet {
+  --accent: #c4b5fd;
+}
+
+.benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--uc-line-strong);
+  color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
+}
+
+.benefit-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

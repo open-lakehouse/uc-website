@@ -1,0 +1,19 @@
+.section-heading {
+  max-width: 52rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.glow-soft {
+  opacity: 0.6;
+}
+
+/* Doubled to outrank `.uc-grid-bg` in tokens.css, as Astro's scoped selector
+   does. */
+.grid-soft.grid-soft {
+  mask-image: radial-gradient(
+    ellipse 60% 80% at 50% 0%,
+    #000 20%,
+    transparent 100%
+  );
+}

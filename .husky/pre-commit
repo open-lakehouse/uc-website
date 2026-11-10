@@ -1,0 +1,5 @@
+# Add Homebrew and Bun to PATH for Git hooks
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.bun/bin:$PATH"
+
+bunx lint-staged
+bun scripts/check-links.mjs --staged

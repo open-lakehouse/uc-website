@@ -1,0 +1,267 @@
+/*
+ * blog-rich.css — styling for the rich blog constructs the docs-factory
+ * unitycatalog emitter produces: `<Journey>` step timelines, `:::` callout
+ * `<aside>`s (from src/lib/remark-callouts.mjs), and interactive `<likec4-view>`
+ * and `<trestle-view>` diagrams. Ported from the docs-factory preview's .jr-* / .callout-* rules, with
+ * the Delta/DevHub CSS vars remapped onto astro-orbit's palette (--color-*).
+ *
+ * Scoped under .blog-article (the wrapper in BlogPost.astro) so it only affects
+ * post bodies. Imported once by BlogPost.astro.
+ */
+
+/* ---- Journey (step timeline) -------------------------------------------- */
+
+.blog-article .jr {
+  list-style: none;
+  counter-reset: jr-step; /* step numbers come from this counter */
+  margin: 1.75rem 0;
+  /* left pad leaves room for the bubbles' outer halo ring, which is drawn with
+     box-shadow and would otherwise be clipped by .blog-article's overflow. */
+  padding: 0 0 0 6px;
+  --jr-bubble: 2rem; /* bubble diameter */
+  --jr-gutter: 2.75rem; /* bubble-column width */
+}
+.blog-article .jr-step {
+  position: relative;
+  counter-increment: jr-step;
+  margin: 0;
+  padding: 0 0 1.75rem var(--jr-gutter);
+}
+.blog-article .jr-step:last-child {
+  padding-bottom: 0;
+}
+/* The rail: a thin line down the bubble column, hidden on the last step. */
+.blog-article .jr-step::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--jr-bubble) / 2);
+  bottom: 0;
+  left: calc(var(--jr-bubble) / 2);
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--uc-line-strong);
+}
+/* The rail runs the full height of every step, including the last, so it
+   extends down to the bottom of the final step's content box. */
+/* The bubble: muted surface + ring, the step number via counter(). */
+.blog-article .jr-bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: var(--jr-bubble);
+  height: var(--jr-bubble);
+  border-radius: 999px;
+  background: var(--uc-sky);
+  border: 2px solid var(--color-accent-600);
+  /* mask the rail behind it, then a soft accent halo */
+  box-shadow:
+    0 0 0 4px var(--uc-bg),
+    0 0 0 6px color-mix(in srgb, var(--uc-sky) 25%, transparent);
+  color: #04121c;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.blog-article .jr-bubble::before {
+  content: counter(jr-step);
+}
+.blog-article .jr-title {
+  display: flex;
+  align-items: center;
+  min-height: var(--jr-bubble);
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--uc-text);
+  letter-spacing: -0.015em;
+}
+.blog-article .jr-body {
+  margin-top: 0.6rem;
+}
+
+/* ---- Callouts (tldr / tip / note / info / warning / caution / danger) --- */
+
+.blog-article .callout {
+  --callout-accent: var(--color-accent-500);
+  margin: 1.5rem 0;
+  border: 1px solid var(--uc-line);
+  border-left: 3px solid var(--callout-accent);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--callout-accent) 10%, var(--uc-surface));
+  padding: 0.85rem 1rem;
+  color: var(--uc-text-muted);
+}
+.blog-article .callout[data-type="tldr"] {
+  --callout-accent: #7c3aed; /* violet — the "key takeaways" summary box */
+}
+.blog-article .callout[data-type="tip"] {
+  --callout-accent: #16a34a; /* green */
+}
+.blog-article .callout[data-type="note"],
+.blog-article .callout[data-type="info"] {
+  --callout-accent: var(--color-accent-500); /* sky blue */
+}
+.blog-article .callout[data-type="warning"],
+.blog-article .callout[data-type="caution"] {
+  --callout-accent: #d97706; /* amber */
+}
+.blog-article .callout[data-type="danger"] {
+  --callout-accent: #dc2626; /* red */
+}
+.blog-article .callout-head {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+  color: var(--callout-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.blog-article .callout-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+}
+.blog-article .callout-body > :first-child {
+  margin-top: 0;
+}
+.blog-article .callout-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Interactive LikeC4 diagram ----------------------------------------- */
+
+.blog-article likec4-view,
+.blog-article .likec4-view {
+  display: block;
+  min-height: 26rem;
+  margin: 1.75rem 0;
+  border: 1px solid var(--uc-line);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.blog-article .likec4-figure {
+  margin: 0;
+}
+
+/* ---- Interactive Trestle environment diagram ---------------------------- */
+
+.blog-article .trestle-figure {
+  margin: 1.75rem 0;
+}
+.blog-article trestle-view {
+  display: block;
+}
+/* Until the canvas loads (or without JavaScript): the alt text, framed where
+   the diagram will be. */
+.blog-article .trestle-fallback {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--uc-line);
+  border-radius: 0.5rem;
+  background: var(--uc-surface);
+  font-size: 0.875rem;
+  color: var(--uc-text-muted);
+}
+
+/* A diagram's text equivalent, for crawlers and screen readers only. */
+.blog-article .diagram-alt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- Code blocks (Expressive Code) -------------------------------------- */
+/* Self-contained terminal chrome. Do not depend on EC's hashed stylesheet
+   vars (--ec-codePadInl, --ec-frm-trmIcon): content HTML can lag a build and
+   404 that asset, which zeroed padding and turned the dots into a solid pill. */
+
+.blog-article .expressive-code {
+  --uc-code-bg: #152a40;
+  --uc-code-titlebar: #0a1a2c;
+  --uc-code-pad-inl: 1.35rem;
+  --uc-code-pad-blk: 1rem;
+  --uc-code-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 16' preserveAspectRatio='xMidYMid meet'%3E%3Ccircle cx='8' cy='8' r='8' fill='%237a92ab'/%3E%3Ccircle cx='30' cy='8' r='8' fill='%237a92ab'/%3E%3Ccircle cx='52' cy='8' r='8' fill='%237a92ab'/%3E%3C/svg%3E");
+}
+
+.blog-article .expressive-code .frame {
+  --code-background: var(--uc-code-bg);
+  overflow: hidden;
+  border: 1px solid rgb(154 178 201 / 0.32);
+  border-radius: 0.75rem;
+  background: var(--uc-code-bg);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.55);
+}
+
+.blog-article .expressive-code .frame .header {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  min-height: 2rem;
+  padding: 0.45rem 0.85rem 0.45rem 3.1rem;
+  background: var(--uc-code-titlebar);
+  border-bottom: 1px solid rgb(154 178 201 / 0.18);
+  color: #9ab2c9;
+  font-weight: 500;
+  letter-spacing: 0.025ch;
+}
+
+/* Traffic-light dots for every frame (EC only draws these on .is-terminal). */
+.blog-article .expressive-code .frame .header::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  left: 0.85rem;
+  top: 50%;
+  width: 2.1rem;
+  height: 0.56rem;
+  transform: translateY(-50%);
+  background-color: transparent;
+  background-image: var(--uc-code-dots);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  -webkit-mask-image: none;
+  mask-image: none;
+  opacity: 1;
+}
+
+.blog-article .expressive-code .frame pre,
+.blog-article .expressive-code .frame code {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: var(--uc-code-bg) !important;
+}
+
+.blog-article .expressive-code pre {
+  margin: 0;
+  padding: 0;
+}
+
+/* EC puts horizontal padding on .ec-line .code via --ec-codePadInl; set it
+   explicitly so blocks stay readable even when the EC stylesheet 404s. */
+.blog-article .expressive-code .ec-line .code {
+  padding-inline: var(--uc-code-pad-inl) !important;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.blog-article .expressive-code .ec-line:first-child .code {
+  padding-block-start: var(--uc-code-pad-blk);
+}
+
+.blog-article .expressive-code .ec-line:last-child .code {
+  padding-block-end: var(--uc-code-pad-blk);
+}
+
+.blog-article .expressive-code :nth-child(1 of .ec-line) .code {
+  padding-inline-end: calc(2rem + var(--uc-code-pad-inl)) !important;
+}

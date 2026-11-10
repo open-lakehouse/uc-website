@@ -1,0 +1,17 @@
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 46rem;
+}
+
+.section-header.is-center {
+  max-width: 58rem;
+  margin-inline: auto;
+  align-items: center;
+  text-align: center;
+}
+
+.section-header :global(.uc-lede) {
+  max-width: 40rem;
+}

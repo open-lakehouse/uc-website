@@ -1,0 +1,186 @@
+.try-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.try-docs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.9375rem;
+  color: var(--uc-text-muted);
+  border-bottom: 1px solid var(--uc-line-strong);
+  padding-bottom: 0.125rem;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.try-docs:hover {
+  color: var(--uc-text);
+  border-color: var(--uc-yellow);
+}
+
+.try-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .try-body {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    gap: 2rem;
+  }
+}
+
+.try-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+@media (min-width: 1024px) {
+  .try-tabs {
+    flex-direction: column;
+    overflow: visible;
+  }
+}
+
+.try-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex-shrink: 0;
+  padding: 1rem 1.25rem;
+  border-radius: var(--uc-radius);
+  border: 1px solid transparent;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.try-tab:hover {
+  background: rgb(255 255 255 / 0.03);
+}
+
+.try-tab[aria-selected="true"] {
+  background: var(--uc-surface);
+  border-color: var(--uc-line-strong);
+  box-shadow: inset 2px 0 0 var(--uc-yellow);
+}
+
+.try-tab:focus-visible {
+  outline: 2px solid var(--uc-yellow);
+  outline-offset: 2px;
+}
+
+.try-tab-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--uc-text);
+}
+
+.try-tab-desc {
+  display: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--uc-text-muted);
+}
+
+@media (min-width: 1024px) {
+  .try-tab-desc {
+    display: block;
+  }
+}
+
+.try-window {
+  position: relative;
+  border-radius: var(--uc-radius-lg);
+  border: 1px solid var(--uc-line-strong);
+  background: var(--uc-surface);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.7);
+}
+
+.try-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.125rem;
+  border-bottom: 1px solid var(--uc-line);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--uc-text-dim);
+}
+
+.try-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.try-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--uc-surface-3);
+}
+
+.try-file {
+  color: var(--uc-text-muted);
+}
+
+.try-lang {
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.try-stage {
+  min-width: 0;
+}
+
+/* The code is an Expressive Code block (TryItExamples.mdx) drawn as plain
+   code inside the window: no frame, border, background, shadow, or copy
+   button, in the window's font and spacing. */
+.try-panel {
+  --ec-brdWd: 0px;
+  --ec-brdRad: 0px;
+  --ec-codeBg: transparent;
+  --ec-frm-edBg: transparent;
+  --ec-frm-frameBoxShdCssVal: none;
+  --ec-codeFontFml: var(--font-mono);
+  --ec-codeFontSize: 0.8125rem;
+  --ec-codeLineHt: 1.75;
+  --ec-codePadBlk: 0px;
+  --ec-codePadInl: 0px;
+  --ec-gtrBrdWd: 0px;
+}
+
+.try-panel :global(.expressive-code pre) {
+  padding: 1.5rem;
+  overflow-x: auto;
+  min-height: 26rem;
+}
+
+.try-panel :global(.expressive-code .copy) {
+  display: none;
+}
+
+/* Expressive Code pads the first line for the copy button. */
+.try-panel.try-panel :global(.expressive-code .ec-line .code) {
+  padding-inline-end: 0;
+}
+
+.try-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}

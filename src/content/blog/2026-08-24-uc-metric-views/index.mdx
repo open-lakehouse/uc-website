@@ -1,0 +1,351 @@
+---
+title: Fighting entropy with metric views
+authors:
+  - robert-pack
+category: guide
+topics:
+  - releases
+  - guide
+date: August 24, 2026
+thumbnail: ./thumbnail.jpeg
+---
+
+import Journey from "@/components/blog/Journey.astro";
+
+import JourneyStep from "@/components/blog/JourneyStep.astro";
+
+:::tldr
+
+- Metric Views as part of your semantic layer allow you to centrally
+  define and govern metrics and KPIs for your business.
+- Metric views are specifically designed to also be consumed by agents.
+- You can test metric views today using Unity Catalog `0.6` with Apache Spark `4.3`.
+  :::
+
+When people asked me in one of my previous roles as chief architect
+for major data platform/lakehouse deployments to summarize in a few words
+what my main job was, I used to say: "fight entropy!". And while entropy
+certainly is one of the more elusive concepts that generations of students
+in physics, thermodynamics, information theory, and many other fields have struggled
+with (including me) it has become my litmus test for quickly gauging
+the quality of a design.
+
+In simple terms entropy is a measure for the disorder or uncertainty in a
+system. So how does this relate to data platforms, and more importantly,
+what do metric views have to do with that? Coming back to the litmus test,
+try asking a number of consumers of your platform something like:
+"What were our last quarter earnings?".
+
+If only some people can give you an answer, or you get a bunch of different answers
+there almost certainly is an unhealthy amount of uncertainty and/or disorder in your systems.
+
+So without further ado, let's find out how metric views help make sense of your data estate.
+
+## What are metric views?
+
+Metric views are part of the semantic layer for your data, transforming tables and views into
+standardized business metrics. They define what to measure, how to aggregate it, and how to
+segment it. As a result, every user, human and agent, across the organization reports the
+same value for the same KPI, which eliminates inconsistent reporting and enables flexible
+analysis across any fields (also called dimensions).
+
+The core components you define are sources, joins, filters, fields, and measures.
+
+| Component | Description                                                                                                                                  | Example                                                                     |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Source    | The base table, view, or SQL query containing the data.                                                                                      | `samples.tpch.orders`                                                       |
+| Joins     | Relationships between tables, views, and metric views to enrich data.                                                                        | Join `orders` table with `customers` table on `customer_key`                |
+| Filters   | Conditions applied to the source data to define scope.                                                                                       | <ul><li>status = 'completed'</li><li>order_date &gt; '2024-01-01'</li></ul> |
+| Fields    | Columns used to group, filter, and aggregate metrics. Includes categorical columns and unaggregated numeric columns. Also called dimensions. | Product category, Order month, Unit price                                   |
+| Measures  | Column aggregations that produce metrics.                                                                                                    | `COUNT(o_orderkey)` as Order Count, `SUM(o_totalprice)` as Total Revenue    |
+
+### Providing Agent Metadata
+
+And while we may be glossing over some of the finer points of thermodynamic
+vs. Shannon entropy a bit, when talking about agents, the entropy analogy goes from
+a metaphor to something we could directly see if we were to write down the formula for
+the next output token's probability. As such, context rot and context management are prime
+examples of the effects of entropy on a system and the need to keep it in check.
+
+Metric views, especially when enriched with agent metadata can significantly reduce the
+context an LLM/Agent requires to reason about your question, which directly translates to the
+desired grounding effects we aim for in context management.
+Agent metadata includes display names, format specifications, and synonyms that provide additional context.
+This in turn grounds your agents' and natural language tools' exploration in facts, rather than having
+to research or guess as to how to interpret the users' questions.
+
+We'll be diving deeper into what specifically fields are in the context of metric views,
+but for now let's examine a full definition of a field including some agent metadata.
+
+```yaml
+fields:
+  - name: order_date
+    expr: o_orderdate
+    comment: Date when the order was placed
+    display_name: Order Date
+    format:
+      type: date
+      date_format: year_month_day
+      leading_zeros: true
+    synonyms:
+      - order time
+      - date of order
+```
+
+While we could have provided "Order Date" as the field name directly, it is often
+advantageous to keep a more engine-friendly name for the actual field, to avoid
+quirks in other processing systems that may not honor capitalization or struggle
+with spaces in field names.
+
+Dates are one of my favourites. While today this specific scenario has been solved,
+I still vividly remember debugging a data pipeline where we were parsing CSV, and the
+parser would default to "MM-DD-YYYY" format, and switch to "DD-MM-YYYY" `format` mid-parsing
+as it encountered values that could not be parsed using the prior format. Without additional
+metadata, agents and humans alike are left to guess, especially when seeing only a few
+ambiguous values.
+
+Last, but certainly not least, in natural language you'll encounter people referring
+to the same thing via different names - the literal definition of a synonym. However
+in your own corporate speak, we should not rely on Webster's dictionary alone to
+disambiguate, so explicitly providing alternative names for your KPIs again
+reduces the work an LLM needs to perform - so no loading up the context
+with additional research and keeping entropy accumulation low in your agent loops.
+
+You can find a more complete specification of this structured metadata
+in the [official documentation](https://docs.databricks.com/aws/en/uc-semantics/agent-metadata).
+
+However all of this is a bit abstract, so let's put it into practice.
+
+## Working with metric views
+
+Since metric views require some tabular assets as a foundation,
+we first need some interesting data. For the remainder of this tutorial,
+we assume that you created TPC-H tables per the
+[TPC-H tutorial](https://docs.unitycatalog.io/how-to/seed-tpch-data).
+
+With that data in place, let's create our first metric view.
+
+<Journey>
+  <JourneyStep step="Define the source data">
+    The definition of a metric-view is just yaml data.
+
+    The source data is defined via the `source` field. So let's
+    define the base for our metric view along with some common metadata.
+
+    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="2" srcregion="start:source..end:source"
+    version: 1.1
+    comment: 'Orders KPIs for sales analysis'
+    source: samples.tpch.orders
+    ```
+
+  </JourneyStep>
+
+  <JourneyStep step="Enrich the source data">
+    To have a view actually be useful, we should probably enrich the data
+    by joining it with data from another table and maybe applying some filters.
+
+    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="8" srcregion="start:enrich..end:enrich"
+    joins:
+      - name: customer
+        source: samples.tpch.customer
+        'on': source.o_custkey = customer.c_custkey
+        rely:
+          at_most_one_match: true
+
+    filter: source.o_orderdate > '1990-01-01'
+    ```
+
+    As you can see, joins are defined as an array so you can accommodate complex
+    scenarios, like warehouses built on [star or snowflake schemas](https://docs.databricks.com/aws/en/uc-semantics/metric-views/joins).
+
+  </JourneyStep>
+
+  <JourneyStep step="Define relevant fields">
+    Fields are essentially projections (i.e. by row computations) we apply to process the data
+    within our metric view along with additional metadata as we saw earlier.
+
+    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="19" srcregion="start:fields..end:fields"
+    fields:
+      - name: Order Month
+        expr: DATE_TRUNC('MONTH', source.o_orderdate)
+        comment: 'Month of order'
+
+      - name: Order Status
+        expr: |-
+          CASE
+            WHEN source.o_orderstatus = 'O' THEN 'Open'
+            WHEN source.o_orderstatus = 'P' THEN 'Processing'
+            WHEN source.o_orderstatus = 'F' THEN 'Fulfilled'
+          END
+        comment: 'Status of order'
+
+      - name: Market Segment
+        expr: customer.c_mktsegment
+        comment: 'Customer market segment'
+    ```
+
+  </JourneyStep>
+
+  <JourneyStep step="Define your business KPIs (measures)">
+    Now we get to the heart of the matter and define measures/KPIs we are using
+    to steer our business.
+
+    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="39" srcregion="start:measures..end:measures"
+    measures:
+      - name: Order Count
+        expr: COUNT(1)
+        comment: 'Total number of orders'
+
+      - name: Total Revenue
+        expr: SUM(source.o_totalprice)
+        comment: 'Sum of all order prices'
+
+      - name: Total Revenue per Customer
+        expr: SUM(source.o_totalprice) / COUNT(DISTINCT source.o_custkey)
+        comment: 'Average revenue per unique customer'
+    ```
+
+    They mainly differ from fields in that the expressions for a measure
+    are aggregates over some group vs. projections. The SQL statements
+
+  </JourneyStep>
+
+  <JourneyStep step="Register the metric view">
+    Copy the full definition of the metric view from below into a local file `metric-view.yaml`.
+
+    ```yaml collapse title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="1"
+    # --8<-- [start:source]
+    version: 1.1
+    comment: 'Orders KPIs for sales analysis'
+    source: samples.tpch.orders
+    # --8<-- [end:source]
+
+    # --8<-- [start:enrich]
+    joins:
+      - name: customer
+        source: samples.tpch.customer
+        'on': source.o_custkey = customer.c_custkey
+        rely:
+          at_most_one_match: true
+
+    filter: source.o_orderdate > '1990-01-01'
+    # --8<-- [end:enrich]
+
+    # --8<-- [start:fields]
+    fields:
+      - name: Order Month
+        expr: DATE_TRUNC('MONTH', source.o_orderdate)
+        comment: 'Month of order'
+
+      - name: Order Status
+        expr: |-
+          CASE
+            WHEN source.o_orderstatus = 'O' THEN 'Open'
+            WHEN source.o_orderstatus = 'P' THEN 'Processing'
+            WHEN source.o_orderstatus = 'F' THEN 'Fulfilled'
+          END
+        comment: 'Status of order'
+
+      - name: Market Segment
+        expr: customer.c_mktsegment
+        comment: 'Customer market segment'
+    # --8<-- [end:fields]
+
+    # --8<-- [start:measures]
+    measures:
+      - name: Order Count
+        expr: COUNT(1)
+        comment: 'Total number of orders'
+
+      - name: Total Revenue
+        expr: SUM(source.o_totalprice)
+        comment: 'Sum of all order prices'
+
+      - name: Total Revenue per Customer
+        expr: SUM(source.o_totalprice) / COUNT(DISTINCT source.o_custkey)
+        comment: 'Average revenue per unique customer'
+    # --8<-- [end:measures]
+    ```
+
+    We now register the metric view as a securable in Unity Catalog.
+
+    ```python title="create_metric_view.py" srcpath="blogs/uc-metric-views/create_metric_view.py" srcstart="6" srcregion="start:create-metric-view..end:create-metric-view"
+    import asyncio
+    import os
+    from pathlib import Path
+
+    from unitycatalog.client import (
+        ApiClient,
+        Configuration,
+        CreateTable,
+        TablesApi,
+    )
+    from unitycatalog.client.models import (
+        Dependency,
+        DependencyList,
+        TableDependency,
+        TableType,
+    )
+
+    DEFAULT_URL = "http://localhost:8080/api/2.1/unity-catalog"
+    config = Configuration(host=os.environ.get("UC_BASE_URL", DEFAULT_URL))
+
+
+    async def main():
+        view_definition = Path("./blogs/uc-metric-views/metric-view.yaml").read_text()
+        view_dependencies = DependencyList(
+            dependencies=[
+                Dependency(table=TableDependency(table_full_name="samples.tpch.orders")),
+                Dependency(table=TableDependency(table_full_name="samples.tpch.customer")),
+            ]
+        )
+
+        async with ApiClient(config) as api:
+            tables = TablesApi(api)
+            table = await tables.create_table(
+                CreateTable(
+                    name="orders_metric_view",
+                    catalog_name="samples",
+                    schema_name="tpch",
+                    table_type=TableType.METRIC_VIEW,
+                    view_definition=view_definition,
+                    view_dependencies=view_dependencies,
+                    columns=[],
+                )
+            )
+            print(f"created metric view: {table.name}")
+
+
+    ```
+
+  </JourneyStep>
+
+  <JourneyStep step="Query the metric view">
+    We can now query the metric view, using the latest (py)spark version
+
+    ```sql
+    SELECT
+      `Order Month`,
+      `Order Status`,
+      MEASURE(`Order Count`),
+      MEASURE(`Total Revenue`)
+    FROM orders_metric_view
+    GROUP BY ALL
+    ORDER BY `Order Month`;
+    ```
+
+    The `MEASURE` function is specific to metric views and will compute the selected
+    measure/KPI based on its definition.
+
+  </JourneyStep>
+</Journey>
+
+## What we learned
+
+As we have seen, defining key metrics in a way that you can centrally track and govern
+can have a tremendous effect in reducing friction (yet another great energy dissipation/entropy
+analogy \:D) across your organization and within your agent sessions.
+As an aside, the process of writing the metric view definitions themselves can be a great catalyst
+for internal alignment on what your actual KPIs should be.
+
+And you can get started today using the latest Unity Catalog 0.6 release.
