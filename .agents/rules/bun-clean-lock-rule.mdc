@@ -1,0 +1,114 @@
+---
+description: Before committing, pushing, or opening a PR, strip registry proxy URLs from bun.lock so no host-specific URL reaches Vercel.
+alwaysApply: true
+---
+
+# Lockfile Proxy Stripping
+
+Local installs may route through a private npm proxy/registry (`~/.npmrc` or
+`bunfig.toml`). Bun records the full tarball URL for any registry other than
+npmjs.org, so the proxy URL gets baked into every package entry of `bun.lock`.
+That host-specific URL must never be pushed: Vercel builds with `bun install`
+(`installCommand` in `vercel.ts`) and CI with `bun install --frozen-lockfile`,
+and neither can reach the proxy.
+
+This repo is Bun-only: `bun.lock` is the only lockfile. Don't add a
+`package-lock.json`.
+
+## Before Committing or Opening a PR
+
+1. **Always** strip proxy URLs from `bun.lock` after any `bun add`,
+   `bun remove`, `bun update`, or `bun install` that changed it.
+2. Do **not** match on a specific host name. Normalize **any** registry
+   tarball URL.
+3. Stage the cleaned `bun.lock` together with the `package.json` change that
+   produced it.
+
+## What to Strip
+
+Each `bun.lock` package entry is an array of the form:
+
+```
+"<key>": ["<name>@<version>", "<resolution>", { ...deps }, "<integrity>"]
+```
+
+The **second element** is the resolution/proxy field. When it points at a
+registry tarball it must be reset to an empty string (the value Bun uses for
+the default registry). Local installs then still go through whichever
+registry is configured.
+
+- With proxy:
+
+```
+"readdirp/picomatch": ["picomatch@2.3.2", "https://proxy.npm.your-company.com/picomatch/-/picomatch-2.3.2.tgz", {}, "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA=="]
+```
+
+- After stripping:
+
+```
+"readdirp/picomatch": ["picomatch@2.3.2", "", {}, "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA=="]
+```
+
+## How to Strip
+
+Use the project's TypeScript script (run by Bun). It is host-agnostic: it
+matches any `http(s)` registry tarball URL (`.../-/<name>-<version>.tgz`) and
+only rewrites that URL. Git, GitHub, file, and already-clean resolutions are
+left untouched.
+
+```bash
+bun run strip-lock-proxy
+```
+
+The logic lives in
+[`scripts/strip-bun-lock-proxy.ts`](../../scripts/strip-bun-lock-proxy.ts).
+
+Verify nothing remains before committing. This exits non-zero if any proxy URL
+is still present, so it doubles as a pre-PR gate:
+
+```bash
+bun run strip-lock-proxy:check
+bun install --frozen-lockfile   # bun.lock still matches package.json
+```
+
+## Automated Safety Nets
+
+- **Pre-commit hook**: [`.githooks/pre-commit`](../../.githooks/pre-commit)
+  strips `bun.lock` and re-stages it whenever it is staged. The `prepare`
+  script enables it on `bun install` (`git config core.hooksPath .githooks`),
+  so no manual setup is needed. Because that repo-local `core.hooksPath`
+  shadows any global one, the hook first re-runs the globally configured
+  `pre-commit` hook (e.g. a company secret scanner) so that hook keeps working
+  here.
+- **Pre-push hook**: [`.githooks/pre-push`](../../.githooks/pre-push)
+  blocks the push if `bun.lock` has proxy URLs in the pushed tip or in any
+  pushed commit not yet on a remote. This catches what the pre-commit hook
+  can't: `--no-verify` commits, rebases, and commits from clones without the
+  hooks enabled. It also re-runs the global `pre-push` hook first.
+- **Tests / CI**: `test/lockfile.test.ts` fails in `bun test` (and so in CI)
+  if `bun.lock` contains a non-npmjs tarball URL.
+
+Vercel deploys on push without waiting for CI, so the pre-push hook is the
+last check before a deploy. If it blocks on the tip, run
+`bun run strip-lock-proxy` and commit. If it blocks on an older commit,
+amend, squash, or rebase so no pushed commit keeps the URLs.
+
+## Diagnosing a Failed Vercel Install
+
+- **`ENOTFOUND`, `ECONNREFUSED`, or timeouts on a non-npmjs host**: proxy URLs
+  were pushed. Run `bun run strip-lock-proxy:check`, then
+  `bun run strip-lock-proxy`, and commit the cleaned `bun.lock`.
+- **Lockfile out of date / frozen-lockfile errors in CI**: `package.json`
+  changed without `bun.lock`. Run `bun install`, strip, and commit both
+  together.
+
+## Rules
+
+- **Never commit or push `bun.lock` with proxy URLs.**
+- Never bypass the pre-commit or pre-push hook (`--no-verify`) for changes
+  that touch `bun.lock`.
+- Keep the strip logic host-agnostic. Do not hardcode a proxy hostname.
+- Only the resolution field is changed. Names, versions, dependency maps, and
+  integrity hashes are never modified.
+- Do not hand-edit `bun.lock` beyond what `scripts/strip-bun-lock-proxy.ts`
+  does.

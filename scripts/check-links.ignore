@@ -1,0 +1,20 @@
+# Links that scripts/check-links.mjs should not report. One URL or site path
+# per line; a trailing * matches any suffix. Say why next to each entry.
+
+# TrestleView loads this runtime only on pages that render a Trestle diagram;
+# posts that use it copy the emitter's public/trestle/ files.
+/trestle/trestle-webcomponent.mjs
+
+# The header fetches the star count from here; it is an API call, not a link,
+# and GitHub rate-limits anonymous requests.
+https://api.github.com/repos/unitycatalog/unitycatalog
+
+# Share buttons on blog posts: share intents, not pages, and bot-walled.
+https://linkedin.com/shareArticle*
+https://www.linkedin.com/shareArticle*
+https://twitter.com/intent/*
+https://x.com/intent/*
+https://bsky.app/intent/*
+https://www.facebook.com/sharer*
+https://news.ycombinator.com/submitlink*
+https://www.reddit.com/submit*
