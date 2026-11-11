@@ -1882,7 +1882,7 @@ html:has(.docs-root) {
 
 /* --- REST API reference ---
    Scalar brings its own endpoint sidebar, so API pages render without the docs
-   one; the site header leads back, and .api-switch moves between the APIs. */
+   one; the site header leads back and switches between the APIs. */
 .shell[data-no-sidebar] .layout {
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "main" "status";
@@ -1975,30 +1975,4 @@ html:has(.docs-root) {
 }
 .dark .hero-mark .uc-mark-core {
   fill: var(--heading);
-}
-
-/* The REST APIs, one row above the explorer. */
-.api-switch {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  padding: 1rem clamp(1.25rem, 4vw, 3.5rem) 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-}
-.api-switch a {
-  padding: 0.3rem 0.6rem;
-  color: var(--muted-foreground);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-}
-.api-switch a:hover {
-  color: var(--foreground);
-  background: var(--surface);
-}
-.api-switch a[aria-current="page"] {
-  color: var(--accent-fg);
-  background: var(--accent-fill);
-  border-color: var(--accent-fill);
 }

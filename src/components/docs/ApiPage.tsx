@@ -1,8 +1,7 @@
 import { useHydrated } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect } from "react";
 import Shell from "./layout/Shell";
-import { Link } from "./lib/router";
-import { type ApiSpec, site } from "./site";
+import type { ApiSpec } from "./site";
 
 // Scalar renders client-side only, and its chunk (JS + CSS) should load only here.
 const ApiReference = lazy(() => import("./ApiReference"));
@@ -74,20 +73,6 @@ export default function ApiPage({ api }: { api: ApiSpec }) {
   const placeholder = <Placeholder api={api} />;
   return (
     <Shell sidebar={false}>
-      {site.apis.length > 1 && (
-        <nav className="api-switch" aria-label="REST APIs">
-          {site.apis.map((a) => (
-            <Link
-              key={a.route}
-              to={a.route}
-              title={a.hint}
-              aria-current={a.slug === api.slug ? "page" : undefined}
-            >
-              {a.slug}
-            </Link>
-          ))}
-        </nav>
-      )}
       <div className="api-reference">
         {mounted ? (
           <Suspense fallback={placeholder}>
