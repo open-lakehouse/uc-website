@@ -42,9 +42,8 @@ default registry". `test/lockfile.test.ts` fails until you run it. Versions
 are exact (`bunfig.toml`). See
 [.agents/rules/bun-clean-lock-rule.mdc](.agents/rules/bun-clean-lock-rule.mdc).
 
-You rarely run it by hand: the `postinstall` script
-(`scripts/postinstall.ts`) runs it after every `bun install`, `add`, `remove`,
-and `update`, so the `bun.lock` on disk is already clean. The repo installs no
+You rarely run it by hand: `postinstall` runs it after every `bun install`,
+`add`, `remove`, and `update`, so the `bun.lock` on disk is already clean. The repo installs no
 git hooks of its own; CI runs lint, format, and the link check.
 
 ## Layout

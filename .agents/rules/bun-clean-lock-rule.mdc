@@ -73,11 +73,9 @@ bun install --frozen-lockfile   # bun.lock still matches package.json
 
 ## Automated Safety Nets
 
-- **postinstall**: [`scripts/postinstall.ts`](../../scripts/postinstall.ts)
-  runs the strip after every `bun install`, `bun add`, `bun remove`, and
-  `bun update`, so the `bun.lock` on disk never carries proxy URLs. It also
-  unsets a leftover `core.hooksPath=.githooks` from when the repo had its own
-  git hooks.
+- **postinstall**: `package.json` runs the strip after every `bun install`,
+  `bun add`, `bun remove`, and `bun update`, so the `bun.lock` on disk never
+  carries proxy URLs.
 - **Tests / CI**: `test/lockfile.test.ts` fails in `bun test` (and so in CI)
   if `bun.lock` contains a non-npmjs tarball URL.
 

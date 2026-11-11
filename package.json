@@ -19,7 +19,7 @@
     "links:dist": "bun scripts/check-links.mjs --dist",
     "strip-lock-proxy": "bun scripts/strip-bun-lock-proxy.ts",
     "strip-lock-proxy:check": "bun scripts/strip-bun-lock-proxy.ts --check",
-    "postinstall": "bun scripts/postinstall.ts"
+    "postinstall": "bun scripts/strip-bun-lock-proxy.ts"
   },
   "dependencies": {
     "@pagefind/default-ui": "1.6.0",
