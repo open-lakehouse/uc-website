@@ -6,3 +6,7 @@
 bun.lock
 src/routeTree.gen.ts
 public
+# Written by docs-factory's emitter, byte for byte (see AGENTS.md).
+src/content/docs
+src/generated/docs
+src/vendor/docs-plugins

@@ -25,6 +25,11 @@
   height: 4rem;
 }
 
+.header-inner.wide {
+  max-width: none;
+  padding-inline: 1rem;
+}
+
 .header-logo {
   display: flex;
   flex-shrink: 0;

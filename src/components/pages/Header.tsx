@@ -23,7 +23,14 @@ const isActive = (href: string, currentPath: string) =>
   href !== "/" &&
   currentPath.startsWith(href);
 
-export function Header({ githubStars }: { githubStars: number | null }) {
+export function Header({
+  githubStars,
+  wide = false,
+}: {
+  githubStars: number | null;
+  /** Span the viewport, as the docs' full-width layout below it does. */
+  wide?: boolean;
+}) {
   const pathname = useLocation({ select: (location) => location.pathname });
   const [scrolled, setScrolled] = useState(false);
   // The path the menu was opened on, so navigating anywhere closes it.
@@ -102,7 +109,13 @@ export function Header({ githubStars }: { githubStars: number | null }) {
       )}
       data-header
     >
-      <div className={clsx("uc-container", styles.headerInner)}>
+      <div
+        className={clsx(
+          "uc-container",
+          styles.headerInner,
+          wide && styles.wide,
+        )}
+      >
         <SiteLink
           href="/"
           className={styles.headerLogo}

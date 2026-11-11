@@ -3,6 +3,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
+  useLocation,
 } from "@tanstack/react-router";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -94,6 +95,10 @@ function RootDocument({ children }: { children: ReactNode }) {
 
 function RootLayout() {
   const { githubStars, year } = Route.useLoaderData();
+  // The docs are an app-like layout with their own status bar instead.
+  const inDocs = useLocation({
+    select: (location) => location.pathname.startsWith("/docs/"),
+  });
   useRevealOnScroll();
   useEffect(() => {
     // Code block copy buttons, for this page and any page navigated to.
@@ -101,9 +106,9 @@ function RootLayout() {
   }, []);
   return (
     <main>
-      <Header githubStars={githubStars} />
+      <Header githubStars={githubStars} wide={inDocs} />
       <Outlet />
-      <Footer year={year} />
+      {!inDocs && <Footer year={year} />}
     </main>
   );
 }

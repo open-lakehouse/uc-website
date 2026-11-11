@@ -48,6 +48,13 @@ export function setTheme(next: ThemePreference): void {
   apply();
 }
 
+/** Flip to the opposite of what is showing, as an explicit preference. */
+export function toggleTheme(): void {
+  setTheme(
+    document.documentElement.classList.contains("dark") ? "light" : "dark",
+  );
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
   return () => listeners.delete(listener);
@@ -63,4 +70,16 @@ if (typeof window !== "undefined") {
 /** The stored preference, or `null` before hydration (localStorage is client-only). */
 export function useThemePreference(): ThemePreference | null {
   return useSyncExternalStore(subscribe, current, () => null);
+}
+
+/**
+ * Whether dark mode is on, or `null` before hydration: the pre-paint script
+ * sets the class, so the prerendered markup can't know it.
+ */
+export function useDarkMode(): boolean | null {
+  return useSyncExternalStore(
+    subscribe,
+    () => document.documentElement.classList.contains("dark"),
+    () => null,
+  );
 }
