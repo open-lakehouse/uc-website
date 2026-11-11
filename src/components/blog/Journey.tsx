@@ -11,8 +11,8 @@ export function Journey({ children }: { children?: ReactNode }) {
 
 /**
  * One step in a <Journey>. `step` is the step title. The spaces between the
- * parts match JourneyStep.astro's output, so text extraction (Pagefind)
- * keeps the title and body apart.
+ * parts match JourneyStep.astro's output, so text extraction keeps the
+ * title and body apart.
  */
 export function JourneyStep({
   step,

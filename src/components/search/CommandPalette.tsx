@@ -18,16 +18,22 @@ import {
   useRef,
   useState,
 } from "react";
-import { useLocation, useNavigate } from "./lib/router";
-import { copyFromUrl } from "./lib/clipboard";
-import { excerpt, loadIndex, type PageHits, searchDocs } from "./lib/search";
+import { useLocation, useNavigate } from "../docs/lib/router";
+import { copyFromUrl } from "../docs/lib/clipboard";
+import {
+  excerpt,
+  loadIndex,
+  type PageHits,
+  type SearchKind,
+  searchSite,
+} from "./search-index";
 import {
   setTheme,
   toggleTheme,
   useDarkMode,
   useThemePreference,
 } from "../../lib/theme";
-import { pageFor, site } from "./site";
+import { pageFor, site } from "../docs/site";
 
 interface Option {
   key: string;
@@ -93,7 +99,15 @@ function hitGroups(results: PageHits[], go: (to: string) => void): Group[] {
   }));
 }
 
-export default function CommandPalette({ onClose }: { onClose: () => void }) {
+/** The ⌘K palette over the whole site: every docs page, API reference,
+ * post, and page, or one `kind` of them; plus page and theme commands. */
+export default function CommandPalette({
+  onClose,
+  kind = null,
+}: {
+  onClose: () => void;
+  kind?: SearchKind | null;
+}) {
   const [query, setQuery] = useState("");
   // The highlighted option, for the query it was picked under: a new query
   // starts at the top.
@@ -199,10 +213,15 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
         run: () => go(p.route),
       }));
 
+    // Browsing with no query lists the docs pages; a blog-only search
+    // starts empty.
+    const browse = kind === null || kind === "docs";
     if (!q) {
       return [
         { label: "Commands", options: commands },
-        { label: "Pages", options: pageOptions(site.pages) },
+        ...(browse
+          ? [{ label: "Docs", options: pageOptions(site.pages) }]
+          : []),
       ];
     }
     const needle = q.toLowerCase();
@@ -211,8 +230,8 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
       ? [{ label: "Commands", options: matching }]
       : [];
     if (index.status === "ready")
-      out.push(...hitGroups(searchDocs(index.index, q), go));
-    else if (index.status === "error") {
+      out.push(...hitGroups(searchSite(index.index, q, { kind }), go));
+    else if (index.status === "error" && browse) {
       const byTitle = site.pages.filter((p) =>
         p.title.toLowerCase().includes(needle),
       );
@@ -220,7 +239,7 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
         out.push({ label: "Pages", options: pageOptions(byTitle) });
     }
     return out;
-  }, [q, index, page, dark, themePreference, copied, navigate, onClose]);
+  }, [q, index, page, dark, themePreference, copied, navigate, onClose, kind]);
 
   const active = cursor.query === q ? cursor.at : 0;
   const setActive = (at: number) => setCursor({ query: q, at });
@@ -262,8 +281,8 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
   return (
     <dialog
       ref={dialog}
-      className="cmdk"
-      aria-label="Search documentation"
+      className="uc-console cmdk"
+      aria-label={kind === "blog" ? "Search the blog" : "Search Unity Catalog"}
       onCancel={(e) => {
         // Esc: let React unmount it rather than the browser closing it under us.
         e.preventDefault();
@@ -285,7 +304,11 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
             aria-controls={listId}
             aria-activedescendant={current >= 0 ? optionId(current) : undefined}
             aria-autocomplete="list"
-            placeholder="Search docs or run a command…"
+            placeholder={
+              kind === "blog"
+                ? "Search the blog…"
+                : "Search docs, API, and blog, or run a command…"
+            }
             spellCheck={false}
             autoComplete="off"
             value={query}

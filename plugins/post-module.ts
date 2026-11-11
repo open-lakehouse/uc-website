@@ -2,8 +2,7 @@
 // - drops the `.astro` component imports docs-factory writes into MDX posts
 //   (the page passes Journey, LikeC4View, and the rest as MDX components);
 // - exports `headings`, for the table of contents;
-// - exports `raw`, the post body as written, which the page puts in a hidden
-//   block for Pagefind exactly as src/pages/blogs/[id].astro does.
+// - exports `raw`, the post body as written.
 import type { Program } from "estree";
 import type { Root as HastRoot } from "hast";
 import type { Root as MdastRoot } from "mdast";

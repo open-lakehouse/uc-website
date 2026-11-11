@@ -13,8 +13,8 @@ production site will be, so it can be checked end to end before
 
 ```sh
 bun install
-bun run dev          # dev server; search needs a production build
-bun run build        # prerender to .output/public, then index it with Pagefind
+bun run dev          # dev server
+bun run build        # prerender to .output/public
 bun run preview      # serve the build
 bun test             # test/
 bun run lint         # lint:fix to fix
@@ -63,8 +63,8 @@ git hooks of its own; CI runs lint, format, and the link check.
 - `plugins/`: build plugins (content, MDX, images, prerendering, Vercel
   routing).
 - `public/`: static files, including the favicon set and the LikeC4 bundle.
-- `scripts/`: the Pagefind post-build step, the link checker, and the lockfile
-  proxy strip (`strip-bun-lock-proxy.ts`).
+- `scripts/`: the link checker and the lockfile proxy strip
+  (`strip-bun-lock-proxy.ts`, which `postinstall` runs).
 - `AGENTS.md` and `.agents/rules/`: setup and rules for AI coding agents.
   `CLAUDE.md` imports `AGENTS.md`, so Claude Code reads the same instructions.
 
@@ -78,7 +78,9 @@ git hooks of its own; CI runs lint, format, and the link check.
 - **Prerendering**: `vite.config.ts` lists `/`, every post, and the discovery
   files, and the crawler follows links from there. A link to an unknown page,
   or to a page's URL in another letter case, fails the build.
-  `scripts/postbuild.ts` runs Pagefind on the output.
+- **Search**: the ⌘K palette (`src/components/search/`) searches
+  `/search-index.json`, a discovery file `src/lib/search-records.ts` builds
+  from the docs' emitted records, every post's sections, and the site pages.
 - **Vercel routing** is in `plugins/vercel-output.ts`, which Nitro writes into
   `.vercel/output/config.json`:
   - security headers on every response (`X-Frame-Options`,
@@ -115,7 +117,7 @@ in lowercase (`src/lib/post-id.mjs`): `2025-05-05-unity-catalog-for-AI/` is
 Check on the first deploy, since these only show on Vercel itself:
 
 - The build works on Vercel's build image: Bun install, sharp's Linux
-  binaries, prerendering, and Pagefind.
+  binaries, and prerendering.
 - Page URLs in other letter cases 301 once: `/BLOGS/` to `/blogs/`, and
   `/blogs/unity-catalog-for-AI/` to `/blogs/unity-catalog-for-ai/`. This
   relies on Vercel honoring `caseSensitive` on the page routes; if it didn't,

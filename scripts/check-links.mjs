@@ -65,7 +65,6 @@ const MARKDOWN = /\.mdx?$/;
 const GENERATED = [
   /^\/sitemap-(index|\d+)\.xml$/,
   /^\/assets\//,
-  /^\/pagefind\//,
   /^\/(favicon|apple-touch-icon|android-chrome|mstile)[\w.-]*$/,
   /^\/(manifest\.webmanifest|browserconfig\.xml|safari-pinned-tab\.svg)$/,
 ];
@@ -489,10 +488,9 @@ if (MODE === "dist") {
   );
   const files = [...built.values()].filter(
     (f) =>
-      !f.startsWith(path.join(DIST, "pagefind")) &&
-      (f.endsWith(".html") ||
-        /\/(llms(-full)?|robots)\.txt$/.test(f) ||
-        /\/sitemap-[\w-]+\.xml$/.test(f)),
+      f.endsWith(".html") ||
+      /\/(llms(-full)?|robots)\.txt$/.test(f) ||
+      /\/sitemap-[\w-]+\.xml$/.test(f),
   );
   const idCache = new Map();
   const idsIn = (htmlFile) => {

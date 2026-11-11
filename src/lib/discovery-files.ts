@@ -7,6 +7,8 @@ export const discoveryFiles = {
   "/robots.txt": "text/plain; charset=utf-8",
   "/sitemap-index.xml": "application/xml",
   "/sitemap-0.xml": "application/xml",
+  // The ⌘K palette's index (src/lib/search-records.ts).
+  "/search-index.json": "application/json; charset=utf-8",
 } as const;
 
 export type DiscoveryFile = keyof typeof discoveryFiles;

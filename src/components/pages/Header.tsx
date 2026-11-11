@@ -11,6 +11,7 @@ import { LumaIcon } from "../icons/LumaIcon";
 import { SlackIcon } from "../icons/SlackIcon";
 import { Logo } from "../Logo";
 import { SiteLink } from "../SiteLink";
+import { SearchTrigger, SiteSearch } from "../search/SiteSearch";
 import { ThemeMenu } from "../ThemeMenu";
 import styles from "./Header.module.css";
 import { useGithubStars } from "./useGithubStars";
@@ -154,6 +155,7 @@ export function Header({
         </div>
 
         <div className={styles.headerTheme}>
+          <SearchTrigger className={styles.search} />
           <ThemeMenu />
         </div>
 
@@ -169,6 +171,8 @@ export function Header({
           <span></span>
         </button>
       </div>
+
+      <SiteSearch />
 
       <div
         className={styles.mobileMenu}

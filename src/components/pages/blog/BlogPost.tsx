@@ -106,10 +106,7 @@ export function BlogPost({
       <div className={clsx("uc-container", styles.postLayout)}>
         <div className={styles.postContent}>
           {/* `blog-article` is global: blog-rich.css styles under it. */}
-          <div
-            className={clsx("blog-article", styles.blogArticle)}
-            data-pagefind-body
-          >
+          <div className={clsx("blog-article", styles.blogArticle)}>
             {children}
           </div>
         </div>

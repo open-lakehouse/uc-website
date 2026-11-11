@@ -1,18 +1,9 @@
 import { Menu, X } from "lucide-react";
-import { type ReactNode, useCallback, useEffect, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { useLocation } from "../lib/router";
 import { brand } from "../brand/brand";
-import CommandPalette from "../CommandPalette";
 import "../docs.css";
 import Sidebar from "./Sidebar";
-
-function isEditable(target: EventTarget | null) {
-  return (
-    target instanceof HTMLElement &&
-    (target.isContentEditable ||
-      /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))
-  );
-}
 
 export default function Shell({
   children,
@@ -24,31 +15,14 @@ export default function Shell({
   /** Without it, main spans the full width and there is no drawer to toggle. */
   sidebar?: boolean;
 }) {
-  const [paletteOpen, setPaletteOpen] = useState(false);
   const { pathname } = useLocation();
   // The path the drawer was opened on, so navigating anywhere closes it.
   const [navOpenOn, setNavOpenOn] = useState<string | null>(null);
   const navOpen = navOpenOn === pathname;
 
-  const closePalette = useCallback(() => setPaletteOpen(false), []);
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const modK =
-        e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey) && !e.altKey;
-      const slash =
-        e.key === "/" && !e.metaKey && !e.ctrlKey && !isEditable(e.target);
-      if (!modK && !slash) return;
-      e.preventDefault();
-      // ⌘K toggles, like most palettes; `/` only opens.
-      setPaletteOpen((open) => (modK ? !open : true));
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, []);
-
   return (
     <div
-      className="docs-root shell"
+      className="uc-console docs-root shell"
       data-nav-open={navOpen || undefined}
       data-no-sidebar={sidebar ? undefined : "true"}
     >
@@ -85,7 +59,6 @@ export default function Shell({
           </span>
         </footer>
       </div>
-      {paletteOpen && <CommandPalette onClose={closePalette} />}
     </div>
   );
 }

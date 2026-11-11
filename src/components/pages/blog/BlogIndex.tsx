@@ -12,7 +12,7 @@ import {
 import { postsByDate } from "../../../content/posts";
 import { Button } from "../../Button";
 import { SlackIcon } from "../../icons/SlackIcon";
-import { Search } from "../../Search";
+import { SearchTrigger } from "../../search/SiteSearch";
 import { BlogCard } from "./BlogCard";
 import styles from "./BlogIndex.module.css";
 
@@ -87,7 +87,11 @@ export function BlogIndex({
             </p>
           </div>
           <div className={styles.blogIndexSearch}>
-            <Search />
+            <SearchTrigger
+              kind="blog"
+              label="Search the blog…"
+              className={styles.blogSearch}
+            />
           </div>
         </header>
 
