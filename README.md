@@ -63,8 +63,8 @@ git hooks of its own; CI runs lint, format, and the link check.
 - `plugins/`: build plugins (content, MDX, images, prerendering, Vercel
   routing).
 - `public/`: static files, including the favicon set and the LikeC4 bundle.
-- `scripts/`: the link checker, the lockfile proxy strip
-  (`strip-bun-lock-proxy.ts`), and `postinstall.ts`, which runs that strip.
+- `scripts/`: the link checker and the lockfile proxy strip
+  (`strip-bun-lock-proxy.ts`, which `postinstall` runs).
 - `AGENTS.md` and `.agents/rules/`: setup and rules for AI coding agents.
   `CLAUDE.md` imports `AGENTS.md`, so Claude Code reads the same instructions.
 
