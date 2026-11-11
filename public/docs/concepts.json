@@ -346,7 +346,7 @@
       "kind": "implementation",
       "title": "Unity Catalog CLI",
       "summary": "Command-line client for managing Unity Catalog objects and storage access.",
-      "url": "https://docs.unitycatalog.io/how-to/run-local-server#run-the-uc-cli",
+      "url": "https://unitycatalog.io/docs/how-to/run-local-server/#run-the-uc-cli",
       "sameAs": []
     },
     {
