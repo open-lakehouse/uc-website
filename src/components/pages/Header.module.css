@@ -145,12 +145,22 @@
   padding-block: 1.5rem;
 }
 
+/* Blocks, as a submenu's links nest under their item. */
 .mobile-link {
+  display: block;
   padding-block: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--uc-text);
+  border-bottom: 1px solid var(--uc-line);
+}
+
+.mobile-sublink {
+  display: block;
+  padding: 0.75rem 0 0.75rem 1rem;
+  font-size: 1.125rem;
+  color: var(--uc-text-muted);
   border-bottom: 1px solid var(--uc-line);
 }
 

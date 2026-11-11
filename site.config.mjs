@@ -6,6 +6,7 @@
  * @typedef {object} MenuItem
  * @property {string} label
  * @property {string} href
+ * @property {"docs-apis"} [submenu] A dropdown of the REST APIs the docs emit.
  */
 
 /**
@@ -51,10 +52,7 @@ export const menus = {
     { label: "Features", href: "/#features" },
     { label: "Ecosystem", href: "/#partner-ecosystem" },
     { label: "Docs", href: "/docs/" },
-    {
-      label: "API",
-      href: "/docs/api/catalog/",
-    },
+    { label: "API", href: "/docs/api/", submenu: "docs-apis" },
     { label: "Blog", href: "/blogs" },
     { label: "Events", href: "/events" },
   ],

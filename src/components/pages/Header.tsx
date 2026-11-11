@@ -6,6 +6,7 @@ import { menus } from "../../../site.config.mjs";
 import { formatStarCount } from "../../lib/github";
 
 import { Button } from "../Button";
+import { site as docs } from "../docs/site";
 import { GitHubIcon } from "../icons/GitHubIcon";
 import { LumaIcon } from "../icons/LumaIcon";
 import { SlackIcon } from "../icons/SlackIcon";
@@ -14,9 +15,23 @@ import { SiteLink } from "../SiteLink";
 import { SearchTrigger, SiteSearch } from "../search/SiteSearch";
 import { ThemeMenu } from "../ThemeMenu";
 import styles from "./Header.module.css";
+import { NavMenu, type NavMenuItem } from "./NavMenu";
 import { useGithubStars } from "./useGithubStars";
 
 type CtaItem = (typeof menus.headerCtas)[number];
+type MenuItem = (typeof menus.header)[number];
+
+const submenus: Record<NonNullable<MenuItem["submenu"]>, NavMenuItem[]> = {
+  "docs-apis": docs.apis.map((api) => ({
+    href: api.route,
+    label: api.title,
+    hint: api.hint,
+    ...(api.default && docs.apiIndex ? { alsoOn: docs.apiIndex } : {}),
+  })),
+};
+
+const submenu = (item: MenuItem): NavMenuItem[] =>
+  item.submenu ? submenus[item.submenu] : [];
 
 const matches = (href: string, currentPath: string) =>
   !href.startsWith("http") &&
@@ -134,18 +149,26 @@ export function Header({
         </SiteLink>
 
         <nav className={styles.headerNav} aria-label="Primary">
-          {menus.header.map((item) => (
-            <SiteLink
-              key={item.href}
-              className={clsx(
-                styles.headerLink,
-                item.href === active && styles.active,
-              )}
-              href={item.href}
-            >
-              {item.label}
-            </SiteLink>
-          ))}
+          {menus.header.map((item) => {
+            const className = clsx(
+              styles.headerLink,
+              item.href === active && styles.active,
+            );
+            const items = submenu(item);
+            return items.length > 0 ? (
+              <NavMenu
+                key={item.href}
+                label={item.label}
+                href={item.href}
+                items={items}
+                className={className}
+              />
+            ) : (
+              <SiteLink key={item.href} className={className} href={item.href}>
+                {item.label}
+              </SiteLink>
+            );
+          })}
         </nav>
 
         <div className={styles.headerCtas}>
@@ -193,14 +216,25 @@ export function Header({
           aria-label="Mobile"
         >
           {menus.header.map((item) => (
-            <SiteLink
-              key={item.href}
-              className={styles.mobileLink}
-              href={item.href}
-              onClick={close}
-            >
-              {item.label}
-            </SiteLink>
+            <div key={item.href}>
+              <SiteLink
+                className={styles.mobileLink}
+                href={item.href}
+                onClick={close}
+              >
+                {item.label}
+              </SiteLink>
+              {submenu(item).map((sub) => (
+                <SiteLink
+                  key={sub.href}
+                  className={styles.mobileSublink}
+                  href={sub.href}
+                  onClick={close}
+                >
+                  {sub.label}
+                </SiteLink>
+              ))}
+            </div>
           ))}
           <div className={styles.mobileCtas}>
             {menus.headerCtas.map((btn) => (

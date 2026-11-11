@@ -1,0 +1,87 @@
+.nav-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.trigger {
+  color: inherit;
+}
+
+.chevron {
+  display: grid;
+  place-items: center;
+  margin-right: -0.25rem;
+  padding: 0.125rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.chevron:hover,
+.chevron[aria-expanded="true"] {
+  opacity: 1;
+}
+
+.chevron svg {
+  transition: transform 0.15s ease;
+}
+
+.chevron[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* Starts at the link's bottom edge (its padding bridges the gap), so the
+   pointer can travel down to it without leaving the menu. */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: -0.5rem;
+  z-index: 60;
+  padding-top: 0.5rem;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.list {
+  display: grid;
+  min-width: 16rem;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  border: 1px solid var(--uc-line-strong);
+  border-radius: 0.625rem;
+  background: var(--uc-surface);
+  box-shadow: 0 16px 40px -16px
+    rgb(var(--uc-shadow-rgb) / calc(0.6 * var(--uc-shadow-k)));
+}
+
+.item {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.375rem;
+  color: var(--uc-text-muted);
+}
+
+.item:hover,
+.item[aria-current="page"] {
+  color: var(--uc-text);
+  background: rgb(var(--uc-ink-rgb) / 0.05);
+}
+
+.item-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.item-hint {
+  font-size: 0.75rem;
+  color: var(--uc-text-muted);
+}
