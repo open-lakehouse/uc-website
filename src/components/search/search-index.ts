@@ -1,11 +1,16 @@
-// Full-text search over the emitter's public/search-index.json: one record
-// per page section, fetched and indexed the first time it's needed. The page
-// record also carries the page's model context (emit/docs/search.mjs
-// searchContext), weighted below its own prose except for what it explains.
-import MiniSearch from "minisearch";
+// Full-text search over the site's /search-index.json (src/lib/search-records.ts):
+// one record per section of a docs page, API reference, post, or site page,
+// fetched and indexed the first time it's needed. A docs page record also
+// carries its model context (docs-factory's searchContext), weighted below its
+// own prose except for what it explains.
+import MiniSearch, { type SearchOptions } from "minisearch";
+
+/** What a record belongs to; the palette can search one kind alone. */
+export type SearchKind = "docs" | "api" | "blog" | "page";
 
 export interface SearchRecord {
   id: string;
+  kind: SearchKind;
   route: string;
   /** Heading id on the page, or null for the text above the first heading. */
   anchor: string | null;
@@ -39,21 +44,25 @@ type Index = {
 
 let pending: Promise<Index> | null = null;
 
-// Its own chunk, fetched on the palette's first open rather than with every page.
-const indexes = import.meta.glob<{ records: SearchRecord[] }>(
-  "/src/generated/docs/search.json",
-  { import: "default" },
-);
+export const SEARCH_INDEX = "/search-index.json";
 
 export function loadIndex(): Promise<Index> {
-  const load = indexes["/src/generated/docs/search.json"];
-  pending ??= (load ? load() : Promise.resolve({ records: [] }))
+  pending ??= fetch(SEARCH_INDEX)
+    .then((res) => {
+      if (!res.ok) throw new Error(`search index: ${res.status}`);
+      return res.json() as Promise<{ records: SearchRecord[] }>;
+    })
     .then(({ records }) => {
       const search = new MiniSearch<SearchRecord>({
         fields: ["page", "heading", "text", "summary", "explains", "concepts"],
+        // A filter, and the boost below, see only stored fields.
+        storeFields: ["kind"],
         extractField: (doc, field) =>
           (doc as unknown as Record<string, string | null>)[field] ?? "",
         searchOptions: {
+          // Posts run long and are many; the docs answer most queries.
+          boostDocument: (_id, _term, stored) =>
+            stored?.kind === "blog" ? 0.6 : 1,
           boost: {
             page: 3,
             explains: 3,
@@ -77,15 +86,22 @@ export function loadIndex(): Promise<Index> {
   return pending;
 }
 
-/** Hits grouped by page, best page first, at most `perPage` sections each. */
-export function searchDocs(
+/** Hits grouped by page, best page first, at most `perPage` sections each;
+ * only records of `kind` when it's given. */
+export function searchSite(
   { search, byId }: Index,
   query: string,
-  limit = 8,
-  perPage = 3,
+  {
+    kind,
+    limit = 8,
+    perPage = 3,
+  }: { kind?: SearchKind | null; limit?: number; perPage?: number } = {},
 ) {
   const groups = new Map<string, PageHits>();
-  for (const result of search.search(query)) {
+  const options: SearchOptions = kind
+    ? { filter: (result) => result.kind === kind }
+    : {};
+  for (const result of search.search(query, options)) {
     const record = byId.get(String(result.id));
     if (!record) continue;
     let group = groups.get(record.route);

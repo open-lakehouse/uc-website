@@ -37,11 +37,15 @@
 }
 
 .blog-index-search {
-  position: relative;
-  z-index: 30;
   min-height: 3.5rem;
-  /* Let the absolute search results panel paint over topics/cards below */
-  overflow: visible;
+}
+
+.blog-search {
+  width: 100%;
+  height: 2.75rem;
+  padding-inline: 0.85rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
 }
 
 .blog-topics {

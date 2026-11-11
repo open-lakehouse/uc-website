@@ -160,6 +160,53 @@
   --uc-code-titlebar-text: #45586d;
 }
 
+/*
+ * The console palette: the docs' editor chrome and the site-wide search
+ * palette, on the theme tokens above. Each element that draws it carries
+ * `.uc-console` (the docs shell, the ⌘K dialog).
+ */
+.uc-console {
+  --background: var(--uc-bg);
+  --panel: var(--uc-surface);
+  --surface: var(--uc-surface-2);
+  --card: var(--uc-bg);
+  --border: var(--uc-line-strong);
+  --border-muted: var(--uc-line);
+
+  --foreground: var(--uc-text);
+  --heading: var(--uc-text);
+  --body: color-mix(in srgb, var(--uc-text) 80%, var(--uc-text-muted));
+  --muted-foreground: var(--uc-text-muted);
+  --subtle: var(--uc-text-dim);
+
+  --code-bg: var(--uc-surface);
+  --code-surface: var(--uc-surface-2);
+  --code-fg: var(--uc-text);
+  --code-border: var(--uc-line-strong);
+  --inline-code-bg: var(--uc-surface-2);
+  --inline-code-fg: var(--uc-text);
+
+  /* Unity Catalog yellow. `--accent` is for text and must pass contrast;
+     `--accent-fill` is the raw brand yellow for bars, dots, and the cursor. */
+  --accent: var(--uc-yellow-ink);
+  --accent-hover: color-mix(in srgb, var(--uc-yellow-ink) 80%, var(--uc-text));
+  --accent-fill: var(--uc-yellow);
+  --accent-fg: #1f2328;
+
+  --ok: #1a7f37;
+  --err: #d1242f;
+  --shadow: 0 8px 24px
+    rgb(var(--uc-shadow-rgb) / calc(0.35 * var(--uc-shadow-k)));
+  --radius: 6px;
+  --radius-sm: 4px;
+}
+
+.dark .uc-console {
+  --ok: #3fb950;
+  --err: #f85149;
+  --shadow: 0 8px 24px rgb(1 4 9 / 0.6);
+}
+
 /* Theme-specific markup, e.g. the logo's two variants (Logo.tsx). */
 :root:not(.dark) .uc-only-dark,
 :root.dark .uc-only-light {

@@ -47,14 +47,6 @@ function BlogPostPage() {
 }
 
 function PostBody({ post }: { post: Post }) {
-  const { default: Content, raw } = usePostModule(post);
-  return (
-    <>
-      {/* Hidden searchable content for better indexing */}
-      <div style={{ display: "none" }} data-pagefind-body>
-        {` ${post.data.title} ${post.data.description ?? ""} ${raw} `}
-      </div>
-      <Content components={mdxComponents} />
-    </>
-  );
+  const { default: Content } = usePostModule(post);
+  return <Content components={mdxComponents} />;
 }

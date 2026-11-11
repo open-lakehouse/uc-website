@@ -297,6 +297,7 @@ describe("vercelOutputConfig", () => {
       "robots.txt": { contentType: "text/plain; charset=utf-8" },
       "sitemap-index.xml": { contentType: "application/xml" },
       "sitemap-0.xml": { contentType: "application/xml" },
+      "search-index.json": { contentType: "application/json; charset=utf-8" },
     });
     expect(
       route(output, "/llms.txt", { files, overrides }).headers["content-type"],
