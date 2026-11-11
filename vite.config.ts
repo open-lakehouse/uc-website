@@ -55,13 +55,17 @@ const redirectSources = new Set(
 
 // Pages the crawler should skip:
 // - links with a query or hash, which would overwrite the page's own HTML;
-// - redirect sources, which Vercel answers with a 301 (vercel-output.ts).
+// - redirect sources, which Vercel answers with a 301 (vercel-output.ts);
+// - files from public/, such as the docs' runnable scripts: the Vercel
+//   preset's prerender server doesn't serve them, and `links:dist` checks
+//   them against the build instead.
 // Any other unknown path fails the build as a dead link. A page's URL in
 // another letter case fails here instead: the prerenderer requests links
 // from a preview server that serves the files written so far, so on a
 // case-insensitive filesystem (macOS) it would answer with the page.
 function isCrawlable(path: string): boolean {
   if (/[?#]/.test(path)) return false;
+  if (/\.[A-Za-z0-9]+$/.test(path) && !(path in discoveryFiles)) return false;
   const page = pageRedirects.get(path.replace(/\/$/, "").toLowerCase());
   if (page !== undefined && path.replace(/\/?$/, "/") !== page) {
     throw new Error(
