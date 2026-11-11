@@ -15,6 +15,10 @@ export default defineConfig(
     "src/routeTree.gen.ts",
     // Generated web-component bundles copied in by docs-factory.
     "public/",
+    // The docs docs-factory's emitter writes (see AGENTS.md).
+    "src/content/docs/",
+    "src/generated/docs/",
+    "src/vendor/docs-plugins/",
   ]),
   js.configs.recommended,
   tseslint.configs.recommended,

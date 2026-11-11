@@ -1,0 +1,140 @@
+// Full-text search over the emitter's public/search-index.json: one record
+// per page section, fetched and indexed the first time it's needed. The page
+// record also carries the page's model context (emit/docs/search.mjs
+// searchContext), weighted below its own prose except for what it explains.
+import MiniSearch from "minisearch";
+
+export interface SearchRecord {
+  id: string;
+  route: string;
+  /** Heading id on the page, or null for the text above the first heading. */
+  anchor: string | null;
+  page: string;
+  heading: string | null;
+  section: string[];
+  text: string;
+  /** Page record only: frontmatter summary, the title of the concept the page
+   *  explains, and the concepts and journeys it references or proves. */
+  summary?: string | null;
+  explains?: string | null;
+  concepts?: string;
+}
+
+export interface SearchHit extends SearchRecord {
+  /** The document terms the query matched (prefix and fuzzy expansions included). */
+  terms: string[];
+}
+
+export interface PageHits {
+  route: string;
+  page: string;
+  section: string[];
+  hits: SearchHit[];
+}
+
+type Index = {
+  search: MiniSearch<SearchRecord>;
+  byId: Map<string, SearchRecord>;
+};
+
+let pending: Promise<Index> | null = null;
+
+// Its own chunk, fetched on the palette's first open rather than with every page.
+const indexes = import.meta.glob<{ records: SearchRecord[] }>(
+  "/src/generated/docs/search.json",
+  { import: "default" },
+);
+
+export function loadIndex(): Promise<Index> {
+  const load = indexes["/src/generated/docs/search.json"];
+  pending ??= (load ? load() : Promise.resolve({ records: [] }))
+    .then(({ records }) => {
+      const search = new MiniSearch<SearchRecord>({
+        fields: ["page", "heading", "text", "summary", "explains", "concepts"],
+        extractField: (doc, field) =>
+          (doc as unknown as Record<string, string | null>)[field] ?? "",
+        searchOptions: {
+          boost: {
+            page: 3,
+            explains: 3,
+            heading: 2,
+            summary: 1.5,
+            concepts: 0.5,
+          },
+          prefix: true,
+          fuzzy: 0.2,
+          combineWith: "AND",
+        },
+      });
+      search.addAll(records);
+      return { search, byId: new Map(records.map((r) => [r.id, r])) };
+    })
+    .catch((err) => {
+      // Let the next open retry instead of caching the failure.
+      pending = null;
+      throw err;
+    });
+  return pending;
+}
+
+/** Hits grouped by page, best page first, at most `perPage` sections each. */
+export function searchDocs(
+  { search, byId }: Index,
+  query: string,
+  limit = 8,
+  perPage = 3,
+) {
+  const groups = new Map<string, PageHits>();
+  for (const result of search.search(query)) {
+    const record = byId.get(String(result.id));
+    if (!record) continue;
+    let group = groups.get(record.route);
+    if (!group) {
+      if (groups.size === limit) continue;
+      group = {
+        route: record.route,
+        page: record.page,
+        section: record.section,
+        hits: [],
+      };
+      groups.set(record.route, group);
+    }
+    if (group.hits.length < perPage)
+      group.hits.push({ ...record, terms: result.terms });
+  }
+  return [...groups.values()];
+}
+
+export interface Segment {
+  text: string;
+  mark: boolean;
+}
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** A window of `text` around the first matched term, split for highlighting. */
+export function excerpt(text: string, terms: string[], width = 140): Segment[] {
+  if (!text) return [];
+  const words = terms.filter(Boolean).sort((a, b) => b.length - a.length);
+  const re = words.length
+    ? new RegExp(words.map(escapeRegExp).join("|"), "gi")
+    : null;
+  const first = re ? text.search(re) : -1;
+  let start = Math.max(0, first - 40);
+  if (start > 0) start = text.indexOf(" ", start) + 1 || start;
+  let end = Math.min(text.length, start + width);
+  const lastSpace = text.lastIndexOf(" ", end);
+  if (end < text.length && lastSpace > start) end = lastSpace;
+  const slice = `${start > 0 ? "…" : ""}${text.slice(start, end)}${end < text.length ? "…" : ""}`;
+  if (!re) return [{ text: slice, mark: false }];
+
+  const out: Segment[] = [];
+  let at = 0;
+  for (const m of slice.matchAll(re)) {
+    if (m.index > at) out.push({ text: slice.slice(at, m.index), mark: false });
+    out.push({ text: m[0], mark: true });
+    at = m.index + m[0].length;
+  }
+  if (at < slice.length) out.push({ text: slice.slice(at), mark: false });
+  return out;
+}

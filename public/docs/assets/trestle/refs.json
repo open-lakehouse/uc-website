@@ -1,0 +1,196 @@
+{
+  "format": "docs-factory-trestle-refs",
+  "version": 1,
+  "roles": {
+    "data_catalog": {
+      "concept": "lakehouse.catalog",
+      "scope": "full"
+    },
+    "experiment_tracking": {
+      "concept": "lakehouse.modelTracking",
+      "scope": "partial"
+    },
+    "graph": {
+      "concept": "lakehouse.queryEngine",
+      "scope": "full"
+    },
+    "object_store": {
+      "concept": "lakehouse.objectStorage",
+      "scope": "full"
+    },
+    "sql_engine": {
+      "concept": "lakehouse.queryEngine",
+      "scope": "full"
+    }
+  },
+  "concepts": {
+    "envoy": {
+      "title": "Envoy",
+      "kind": "implementation",
+      "kindLabel": "Implementation",
+      "summary": "Open source edge and service proxy; the gateway that routes requests to each service.",
+      "href": "https://www.envoyproxy.io"
+    },
+    "icebergRestSpec": {
+      "title": "Iceberg REST Catalog",
+      "kind": "openSpecification",
+      "kindLabel": "Specification",
+      "summary": "Open specification for an Iceberg catalog served over REST: engines use it to create, load, and commit Iceberg tables through any conforming catalog.",
+      "href": "https://iceberg.apache.org/rest-catalog-spec/"
+    },
+    "lakehouse.catalog": {
+      "title": "Catalog",
+      "kind": "capability",
+      "kindLabel": "Capability",
+      "summary": "The metadata authority: a registry of tables, schemas, and access that every query resolves through.",
+      "href": "https://www.openlakehouse.io/technologies/catalogs"
+    },
+    "lakehouse.credential": {
+      "title": "Credential",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A catalogued cloud identity the catalog uses to mint scoped storage credentials.",
+      "href": null
+    },
+    "lakehouse.externalLocation": {
+      "title": "External location",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A governed object-storage path, paired with the credential that can reach it.",
+      "href": null
+    },
+    "lakehouse.function": {
+      "title": "Function",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A governed, reusable unit of computation.",
+      "href": null
+    },
+    "lakehouse.metricView": {
+      "title": "Metric view",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A view that declares measures and dimensions, so every engine computes a metric the same way.",
+      "href": null
+    },
+    "lakehouse.mlModel": {
+      "title": "Model",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A governed ML model.",
+      "href": "/docs/explanation/models-and-mlflow/"
+    },
+    "lakehouse.modelTracking": {
+      "title": "Model tracking",
+      "kind": "capability",
+      "kindLabel": "Capability",
+      "summary": "Tracks experiments, versions models, and governs their promotion to production.",
+      "href": null
+    },
+    "lakehouse.namespace": {
+      "title": "Namespace",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "The namespace container other asset kinds are organized under.",
+      "href": null
+    },
+    "lakehouse.objectStorage": {
+      "title": "Object storage",
+      "kind": "capability",
+      "kindLabel": "Capability",
+      "summary": "Stores data as flat objects (blobs) addressed by key, not as a file hierarchy.",
+      "href": null
+    },
+    "lakehouse.queryEngine": {
+      "title": "Query engine",
+      "kind": "capability",
+      "kindLabel": "Capability",
+      "summary": "Parses, plans, and executes queries over open table formats.",
+      "href": null
+    },
+    "lakehouse.sqlView": {
+      "title": "View",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A named query over tables, resolved and run by the query engine.",
+      "href": "/docs/explanation/views-and-metric-views/"
+    },
+    "lakehouse.table": {
+      "title": "Table",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "The tabular securable — rows and columns with ACID semantics.",
+      "href": "/docs/explanation/external-and-managed-tables/"
+    },
+    "lakehouse.volume": {
+      "title": "Volume",
+      "kind": "asset",
+      "kindLabel": "Asset kind",
+      "summary": "A governed directory: a catalog name for a storage path that holds files, usually non-tabular.",
+      "href": null
+    },
+    "mlflow": {
+      "title": "MLflow",
+      "kind": "implementation",
+      "kindLabel": "Implementation",
+      "summary": "Open source platform for the ML lifecycle: experiment tracking, model registry, and deployment.",
+      "href": "https://mlflow.org",
+      "assets": [
+        "lakehouse.mlModel"
+      ]
+    },
+    "postgresql": {
+      "title": "PostgreSQL",
+      "kind": "implementation",
+      "kindLabel": "Implementation",
+      "summary": "Open source relational database; the metadata store behind catalog and tracking services.",
+      "href": "https://www.postgresql.org"
+    },
+    "rustfs": {
+      "title": "RustFS",
+      "kind": "implementation",
+      "kindLabel": "Implementation",
+      "summary": "S3-compatible object storage server written in Rust.",
+      "href": "https://rustfs.com"
+    },
+    "s3Spec": {
+      "title": "S3 API",
+      "kind": "openSpecification",
+      "kindLabel": "Specification",
+      "summary": "The de-facto object-storage interface.",
+      "href": "https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html"
+    },
+    "unityCatalogDeltaApiSpec": {
+      "title": "Unity Catalog Delta API",
+      "kind": "openSpecification",
+      "kindLabel": "Specification",
+      "summary": "Open specification for catalog-managed Delta tables over REST: an engine negotiates the protocol version, stages and creates a table with the table features the catalog requires, and commits through intent-based updates guarded by preconditions, all or nothing.",
+      "href": "/docs/explanation/delta-api/"
+    },
+    "unityCatalogServer": {
+      "title": "Unity Catalog (OSS)",
+      "kind": "implementation",
+      "kindLabel": "Implementation",
+      "summary": "The open-source reference server implementing the Unity Catalog specification.",
+      "href": "/docs/explanation/what-is-unity-catalog/",
+      "assets": [
+        "lakehouse.namespace",
+        "lakehouse.table",
+        "lakehouse.sqlView",
+        "lakehouse.metricView",
+        "lakehouse.volume",
+        "lakehouse.function",
+        "lakehouse.mlModel",
+        "lakehouse.credential",
+        "lakehouse.externalLocation"
+      ]
+    },
+    "unityCatalogSpec": {
+      "title": "Unity Catalog",
+      "kind": "openSpecification",
+      "kindLabel": "Specification",
+      "summary": "Open catalog specification for data & AI: a catalog governing tables, files, functions, and models across engines.",
+      "href": "https://www.unitycatalog.io"
+    }
+  }
+}

@@ -56,8 +56,14 @@ describe("sitemap pages", () => {
       (match) => match[1]!,
     );
     // Posts are listed from the collection. @astrojs/sitemap leaves out
-    // status pages.
-    const notPages = new Set(["/blogs/$id", "/404", "/500"]);
+    // status pages. The docs list in docs-factory's own /docs/sitemap.xml.
+    const notPages = new Set([
+      "/blogs/$id",
+      "/404",
+      "/500",
+      "/docs/",
+      "/docs/$",
+    ]);
     const pages = fullPaths
       .filter((route) => !notPages.has(route) && !(route in discoveryFiles))
       .map((route) => (route.endsWith("/") ? route : `${route}/`));

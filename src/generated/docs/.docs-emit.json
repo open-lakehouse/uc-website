@@ -1,0 +1,1201 @@
+{
+  "schema": 1,
+  "site": "unitycatalog-docs",
+  "source": {
+    "commit": "5979711c292ee4760129a6cfd50385666e7834da",
+    "dirty": false
+  },
+  "drafts": false,
+  "pages": {
+    "unitycatalog/explanation/what-is-unity-catalog": {
+      "src": "content/unitycatalog/explanation/001-what-is-unity-catalog.md",
+      "route": "/docs/explanation/what-is-unity-catalog/",
+      "title": "What is Unity Catalog OSS?",
+      "contentHash": "dee62799d9809fc33b7ed0db1b87bb2c1440f78da1de067d21bc342441e7fbc7",
+      "rootHash": "68088b1ff6db03f278149066c118fc050b81963f60a5de44ee43636ebaf5c049",
+      "sections": {
+        "__preamble__": "c76a21397ced8b4a",
+        "what-a-catalog-does": "e3a302240ace00c5",
+        "what-unity-catalog-oss-manages": "b760ca7e5f101fbd",
+        "how-it-works-with-engines-and-storage": "0b5780f6fbbad707",
+        "governance-in-the-open-source-server": "e0eb23c534ab54c6",
+        "unity-catalog-oss-and-databricks-unity-catalog": "004f1275719ba1f4",
+        "next-steps": "21f482194695a9ff"
+      },
+      "outputs": [
+        "src/content/docs/explanation/what-is-unity-catalog.md",
+        "public/docs/explanation/what-is-unity-catalog.md"
+      ]
+    },
+    "unitycatalog/tutorials/getting-started": {
+      "src": "content/unitycatalog/tutorials/001-getting-started/index.md",
+      "route": "/docs/tutorials/getting-started/",
+      "title": "Create your first catalog",
+      "contentHash": "782b5550733a715f88ba53dd54d50dbe8357c5209cd1ef911b8150139f8c4b9e",
+      "rootHash": "963bee80402c9abc00176f130bd98a9ace8a78e6caa424514d750dbf586e559a",
+      "sections": {
+        "__preamble__": "6ce473774ec106f5",
+        "start-the-server": "b3cb7f36a32529ce",
+        "define-a-shortcut-for-the-cli": "ca53d875848e9002",
+        "browse-the-sample-data": "6048819310578b22",
+        "create-a-catalog": "6473357716f823f7",
+        "create-a-schema": "3e81c80917a223a6",
+        "create-a-table": "340a93c56802130a",
+        "write-and-read-rows": "05c02bc4eede42b7",
+        "clean-up": "2da1438b6bc2bfe3",
+        "what-you-did": "c42691255a9c6859",
+        "next-steps": "ff77d0137a98414e"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/getting-started.md",
+        "public/docs/tutorials/getting-started.md"
+      ]
+    },
+    "unitycatalog/how-to/run-local-server": {
+      "src": "content/unitycatalog/how-to/011-run-local-server/index.md",
+      "route": "/docs/how-to/run-local-server/",
+      "title": "Run a local Unity Catalog server",
+      "contentHash": "34778f50c7d3df25b31e29f5dc3805ddd147ff5b9ab05adf659939a09e9e4bab",
+      "rootHash": "bbf3bc6c1e64d80e9de2bbaa462a96fcbf9067d50539e96bbe18c7c121291b33",
+      "sections": {
+        "__preamble__": "9b4ff61c890ab2a3",
+        "choose-an-environment": "749d50913f354383",
+        "start-the-minimal-server": "e3795ac3cd8b7f67",
+        "start-the-server-with-simulated-s3": "b0675c23a888f2ae",
+        "share-a-folder-with-the-server": "2abdeffb2c817da2",
+        "run-the-uc-cli": "e2808b0285ebf14a",
+        "stop-or-reset-the-server": "186c55418d1c1421",
+        "next-steps": "7db1d96b03eadc51"
+      },
+      "outputs": [
+        "src/content/docs/how-to/run-local-server.md",
+        "public/docs/how-to/run-local-server.md"
+      ]
+    },
+    "unitycatalog/tutorials/python-client": {
+      "src": "content/unitycatalog/tutorials/002-python-client/index.md",
+      "route": "/docs/tutorials/python-client/",
+      "title": "Use the Python client",
+      "contentHash": "2c492c043776c5a6065c4c7b76a01753b9efd6484c0c198d45369614f8591b9b",
+      "rootHash": "ef90965147f7e9fe93b7807d1db5e3a24a96b06508b9a8e52034e9a21989ecd5",
+      "sections": {
+        "__preamble__": "215806146ddc3d20",
+        "start-the-environment": "1d237af29a286cda",
+        "open-a-python-session": "2bc8b54b900c7bd7",
+        "connect-to-the-server": "8b62e9c0c976be85",
+        "create-a-catalog": "e978a79cc6c6ceca",
+        "list-catalogs": "043b5c70f91ab00c",
+        "create-a-schema": "1746826672649fed",
+        "create-a-table": "ab92081ef215d474",
+        "handle-a-missing-object": "a9b6052dd44ca55c",
+        "clean-up": "a5badb11c8e5bf17",
+        "what-you-did": "fd2b284d786473dd",
+        "next-steps": "d675951cb2d8c302"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/python-client.md",
+        "public/docs/tutorials/python-client.md"
+      ]
+    },
+    "unitycatalog/tutorials/managed-delta-table": {
+      "src": "content/unitycatalog/tutorials/007-managed-delta-table/index.md",
+      "route": "/docs/tutorials/managed-delta-table/",
+      "title": "Create and update a catalog-managed Delta table",
+      "contentHash": "7e7ad76202efdde37e886ad6a45eef3a9dd500ed00c5315d396aa1a84ced3e62",
+      "rootHash": "5306cbc879934fd4cfb5926e94a9b15e470fd523babb81468e19b9561f4432f0",
+      "sections": {
+        "__preamble__": "529b02a3af09fc02",
+        "start-the-environment": "1d237af29a286cda",
+        "open-a-python-session": "17e487319c6fb622",
+        "give-a-catalog-managed-storage": "b77b21a1964f04ce",
+        "connect-spark": "616810977b5b5afb",
+        "create-the-table": "dc15043647543d37",
+        "write-some-rows": "560ac6f695e714f1",
+        "see-where-the-table-lives": "57844755de9ff850",
+        "change-rows": "0ea850d174d6b79b",
+        "read-an-earlier-version": "2668237ef9b005c0",
+        "clean-up": "7a5e2ad1252b5d92",
+        "what-you-did": "750545d5d4184605",
+        "next-steps": "02afcba77f8bf28d"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/managed-delta-table.md",
+        "public/docs/tutorials/managed-delta-table.md"
+      ]
+    },
+    "unitycatalog/tutorials/read-volume-files": {
+      "src": "content/unitycatalog/tutorials/006-read-volume-files/index.md",
+      "route": "/docs/tutorials/read-volume-files/",
+      "title": "Working with volumes and files",
+      "contentHash": "82eaa67d47d628356770b56264af18a02373c049f235461f0334d0e3775da7ba",
+      "rootHash": "0b54768bd758b7de95f00162590f9a1287d0b92f94c34874f05fa418c86a7a82",
+      "sections": {
+        "__preamble__": "85ecb58a73d7028b",
+        "start-the-environment": "1d237af29a286cda",
+        "open-a-python-session": "2b872a2eeac8ab18",
+        "connect-to-the-server": "c4b3de93e01ed8ed",
+        "put-some-files-in-a-folder": "d06c90fca7481443",
+        "register-the-folder-as-a-volume": "c142cbf24c18369e",
+        "find-the-volume-by-name": "2aede9677165b75e",
+        "ask-for-access": "da3a91e3f19d61c1",
+        "open-the-volumes-storage": "744cb99825bc0950",
+        "read-the-files": "07566902352aca45",
+        "clean-up": "27f4c411e83aeda9",
+        "what-you-did": "660fb94771c977df",
+        "next-steps": "8f06e694def4fb52"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/read-volume-files.md",
+        "public/docs/tutorials/read-volume-files.md"
+      ]
+    },
+    "unitycatalog/tutorials/first-python-function": {
+      "src": "content/unitycatalog/tutorials/005-first-python-function/index.md",
+      "route": "/docs/tutorials/first-python-function/",
+      "title": "Working with Python functions",
+      "contentHash": "d77adc44ec8cfa7eca84b3835337848a96ebc2365e05b544528c00f535b41a5b",
+      "rootHash": "5b45496707ceef4706233b8d6b21242e9e6fdd09bdac5e8cb0e9c4b41c57f102",
+      "sections": {
+        "__preamble__": "3d36a7258b3e1c01",
+        "start-the-environment": "1d237af29a286cda",
+        "open-a-python-session": "d3fabc66c4f59e3b",
+        "connect-to-the-server": "0331c8eb2693ecd1",
+        "create-a-schema-for-functions": "e577f85093f0bcea",
+        "write-the-function": "44448f1f158478c1",
+        "register-the-function": "d9fee4f09e7bf5c9",
+        "see-what-the-catalog-stored": "a3f3291d75ce9c7a",
+        "run-the-function-by-name": "6b65480a5667ea2f",
+        "pass-the-right-types": "df55631af75f36a3",
+        "list-and-clean-up": "2ce37b303838db9c",
+        "what-you-did": "fbb2986460b90d8a",
+        "next-steps": "17d3370231587833"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/first-python-function.md",
+        "public/docs/tutorials/first-python-function.md"
+      ]
+    },
+    "unitycatalog/tutorials/first-metric-view": {
+      "src": "content/unitycatalog/tutorials/008-first-metric-view/index.md",
+      "route": "/docs/tutorials/first-metric-view/",
+      "title": "Working with metric views",
+      "contentHash": "f6a54a5f9f977f2d3d96f8910c5f4b1fe331202ca61803a7e698680421066e73",
+      "rootHash": "965fe9d1314f0fb04f7711e15dcbf6b9e43b79b9653065233d6fd2b8de479c51",
+      "sections": {
+        "__preamble__": "de8ebef81a1d96ac",
+        "start-the-environment": "1d237af29a286cda",
+        "open-a-python-session": "ed716ed470777333",
+        "create-the-orders-table": "16d3fcb17a55c854",
+        "define-the-metric-view": "46fdba17daf57967",
+        "inspect-it": "eaca04717709a374",
+        "query-measures-by-month": "035aba7e493898e2",
+        "slice-them-differently": "47dba58168edde01",
+        "clean-up": "ebd8831503888fb2",
+        "what-you-did": "c7d90e00b82de6cc",
+        "next-steps": "f89f987e3ae7ae3d"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/first-metric-view.md",
+        "public/docs/tutorials/first-metric-view.md"
+      ]
+    },
+    "unitycatalog/tutorials/register-model-mlflow": {
+      "src": "content/unitycatalog/tutorials/009-register-model-mlflow/index.md",
+      "route": "/docs/tutorials/register-model-mlflow/",
+      "title": "Register and reload a model with MLflow",
+      "contentHash": "492240f32c80823274ece984ed68b4e49dd3423223783638b81c10eac9fe93ec",
+      "rootHash": "985205ffaec531a6e5188cd3caff3cc3fdfa98ba5d48a31fa75eb853357a5a90",
+      "sections": {
+        "__preamble__": "f6f81e1a2304dbb8",
+        "start-the-environment": "7c3ec4d0bff7e588",
+        "open-a-python-session": "6a4ea68312c6a51b",
+        "point-mlflow-at-both-services": "208e051dc737a540",
+        "create-a-schema-for-the-model": "45a74f8958f47055",
+        "train-a-small-model": "c05a5fb3d29cdf9d",
+        "log-it-with-a-signature": "76f18f60025c4b47",
+        "register-it-in-unity-catalog": "f7ae94255857857e",
+        "see-where-each-service-keeps-it": "49d8ac9042cc6f83",
+        "load-the-version-and-predict": "ca0c5d0f613f6eae",
+        "clean-up": "e9d0e6d434a811e7",
+        "next-steps": "d2cc6136d14abc3a"
+      },
+      "outputs": [
+        "src/content/docs/tutorials/register-model-mlflow.md",
+        "public/docs/tutorials/register-model-mlflow.md"
+      ]
+    },
+    "unitycatalog/how-to/manage-catalogs-and-schemas": {
+      "src": "content/unitycatalog/how-to/004-manage-catalogs-and-schemas/index.md",
+      "route": "/docs/how-to/manage-catalogs-and-schemas/",
+      "title": "Manage catalogs and schemas",
+      "contentHash": "6d0fe9465ff2558ece64fdfdfa2807b4945dcaa1e82cf2cf7e6468934b71b164",
+      "rootHash": "1f08176898a7011e116997b8043660d3477396136c26faa8e8c63b1e83fa4269",
+      "sections": {
+        "__preamble__": "befb71da6640984d",
+        "set-up-the-client": "f16b754f0084f2a1",
+        "create-a-catalog": "2a20b3456402f427",
+        "view-catalogs": "13228bb5887b217a",
+        "update-a-catalog": "a81824398da0a01f",
+        "create-a-schema": "f9f4ccc7bed32094",
+        "view-schemas": "f8ba333a6260dbca",
+        "update-or-rename-a-schema": "e432654555fdacad",
+        "delete-a-schema-or-catalog": "2c11d7091b0fe2ea",
+        "next-steps": "5af44c5c242478be"
+      },
+      "outputs": [
+        "src/content/docs/how-to/manage-catalogs-and-schemas.md",
+        "public/docs/how-to/manage-catalogs-and-schemas.md"
+      ]
+    },
+    "unitycatalog/how-to/register-external-table": {
+      "src": "content/unitycatalog/how-to/005-register-external-table/index.md",
+      "route": "/docs/how-to/register-external-table/",
+      "title": "Register external Delta table",
+      "contentHash": "476829272480e5cd3c737796d4a9f4c7d3996620ae24ceb55f30d780d78e0354",
+      "rootHash": "1db3e4f7a8ac538d4de1f18030a84c52eba89cfd8706999268fa4039a3498455",
+      "sections": {
+        "__preamble__": "902af45338a41646",
+        "set-up-the-client": "d282f74c1db2dd8d",
+        "describe-the-tables-columns": "4c7f7a962988e0e9",
+        "register-the-table": "e235892613a158c6",
+        "view-the-table": "3902f02518e3baaa",
+        "read-the-data": "c11d4533a1306db2",
+        "change-a-registered-table": "0ef93fc670cafddd",
+        "drop-the-table": "b41554d29b0ee978",
+        "next-steps": "dcf65a2f3414e2de"
+      },
+      "outputs": [
+        "src/content/docs/how-to/register-external-table.md",
+        "public/docs/how-to/register-external-table.md"
+      ]
+    },
+    "unitycatalog/how-to/table-storage-formats": {
+      "src": "content/unitycatalog/how-to/001-table-storage-formats/index.md",
+      "route": "/docs/how-to/table-storage-formats/",
+      "title": "Register external files as tables",
+      "contentHash": "8f6a04a2585c7a27d10f7d680f2bb32fcf0022170da441e2d81e6cfca78a89b2",
+      "rootHash": "bbcf5ee2c9181b5d392df74a1c7b5bb6a68ea4566bcec8d61e8dbbcb2dd10d79",
+      "sections": {
+        "__preamble__": "bb978d93ea7ab7d9",
+        "set-up-the-client": "951bd91d57c1d893",
+        "register-the-tables": "9b59edb830528cba",
+        "read-the-data": "9df2827a2056e8df",
+        "drop-the-tables": "d60613648a7e4e10",
+        "when-to-use-delta-instead": "047687f2dc403845",
+        "next-steps": "dab64b285b6c7482"
+      },
+      "outputs": [
+        "src/content/docs/how-to/table-storage-formats.md",
+        "public/docs/how-to/table-storage-formats.md"
+      ]
+    },
+    "unitycatalog/how-to/managed-delta-tables": {
+      "src": "content/unitycatalog/how-to/014-managed-delta-tables/index.md",
+      "route": "/docs/how-to/managed-delta-tables/",
+      "title": "Read and write catalog-managed Delta tables",
+      "contentHash": "1dd0281518e9bf657540cfc82e476a77328d4f23014f43f2d28c1d7e3b9bcf7a",
+      "rootHash": "2fc38cd973dff6ad63325c72ac965dc0ad9b7951d7db8521d32cc0b29e814dfe",
+      "sections": {
+        "__preamble__": "e28461b81e624f3c",
+        "set-up-the-client": "8baf57e69709f284",
+        "create-a-managed-table": "2ae2b38fd954d9e6",
+        "required-table-features": "fe6890511fcf3cda",
+        "write-to-the-table": "dab28bf769b899c3",
+        "read-the-table": "e6fc5a8634aeccf0",
+        "read-an-earlier-version": "b295b30bb32793d4",
+        "dont-write-to-the-tables-path": "a1f6b051db5caca6",
+        "drop-a-managed-table": "f6c4018d1b4c0a3a",
+        "required-privileges": "87b4d0d592c82c0e",
+        "next-steps": "4dd6dc99b2862106"
+      },
+      "outputs": [
+        "src/content/docs/how-to/managed-delta-tables.md",
+        "public/docs/how-to/managed-delta-tables.md"
+      ]
+    },
+    "unitycatalog/how-to/change-table-schema": {
+      "src": "content/unitycatalog/how-to/015-change-table-schema/index.md",
+      "route": "/docs/how-to/change-table-schema/",
+      "title": "Manage table schemas and properties",
+      "contentHash": "35665ce7fc8942436d0b9fbd09645e4e5487416a8b01c80a21aa8da142d59e2f",
+      "rootHash": "95933551e4d651233ae63beef6dff33b889cc1a88086013445dc4cef61b35402",
+      "sections": {
+        "__preamble__": "d87a77e923e5f1c9",
+        "choose-a-client": "27b82e4a08f26ce9",
+        "set-up-the-client": "3c97ded2ad690d5e",
+        "add-columns-and-comments": "cd1e7c78a6a03c0b",
+        "drop-or-widen-a-column": "aca54e39b8d22a68",
+        "set-and-remove-table-properties": "fa02e55d976065f8",
+        "check-what-the-catalog-records": "7e501d8ac204278f",
+        "rename-a-table-or-column": "eb9b07144fdf5bd3",
+        "change-an-external-table": "b3ac628f21a03993",
+        "change-the-delta-log": "333880a746883276",
+        "sync-the-catalogs-record": "1ad903b4e69618f1",
+        "required-privileges": "b84983aa47e74209",
+        "next-steps": "de21aef2726b17db"
+      },
+      "outputs": [
+        "src/content/docs/how-to/change-table-schema.md",
+        "public/docs/how-to/change-table-schema.md"
+      ]
+    },
+    "unitycatalog/how-to/replace-and-overwrite-tables": {
+      "src": "content/unitycatalog/how-to/016-replace-and-overwrite-tables/index.md",
+      "route": "/docs/how-to/replace-and-overwrite-tables/",
+      "title": "Replace or overwrite a managed Delta table",
+      "contentHash": "6b61b676c77082c310e7f82486a6922b5780a8df8741a507bab201012c7e17b2",
+      "rootHash": "53ee5076796e599247d1eba95e4cbb3ce441f77d66626ce44782cd1b9a2d73cb",
+      "sections": {
+        "__preamble__": "1d08e2ff7b58a9bc",
+        "set-up-the-client": "25c3bdb39d5ea872",
+        "choose-how-to-replace-data": "3058474bae1faff9",
+        "create-a-table-from-a-query": "37f60f5652163744",
+        "replace-a-tables-definition-and-rows": "26b4750565265568",
+        "overwrite-all-rows": "df42f8271391e1c5",
+        "overwrite-some-rows-or-partitions": "adaf3800e0ad4eaa",
+        "replace-the-rows-that-match-a-condition": "f1e34dd78ca86bb7",
+        "overwrite-the-partitions-the-new-rows-write-to": "bbf76b89cd5d52d0",
+        "check-a-replacement-and-undo-it": "81784e9b469fbcfd",
+        "what-a-replacement-cant-change": "f5e956267a02098b",
+        "required-privileges": "868d4885e3e21f08",
+        "next-steps": "1058d79baa24fb93"
+      },
+      "outputs": [
+        "src/content/docs/how-to/replace-and-overwrite-tables.md",
+        "public/docs/how-to/replace-and-overwrite-tables.md"
+      ]
+    },
+    "unitycatalog/how-to/seed-tpch-data": {
+      "src": "content/unitycatalog/how-to/003-seed-tpch-data/index.md",
+      "route": "/docs/how-to/seed-tpch-data/",
+      "title": "Seed TPC-H data into Unity Catalog",
+      "contentHash": "ff43dabc8fabe47f8b40632493ee78e39cd98c3bfe174bd14b9ac747b5b53f3f",
+      "rootHash": "37dac6fdf8a9f3f7d6ca7c16197cfc93d1fb430ed334ebae657394d0828e98b8",
+      "sections": {
+        "__preamble__": "462e3c23cb990303",
+        "generate-tpc-h": "563df5b5e98c6559",
+        "write-each-table-as-delta": "5e3f113ce8ab28c0",
+        "register-the-tables-in-unity-catalog": "ce129365c553d720",
+        "verify-the-catalog": "fc901ad2448d1c2a",
+        "next-steps": "365a28e1838d67a3"
+      },
+      "outputs": [
+        "src/content/docs/how-to/seed-tpch-data.md",
+        "public/docs/how-to/seed-tpch-data.md"
+      ]
+    },
+    "unitycatalog/how-to/sql-views": {
+      "src": "content/unitycatalog/how-to/019-sql-views/index.md",
+      "route": "/docs/how-to/sql-views/",
+      "title": "Manage SQL views",
+      "contentHash": "b77e5b7ae990baff31dac698f1b90548d67bf171ad9312de57bda4cb5874642b",
+      "rootHash": "1b5b966dcfcf9dd8b138e8732d26e291116a7f407b5d0d43955065927377744a",
+      "sections": {
+        "__preamble__": "1e85100c3e7509c7",
+        "connect-spark": "5ce388f5a1034e4e",
+        "create-a-view": "b6ee860687251545",
+        "query-it": "dc3ea300e1570f83",
+        "list-and-inspect-views": "8e44b82570158140",
+        "change-or-rename-a-view": "dedf4a2a0e5e4c96",
+        "register-a-view-through-the-rest-api": "3fcdc0919210365d",
+        "drop-a-view": "c224359e7d14d93a",
+        "related": "e3ed8537a7a687e2"
+      },
+      "outputs": [
+        "src/content/docs/how-to/sql-views.md",
+        "public/docs/how-to/sql-views.md"
+      ]
+    },
+    "unitycatalog/how-to/metric-views": {
+      "src": "content/unitycatalog/how-to/013-metric-views/index.md",
+      "route": "/docs/how-to/metric-views/",
+      "title": "Manage metric views",
+      "contentHash": "217f430d9ed9f7bdf8ee3c71034fbb62a804b937be7be7551a9b2bbfcbbdb6cb",
+      "rootHash": "d741be0acf8cd73b49bb863bda6efcd5195cb31a9def9a38301cd9d24b303b16",
+      "sections": {
+        "__preamble__": "8b7da4e1faa7b85a",
+        "connect-spark": "649b7f786d32b6b3",
+        "write-a-definition": "ba2d27212168f04a",
+        "create-the-metric-view": "c7851adcc68d64ca",
+        "query-it": "c43d12a71c74a09e",
+        "compute-over-a-query": "8b1fbc7f03b5c5a2",
+        "list-and-inspect-metric-views": "45ae60521a452f07",
+        "change-a-definition": "a6aeade5a5439f2a",
+        "register-a-definition-through-the-rest-api": "7d2ae30fbc3ea7dd",
+        "drop-a-metric-view": "15040f510942e975",
+        "related": "1962fab83b73e537"
+      },
+      "outputs": [
+        "src/content/docs/how-to/metric-views.md",
+        "public/docs/how-to/metric-views.md"
+      ]
+    },
+    "unitycatalog/how-to/manage-volumes": {
+      "src": "content/unitycatalog/how-to/006-manage-volumes/index.md",
+      "route": "/docs/how-to/manage-volumes/",
+      "title": "Manage volumes",
+      "contentHash": "18b0695646c02dee791f921c3da07bbd581f5af3408ad41133a6f40f502501e1",
+      "rootHash": "a1eaec90e8b0077cab05f5e5aa9f1d056f20fa468095992157d547ed337d803c",
+      "sections": {
+        "__preamble__": "5bfc7e985d47a44a",
+        "set-up-the-client": "cb81b7f4368de3cc",
+        "create-an-external-volume": "f1e74f55134c55ed",
+        "create-a-managed-volume": "20df5ef0426b075a",
+        "view-volumes": "274f3d561d70359f",
+        "work-with-the-files": "abbd687c2adefe81",
+        "rename-or-update-a-volume": "29ce7da41b338795",
+        "delete-a-volume": "8ff9f1254ce0d063",
+        "next-steps": "89e9fc27ece6d0af"
+      },
+      "outputs": [
+        "src/content/docs/how-to/manage-volumes.md",
+        "public/docs/how-to/manage-volumes.md"
+      ]
+    },
+    "unitycatalog/how-to/temporary-credentials": {
+      "src": "content/unitycatalog/how-to/022-temporary-credentials/index.md",
+      "route": "/docs/how-to/temporary-credentials/",
+      "title": "Request temporary storage credentials",
+      "contentHash": "790e27c40ede985e710dbdc9f48704383117a3924654c2e86fc3c76ddfec5d84",
+      "rootHash": "6247d3d5860ec3558ae6e8fef6d9d2f1cc3d2ea465a672f17c45ef958bf04ed3",
+      "sections": {
+        "__preamble__": "1d0d4ffdbf3d3b4c",
+        "set-up-the-client": "82e3473bcfffe2fa",
+        "get-credentials-for-a-table": "d624d5eb60d27845",
+        "get-credentials-for-a-volume": "116c4df64c48bd82",
+        "get-credentials-for-a-model-version": "4808e0fe8d932892",
+        "get-credentials-for-a-path": "3a85bd84414e471b",
+        "open-storage-with-the-credentials": "33f214b34ed9af73",
+        "renew-credentials-before-they-expire": "12c66e89dea1afe4",
+        "credentials-for-local-storage": "5df473946f9dad27",
+        "next-steps": "406e700e55ee2e32"
+      },
+      "outputs": [
+        "src/content/docs/how-to/temporary-credentials.md",
+        "public/docs/how-to/temporary-credentials.md"
+      ]
+    },
+    "unitycatalog/how-to/obstore-credentials": {
+      "src": "content/unitycatalog/how-to/023-obstore-credentials/index.md",
+      "route": "/docs/how-to/obstore-credentials/",
+      "title": "Use Unity Catalog credentials with obstore",
+      "contentHash": "a674139d014aff1ad4211528376e2ac02482cfb000d41f70278ba02b28d50963",
+      "rootHash": "64ee5e466719693f9d600d458182b2853c6968ea40f40f4ad27adc3957e93b4d",
+      "sections": {
+        "__preamble__": "9d6110ec1772eb57",
+        "set-up-the-client": "3c738cbe59518597",
+        "write-the-credential-provider": "b4e35919d732796c",
+        "open-a-volume": "dfc2433e185af97f",
+        "open-a-tables-files": "a46ae32bccb057e4",
+        "open-a-path": "3b72c19f83a78bb1",
+        "how-obstore-renews-the-credentials": "9918539d747333eb",
+        "close-the-provider": "4686804217547043",
+        "next-steps": "260c7494de4d7fa0"
+      },
+      "outputs": [
+        "src/content/docs/how-to/obstore-credentials.md",
+        "public/docs/how-to/obstore-credentials.md"
+      ]
+    },
+    "unitycatalog/how-to/marimo-remote-storage": {
+      "src": "content/unitycatalog/how-to/024-marimo-remote-storage/index.md",
+      "route": "/docs/how-to/marimo-remote-storage/",
+      "title": "Use volumes as marimo remote storage",
+      "contentHash": "b74a59419016b6e5feda618129168f8d25f7c4b71ac2264529f0946fd6cc5a17",
+      "rootHash": "2a463f83ab3f849753315c41626b041c2c2cbf3b66ea9ce548656ae4189999a7",
+      "sections": {
+        "__preamble__": "c950d78b12919370",
+        "open-a-notebook": "3ffe119e150e5e16",
+        "add-the-credential-provider": "b5833612f06c3abd",
+        "open-the-volume": "7659697c5eafb123",
+        "read-a-file-in-a-cell": "93e1525caae0d900",
+        "next-steps": "fa708c2688432d3f"
+      },
+      "outputs": [
+        "src/content/docs/how-to/marimo-remote-storage.md",
+        "public/docs/how-to/marimo-remote-storage.md"
+      ]
+    },
+    "unitycatalog/how-to/manage-python-functions": {
+      "src": "content/unitycatalog/how-to/018-manage-python-functions/index.md",
+      "route": "/docs/how-to/manage-python-functions/",
+      "title": "Manage Python functions",
+      "contentHash": "a971628edddcc417dc0cd21ee0549c9a97818e6286067cf3608153f8676dfc4e",
+      "rootHash": "2733e6a0968f494254447eca624adb7b0bc09340e6ab8ecde634de3ef7690d61",
+      "sections": {
+        "__preamble__": "a35aa288f4d65367",
+        "set-up-the-client": "f6475c6016179fe3",
+        "write-a-function-the-catalog-can-store": "690baeb7f36e0f5f",
+        "type-hints": "c3ec9bb5c8e305ac",
+        "docstrings": "0a1ddf2c03a3dc1f",
+        "imports": "9b61cac5db429083",
+        "register-a-function": "aa9a9268371ffd9b",
+        "register-a-function-that-calls-helpers": "8bdf54cc9edd39a4",
+        "view-a-function-and-get-its-source-back": "4d9d2142403c86ca",
+        "replace-a-function": "b08efc0cb7c574a3",
+        "delete-a-function": "8d26b464ad5aeb03",
+        "next-steps": "dd77befdd6ab5053"
+      },
+      "outputs": [
+        "src/content/docs/how-to/manage-python-functions.md",
+        "public/docs/how-to/manage-python-functions.md"
+      ]
+    },
+    "unitycatalog/how-to/run-functions": {
+      "src": "content/unitycatalog/how-to/020-run-functions/index.md",
+      "route": "/docs/how-to/run-functions/",
+      "title": "Run catalog functions in applications and notebooks",
+      "contentHash": "8a6df267a9e1b57da5bbaeea994310cc2bb4c7b78385621f3eb63979c7dd9368",
+      "rootHash": "3e8ce1ed8f8a5e794e55f03add394240dc51e0b5a087da0d66d733c08ce952b8",
+      "sections": {
+        "__preamble__": "50c15ce23c4996f0",
+        "set-up-the-client": "53e83fc9064248ec",
+        "call-a-function-from-synchronous-code": "f38f7a5e484c61ca",
+        "call-a-function-from-async-code": "2df3c3be369fcc8f",
+        "run-calls-concurrently": "4e013b1bbcad8917",
+        "call-from-worker-threads": "aa80d4e6c51ab85f",
+        "run-on-asyncios-default-event-loop": "c38677f5498d2156",
+        "call-a-function-in-a-marimo-notebook": "d0f9e0d2ce7758c2",
+        "choose-an-execution-mode": "e4e440982148bd12",
+        "make-dependencies-available": "7872ef4c1e212dad",
+        "set-time-and-memory-limits": "07d4a3b164ac5ac4",
+        "handle-errors": "c889df3f94f9f5a7",
+        "next-steps": "3d7f54f5c6552871"
+      },
+      "outputs": [
+        "src/content/docs/how-to/run-functions.md",
+        "public/docs/how-to/run-functions.md"
+      ]
+    },
+    "unitycatalog/how-to/langchain-tools": {
+      "src": "content/unitycatalog/how-to/017-langchain-tools/index.md",
+      "route": "/docs/how-to/langchain-tools/",
+      "title": "Use catalog functions as LangChain tools",
+      "contentHash": "f429c53d5d63b5b28a7d0fdda41abf61272c8b43e2497caa68f405d7c6104222",
+      "rootHash": "ef9ea9468677957a9ee6323262ddbfd15dc685d735964f5cd982ebd4cf7c90d2",
+      "sections": {
+        "__preamble__": "353eafd5fbaecb6c",
+        "set-up-the-client": "c6b2e9d8336e4f1b",
+        "register-the-functions-the-agent-may-call": "d8c2f05f4aa0e983",
+        "choose-which-functions-become-tools": "829cd7915934aa7d",
+        "check-what-the-model-sees": "834b67e1dc4fc9ad",
+        "call-a-tool-directly": "0ce888da3d5451e9",
+        "give-the-tools-to-an-agent": "ffeb11118209ca12",
+        "workaround-run-the-tools-on-the-sessions-event-loop": "980a1e2d594bea02",
+        "run-the-agent": "122d903d646f7fe9",
+        "trace-the-agents-tool-calls-with-mlflow": "4185df068d1f36f7",
+        "route-the-model-through-the-mlflow-ai-gateway": "e7ad5fde19ed8b8a",
+        "control-who-can-call-a-function": "f7d22d3b99bb7641",
+        "next-steps": "5c8386ff1c4b5dc7"
+      },
+      "outputs": [
+        "src/content/docs/how-to/langchain-tools.md",
+        "public/docs/how-to/langchain-tools.md"
+      ]
+    },
+    "unitycatalog/how-to/manage-models": {
+      "src": "content/unitycatalog/how-to/021-manage-models/index.md",
+      "route": "/docs/how-to/manage-models/",
+      "title": "Manage registered models",
+      "contentHash": "11b0490b44757c9c38e6836f697e1154db3b94360b556f11aa8566589ec522f7",
+      "rootHash": "7b405a44df58c182f15388afc2037eef66ab0fd9f4795ca32060395bbcdb6853",
+      "sections": {
+        "__preamble__": "ecdf7bdedab393f0",
+        "set-up-the-client": "1805843aafe5e08f",
+        "register-a-model-version": "ae33033340da3368",
+        "view-models-and-versions": "bb8fda9dcc9c781f",
+        "load-a-model-version": "b95c91bb83f82b35",
+        "update-comments": "f6115508ed9d7b35",
+        "rename-a-model": "3d8ce35237b72fb6",
+        "delete-versions-and-models": "67b4977d65f3d6d5",
+        "delete-a-version": "b7c0546d18a6490b",
+        "delete-a-model": "a242ed42533fea88",
+        "what-happens-to-the-files": "6ccb1cb7cf5fa5aa",
+        "next-steps": "e21c60787f6df0b0"
+      },
+      "outputs": [
+        "src/content/docs/how-to/manage-models.md",
+        "public/docs/how-to/manage-models.md"
+      ]
+    },
+    "unitycatalog/how-to/configure-spark": {
+      "src": "content/unitycatalog/how-to/007-configure-spark/index.md",
+      "route": "/docs/how-to/configure-spark/",
+      "title": "Use Spark with Unity Catalog",
+      "contentHash": "f18680d8fb669307d1be36590399dce550e17dab40b283fbd0417de6c382831b",
+      "rootHash": "d9783c5bb29b65f58e47cc351f965bd5515f628a92fc31551fffe4354a31b0e7",
+      "sections": {
+        "__preamble__": "f205a66322f2b126",
+        "choose-matching-versions": "73e33adf5910550a",
+        "connector-versions-by-release": "c4d8dc950646e9df",
+        "configure-the-session": "c3c1e6e69053d010",
+        "authenticate-to-the-server": "f2a8441b699e9b6d",
+        "check-the-connection": "ba67649500402023",
+        "tune-storage-credentials": "4604fa3f695fb8c2",
+        "next-steps": "787e79401130328a"
+      },
+      "outputs": [
+        "src/content/docs/how-to/configure-spark.md",
+        "public/docs/how-to/configure-spark.md"
+      ]
+    },
+    "unitycatalog/how-to/duckdb": {
+      "src": "content/unitycatalog/how-to/008-duckdb/index.md",
+      "route": "/docs/how-to/duckdb/",
+      "title": "Use DuckDB with Unity Catalog",
+      "contentHash": "661bf88f83f4aa7bb30ed02644b862d5f843fa346327d8d0b90bac9343886017",
+      "rootHash": "f1dc98256c3ed32183b01338e687010ad2c40198a5af16c8a9e9a15ae9c6e54a",
+      "sections": {
+        "__preamble__": "e34a346a6466f0ac",
+        "install-the-extensions": "1e93d358bbf49a90",
+        "attach-a-catalog": "a65458812573be3f",
+        "list-tables": "7da3528054d8a03f",
+        "query-a-table": "001827398e19758f",
+        "append-rows": "3789b980907c07d9",
+        "create-change-and-drop-tables": "cbf29701129af2e9",
+        "required-privileges": "dd18aa6b5b73f82a",
+        "next-steps": "82f77b2dfdee187c"
+      },
+      "outputs": [
+        "src/content/docs/how-to/duckdb.md",
+        "public/docs/how-to/duckdb.md"
+      ]
+    },
+    "unitycatalog/how-to/python-dataframes": {
+      "src": "content/unitycatalog/how-to/009-python-dataframes/index.md",
+      "route": "/docs/how-to/python-dataframes/",
+      "title": "Query Unity Catalog tables from Python DataFrame libraries",
+      "contentHash": "396874212e5f3f494d4b10cee56ca33ffff4fe8a006ae1cd5ef4591ce0c3b64c",
+      "rootHash": "9e5f2e70c471dc01f1e52b44495f15fef54c8278011e8fc5a7204bcf1c4ab6ec",
+      "sections": {
+        "__preamble__": "f819b5276dd3e809",
+        "connect-to-the-server": "f1695f5c52512cd0",
+        "list-tables": "3c641f6e6580952c",
+        "read-a-table": "8383d1c301a2512e",
+        "append-rows": "34c97274c680a1f4",
+        "other-table-operations": "0c7891187dad98cc",
+        "required-privileges": "bce982e423da5bb1",
+        "next-steps": "1355ee4fbb1aa43a"
+      },
+      "outputs": [
+        "src/content/docs/how-to/python-dataframes.md",
+        "public/docs/how-to/python-dataframes.md"
+      ]
+    },
+    "unitycatalog/how-to/iceberg-rest": {
+      "src": "content/unitycatalog/how-to/012-iceberg-rest/index.md",
+      "route": "/docs/how-to/iceberg-rest/",
+      "title": "Use Iceberg REST clients with Unity Catalog",
+      "contentHash": "25de0f1353ae158b6d459483a3f632d4583306ff85dd893439064bc359d23e4f",
+      "rootHash": "9970f094cd369abbbb9c7d75e10e3e338f8c2c6827050612414e2122911cb6d9",
+      "sections": {
+        "__preamble__": "a954f88bd73f17ad",
+        "how-iceberg-names-map-to-the-catalog": "820f2b227496acb6",
+        "connect-a-client": "939fdb9261129903",
+        "create-a-schema": "4d733d905f716072",
+        "create-a-table": "992f3ecd911fcfb3",
+        "write-and-read-rows": "486f43a37e77c07f",
+        "update-and-delete-rows": "e96170120aebe103",
+        "rename-and-drop-a-table": "eb7b3495d8ea0e8b",
+        "join-delta-and-iceberg-tables-in-spark": "ce5d1e4ba480cc70",
+        "required-privileges": "3cf567428cf4a77e",
+        "next-steps": "0cd64788c167f1c4"
+      },
+      "outputs": [
+        "src/content/docs/how-to/iceberg-rest.md",
+        "public/docs/how-to/iceberg-rest.md"
+      ]
+    },
+    "unitycatalog/how-to/java-client": {
+      "src": "content/unitycatalog/how-to/025-java-client/index.md",
+      "route": "/docs/how-to/java-client/",
+      "title": "Use the Java client in an application",
+      "contentHash": "52edc82909232aea53ac815ec1d1898708e47955111942491c151e25ee316145",
+      "rootHash": "79182ea638d99b7b29cfa74e24bc5996a187f8e7a727a4f263af7f6fdd8665c1",
+      "sections": {
+        "__preamble__": "16d047f443de678b",
+        "add-the-dependency": "da7f98d21955c4d5",
+        "connect-to-the-server": "e972972815aee2c3",
+        "create-a-catalog-and-a-schema": "53167f2e4bc9e7c3",
+        "page-through-a-list": "060755151e703ed0",
+        "register-a-table": "7ed7d33901776765",
+        "look-up-objects-by-name": "2cead92890773fa0",
+        "handle-errors": "1e50c5e1ec18e3c7",
+        "clean-up": "bd5a00df99c00035",
+        "next-steps": "dcba441c2dd6afd8"
+      },
+      "outputs": [
+        "src/content/docs/how-to/java-client.md",
+        "public/docs/how-to/java-client.md"
+      ]
+    },
+    "unitycatalog/how-to/run-server-with-java": {
+      "src": "content/unitycatalog/how-to/026-run-server-with-java/index.md",
+      "route": "/docs/how-to/run-server-with-java/",
+      "title": "Run the Unity Catalog server with Java",
+      "contentHash": "770ddd9ce58227b72ebd017b5a1554f58299575a3bb9f4dad3e7f0761bab53cb",
+      "rootHash": "11d361763bd8a4340a7e383e433bb58bd5e14ee8d891047cdde32c27d2d33d38",
+      "sections": {
+        "__preamble__": "d3e2a5c1b505c513",
+        "start-the-server": "28daf4f5d40205e8",
+        "check-that-its-running": "8b65e3078df5d3dd",
+        "keep-the-metadata-between-restarts": "6241be0d9bdfff42",
+        "configure-the-server": "fe2afe747e6df389",
+        "next-steps": "a95b4fd29156ee4e"
+      },
+      "outputs": [
+        "src/content/docs/how-to/run-server-with-java.md",
+        "public/docs/how-to/run-server-with-java.md"
+      ]
+    },
+    "unitycatalog/how-to/configure-backend-db": {
+      "src": "content/unitycatalog/how-to/002-configure-backend-db/index.md",
+      "route": "/docs/how-to/configure-backend-db/",
+      "title": "Configure PostgreSQL as the metadata database",
+      "contentHash": "6d988a0819cecfd06d91c06b9a6c0320f39f1f92506ed82bfd6f1574822390d1",
+      "rootHash": "d43c387b5c90ef94fc000d900e7fedc51f912a73f086e4c7b8bbd793d3a802fe",
+      "sections": {
+        "__preamble__": "a8fa8f4510bee92f",
+        "create-the-database": "c33cc905c6fcab6d",
+        "point-the-server-at-postgresql": "88941cce283b67db",
+        "try-it-on-the-local-server": "05ab40bbe70d8ce7",
+        "check-that-metadata-survives-a-new-container": "c5f34944ad677d4a",
+        "back-up-and-upgrade": "184f17b91cb82356",
+        "reset-the-local-metadata": "7e540a2e08b05510",
+        "next-steps": "45eb5ce4de99ec0c"
+      },
+      "outputs": [
+        "src/content/docs/how-to/configure-backend-db.md",
+        "public/docs/how-to/configure-backend-db.md"
+      ]
+    },
+    "unitycatalog/how-to/configure-aws-storage": {
+      "src": "content/unitycatalog/how-to/009-configure-aws-storage/index.md",
+      "route": "/docs/how-to/configure-aws-storage/",
+      "title": "Configure AWS storage credentials and external locations",
+      "contentHash": "69b4f5cf2be2b600134a84084f41eac06235593f57c439daadf17eaf5342cc2b",
+      "rootHash": "7f9e28b15d200f78afaa8201010add0a663ff3c9b3f74d319e0713a05da3fdba",
+      "sections": {
+        "__preamble__": "d91d8351cff0687f",
+        "set-up-the-client": "e22a3fc031db4c0f",
+        "run-the-server-as-a-master-role": "553e43ffeccaab54",
+        "run-outside-aws": "75cf76c824bc31cf",
+        "create-a-storage-credential": "5802665385bdb250",
+        "update-the-storage-roles-trust-policy": "3fbd7429ea880516",
+        "create-an-external-location": "2127ac25674fd71a",
+        "check-that-the-server-vends-credentials": "c4d72c1128e49567",
+        "view-storage-credentials-and-external-locations": "5838e1af18235584",
+        "update-a-credential-or-external-location": "41cedebaf05f99b4",
+        "delete-an-external-location-and-credential": "5a82d3eb2fdd8d55",
+        "next-steps": "90b8c94ed0c15c71"
+      },
+      "outputs": [
+        "src/content/docs/how-to/configure-aws-storage.md",
+        "public/docs/how-to/configure-aws-storage.md"
+      ]
+    },
+    "unitycatalog/how-to/managed-storage-s3": {
+      "src": "content/unitycatalog/how-to/010-managed-storage-s3/index.md",
+      "route": "/docs/how-to/managed-storage-s3/",
+      "title": "Set managed storage for catalogs and schemas on S3",
+      "contentHash": "4c7fa2e555b7bc8992020eeeaaac8ae356afe6cba72aec4f8dc6bc1f4f61817c",
+      "rootHash": "e80e15b22fcfdf66aed6836d0f911460904ce8e2b46abc7763d5b3be574c0f04",
+      "sections": {
+        "__preamble__": "99fcc7e4f44eef0f",
+        "set-up-the-client": "ba0ff0664dddb0c2",
+        "create-a-catalog-with-a-storage-root": "ecd438599ea55a29",
+        "give-a-schema-its-own-storage-root": "cb15e313f2fa334e",
+        "create-managed-objects": "3fbbf42d0c706f76",
+        "delete-a-catalog-with-managed-storage": "fba8da2ee1152a78",
+        "next-steps": "9fecfe52aae7f0c4"
+      },
+      "outputs": [
+        "src/content/docs/how-to/managed-storage-s3.md",
+        "public/docs/how-to/managed-storage-s3.md"
+      ]
+    },
+    "unitycatalog/explanation/delta-api": {
+      "src": "content/unitycatalog/explanation/006-delta-api/index.md",
+      "route": "/docs/explanation/delta-api/",
+      "title": "The Unity Catalog Delta API",
+      "contentHash": "5abe690b95568d134246e88ca87440891a92df0998c825d679d43625d5367e4c",
+      "rootHash": "1f070fa86e05ea8b9ae62a2dd553c76c21942e24338bb05a111a727a64fb1787",
+      "sections": {
+        "__preamble__": "b991f01d84d4d501",
+        "one-endpoint-takes-requirements-and-updates": "e673f815140e7693",
+        "negotiation-comes-first": "8ac0bd75506ba00b",
+        "the-catalog-sets-table-features-at-staging": "22e17fec09d78b86",
+        "optimistic-concurrency-with-assert-table-uuid-and-assert-etag": "c1f836a83a0cc6be",
+        "retry-or-rebase": "5390b61eb98dbec0",
+        "metadata-changes-travel-with-add-commit": "f61562f60a59f68f",
+        "deltas-own-schema-on-the-wire": "a6e64b15f82bacfe",
+        "further-reading": "3901af5c76b84a67"
+      },
+      "outputs": [
+        "src/content/docs/explanation/delta-api.md",
+        "public/docs/explanation/delta-api.md"
+      ]
+    },
+    "unitycatalog/explanation/uc-basics": {
+      "src": "content/unitycatalog/explanation/003-uc-basics/index.md",
+      "route": "/docs/explanation/uc-basics/",
+      "title": "Core concepts",
+      "contentHash": "f3083f6c853cf85442aa3ef2f3e2194929c0b0146cc021337fbd1293aa6f37e9",
+      "rootHash": "44d7ca2f62682af7e01389f2bd88929aaeee94bae7b2dc8230db46184cfa66e5",
+      "sections": {
+        "__preamble__": "4b3e63837f1ef501",
+        "the-three-level-namespace": "add40cd50187e014",
+        "catalog-administration": "4f70c4d3a2095225",
+        "metastore-catalogs-and-schemas": "69d74ba8221819ca",
+        "external-data-access": "ade042ec2a5b531c",
+        "managed-storage-roots": "82702fa45c4b168a",
+        "data-and-ai-assets": "f140268f26aae2fd",
+        "objects-versus-files": "ffe2fea326c75a0a",
+        "ownership-and-privileges": "c664d4fcca8e073f",
+        "principals-and-users": "d268915f7c1de486"
+      },
+      "outputs": [
+        "src/content/docs/explanation/uc-basics.md",
+        "public/docs/explanation/uc-basics.md"
+      ]
+    },
+    "unitycatalog/explanation/external-and-managed-tables": {
+      "src": "content/unitycatalog/explanation/004-external-and-managed-tables/index.md",
+      "route": "/docs/explanation/external-and-managed-tables/",
+      "title": "External tables and catalog-managed Delta tables",
+      "contentHash": "3db780e7e5a6612c3c1a77730bc04feca1878ee21d1e6a4e334a3d6841557547",
+      "rootHash": "f159e0c6a9f752714fcb928c7a9c126be54cbf49349384e9659f716ab5b816d9",
+      "sections": {
+        "__preamble__": "221b8443de95ae60",
+        "two-questions-decide-the-kind": "6c0265b765e4443c",
+        "why-a-catalog-should-accept-commits": "1f97112cab7202e4",
+        "the-lifecycle-through-the-delta-api": "2049ed32c6138be1",
+        "what-clients-must-support": "ece728df68209e32",
+        "when-to-use-which": "44a59e682ea8b04d",
+        "further-reading": "2add453ce7d87754"
+      },
+      "outputs": [
+        "src/content/docs/explanation/external-and-managed-tables.md",
+        "public/docs/explanation/external-and-managed-tables.md"
+      ]
+    },
+    "unitycatalog/explanation/credential-vending": {
+      "src": "content/unitycatalog/explanation/002-credential-vending/index.md",
+      "route": "/docs/explanation/credential-vending/",
+      "title": "Credential vending",
+      "contentHash": "0e52f0be3610e623ae8be4928719b14d8de26415c9b75f39a382e175be2fd0f7",
+      "rootHash": "7ef9601ee102237094306f2d40c943a8080d5dd348d2a79414696aae0691e506",
+      "sections": {
+        "__preamble__": "58457713d8046655",
+        "why-vend-credentials-instead-of-sharing-keys": "5b600be285408f1c",
+        "the-flow": "a8aca81b209b20cc",
+        "what-a-credential-covers": "23d4ebe5aa7244f5",
+        "how-the-server-mints-a-credential": "e4b877aae546693b",
+        "expiry-and-renewal": "88e556ce3611396c",
+        "where-the-trust-boundary-sits": "4320d3462e059ed1",
+        "further-reading": "843ff1131bb616b5"
+      },
+      "outputs": [
+        "src/content/docs/explanation/credential-vending.md",
+        "public/docs/explanation/credential-vending.md"
+      ]
+    },
+    "unitycatalog/explanation/models-and-mlflow": {
+      "src": "content/unitycatalog/explanation/008-models-and-mlflow/index.md",
+      "route": "/docs/explanation/models-and-mlflow/",
+      "title": "How Unity Catalog and MLflow divide responsibilities",
+      "contentHash": "01ba514201ee47f6da74627fbc5797d5e12bdc2c716bef3b2a45e63cf5c55642",
+      "rootHash": "d90675fe465e97176bb9182305fca9a61284da212197cb7fb86c0348586fc4ce",
+      "sections": {
+        "__preamble__": "f32186e6265f4618",
+        "what-mlflow-tracks": "3b1a15bc5c190ce1",
+        "what-unity-catalog-registers": "c4832231926daed5",
+        "where-each-piece-is-stored": "23acdbf6fab5f81f",
+        "what-registering-a-model-version-does": "d0bf1071853c9cae",
+        "what-the-registry-doesnt-do": "5367b94d81326d29",
+        "what-each-client-can-do": "a131f82119b6f048",
+        "next-steps": "4999cc9443315963"
+      },
+      "outputs": [
+        "src/content/docs/explanation/models-and-mlflow.md",
+        "public/docs/explanation/models-and-mlflow.md"
+      ]
+    },
+    "unitycatalog/explanation/views-and-metric-views": {
+      "src": "content/unitycatalog/explanation/007-views-and-metric-views/index.md",
+      "route": "/docs/explanation/views-and-metric-views/",
+      "title": "SQL views and metric views as catalog objects",
+      "contentHash": "d0881a63030202ddfdd942ca70b29f344d7666c72cce6162bb7c1f7cec7ae473",
+      "rootHash": "bba124445eafa886f6ac18996425d4c73baeaa9a92f4e821a19d1ac96a733829",
+      "sections": {
+        "__preamble__": "6850109eeb457c86",
+        "what-the-catalog-stores-for-a-view": "3d18ebc0d4b54ba4",
+        "where-a-view-runs": "96b5cdb0273c5785",
+        "sql-views-versus-metric-views": "227772743247c429",
+        "changing-a-stored-definition": "346c7a9af0939cb8",
+        "permissions": "b7fa5aba8e19c60a",
+        "related": "3293dcb6cff02cfc"
+      },
+      "outputs": [
+        "src/content/docs/explanation/views-and-metric-views.md",
+        "public/docs/explanation/views-and-metric-views.md"
+      ]
+    }
+  },
+  "files": {
+    "public/docs/api/catalog.md": "70e60cf3f1578928ca7cf506f10e7765f2f82fc17a82fc2054df573c694b9b06",
+    "public/docs/api/control.md": "d34105a75fc6f82a9be95e3bac9a1db79187a29ef8d9df031d09b6b7ae1b353f",
+    "public/docs/api/delta.md": "6c12d64f2023cf5957869911487e56a73ec10a7d2add3d342b6eefc782a0098c",
+    "public/docs/api/iceberg.md": "69a50de0de95a9b0ee4223419adcede5b1ee6ff5baf91841e8378b1be52180dc",
+    "public/docs/assets/how-to/marimo-remote-storage/remote-storage-panel.png": "6dda668be765bed192530a485a0d4a5822d86d734a1044473d885b16d0976bb8",
+    "public/docs/assets/trestle/refs.json": "42898218f17b52659d6e31d855395e713e5c195d3e6fae0a412d71ee5620d961",
+    "public/docs/assets/trestle/uc-aws/.env": "1e45d3ae46cd1e5e3394f63b3d6cc3188856f27bc84464cf13921c24b5530854",
+    "public/docs/assets/trestle/uc-aws/.gitignore": "d454f8d41f875850acf919f7ca10c93716c38ece57800661d8c2ef5e3214bef5",
+    "public/docs/assets/trestle/uc-aws/client/container.env": "c6567eb45eb0849c2cad5691b51abe6a4bc94a832457f14ffb86c8106d3345c7",
+    "public/docs/assets/trestle/uc-aws/client/host.env": "e1b433ef31b5cd389fa3514459c8c91fb8c7a543ca50febe7a490f7cd998b0bd",
+    "public/docs/assets/trestle/uc-aws/compose.yaml": "24a305596661ebdd2b293356216b8b2fe620b982b69614ddfef8b37d82f73f67",
+    "public/docs/assets/trestle/uc-aws/diagram.trestle-graph.json": "340e17dee6fd9df908badb5415caa159f1b2cba73f41b43a07f4a3e9a1423f32",
+    "public/docs/assets/trestle/uc-aws/LAYOUT.md": "12aacc365bdae588e52e3f0cfbcae4a7519f3b7cc7bfe75dc1b45263bb177e2a",
+    "public/docs/assets/trestle/uc-aws/modules/envoy/certs.sh": "cc33637e15b604371bd24798dccd6703ae38ca28e5d0de911759c2fb051dea09",
+    "public/docs/assets/trestle/uc-aws/modules/envoy/compose.yaml": "526b571944f91344469429ccdfbf5cfbdddafdbe374c70ebace8abac3c461c30",
+    "public/docs/assets/trestle/uc-aws/modules/envoy/envoy.yaml": "4806417a1f55522a500a468953536df8193a6e6ea8963d249b0ded5e8467769b",
+    "public/docs/assets/trestle/uc-aws/modules/postgres/.env/db.env": "470e6b1eb1a0b53f331227d28f08bffd69abda1b97368dceec22fb415e3de67c",
+    "public/docs/assets/trestle/uc-aws/modules/postgres/compose.yaml": "60836cfb9600f6e9816ded45960a17ef29ae8d4dde023eeece35066b108897d8",
+    "public/docs/assets/trestle/uc-aws/modules/postgres/init-databases.sh": "fa14b28837f1a779a0223db5ea441df761a88e2cd87530bcb26c4c983eda5cee",
+    "public/docs/assets/trestle/uc-aws/modules/postgres/secrets/postgres_password": "267da420142b5118ab7eebb2795810ac63c9d455068283a504ea458413abd14c",
+    "public/docs/assets/trestle/uc-aws/modules/rustfs/.env/rustfs.env": "2de178f84eb26967818af8763ef5052e6f57982fab50faecd60abc49d9f419bd",
+    "public/docs/assets/trestle/uc-aws/modules/rustfs/compose.yaml": "4fce3bba8899609b360e0229c3bfcc591d1019077b3084ce2328497c9c065226",
+    "public/docs/assets/trestle/uc-aws/modules/rustfs/sts_shim.py": "622e016aec33af7ba5a82551d6604952b05d312d3720b4a959248e9372a29c81",
+    "public/docs/assets/trestle/uc-aws/modules/unity-catalog/compose.yaml": "cf12d424d65b120bdc63a87f095a0fb52f6aeac6b71d43132bee8c64f4057064",
+    "public/docs/assets/trestle/uc-aws/modules/unity-catalog/secrets/hibernate.properties": "74c1ebcd12c594bbe50a5fad370b3943b2666af40fd09a8ccb5da4a015799ee1",
+    "public/docs/assets/trestle/uc-aws/modules/unity-catalog/secrets/server.properties": "d2e9160a524cb6b2dff709dd30da3a7eb86d46484e7ebe700aa638f690cb8d68",
+    "public/docs/assets/trestle/uc-aws/README.md": "f8f9be3b1e0d06012d7ccf2b013f926994321bdc43cd2a804f2033934b173096",
+    "public/docs/assets/trestle/uc-mlflow/.env": "1e45d3ae46cd1e5e3394f63b3d6cc3188856f27bc84464cf13921c24b5530854",
+    "public/docs/assets/trestle/uc-mlflow/.gitignore": "d454f8d41f875850acf919f7ca10c93716c38ece57800661d8c2ef5e3214bef5",
+    "public/docs/assets/trestle/uc-mlflow/client/container.env": "46173e0d7091aec1327387b25358518be54c070724171dac76cceef54df553cc",
+    "public/docs/assets/trestle/uc-mlflow/client/host.env": "81b51dd67a6f0043a09b4536d0a11a65b98e88e4ca10ef684bba3414b235e2f1",
+    "public/docs/assets/trestle/uc-mlflow/compose.yaml": "a214511f4fcfb497bc9f02497037b638f353a37f72163bf241e8621f21475937",
+    "public/docs/assets/trestle/uc-mlflow/diagram.trestle-graph.json": "83bcebb0e10d988ecba771808ef6443cd538705818d3531d6f6e97706510e6e6",
+    "public/docs/assets/trestle/uc-mlflow/LAYOUT.md": "ba719ef691b961224bf67d2874ba11c06f4cfeef57c735d5ad191af4ceb425a9",
+    "public/docs/assets/trestle/uc-mlflow/modules/envoy/certs.sh": "cc33637e15b604371bd24798dccd6703ae38ca28e5d0de911759c2fb051dea09",
+    "public/docs/assets/trestle/uc-mlflow/modules/envoy/compose.yaml": "64bc3ff7a216c611c9385b91656d06500746f35ca18bce50a24e4bebce8081bf",
+    "public/docs/assets/trestle/uc-mlflow/modules/envoy/envoy.yaml": "4465f28958f5eda3774f6ea4928db3eac445da5764ea0c2a4ddaba9b3f8cd82a",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/.env/mlflow.env": "8dbaa6b59f799b07e357c87e13fe9a8e218a79ef9dc14efe27a61d2e24ed4739",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/compose.yaml": "5e0358c1e8909e46d61b9ac09f1fe7c4be0efc317884bb30aaa4512573d6421f",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/seed_gateway.py": "736684c4fdc641e54650e26246227c0f8125ea9a604bce496cec0e40318b4f90",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/uc-registry/entry_points.txt": "5e0c4cc86801c357b7a50b13dc8798f6c99856ca638e34274de356969561e381",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/uc-registry/METADATA": "fc7ebcfef859bf225ac0ebe618546bf07b1b6b0dc4b2953755bdd5c550735b80",
+    "public/docs/assets/trestle/uc-mlflow/modules/mlflow/uc-registry/trestle_mlflow_uc_registry.py": "fc9d72b727243333fae793eba43d92fbaf3e0941df328bd6d0916cb208daa2b3",
+    "public/docs/assets/trestle/uc-mlflow/modules/postgres/.env/db.env": "470e6b1eb1a0b53f331227d28f08bffd69abda1b97368dceec22fb415e3de67c",
+    "public/docs/assets/trestle/uc-mlflow/modules/postgres/compose.yaml": "60836cfb9600f6e9816ded45960a17ef29ae8d4dde023eeece35066b108897d8",
+    "public/docs/assets/trestle/uc-mlflow/modules/postgres/init-databases.sh": "ab655ee02913d738ee218b9e7aa3a516a8510d497029eeb44a5c7770c14a05cd",
+    "public/docs/assets/trestle/uc-mlflow/modules/postgres/secrets/postgres_password": "267da420142b5118ab7eebb2795810ac63c9d455068283a504ea458413abd14c",
+    "public/docs/assets/trestle/uc-mlflow/modules/rustfs/.env/rustfs.env": "2de178f84eb26967818af8763ef5052e6f57982fab50faecd60abc49d9f419bd",
+    "public/docs/assets/trestle/uc-mlflow/modules/rustfs/compose.yaml": "b5015709a9999ba0161c7cfa9a7d8cdb3814e6eccaddaa221b5f9ceaad7ca523",
+    "public/docs/assets/trestle/uc-mlflow/modules/rustfs/sts_shim.py": "622e016aec33af7ba5a82551d6604952b05d312d3720b4a959248e9372a29c81",
+    "public/docs/assets/trestle/uc-mlflow/modules/unity-catalog/bootstrap_storage.py": "b3e9e64495e7abc7bf78ebecbc37e95fcd49e5875ff4101ddc9939ee78bb5f0e",
+    "public/docs/assets/trestle/uc-mlflow/modules/unity-catalog/compose.yaml": "72a331c046592319d41e9c3375b8c08fdc6b5dc474d786ecfcbf276d349d1680",
+    "public/docs/assets/trestle/uc-mlflow/modules/unity-catalog/secrets/hibernate.properties": "74c1ebcd12c594bbe50a5fad370b3943b2666af40fd09a8ccb5da4a015799ee1",
+    "public/docs/assets/trestle/uc-mlflow/modules/unity-catalog/secrets/server.properties": "8fd1bd041ab6ca541574b2876ba68330a65fc40604f2bd173c44128ee492a9e3",
+    "public/docs/assets/trestle/uc-mlflow/modules/unity-catalog/storage.txt": "635ef0b2c03c481ca89ac5d18b8717f9392643ea19a2c7c198c448a768c0c8c3",
+    "public/docs/assets/trestle/uc-mlflow/README.md": "7eebc7c3ae62e2f6774bcd6944db3b3196b69eab96e22489c5d059d905fbed48",
+    "public/docs/assets/trestle/unitycatalog/.env": "1e45d3ae46cd1e5e3394f63b3d6cc3188856f27bc84464cf13921c24b5530854",
+    "public/docs/assets/trestle/unitycatalog/.gitignore": "d454f8d41f875850acf919f7ca10c93716c38ece57800661d8c2ef5e3214bef5",
+    "public/docs/assets/trestle/unitycatalog/client/container.env": "dfd2f9891326ba396174f84c9f879758a579043afe62c20dc6fb660706e0a3dc",
+    "public/docs/assets/trestle/unitycatalog/client/host.env": "805abe59776891186d6b23b42a2a505e7397bd604dfec468d2a1d4cefe368fae",
+    "public/docs/assets/trestle/unitycatalog/compose.yaml": "9e38af6a3c8b549945eee79ae59c5e4cee80caa0222c17b5bc6f6ac135711f1f",
+    "public/docs/assets/trestle/unitycatalog/diagram.trestle-graph.json": "d06a84aaecbf6ad9416208d7f28c3bfc0896464808ab39417dfda3adeeb50b7d",
+    "public/docs/assets/trestle/unitycatalog/LAYOUT.md": "0928a0dae1dc6d10be41a7054a30172c4b7baabd9bd5ea46abd117ba970fb319",
+    "public/docs/assets/trestle/unitycatalog/modules/unity-catalog/compose.yaml": "579b37bbfdd93fd144a9ae02a5f80f62b28ac7a8545104e822a71705d7c27167",
+    "public/docs/assets/trestle/unitycatalog/modules/unity-catalog/secrets/server.properties": "e502579aa3df296f40eb2e5f3950b24dc04f3fb8327f7fa01b1ac53861c779d7",
+    "public/docs/assets/trestle/unitycatalog/README.md": "de6c920ae9c8e79a7718aa186c956cea67f307265f94369c4f59b6ccffc28738",
+    "public/docs/concepts.json": "630c6af222899429658b5525e3cd4250ac30afb6f114918b2e8d0f69a9d4a1a9",
+    "public/docs/env/environments.json": "f44dd467bfdbb0fd797b0b01a1ce78b68982377d4379d197141f27078d5b5860",
+    "public/docs/env/uc-aws.tar.gz": "b80272ffab87ddc8e7805f6ad9ce8bd6ef709e60e394af5643b180517eae7793",
+    "public/docs/env/uc-hybrid.tar.gz": "008cabb41ced1433a596f145043ae7618907ae2eb8021c536164e52507f564f0",
+    "public/docs/env/uc-local.tar.gz": "1b229d42bbee7cddb4c34403894f3d95beb710d7502eff8f6fc90189a38ea231",
+    "public/docs/env/unitycatalog.tar.gz": "c3dca3ef9d54b87b08daba484ecc4f530eeae583265a6331d895bf5cbdca73a1",
+    "public/docs/explanation/credential-vending.md": "58f39635450c29d5eaa513221ad77ed9b192d1f16bace75f09c82db4fa0833ec",
+    "public/docs/explanation/delta-api.md": "28262b6d5c8d579cdf7e48f3c1e9291be7e42172c19200b8dbc87c56044d38f1",
+    "public/docs/explanation/delta-api/snippets/delta_api_semantics.py": "bf14262945fbe359e48937242a6f685a0018d5cebff6cfb48092650bb9352466",
+    "public/docs/explanation/external-and-managed-tables.md": "4519e2c777a900454b4d5f285238588684b48d333ece0bbaabfc5f1adad69222",
+    "public/docs/explanation/models-and-mlflow.md": "b3790a3d543a9d8e25bec3f180628db391ae73d484332fd5b3f1f91aa232695d",
+    "public/docs/explanation/models-and-mlflow/snippets/model_split.py": "a456ee1d1c8ee3fc03c6cb9b3c8152eb4b6bf728f146fe2f833649cd79d55bd0",
+    "public/docs/explanation/uc-basics.md": "bf476ce4812678aa1d39e2b0020ed0a380d12b2525b57124dc82a48798ceec0a",
+    "public/docs/explanation/views-and-metric-views.md": "50b445a72de37edd93c2801a9339e58e0c152063e5f2011212ec319fa8e0eed1",
+    "public/docs/explanation/views-and-metric-views/snippets/stored_definitions.py": "3f18802f5913be003279412f0bb76dbd68ef675f96f25c29a3fe09fdf06e781a",
+    "public/docs/explanation/what-is-unity-catalog.md": "80de6d2f51f42808c90d9c9c028346d2ccd1947b0c207adf743f37e01b364543",
+    "public/docs/how-to/change-table-schema.md": "421e27034dff21f0bae20f5a11cb10c07faba56ed56cfbda5f090856eb915e2a",
+    "public/docs/how-to/change-table-schema/snippets/change_schema.py": "8b5190fe1f2b80650b28b02e00e1d204d8ae69f4fbfad83d15a8a750d921c029",
+    "public/docs/how-to/change-table-schema/snippets/change_schema.sh": "a2d4cebdfa9cb63f54f3f1ccafb609f1f285dc3d471856aee120607b9a68f5d7",
+    "public/docs/how-to/change-table-schema/snippets/change_schema.sql": "610f9d7b3d85f0d5726a539904c6224e051b3d0ba0c48690508d64fd791e7f6e",
+    "public/docs/how-to/change-table-schema/snippets/delta_api.py": "80f1ea8b2cd2b89bf4730b4ac6180762b8239054d1b44bb78ea63536b04e42fe",
+    "public/docs/how-to/change-table-schema/snippets/external_deltalake.py": "a2e0447660181f4d45cc355e17f9fcf30c8a1008e6e263dce2683b6adc32aeb2",
+    "public/docs/how-to/configure-aws-storage.md": "ba8d469fb7c38a08db7d097cfc613849b40b371cbd2ff8a42f278e0472dea00b",
+    "public/docs/how-to/configure-aws-storage/snippets/aws_storage.py": "1b32e7e00d06af36234dbb11bcd32e85edce1167c9189fd4bef7cc6639a3435f",
+    "public/docs/how-to/configure-aws-storage/snippets/aws_storage.sh": "32c0c586d4630ef4477adfd6e152747437e6e87bc2ed775fec2ae35e94a1f3c6",
+    "public/docs/how-to/configure-backend-db.md": "7b5db0802253f8e27e475cbebcb112aad8b21a36146445a5943608be4d963abe",
+    "public/docs/how-to/configure-backend-db/snippets/backend_db.sh": "c3f12aef10da77b062088c1ce0f40e7ef238e6a56f5a131e19660a7079f1c998",
+    "public/docs/how-to/configure-spark.md": "73777ca5416c83aa757d941aa27dda8ebb4e776024e5a3cac9a7e960e9208e5b",
+    "public/docs/how-to/configure-spark/snippets/spark_session.py": "a43f6cb9bfd048d8366d4e9cc779e316732828fa7726076fd028b00e55710f3b",
+    "public/docs/how-to/duckdb.md": "4a65a6210bfda83eabceb6c9187148a1807327c995a55d83a5452b9ed0de476c",
+    "public/docs/how-to/duckdb/snippets/duckdb_tables.py": "f905918e389e7853f2c634cf8db11318874c742aff7734eb223e7e9c7f0ee220",
+    "public/docs/how-to/iceberg-rest.md": "3c4440feca3b2bc04051d3729bf0f549832e8843cd71de56bbb6906579e9cdb2",
+    "public/docs/how-to/iceberg-rest/snippets/_setup.py": "1ebb216d38113d05027973165e3d97fe7994960c7c4092de6bf20e8a60d290ea",
+    "public/docs/how-to/iceberg-rest/snippets/datafusion_iceberg.rs": "67df8003c76a756336e68602b94f7775463ce199c3e56092ab28f7cbd72c31c5",
+    "public/docs/how-to/iceberg-rest/snippets/duckdb_iceberg.py": "ee44e2584e83f5f9ecb1513f141dd35677e5df5c21e75b01a776c798d4a4e94c",
+    "public/docs/how-to/iceberg-rest/snippets/pyiceberg_tables.py": "2d694b1ae8ebed2957d2a11078826fddf19dca295673a1116485b283f93cd835",
+    "public/docs/how-to/iceberg-rest/snippets/spark_cross_format.py": "3887e7c31dea0879061dc20d9c942439ccf9300b95c9096f7c43ac9b2f96048a",
+    "public/docs/how-to/iceberg-rest/snippets/spark_iceberg.py": "11d3ce136b0a5fdc4a34fb22068234cdc2fc65314c12e743722acad6a1751801",
+    "public/docs/how-to/java-client.md": "defa03c6be0dc41214306e012f2f2deb537bc0ca721d916867c8fbdeaddcef0f",
+    "public/docs/how-to/java-client/snippets/JavaClient.java": "c586b07240c9e4efe6305ad9bba9a933aabcc8632032c0fa755cf2a8afc2925a",
+    "public/docs/how-to/langchain-tools.md": "d6ddeb3efe283653aafa1d675ba2fa396a882f259a664690e0e01286ec350c0b",
+    "public/docs/how-to/langchain-tools/snippets/error_py313.py": "1571f6d54a13cb23915df68a1210e57121801ba7852681d4f946488d4d883552",
+    "public/docs/how-to/langchain-tools/snippets/pricing.py": "316d68e1e86b3b7b9257b365be5d41c86ad278c230b92982d5c39f0a7e9530d8",
+    "public/docs/how-to/langchain-tools/snippets/tool_types.py": "b852a8db1620170ecdddadd7aca0547dbbb8152b6a5a0415e65fe05657599f9b",
+    "public/docs/how-to/langchain-tools/snippets/tools.py": "f1566fd1773a6e76634ca77049d801513e4bf5fea884094842dcbca78b197330",
+    "public/docs/how-to/manage-catalogs-and-schemas.md": "af3ce7976803ab1633abf6cb7035d54f60f768bbbb28a200b82028dfa026137f",
+    "public/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.py": "88a1915ccefd161195033ff46da128d7ee349d0d8a14b9edb10c2d3318823d62",
+    "public/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.sh": "b71d4e2ace081e779b2699cb3d47ed57ed9c878de2d4beedb2246e5a379f996b",
+    "public/docs/how-to/manage-models.md": "83eed34adba2433e6c80b4cfe0024b741e01b7e738201524c250e4b0edadf750",
+    "public/docs/how-to/manage-models/snippets/models_mlflow.py": "afa5f1d33d6d4179024714ad96c8c320a9cbdd65995905b0b83a0503dbe71ac2",
+    "public/docs/how-to/manage-models/snippets/models_sdk.py": "45630609996d29546ffbb9b4836c925a36a8da2f550524b7a2d5f346ade0efef",
+    "public/docs/how-to/manage-models/snippets/models.sh": "f0bd901d8b0310d0adac3af5246e14c496ab681a59d2d48992b5185c1c575914",
+    "public/docs/how-to/manage-python-functions.md": "e478b617397f4c521d62418b0ca40cf6cf71da551226641d5b888d3b8e69f847",
+    "public/docs/how-to/manage-python-functions/snippets/caching.py": "f04fa06d6e191f6a22f160c710052781e73f680492bb478c2804abdb11766e52",
+    "public/docs/how-to/manage-python-functions/snippets/functions.py": "d7fe0f3f66a71adc5288c183b536d7ba6da705521eb4ffe41133b519e9ba9ff1",
+    "public/docs/how-to/manage-python-functions/snippets/pricing.py": "979dccdea14e815773ac4f6a79d07e9ef8a071741632eb9b1f1db552812c6dd7",
+    "public/docs/how-to/manage-python-functions/snippets/signatures.py": "fcba5e1c1cbbdec173c5dbdb8acb1f7022c4b0d43430b3c94ea3a4f04ffb2881",
+    "public/docs/how-to/manage-volumes.md": "8069fe52b517399558c385072cd4fdcbad3ec22baa8b52a7bd5b61aa6a3f2594",
+    "public/docs/how-to/manage-volumes/snippets/volumes.py": "527608ab045f19a6bd806b243e2a62ccf80c275eefafa45ded4b2fb3bfd21f5e",
+    "public/docs/how-to/manage-volumes/snippets/volumes.sh": "910dc6480175f573446dbce87e3e4129217ba42e285dd0d002eb82d1758b4237",
+    "public/docs/how-to/managed-delta-tables.md": "16c6d3339682f463bc486d848033884683e8f6c65bd6d0899dec513b7536b118",
+    "public/docs/how-to/managed-delta-tables/snippets/managed_tables.py": "9f90a421c2f5222118f2c3a64e482adfd07d6fc300a3e106e9bab730e31fb7dc",
+    "public/docs/how-to/managed-storage-s3.md": "cd1dafa874e3bb8a0cb8e7ef93b22f2ae35541999fdab7daa907b963267b1647",
+    "public/docs/how-to/managed-storage-s3/snippets/managed_storage.py": "f1de6a8b8f13a6d9e27986f0420e28b2a43980f3745b4044a933ddf1c7af411a",
+    "public/docs/how-to/managed-storage-s3/snippets/managed_storage.sh": "3fb851ca99141505d9facecdba2fe9f0d814f56a3ccadc89e600f755e9183fe8",
+    "public/docs/how-to/marimo-remote-storage.md": "8cd367dbb35216fcfd664d94c6b9604ebc84ead2e79f4f88cc4d339b23d0927b",
+    "public/docs/how-to/marimo-remote-storage/snippets/notebook.py": "e398d2f541f5436e68423b72506f0c952cda8cdf6f0c318913e3dee77ba67c1b",
+    "public/docs/how-to/metric-views.md": "174660b7aa01fe72751406ce27debf9e87a24b9a03fac880a79b68a9f87b71b5",
+    "public/docs/how-to/metric-views/snippets/metric_views.py": "510feb3e76e0d909382c36fe2a749a9820b789bc42f5a435edda6d9f9ed39875",
+    "public/docs/how-to/metric-views/snippets/register_metric_view.py": "b0485d66646393d84f32fa7cd88c51c00fcfe487eb3966e046480b6034e9eae1",
+    "public/docs/how-to/obstore-credentials.md": "2c14d93c7679d5ab1a1648c8c25c089353f7612d277939ccac484400d682ae50",
+    "public/docs/how-to/obstore-credentials/snippets/obstore_credentials.py": "a1e1300ea535d3c3b9825cfe4aac8888de64426d79b26b2c4860f8926e6b8aff",
+    "public/docs/how-to/python-dataframes.md": "28664d00f6c6f3435a5813330edf785316a8ae98db122e14077546b8b6f9b4ea",
+    "public/docs/how-to/python-dataframes/snippets/_seed.py": "f5db5392afe60b5ca11813a0470522553cce28bd48523bb9a44c26c784a406f6",
+    "public/docs/how-to/python-dataframes/snippets/daft_tables.py": "aff10fe03f5c95a60383c79d5189a44909123369d3d1b790025423ec38756622",
+    "public/docs/how-to/python-dataframes/snippets/managed_tables_fail.py": "e989e886909389da1bb2113da42619d25980497dc5b95798ed2351d912bfc4a2",
+    "public/docs/how-to/python-dataframes/snippets/pandas_tables.py": "b894d0736acddc248775ce1efb83cda31b57fc87ff83410b2cecfa0790d31b69",
+    "public/docs/how-to/python-dataframes/snippets/polars_tables.py": "f85b4f6db83d521edc2e922880e79ddfafc84c775a5c8cf55737e0b7817b047e",
+    "public/docs/how-to/register-external-table.md": "f79ff35e65f50753ca49abad2535614c339cec101da11024bebe483cd9807da3",
+    "public/docs/how-to/register-external-table/snippets/external_table.py": "bc49b7bc10ebd54a52a28b7da7a56beb4a2316c337de8c7eb4513f42a9c3d2f4",
+    "public/docs/how-to/register-external-table/snippets/external_table.sh": "0a0028c9cca8c28df62b4a02f8efb56bc01c5018649104aee0e1588f0d17816d",
+    "public/docs/how-to/register-external-table/snippets/read_engines.py": "1b52989ee941c9f48609271db888a3af4afaaac9310d9174ea38cd450a9c59bd",
+    "public/docs/how-to/replace-and-overwrite-tables.md": "cfb99013d7a2752c218f0a625a20ee30fa0e77e0fa3a3592aeb2473d84a1d6c6",
+    "public/docs/how-to/replace-and-overwrite-tables/snippets/replace_overwrite.py": "bf1219537f55e8173d5a6156bb34b577cddd4852e6acbfa60ece371a722fd0f9",
+    "public/docs/how-to/run-functions.md": "aef9a19859b17da91ea2541e54fe5f6a2d469d6faa1d417b96e5d8a9a34833b8",
+    "public/docs/how-to/run-functions/snippets/errors.py": "b171199c30355e0ace2ee84647aa5321e96f651710bdb0aaf2e6210cbc678526",
+    "public/docs/how-to/run-functions/snippets/limits.py": "e101fb3b9c1065ed48859a9cbda864e0a395263133111fae6c04fa80502ca740",
+    "public/docs/how-to/run-functions/snippets/modes.py": "787e03cbf50d987ae6fcc28d3e2354bf0f1aa145a188ef72b6059a50ed583ea1",
+    "public/docs/how-to/run-functions/snippets/notebook.py": "6eb14fe6106d07208761b28ec7a162e92275a39e070c857f6edde63964e05f11",
+    "public/docs/how-to/run-functions/snippets/pricing.py": "d6166a40fef07d86e76fcda2d16ae3c7dcaee00325c052fb2037b909b38c729f",
+    "public/docs/how-to/run-functions/snippets/run_async.py": "aadac1f9533feacac4c7d4c3ac481e363cf9251eb0285d62bc409d6c0f026526",
+    "public/docs/how-to/run-functions/snippets/run_sync.py": "02997384edb6e062618a3ed75535fce92b160e7585cee8ab4275efe047bfc9d5",
+    "public/docs/how-to/run-functions/snippets/seed.py": "25fbf1f44627151e494fcf25121ab2b5743c3f890aa7698b694bf87cf0698e8c",
+    "public/docs/how-to/run-local-server.md": "8351bf1750547695634f2bba14707016d7b89038e7adbfe03b582003937bb231",
+    "public/docs/how-to/run-server-with-java.md": "e46120dd50c29fd8d991208ffb4905f3c27daac4f7894d14b1cd29df97315765",
+    "public/docs/how-to/run-server-with-java/snippets/run_server.sh": "2c7f421ea271ee39a0ca3961713d4b0d7132db049ddf04c42e1179a3bba0864a",
+    "public/docs/how-to/seed-tpch-data.md": "ac122a3667864de9c4b0e3506a64389b63f75efc204f2c3ac852da3a99f49abc",
+    "public/docs/how-to/seed-tpch-data/seed_tpch.py": "d204acb1ddda81a935e06376d55c64e80229b95626f202b1e3e63f7036531edc",
+    "public/docs/how-to/sql-views.md": "359a8f7d4ed770eb2c96569c60f7d91c8f8799fd998ec0a930440704c3d5a404",
+    "public/docs/how-to/sql-views/snippets/register_view.py": "fbb72ffc151bf837d52bee1256a7e60e1d3ac5f19b6ac2d1cb6dd1f8bcb6280d",
+    "public/docs/how-to/sql-views/snippets/sql_views_spark41.py": "c3a6e821f8c897f0c20e9345d4577ca35380c12cc9f06b86646a3019aab7c7b9",
+    "public/docs/how-to/sql-views/snippets/sql_views.py": "eeed18c15f7e3168048dd12b87b17e2313d1a9df71a52fdbc20632093280d220",
+    "public/docs/how-to/table-storage-formats.md": "af15e508221cf4f6fc5868b9761eb7590a05e6949cc5eb60515fb5cd76469c01",
+    "public/docs/how-to/table-storage-formats/snippets/file_formats.py": "2640b75502f71d9495f529e625528292685ed8b01ca63cd9488f038362b74e17",
+    "public/docs/how-to/table-storage-formats/snippets/file_formats.sh": "c5e5ca5dc454324345f0f170d5ec0c67d3f07afe5864ea72ed437850aa663c13",
+    "public/docs/how-to/temporary-credentials.md": "7f0189d71f7530085152e94083bdf7ea28f7c07c6ea03e86c864a48a8bf23474",
+    "public/docs/how-to/temporary-credentials/snippets/temporary_credentials.py": "5f746a51c89118b1c158b34cffc034dfc6bf9d42991f94187416c13a7972d954",
+    "public/docs/how-to/temporary-credentials/snippets/temporary_credentials.sh": "b049b29e54aaf104c57fa4a8b6e687c9c2a0aed85fbc4e3b72fec63aa86e66ea",
+    "public/docs/index.md": "5855548b5ca2986c818fdf7309f6320d1210fafa8f25ef0a48c06f7ca112db6b",
+    "public/docs/likec4/likec4-webcomponent.mjs": "010aa36906aa156ea89ec43016bd932afe97b426f1c146ade8505b3eed8fb75a",
+    "public/docs/llms-full.txt": "aae27f04e5e4ffd961e131146a2db5578958875cd24c95d7da81d39eb7833d5d",
+    "public/docs/llms.txt": "74f521e55394f8fd9a97df982cd0e142117e303605e6fb4cdb5079352241225e",
+    "public/docs/scripts.json": "1e03c794a06aa81ff7c3bd8c0ab3a5b278fb50d03aab0989b52ba46647a42832",
+    "public/docs/sitemap.xml": "158b674354179c4f1e4c2da312814a9328a6fcb25b90c3566b69eacfac6f78de",
+    "public/docs/tutorials/first-metric-view.md": "72a7b1a9b71a828564bdf4ccf2e3a56c722c2ef1713af61e9f81faa46649a385",
+    "public/docs/tutorials/first-metric-view/snippets/metric_view.py": "d964fde544668b7feeefcbca7a33ecf32f95d1e9df21807629fa3ea695dec1c4",
+    "public/docs/tutorials/first-python-function.md": "3437c679b4fdd6b53a03f478af447e8663190e0caef55e831a87aa5160939315",
+    "public/docs/tutorials/first-python-function/snippets/asyncio_py314.py": "3c2596561d08a92e6d3cf43ae0c98752b6501098bed447f0654ab7d2b3c880bc",
+    "public/docs/tutorials/first-python-function/snippets/first_function.py": "a34a7b13346ba91f05fe0206fd73ecfad8a082956f62868d9568e6ac786d4df4",
+    "public/docs/tutorials/first-python-function/snippets/pricing.py": "6975c37c061d5fddf6a75225908b7a40732522fef3a47e5d7be7e3a65d9c0fc8",
+    "public/docs/tutorials/getting-started.md": "a308effdc07bf5418ab6d0b495e65b3c7f6c7eca0074d45a278146c1869f82e0",
+    "public/docs/tutorials/getting-started/snippets/first_catalog.sh": "6ac889283379dda0127939659169276863241b599a28d1640cda6c9c1849ebe1",
+    "public/docs/tutorials/managed-delta-table.md": "5f8d82dd916c7ee3b573ac8bb2d48bcf4fc1b064f892e7dbe9dc34c98afd58b3",
+    "public/docs/tutorials/managed-delta-table/snippets/managed_table.py": "a1c9a31f4779433accb44735329b232b789281ad1638501842a9526ed3a53173",
+    "public/docs/tutorials/python-client.md": "2ff5a854f0e9b21729e57e5ed3b9d635f14b2cca511520a75fceb4fda83d7e8c",
+    "public/docs/tutorials/python-client/snippets/catalog_flow.py": "f9e72d6fd2a7d5e98daaac93dfdd40b707db28edab8a648a67ab5ce53d3499f9",
+    "public/docs/tutorials/read-volume-files.md": "20a25e9f3b5bbfa8a6f2681a16a44354ef4992f6aa10fcb4eedfeddaa3f2f841",
+    "public/docs/tutorials/read-volume-files/snippets/volume_files.py": "6988510588166d51536fa4fa50602c15f1c351256f3a85a68fc9ea22795254e3",
+    "public/docs/tutorials/register-model-mlflow.md": "0973246e5069bbc1f55263c4cdb586092e55d43f0fbedb856c55e568c7d86f09",
+    "public/docs/tutorials/register-model-mlflow/snippets/hello_mlflow.py": "9f6033644d755d87d0b57d63c1de06c113e76736d85e89acc8d19645ed57c60e",
+    "src/content/docs/explanation/credential-vending.md": "e94729d1c51c9dd0a5551d47c25bfe5a2a7b791c3a67029bdc80fe7d44a1d356",
+    "src/content/docs/explanation/delta-api.md": "a74fb88faec17778a0b5b4e4199ddec54203465ad2aef621a88f53f08c0f7f38",
+    "src/content/docs/explanation/external-and-managed-tables.md": "80f119e9140dd5fc09f78be7d982aac5e9ca2a748d8f41ab9e82d563ee96cddd",
+    "src/content/docs/explanation/models-and-mlflow.md": "d265e6127e66cc0838b1f15bcdb7b7616d7e9fd2c5998c3a8e1e81e5d089888b",
+    "src/content/docs/explanation/uc-basics.md": "0acc95d1c4752aee8d1cca433c6a47747010e2af81f78f73c16103ef4f675daf",
+    "src/content/docs/explanation/views-and-metric-views.md": "850b39a37b22bda994423890a12fdfd12b586565ac9f78cb2af525f71d0ce4ee",
+    "src/content/docs/explanation/what-is-unity-catalog.md": "e3d8be19526c9fe0278167b6990b6708e6d1a12417945a32022bd1df2ab652e5",
+    "src/content/docs/how-to/change-table-schema.md": "044be88d389923e81b12011a78d4b9fdb79797feedb4e40eaea078219cfd03b0",
+    "src/content/docs/how-to/configure-aws-storage.md": "accc288e6353b5edca82f9fc59ef10d3c3d53841b3f9fedaba3f9fd63cae4bfa",
+    "src/content/docs/how-to/configure-backend-db.md": "417186012a54a24dbbd30a30948089a14a6eb822fa9abfb2ac658c1c30b8b845",
+    "src/content/docs/how-to/configure-spark.md": "2db8d585ecc97fd463db77973e4a703f901c1b1a7e10ef889fc2c55e52979396",
+    "src/content/docs/how-to/duckdb.md": "0502c5965a2e528b8175e523a723ba53b9b679ce108994aebf7e0a9ad6cd1d36",
+    "src/content/docs/how-to/iceberg-rest.md": "ad89fdcca6e4d0bf93a014b5a28d25cedb0f8c27dd56acd2410904833bb7164f",
+    "src/content/docs/how-to/java-client.md": "ba25f5b967bc237a1f4462510a3af60da3176f5aad95bd3309988b61d64ca052",
+    "src/content/docs/how-to/langchain-tools.md": "ad295ac179c0ce1db9ea70fea969b27890024c0772163b8eed7b6ca30c16ee18",
+    "src/content/docs/how-to/manage-catalogs-and-schemas.md": "c751785b4e0bbec942b28c744722d956a37e09d20afcd24a4dadf91d6210fe05",
+    "src/content/docs/how-to/manage-models.md": "01024184ac62a3e74503cdfc4d18285f19676094c016172279f3cabdc41ad3c6",
+    "src/content/docs/how-to/manage-python-functions.md": "673ca3e60e802d54eb276ea837fa8a241a07d336c047e99c894173a134f29aea",
+    "src/content/docs/how-to/manage-volumes.md": "86ec8a2f211963af2219d6b62e598bcbc61b96d715511b052a9d3b9dae8baf29",
+    "src/content/docs/how-to/managed-delta-tables.md": "4800d23b132356bd44f8211cff9aab66337bbe63a5a9404efad245c136c4c90e",
+    "src/content/docs/how-to/managed-storage-s3.md": "78488c9d3b56d10da0980617728469551ccb9c84a369914615c9bd9eed873a86",
+    "src/content/docs/how-to/marimo-remote-storage.md": "56207759d87a715e55e525274205539bf2eedc73129938d525300510904f32ae",
+    "src/content/docs/how-to/metric-views.md": "bd29359b9e4a37f2e75782ef9ab3e83e632c0feaae01f73cae61f1217ec27299",
+    "src/content/docs/how-to/obstore-credentials.md": "dacb68a5093d4f370d18ec93c76afa033e5c2dc9c94e8e2ac6fb21aca549a97e",
+    "src/content/docs/how-to/python-dataframes.md": "60e7dda7f8c94aec0cc0bdcf5b90781709ec4c4112e3e3d78edf3d88c4f0f1da",
+    "src/content/docs/how-to/register-external-table.md": "3e79066a8e7d17fd0bb748dcbf5815174146cb2cef3dcbe69aa0986ab4693f3d",
+    "src/content/docs/how-to/replace-and-overwrite-tables.md": "b2491a17901dc3793c72ccfdd252da2dc946433ab59a04df707ebe57a4a14d34",
+    "src/content/docs/how-to/run-functions.md": "74aaf98c741a2ccaed1b627ff193c3421961822fbcd35e041a79c1c34cd15e39",
+    "src/content/docs/how-to/run-local-server.md": "35bcd50636321d4bc32a67ad2d710b77afa32ba8b197478eb236461e82a8e25c",
+    "src/content/docs/how-to/run-server-with-java.md": "85ce38b84ee4ef0db7bf05b8a2ae6d7e581985e3974123da196fc76f178c3f5c",
+    "src/content/docs/how-to/seed-tpch-data.md": "65d1367282e2dc02dc0e91589de8936f3b307af34437ad3a7361796290805ffb",
+    "src/content/docs/how-to/sql-views.md": "b085ea69bf98355c2f6ee6ea24f284ac60a835a97220996e60f235c7da6cbd01",
+    "src/content/docs/how-to/table-storage-formats.md": "c3f68d5174d2575b020364f9d0c3ddd8178d1598f56d0c57a6b40f44f8bf28ee",
+    "src/content/docs/how-to/temporary-credentials.md": "f737cf847d635d470897591dd3c69f4452d70a5dd22987fc967aeef168b8034a",
+    "src/content/docs/tutorials/first-metric-view.md": "4230729177820f21e0924ddf89cdfe2e366a39ce16b9e5dd90b0128a91906bf7",
+    "src/content/docs/tutorials/first-python-function.md": "a4cd7c544c1fb208413443bce0a9859ed94311b2f6cc211c54082ba217e0de33",
+    "src/content/docs/tutorials/getting-started.md": "c74c8531c7e2c8cdf7e97ddf369da9910b651f46cf93ec80c12a94b6d896732e",
+    "src/content/docs/tutorials/managed-delta-table.md": "fc203e6c20d7df80bd981effbb430a5140637cdb743ee28cb266298f3cf84230",
+    "src/content/docs/tutorials/python-client.md": "868f5fb3ec31c6dacd0a8d227f7a0c28b673f238c943424cbb57ca6e35effd98",
+    "src/content/docs/tutorials/read-volume-files.md": "c6281279878f9f72e29f5ba42a2168f3313c45eee877e8b8ab8da99428c45d1c",
+    "src/content/docs/tutorials/register-model-mlflow.md": "0d248895209db1278458531348e993007250ac91b3bc4bb88b1b52aab6463b1c",
+    "src/generated/docs/api-operations.json": "5fb424b09b25f9663222a2e66588893f72927fa67b11b44731a078db3f8eb979",
+    "src/generated/docs/coverage.json": "c7a0d2c660ee92f8d4b7822db02cf58fbeb4a9a25d5c2b7cd483d43312fa62c0",
+    "src/generated/docs/heads.json": "9cc6f8580f753a63c8359e25b066b81816f9a24d4b78df200af942ef30eb025a",
+    "src/generated/docs/redirects.json": "ae1b813bd78deae91eedfc6e80639158e302defabe2522932e89810fe814cca4",
+    "src/generated/docs/search.json": "ec1f7391b8200635ce9cfdf38ad3dbeec4dd1d3cb4740c11db73b767774e4f42",
+    "src/generated/docs/site.json": "31fe576e0b77a63b7ac689a7d9b8c2889f70848fdfeaaa92a0dfe4b6f1eb4a01",
+    "src/vendor/docs-plugins/lib/mdx-helpers.mjs": "48434cc3477b3fdc6578ce9c0e83fe808ff9d911b38428eab8f788d7ac3f2ede",
+    "src/vendor/docs-plugins/remark-callouts.mjs": "1f374a258ead14aa58fcbf078b10cf8d0f29722fbddf66c536838e49e3dfaaff",
+    "src/vendor/docs-plugins/remark-directive-prose-guard.mjs": "87b5746e47bc6e7ff888f08f95af5c0f9ae8cf83fb5fa8bbc3fd9b2732d236a0",
+    "src/vendor/docs-plugins/remark-engine-coverage.mjs": "3195ec90e7d124c7673c88adac22974e9c5ffeda5d01aa706710dd85c9f2faae",
+    "src/vendor/docs-plugins/remark-fence-meta.mjs": "5a2a470cffc1817e07d0b5d18a2de22e7ba24f1cba1586e4ba1f34de72432255",
+    "src/vendor/docs-plugins/remark-journey.mjs": "ca3c8e3fc176209b432b1fb1ee7fdd1fdccb10223c421544a3340a3b7f83222d",
+    "src/vendor/docs-plugins/remark-likec4-views.mjs": "867cf2755d1b1d97ca6cdd7874e7bc8a1ae45a347842059811f3c489d22c3903",
+    "src/vendor/docs-plugins/remark-prerequisites.mjs": "3d3cec7c6c8c02e902b5b2f7ed68f703db3ec671d587a1c399b40f44549d704a",
+    "src/vendor/docs-plugins/remark-tabs.mjs": "7ef5136afc6a9deb02d8921fc7a413c9f40589b768cdfbc93236d7d4f183fabf",
+    "src/vendor/docs-plugins/remark-tldr.mjs": "e3bd03e383361e63f228518e4ef7bc4a84eb00f06a7a8fd14174927427204e8a",
+    "src/vendor/docs-plugins/remark-trestle-views.mjs": "1fbcb7b3f0a4b4188b18d9ee3d3727a27eb1c3fe08874b5dc75bcc893e410903"
+  }
+}

@@ -1,0 +1,4006 @@
+{
+  "title": "Unity Catalog",
+  "tagline": "Documentation for Unity Catalog OSS: the open catalog for tables, volumes, functions, and models across engines.",
+  "nav": [
+    {
+      "kind": "section",
+      "label": "Start here",
+      "items": [
+        {
+          "kind": "page",
+          "route": "/docs/explanation/what-is-unity-catalog/",
+          "label": "What is Unity Catalog OSS?"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/tutorials/getting-started/",
+          "label": "Create your first catalog"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/how-to/run-local-server/",
+          "label": "Run a local Unity Catalog server"
+        }
+      ]
+    },
+    {
+      "kind": "section",
+      "label": "Use Unity Catalog",
+      "items": [
+        {
+          "kind": "section",
+          "label": "Tutorials",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/python-client/",
+              "label": "Use the Python client"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/managed-delta-table/",
+              "label": "Create and update a catalog-managed Delta table"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/read-volume-files/",
+              "label": "Working with volumes and files"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/first-python-function/",
+              "label": "Working with Python functions"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/first-metric-view/",
+              "label": "Working with metric views"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/tutorials/register-model-mlflow/",
+              "label": "Register and reload a model with MLflow"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Catalogs and schemas",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/manage-catalogs-and-schemas/",
+              "label": "Manage catalogs and schemas"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Tables",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/register-external-table/",
+              "label": "Register external Delta table"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/table-storage-formats/",
+              "label": "Register external files as tables"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/managed-delta-tables/",
+              "label": "Read and write catalog-managed Delta tables"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/change-table-schema/",
+              "label": "Manage schemas and properties"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/replace-and-overwrite-tables/",
+              "label": "Replace or overwrite tables"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/seed-tpch-data/",
+              "label": "Seed TPC-H data into Unity Catalog"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Views and metric views",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/sql-views/",
+              "label": "Manage SQL views"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/metric-views/",
+              "label": "Manage metric views"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Volumes and files",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/manage-volumes/",
+              "label": "Manage volumes"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/temporary-credentials/",
+              "label": "Request temporary credentials"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/obstore-credentials/",
+              "label": "Use Unity Catalog credentials with obstore"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/marimo-remote-storage/",
+              "label": "Use volumes as marimo remote storage"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Functions and AI",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/manage-python-functions/",
+              "label": "Manage Python functions"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/run-functions/",
+              "label": "Run functions in apps and notebooks"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/langchain-tools/",
+              "label": "Use catalog functions as LangChain tools"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Models",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/manage-models/",
+              "label": "Manage registered models"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "section",
+      "label": "Connect engines and clients",
+      "items": [
+        {
+          "kind": "page",
+          "route": "/docs/how-to/configure-spark/",
+          "label": "Use Spark with Unity Catalog"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/how-to/duckdb/",
+          "label": "Use DuckDB with Unity Catalog"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/how-to/python-dataframes/",
+          "label": "Query Unity Catalog tables from Python DataFrame libraries"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/how-to/iceberg-rest/",
+          "label": "Use Iceberg REST clients with Unity Catalog"
+        },
+        {
+          "kind": "page",
+          "route": "/docs/how-to/java-client/",
+          "label": "Use the Java client in an application"
+        }
+      ]
+    },
+    {
+      "kind": "section",
+      "label": "Operate Unity Catalog",
+      "items": [
+        {
+          "kind": "section",
+          "label": "Plan and deploy",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/run-server-with-java/",
+              "label": "Run the Unity Catalog server with Java"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/configure-backend-db/",
+              "label": "Configure PostgreSQL as the metadata database"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Storage",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/how-to/configure-aws-storage/",
+              "label": "Configure AWS storage credentials and external locations"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/how-to/managed-storage-s3/",
+              "label": "Set managed storage for catalogs and schemas on S3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "section",
+      "label": "Build integrations",
+      "items": [
+        {
+          "kind": "page",
+          "route": "/docs/tutorials/python-client/",
+          "label": "Use the Python client"
+        }
+      ]
+    },
+    {
+      "kind": "section",
+      "label": "Concepts",
+      "items": [
+        {
+          "kind": "section",
+          "label": "Architecture",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/explanation/what-is-unity-catalog/",
+              "label": "What is Unity Catalog OSS?"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/explanation/delta-api/",
+              "label": "The Unity Catalog Delta API"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "Data and governance",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/explanation/uc-basics/",
+              "label": "Core concepts"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/explanation/external-and-managed-tables/",
+              "label": "External tables and catalog-managed Delta tables"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/explanation/credential-vending/",
+              "label": "Credential vending"
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "label": "AI and semantics",
+          "items": [
+            {
+              "kind": "page",
+              "route": "/docs/explanation/models-and-mlflow/",
+              "label": "Unity Catalog and MLflow"
+            },
+            {
+              "kind": "page",
+              "route": "/docs/explanation/views-and-metric-views/",
+              "label": "SQL views and metric views as catalog objects"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "route": "/docs/explanation/what-is-unity-catalog/",
+      "file": "explanation/what-is-unity-catalog.md",
+      "title": "What is Unity Catalog OSS?",
+      "summary": "The open catalog for all your Data and AI assets in the open lakehouse.",
+      "diataxis": "explanation",
+      "section": [
+        "Start here"
+      ],
+      "headings": [
+        {
+          "id": "what-a-catalog-does",
+          "text": "What a catalog does",
+          "level": 2
+        },
+        {
+          "id": "what-unity-catalog-oss-manages",
+          "text": "What Unity Catalog OSS manages",
+          "level": 2
+        },
+        {
+          "id": "how-it-works-with-engines-and-storage",
+          "text": "How it works with engines and storage",
+          "level": 2
+        },
+        {
+          "id": "governance-in-the-open-source-server",
+          "text": "Governance in the open source server",
+          "level": 2
+        },
+        {
+          "id": "unity-catalog-oss-and-databricks-unity-catalog",
+          "text": "Unity Catalog OSS and Databricks Unity Catalog",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/what-is-unity-catalog.md",
+      "environment": null,
+      "scripts": [],
+      "prev": null,
+      "next": {
+        "route": "/docs/tutorials/getting-started/",
+        "title": "Create your first catalog"
+      }
+    },
+    {
+      "route": "/docs/tutorials/getting-started/",
+      "file": "tutorials/getting-started.md",
+      "title": "Create your first catalog",
+      "summary": "Start a local Unity Catalog server, browse its sample data, then create a catalog, a schema, and a Delta table of your own with the uc CLI.",
+      "diataxis": "tutorial",
+      "section": [
+        "Start here"
+      ],
+      "headings": [
+        {
+          "id": "start-the-server",
+          "text": "Start the server",
+          "level": 2
+        },
+        {
+          "id": "define-a-shortcut-for-the-cli",
+          "text": "Define a shortcut for the CLI",
+          "level": 2
+        },
+        {
+          "id": "browse-the-sample-data",
+          "text": "Browse the sample data",
+          "level": 2
+        },
+        {
+          "id": "create-a-catalog",
+          "text": "Create a catalog",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema",
+          "text": "Create a schema",
+          "level": 2
+        },
+        {
+          "id": "create-a-table",
+          "text": "Create a table",
+          "level": 2
+        },
+        {
+          "id": "write-and-read-rows",
+          "text": "Write and read rows",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/getting-started.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/getting-started/snippets/first_catalog.sh",
+          "file": "first_catalog.sh",
+          "kind": "shell",
+          "summary": "Create a catalog, schema, and table with the uc CLI, write and read rows, then clean up."
+        }
+      ],
+      "prev": {
+        "route": "/docs/explanation/what-is-unity-catalog/",
+        "title": "What is Unity Catalog OSS?"
+      },
+      "next": {
+        "route": "/docs/how-to/run-local-server/",
+        "title": "Run a local Unity Catalog server"
+      }
+    },
+    {
+      "route": "/docs/how-to/run-local-server/",
+      "file": "how-to/run-local-server.md",
+      "title": "Run a local Unity Catalog server",
+      "summary": "Start one of the docs' Docker Compose environments, a single-user Unity Catalog server on localhost:8080 on its own or with a local stand-in for Amazon S3 and a PostgreSQL metastore, and know what each one runs.",
+      "diataxis": "how-to",
+      "section": [
+        "Start here"
+      ],
+      "headings": [
+        {
+          "id": "choose-an-environment",
+          "text": "Choose an environment",
+          "level": 2
+        },
+        {
+          "id": "start-the-minimal-server",
+          "text": "Start the minimal server",
+          "level": 2
+        },
+        {
+          "id": "start-the-server-with-simulated-s3",
+          "text": "Start the server with simulated S3",
+          "level": 2
+        },
+        {
+          "id": "share-a-folder-with-the-server",
+          "text": "Share a folder with the server",
+          "level": 2
+        },
+        {
+          "id": "run-the-uc-cli",
+          "text": "Run the uc CLI",
+          "level": 2
+        },
+        {
+          "id": "stop-or-reset-the-server",
+          "text": "Stop or reset the server",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/run-local-server.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [],
+      "prev": {
+        "route": "/docs/tutorials/getting-started/",
+        "title": "Create your first catalog"
+      },
+      "next": {
+        "route": "/docs/tutorials/python-client/",
+        "title": "Use the Python client"
+      }
+    },
+    {
+      "route": "/docs/tutorials/python-client/",
+      "file": "tutorials/python-client.md",
+      "title": "Use the Python client",
+      "summary": "Use the official Python SDK to write, read, and organize data.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "connect-to-the-server",
+          "text": "Connect to the server",
+          "level": 2
+        },
+        {
+          "id": "create-a-catalog",
+          "text": "Create a catalog",
+          "level": 2
+        },
+        {
+          "id": "list-catalogs",
+          "text": "List catalogs",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema",
+          "text": "Create a schema",
+          "level": 2
+        },
+        {
+          "id": "create-a-table",
+          "text": "Create a table",
+          "level": 2
+        },
+        {
+          "id": "handle-a-missing-object",
+          "text": "Handle a missing object",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/python-client.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/python-client/snippets/catalog_flow.py",
+          "file": "catalog_flow.py",
+          "kind": "python",
+          "summary": "Create a catalog, schema, and table with the Unity Catalog Python client."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/run-local-server/",
+        "title": "Run a local Unity Catalog server"
+      },
+      "next": {
+        "route": "/docs/tutorials/managed-delta-table/",
+        "title": "Create and update a catalog-managed Delta table"
+      }
+    },
+    {
+      "route": "/docs/tutorials/managed-delta-table/",
+      "file": "tutorials/managed-delta-table.md",
+      "title": "Create and update a catalog-managed Delta table",
+      "summary": "Give a catalog managed storage, then use Spark to create a Delta table that Unity Catalog manages, write and change its rows, read an earlier version, and drop it.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "give-a-catalog-managed-storage",
+          "text": "Give a catalog managed storage",
+          "level": 2
+        },
+        {
+          "id": "connect-spark",
+          "text": "Connect Spark",
+          "level": 2
+        },
+        {
+          "id": "create-the-table",
+          "text": "Create the table",
+          "level": 2
+        },
+        {
+          "id": "write-some-rows",
+          "text": "Write some rows",
+          "level": 2
+        },
+        {
+          "id": "see-where-the-table-lives",
+          "text": "See where the table lives",
+          "level": 2
+        },
+        {
+          "id": "change-rows",
+          "text": "Change rows",
+          "level": 2
+        },
+        {
+          "id": "read-an-earlier-version",
+          "text": "Read an earlier version",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/managed-delta-table.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/managed-delta-table/snippets/managed_table.py",
+          "file": "managed_table.py",
+          "kind": "python",
+          "summary": "Create a catalog-managed Delta table with Spark, change it, and drop it."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/python-client/",
+        "title": "Use the Python client"
+      },
+      "next": {
+        "route": "/docs/tutorials/read-volume-files/",
+        "title": "Working with volumes and files"
+      }
+    },
+    {
+      "route": "/docs/tutorials/read-volume-files/",
+      "file": "tutorials/read-volume-files.md",
+      "title": "Working with volumes and files",
+      "summary": "Register a folder of documents as a Unity Catalog volume, then find it by name, ask the catalog for access, and read the files with obstore.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "connect-to-the-server",
+          "text": "Connect to the server",
+          "level": 2
+        },
+        {
+          "id": "put-some-files-in-a-folder",
+          "text": "Put some files in a folder",
+          "level": 2
+        },
+        {
+          "id": "register-the-folder-as-a-volume",
+          "text": "Register the folder as a volume",
+          "level": 2
+        },
+        {
+          "id": "find-the-volume-by-name",
+          "text": "Find the volume by name",
+          "level": 2
+        },
+        {
+          "id": "ask-for-access",
+          "text": "Ask for access",
+          "level": 2
+        },
+        {
+          "id": "open-the-volumes-storage",
+          "text": "Open the volume's storage",
+          "level": 2
+        },
+        {
+          "id": "read-the-files",
+          "text": "Read the files",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/read-volume-files.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/read-volume-files/snippets/volume_files.py",
+          "file": "volume_files.py",
+          "kind": "python",
+          "summary": "Register a folder of files as a volume, then find and read it by name."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/managed-delta-table/",
+        "title": "Create and update a catalog-managed Delta table"
+      },
+      "next": {
+        "route": "/docs/tutorials/first-python-function/",
+        "title": "Working with Python functions"
+      }
+    },
+    {
+      "route": "/docs/tutorials/first-python-function/",
+      "file": "tutorials/first-python-function.md",
+      "title": "Working with Python functions",
+      "summary": "Register a typed Python function in Unity Catalog, inspect what the catalog stores, run it through the catalog, and remove it.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "connect-to-the-server",
+          "text": "Connect to the server",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema-for-functions",
+          "text": "Create a schema for functions",
+          "level": 2
+        },
+        {
+          "id": "write-the-function",
+          "text": "Write the function",
+          "level": 2
+        },
+        {
+          "id": "register-the-function",
+          "text": "Register the function",
+          "level": 2
+        },
+        {
+          "id": "see-what-the-catalog-stored",
+          "text": "See what the catalog stored",
+          "level": 2
+        },
+        {
+          "id": "run-the-function-by-name",
+          "text": "Run the function by name",
+          "level": 2
+        },
+        {
+          "id": "pass-the-right-types",
+          "text": "Pass the right types",
+          "level": 2
+        },
+        {
+          "id": "list-and-clean-up",
+          "text": "List and clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/first-python-function.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/first-python-function/snippets/asyncio_py314.py",
+          "file": "asyncio_py314.py",
+          "kind": "python",
+          "summary": "On Python 3.14, asyncio.run fails at exit once unitycatalog-ai's client is imported."
+        },
+        {
+          "url": "/docs/tutorials/first-python-function/snippets/first_function.py",
+          "file": "first_function.py",
+          "kind": "python",
+          "summary": "Register a Python function in Unity Catalog, inspect it, run it, and remove it."
+        },
+        {
+          "url": "/docs/tutorials/first-python-function/snippets/pricing.py",
+          "file": "pricing.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/read-volume-files/",
+        "title": "Working with volumes and files"
+      },
+      "next": {
+        "route": "/docs/tutorials/first-metric-view/",
+        "title": "Working with metric views"
+      }
+    },
+    {
+      "route": "/docs/tutorials/first-metric-view/",
+      "file": "tutorials/first-metric-view.md",
+      "title": "Working with metric views",
+      "summary": "Use Spark to define order KPIs once as a metric view in Unity Catalog, then query them by month, by status, and in total.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "create-the-orders-table",
+          "text": "Create the orders table",
+          "level": 2
+        },
+        {
+          "id": "define-the-metric-view",
+          "text": "Define the metric view",
+          "level": 2
+        },
+        {
+          "id": "inspect-it",
+          "text": "Inspect it",
+          "level": 2
+        },
+        {
+          "id": "query-measures-by-month",
+          "text": "Query measures by month",
+          "level": 2
+        },
+        {
+          "id": "slice-them-differently",
+          "text": "Slice them differently",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "what-you-did",
+          "text": "What you did",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/first-metric-view.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/first-metric-view/snippets/metric_view.py",
+          "file": "metric_view.py",
+          "kind": "python",
+          "summary": "Define a metric view over a small orders table with Spark, and query it."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/first-python-function/",
+        "title": "Working with Python functions"
+      },
+      "next": {
+        "route": "/docs/tutorials/register-model-mlflow/",
+        "title": "Register and reload a model with MLflow"
+      }
+    },
+    {
+      "route": "/docs/tutorials/register-model-mlflow/",
+      "file": "tutorials/register-model-mlflow.md",
+      "title": "Register and reload a model with MLflow",
+      "summary": "Train a model, log it to an MLflow tracking server, register it as a version in Unity Catalog, and load it back by name to predict.",
+      "diataxis": "tutorial",
+      "section": [
+        "Use Unity Catalog",
+        "Tutorials"
+      ],
+      "headings": [
+        {
+          "id": "start-the-environment",
+          "text": "Start the environment",
+          "level": 2
+        },
+        {
+          "id": "open-a-python-session",
+          "text": "Open a Python session",
+          "level": 2
+        },
+        {
+          "id": "point-mlflow-at-both-services",
+          "text": "Point MLflow at both services",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema-for-the-model",
+          "text": "Create a schema for the model",
+          "level": 2
+        },
+        {
+          "id": "train-a-small-model",
+          "text": "Train a small model",
+          "level": 2
+        },
+        {
+          "id": "log-it-with-a-signature",
+          "text": "Log it with a signature",
+          "level": 2
+        },
+        {
+          "id": "register-it-in-unity-catalog",
+          "text": "Register it in Unity Catalog",
+          "level": 2
+        },
+        {
+          "id": "see-where-each-service-keeps-it",
+          "text": "See where each service keeps it",
+          "level": 2
+        },
+        {
+          "id": "load-the-version-and-predict",
+          "text": "Load the version and predict",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/tutorials/register-model-mlflow.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with MLflow, simulated S3, and PostgreSQL",
+        "bundle": "/docs/env/uc-mlflow.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-mlflow.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-mlflow && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export MLFLOW_AI_GATEWAY_URL=http://localhost:8080/ai-gateway",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD=false",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD=false",
+          "export MLFLOW_REGISTRY_URI=uc:http://localhost:8080",
+          "export MLFLOW_TRACKING_URI=http://localhost:8080",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/tutorials/register-model-mlflow/snippets/hello_mlflow.py",
+          "file": "hello_mlflow.py",
+          "kind": "python",
+          "summary": "Train a small model, log it to MLflow, register it in Unity Catalog, load it back."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/first-metric-view/",
+        "title": "Working with metric views"
+      },
+      "next": {
+        "route": "/docs/how-to/manage-catalogs-and-schemas/",
+        "title": "Manage catalogs and schemas"
+      }
+    },
+    {
+      "route": "/docs/how-to/manage-catalogs-and-schemas/",
+      "file": "how-to/manage-catalogs-and-schemas.md",
+      "title": "Manage catalogs and schemas",
+      "summary": "Create, inspect, update, rename, and delete Unity Catalog catalogs and schemas with the Python SDK or the CLI.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Catalogs and schemas"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "create-a-catalog",
+          "text": "Create a catalog",
+          "level": 2
+        },
+        {
+          "id": "view-catalogs",
+          "text": "View catalogs",
+          "level": 2
+        },
+        {
+          "id": "update-a-catalog",
+          "text": "Update a catalog",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema",
+          "text": "Create a schema",
+          "level": 2
+        },
+        {
+          "id": "view-schemas",
+          "text": "View schemas",
+          "level": 2
+        },
+        {
+          "id": "update-or-rename-a-schema",
+          "text": "Update or rename a schema",
+          "level": 2
+        },
+        {
+          "id": "delete-a-schema-or-catalog",
+          "text": "Delete a schema or catalog",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/manage-catalogs-and-schemas.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.py",
+          "file": "catalogs.py",
+          "kind": "python",
+          "summary": "Create, inspect, update, and delete a catalog and a schema with the Python SDK."
+        },
+        {
+          "url": "/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.sh",
+          "file": "catalogs.sh",
+          "kind": "shell",
+          "summary": "Create, inspect, update, and delete a catalog and a schema with the uc CLI."
+        }
+      ],
+      "prev": {
+        "route": "/docs/tutorials/register-model-mlflow/",
+        "title": "Register and reload a model with MLflow"
+      },
+      "next": {
+        "route": "/docs/how-to/register-external-table/",
+        "title": "Register external Delta table"
+      }
+    },
+    {
+      "route": "/docs/how-to/register-external-table/",
+      "file": "how-to/register-external-table.md",
+      "title": "Register external Delta table",
+      "summary": "Register a Delta table that already exists in storage as an external table in Unity Catalog, inspect and read it, and drop it without losing data.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "describe-the-tables-columns",
+          "text": "Describe the table's columns",
+          "level": 2
+        },
+        {
+          "id": "register-the-table",
+          "text": "Register the table",
+          "level": 2
+        },
+        {
+          "id": "view-the-table",
+          "text": "View the table",
+          "level": 2
+        },
+        {
+          "id": "read-the-data",
+          "text": "Read the data",
+          "level": 2
+        },
+        {
+          "id": "change-a-registered-table",
+          "text": "Change a registered table",
+          "level": 2
+        },
+        {
+          "id": "drop-the-table",
+          "text": "Drop the table",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/register-external-table.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/register-external-table/snippets/external_table.py",
+          "file": "external_table.py",
+          "kind": "python",
+          "summary": "Register an existing Delta table in Unity Catalog, read it back, and drop it."
+        },
+        {
+          "url": "/docs/how-to/register-external-table/snippets/external_table.sh",
+          "file": "external_table.sh",
+          "kind": "shell",
+          "summary": "Register an existing Delta table in Unity Catalog with the uc CLI, read it back, and drop it."
+        },
+        {
+          "url": "/docs/how-to/register-external-table/snippets/read_engines.py",
+          "file": "read_engines.py",
+          "kind": "python",
+          "summary": "Read the registered external table by name from Polars, Daft, and DuckDB."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/manage-catalogs-and-schemas/",
+        "title": "Manage catalogs and schemas"
+      },
+      "next": {
+        "route": "/docs/how-to/table-storage-formats/",
+        "title": "Register external files as tables"
+      }
+    },
+    {
+      "route": "/docs/how-to/table-storage-formats/",
+      "file": "how-to/table-storage-formats.md",
+      "title": "Register external files as tables",
+      "summary": "Register Parquet, CSV, JSON, and other file-based data as external tables in Unity Catalog, and read them from PyArrow, Polars, or DuckDB.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "register-the-tables",
+          "text": "Register the tables",
+          "level": 2
+        },
+        {
+          "id": "read-the-data",
+          "text": "Read the data",
+          "level": 2
+        },
+        {
+          "id": "drop-the-tables",
+          "text": "Drop the tables",
+          "level": 2
+        },
+        {
+          "id": "when-to-use-delta-instead",
+          "text": "When to use Delta instead",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/table-storage-formats.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/table-storage-formats/snippets/file_formats.py",
+          "file": "file_formats.py",
+          "kind": "python",
+          "summary": "Register Parquet, CSV, and JSON files as external tables, read them, and drop them."
+        },
+        {
+          "url": "/docs/how-to/table-storage-formats/snippets/file_formats.sh",
+          "file": "file_formats.sh",
+          "kind": "shell",
+          "summary": "Register Parquet, CSV, and JSON files as external tables with the uc CLI, and drop them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/register-external-table/",
+        "title": "Register external Delta table"
+      },
+      "next": {
+        "route": "/docs/how-to/managed-delta-tables/",
+        "title": "Read and write catalog-managed Delta tables"
+      }
+    },
+    {
+      "route": "/docs/how-to/managed-delta-tables/",
+      "file": "how-to/managed-delta-tables.md",
+      "title": "Read and write catalog-managed Delta tables",
+      "summary": "Create catalog-managed Delta tables in Unity Catalog, and read and write them through Spark or DuckDB.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "create-a-managed-table",
+          "text": "Create a managed table",
+          "level": 2
+        },
+        {
+          "id": "required-table-features",
+          "text": "Required table features",
+          "level": 3
+        },
+        {
+          "id": "write-to-the-table",
+          "text": "Write to the table",
+          "level": 2
+        },
+        {
+          "id": "read-the-table",
+          "text": "Read the table",
+          "level": 2
+        },
+        {
+          "id": "read-an-earlier-version",
+          "text": "Read an earlier version",
+          "level": 3
+        },
+        {
+          "id": "dont-write-to-the-tables-path",
+          "text": "Don't write to the table's path",
+          "level": 2
+        },
+        {
+          "id": "drop-a-managed-table",
+          "text": "Drop a managed table",
+          "level": 2
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/managed-delta-tables.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/managed-delta-tables/snippets/managed_tables.py",
+          "file": "managed_tables.py",
+          "kind": "python",
+          "summary": "Create, write, read, and drop a catalog-managed Delta table with Spark and DuckDB."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/table-storage-formats/",
+        "title": "Register external files as tables"
+      },
+      "next": {
+        "route": "/docs/how-to/change-table-schema/",
+        "title": "Manage table schemas and properties"
+      }
+    },
+    {
+      "route": "/docs/how-to/change-table-schema/",
+      "file": "how-to/change-table-schema.md",
+      "title": "Manage table schemas and properties",
+      "summary": "Change a Unity Catalog managed table's columns and properties through Spark; change an external table with Spark or deltalake, then sync the catalog's record.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "choose-a-client",
+          "text": "Choose a client",
+          "level": 2
+        },
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "add-columns-and-comments",
+          "text": "Add columns and comments",
+          "level": 2
+        },
+        {
+          "id": "drop-or-widen-a-column",
+          "text": "Drop or widen a column",
+          "level": 2
+        },
+        {
+          "id": "set-and-remove-table-properties",
+          "text": "Set and remove table properties",
+          "level": 2
+        },
+        {
+          "id": "check-what-the-catalog-records",
+          "text": "Check what the catalog records",
+          "level": 2
+        },
+        {
+          "id": "rename-a-table-or-column",
+          "text": "Rename a table or column",
+          "level": 2
+        },
+        {
+          "id": "change-an-external-table",
+          "text": "Change an external table",
+          "level": 2
+        },
+        {
+          "id": "change-the-delta-log",
+          "text": "Change the Delta log",
+          "level": 3
+        },
+        {
+          "id": "sync-the-catalogs-record",
+          "text": "Sync the catalog's record",
+          "level": 3
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/change-table-schema.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/change-table-schema/snippets/change_schema.py",
+          "file": "change_schema.py",
+          "kind": "python",
+          "summary": "Change a managed Delta table's columns and properties with Spark, and check"
+        },
+        {
+          "url": "/docs/how-to/change-table-schema/snippets/change_schema.sh",
+          "file": "change_schema.sh",
+          "kind": "shell",
+          "summary": "Show what Unity Catalog records for a table after a schema change, with the uc CLI."
+        },
+        {
+          "url": "/docs/how-to/change-table-schema/snippets/change_schema.sql",
+          "file": "change_schema.sql",
+          "kind": "sql",
+          "summary": "Change a managed Delta table's columns and properties, rename it by copying, and change an external table's Delta log. Enter the statements in the spark-sql shell that spark_sql.sh starts."
+        },
+        {
+          "url": "/docs/how-to/change-table-schema/snippets/delta_api.py",
+          "file": "delta_api.py",
+          "kind": "python",
+          "summary": "Change an external table's columns, comment, and properties with Spark, then"
+        },
+        {
+          "url": "/docs/how-to/change-table-schema/snippets/external_deltalake.py",
+          "file": "external_deltalake.py",
+          "kind": "python",
+          "summary": "Change an external Delta table's columns, comment, and properties with"
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/managed-delta-tables/",
+        "title": "Read and write catalog-managed Delta tables"
+      },
+      "next": {
+        "route": "/docs/how-to/replace-and-overwrite-tables/",
+        "title": "Replace or overwrite a managed Delta table"
+      }
+    },
+    {
+      "route": "/docs/how-to/replace-and-overwrite-tables/",
+      "file": "how-to/replace-and-overwrite-tables.md",
+      "title": "Replace or overwrite a managed Delta table",
+      "summary": "Replace a managed Delta table's definition and rows, all of its rows, or some of them with CREATE OR REPLACE, INSERT OVERWRITE, and REPLACE WHERE in Spark SQL.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "choose-how-to-replace-data",
+          "text": "Choose how to replace data",
+          "level": 2
+        },
+        {
+          "id": "create-a-table-from-a-query",
+          "text": "Create a table from a query",
+          "level": 2
+        },
+        {
+          "id": "replace-a-tables-definition-and-rows",
+          "text": "Replace a table's definition and rows",
+          "level": 2
+        },
+        {
+          "id": "overwrite-all-rows",
+          "text": "Overwrite all rows",
+          "level": 2
+        },
+        {
+          "id": "overwrite-some-rows-or-partitions",
+          "text": "Overwrite some rows or partitions",
+          "level": 2
+        },
+        {
+          "id": "replace-the-rows-that-match-a-condition",
+          "text": "Replace the rows that match a condition",
+          "level": 3
+        },
+        {
+          "id": "overwrite-the-partitions-the-new-rows-write-to",
+          "text": "Overwrite the partitions the new rows write to",
+          "level": 3
+        },
+        {
+          "id": "check-a-replacement-and-undo-it",
+          "text": "Check a replacement and undo it",
+          "level": 2
+        },
+        {
+          "id": "what-a-replacement-cant-change",
+          "text": "What a replacement can't change",
+          "level": 2
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/replace-and-overwrite-tables.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/replace-and-overwrite-tables/snippets/replace_overwrite.py",
+          "file": "replace_overwrite.py",
+          "kind": "python",
+          "summary": "Replace and overwrite a catalog-managed Delta table with Spark SQL."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/change-table-schema/",
+        "title": "Manage table schemas and properties"
+      },
+      "next": {
+        "route": "/docs/how-to/seed-tpch-data/",
+        "title": "Seed TPC-H data into Unity Catalog"
+      }
+    },
+    {
+      "route": "/docs/how-to/seed-tpch-data/",
+      "file": "how-to/seed-tpch-data.md",
+      "title": "Seed TPC-H data into Unity Catalog",
+      "summary": "Generate the eight-table TPC-H benchmark dataset with DuckDB, write it as Delta tables, and register them in Unity Catalog as samples.tpch.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Tables"
+      ],
+      "headings": [
+        {
+          "id": "generate-tpc-h",
+          "text": "Generate TPC-H",
+          "level": 2
+        },
+        {
+          "id": "write-each-table-as-delta",
+          "text": "Write each table as Delta",
+          "level": 2
+        },
+        {
+          "id": "register-the-tables-in-unity-catalog",
+          "text": "Register the tables in Unity Catalog",
+          "level": 2
+        },
+        {
+          "id": "verify-the-catalog",
+          "text": "Verify the catalog",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/seed-tpch-data.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/seed-tpch-data/seed_tpch.py",
+          "file": "seed_tpch.py",
+          "kind": "python",
+          "summary": "Seed the classic TPC-H dataset into Unity Catalog as governed Delta tables."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/replace-and-overwrite-tables/",
+        "title": "Replace or overwrite a managed Delta table"
+      },
+      "next": {
+        "route": "/docs/how-to/sql-views/",
+        "title": "Manage SQL views"
+      }
+    },
+    {
+      "route": "/docs/how-to/sql-views/",
+      "file": "how-to/sql-views.md",
+      "title": "Manage SQL views",
+      "summary": "Create, query, and inspect SQL views in Unity Catalog, and drop and recreate a view to change it.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Views and metric views"
+      ],
+      "headings": [
+        {
+          "id": "connect-spark",
+          "text": "Connect Spark",
+          "level": 2
+        },
+        {
+          "id": "create-a-view",
+          "text": "Create a view",
+          "level": 2
+        },
+        {
+          "id": "query-it",
+          "text": "Query it",
+          "level": 2
+        },
+        {
+          "id": "list-and-inspect-views",
+          "text": "List and inspect views",
+          "level": 2
+        },
+        {
+          "id": "change-or-rename-a-view",
+          "text": "Change or rename a view",
+          "level": 2
+        },
+        {
+          "id": "register-a-view-through-the-rest-api",
+          "text": "Register a view through the REST API",
+          "level": 2
+        },
+        {
+          "id": "drop-a-view",
+          "text": "Drop a view",
+          "level": 2
+        },
+        {
+          "id": "related",
+          "text": "Related",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/sql-views.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/sql-views/snippets/register_view.py",
+          "file": "register_view.py",
+          "kind": "python",
+          "summary": "Register a SQL view through the Unity Catalog REST API, then query it with"
+        },
+        {
+          "url": "/docs/how-to/sql-views/snippets/sql_views.py",
+          "file": "sql_views.py",
+          "kind": "python",
+          "summary": "Create, query, list, inspect, change, and drop SQL views over the TPC-H sample."
+        },
+        {
+          "url": "/docs/how-to/sql-views/snippets/sql_views_spark41.py",
+          "file": "sql_views_spark41.py",
+          "kind": "python",
+          "summary": "Compatibility evidence: Spark 4.1 reads Unity Catalog views but can't"
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/seed-tpch-data/",
+        "title": "Seed TPC-H data into Unity Catalog"
+      },
+      "next": {
+        "route": "/docs/how-to/metric-views/",
+        "title": "Manage metric views"
+      }
+    },
+    {
+      "route": "/docs/how-to/metric-views/",
+      "file": "how-to/metric-views.md",
+      "title": "Manage metric views",
+      "summary": "Keep metric-view definitions in YAML files, create them with Spark over tables or queries, register them through the REST API, and change or drop them.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Views and metric views"
+      ],
+      "headings": [
+        {
+          "id": "connect-spark",
+          "text": "Connect Spark",
+          "level": 2
+        },
+        {
+          "id": "write-a-definition",
+          "text": "Write a definition",
+          "level": 2
+        },
+        {
+          "id": "create-the-metric-view",
+          "text": "Create the metric view",
+          "level": 2
+        },
+        {
+          "id": "query-it",
+          "text": "Query it",
+          "level": 2
+        },
+        {
+          "id": "compute-over-a-query",
+          "text": "Compute over a query",
+          "level": 2
+        },
+        {
+          "id": "list-and-inspect-metric-views",
+          "text": "List and inspect metric views",
+          "level": 2
+        },
+        {
+          "id": "change-a-definition",
+          "text": "Change a definition",
+          "level": 2
+        },
+        {
+          "id": "register-a-definition-through-the-rest-api",
+          "text": "Register a definition through the REST API",
+          "level": 2
+        },
+        {
+          "id": "drop-a-metric-view",
+          "text": "Drop a metric view",
+          "level": 2
+        },
+        {
+          "id": "related",
+          "text": "Related",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/metric-views.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/metric-views/snippets/metric_views.py",
+          "file": "metric_views.py",
+          "kind": "python",
+          "summary": "Create, query, inspect, change, and drop metric views over the TPC-H sample."
+        },
+        {
+          "url": "/docs/how-to/metric-views/snippets/register_metric_view.py",
+          "file": "register_metric_view.py",
+          "kind": "python",
+          "summary": "Register a metric view through the Unity Catalog REST API, then query it"
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/sql-views/",
+        "title": "Manage SQL views"
+      },
+      "next": {
+        "route": "/docs/how-to/manage-volumes/",
+        "title": "Manage volumes"
+      }
+    },
+    {
+      "route": "/docs/how-to/manage-volumes/",
+      "file": "how-to/manage-volumes.md",
+      "title": "Manage volumes",
+      "summary": "Create external and managed Unity Catalog volumes, inspect, rename, and delete them, and see what happens to their files.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Volumes and files"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "create-an-external-volume",
+          "text": "Create an external volume",
+          "level": 2
+        },
+        {
+          "id": "create-a-managed-volume",
+          "text": "Create a managed volume",
+          "level": 2
+        },
+        {
+          "id": "view-volumes",
+          "text": "View volumes",
+          "level": 2
+        },
+        {
+          "id": "work-with-the-files",
+          "text": "Work with the files",
+          "level": 2
+        },
+        {
+          "id": "rename-or-update-a-volume",
+          "text": "Rename or update a volume",
+          "level": 2
+        },
+        {
+          "id": "delete-a-volume",
+          "text": "Delete a volume",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/manage-volumes.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/manage-volumes/snippets/volumes.py",
+          "file": "volumes.py",
+          "kind": "python",
+          "summary": "Create, inspect, update, and delete external and managed volumes."
+        },
+        {
+          "url": "/docs/how-to/manage-volumes/snippets/volumes.sh",
+          "file": "volumes.sh",
+          "kind": "shell",
+          "summary": "Create, inspect, update, and delete external and managed volumes with the uc CLI."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/metric-views/",
+        "title": "Manage metric views"
+      },
+      "next": {
+        "route": "/docs/how-to/temporary-credentials/",
+        "title": "Request temporary storage credentials"
+      }
+    },
+    {
+      "route": "/docs/how-to/temporary-credentials/",
+      "file": "how-to/temporary-credentials.md",
+      "title": "Request temporary storage credentials",
+      "summary": "Ask Unity Catalog for storage credentials scoped to one table, volume, model version, or path, open storage with them, and renew them before they expire.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Volumes and files"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "get-credentials-for-a-table",
+          "text": "Get credentials for a table",
+          "level": 2
+        },
+        {
+          "id": "get-credentials-for-a-volume",
+          "text": "Get credentials for a volume",
+          "level": 2
+        },
+        {
+          "id": "get-credentials-for-a-model-version",
+          "text": "Get credentials for a model version",
+          "level": 2
+        },
+        {
+          "id": "get-credentials-for-a-path",
+          "text": "Get credentials for a path",
+          "level": 2
+        },
+        {
+          "id": "open-storage-with-the-credentials",
+          "text": "Open storage with the credentials",
+          "level": 2
+        },
+        {
+          "id": "renew-credentials-before-they-expire",
+          "text": "Renew credentials before they expire",
+          "level": 2
+        },
+        {
+          "id": "credentials-for-local-storage",
+          "text": "Credentials for local storage",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/temporary-credentials.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/temporary-credentials/snippets/temporary_credentials.py",
+          "file": "temporary_credentials.py",
+          "kind": "python",
+          "summary": "Request temporary S3 credentials for a table, a volume, a model version, and a path."
+        },
+        {
+          "url": "/docs/how-to/temporary-credentials/snippets/temporary_credentials.sh",
+          "file": "temporary_credentials.sh",
+          "kind": "shell",
+          "summary": "Request temporary S3 credentials from the Unity Catalog REST API with curl and jq."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/manage-volumes/",
+        "title": "Manage volumes"
+      },
+      "next": {
+        "route": "/docs/how-to/obstore-credentials/",
+        "title": "Use Unity Catalog credentials with obstore"
+      }
+    },
+    {
+      "route": "/docs/how-to/obstore-credentials/",
+      "file": "how-to/obstore-credentials.md",
+      "title": "Use Unity Catalog credentials with obstore",
+      "summary": "Give obstore a credential provider that asks Unity Catalog for S3, Azure, or Google Cloud credentials, works from sync and async code, and renews them before they expire.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Volumes and files"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "write-the-credential-provider",
+          "text": "Write the credential provider",
+          "level": 2
+        },
+        {
+          "id": "open-a-volume",
+          "text": "Open a volume",
+          "level": 2
+        },
+        {
+          "id": "open-a-tables-files",
+          "text": "Open a table's files",
+          "level": 2
+        },
+        {
+          "id": "open-a-path",
+          "text": "Open a path",
+          "level": 2
+        },
+        {
+          "id": "how-obstore-renews-the-credentials",
+          "text": "How obstore renews the credentials",
+          "level": 2
+        },
+        {
+          "id": "close-the-provider",
+          "text": "Close the provider",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/obstore-credentials.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/obstore-credentials/snippets/obstore_credentials.py",
+          "file": "obstore_credentials.py",
+          "kind": "python",
+          "summary": "Give obstore a credential provider that asks Unity Catalog for storage credentials."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/temporary-credentials/",
+        "title": "Request temporary storage credentials"
+      },
+      "next": {
+        "route": "/docs/how-to/marimo-remote-storage/",
+        "title": "Use volumes as marimo remote storage"
+      }
+    },
+    {
+      "route": "/docs/how-to/marimo-remote-storage/",
+      "file": "how-to/marimo-remote-storage.md",
+      "title": "Use volumes as marimo remote storage",
+      "summary": "Open a Unity Catalog volume as an obstore store in a marimo notebook, so its files show in the Remote Storage panel and cells read them with vended credentials.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Volumes and files"
+      ],
+      "headings": [
+        {
+          "id": "open-a-notebook",
+          "text": "Open a notebook",
+          "level": 2
+        },
+        {
+          "id": "add-the-credential-provider",
+          "text": "Add the credential provider",
+          "level": 2
+        },
+        {
+          "id": "open-the-volume",
+          "text": "Open the volume",
+          "level": 2
+        },
+        {
+          "id": "read-a-file-in-a-cell",
+          "text": "Read a file in a cell",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/marimo-remote-storage.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/marimo-remote-storage/snippets/notebook.py",
+          "file": "notebook.py",
+          "kind": "python",
+          "summary": "Browse a Unity Catalog volume in marimo's Remote Storage panel."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/obstore-credentials/",
+        "title": "Use Unity Catalog credentials with obstore"
+      },
+      "next": {
+        "route": "/docs/how-to/manage-python-functions/",
+        "title": "Manage Python functions"
+      }
+    },
+    {
+      "route": "/docs/how-to/manage-python-functions/",
+      "file": "how-to/manage-python-functions.md",
+      "title": "Manage Python functions",
+      "summary": "Unity Catalog stores a Python function's signature, docstring, and body, and the caller runs it. Register, view, replace, and delete one with unitycatalog-ai.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Functions and AI"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "write-a-function-the-catalog-can-store",
+          "text": "Write a function the catalog can store",
+          "level": 2
+        },
+        {
+          "id": "type-hints",
+          "text": "Type hints",
+          "level": 3
+        },
+        {
+          "id": "docstrings",
+          "text": "Docstrings",
+          "level": 3
+        },
+        {
+          "id": "imports",
+          "text": "Imports",
+          "level": 3
+        },
+        {
+          "id": "register-a-function",
+          "text": "Register a function",
+          "level": 2
+        },
+        {
+          "id": "register-a-function-that-calls-helpers",
+          "text": "Register a function that calls helpers",
+          "level": 2
+        },
+        {
+          "id": "view-a-function-and-get-its-source-back",
+          "text": "View a function and get its source back",
+          "level": 2
+        },
+        {
+          "id": "replace-a-function",
+          "text": "Replace a function",
+          "level": 2
+        },
+        {
+          "id": "delete-a-function",
+          "text": "Delete a function",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/manage-python-functions.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/manage-python-functions/snippets/caching.py",
+          "file": "caching.py",
+          "kind": "python",
+          "summary": "How a client's function cache behaves across a replace."
+        },
+        {
+          "url": "/docs/how-to/manage-python-functions/snippets/functions.py",
+          "file": "functions.py",
+          "kind": "python",
+          "summary": "Register, view, replace, and delete Python functions in Unity Catalog."
+        },
+        {
+          "url": "/docs/how-to/manage-python-functions/snippets/signatures.py",
+          "file": "signatures.py",
+          "kind": "python",
+          "summary": "Which Python signatures and docstrings the catalog can store."
+        },
+        {
+          "url": "/docs/how-to/manage-python-functions/snippets/pricing.py",
+          "file": "pricing.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/marimo-remote-storage/",
+        "title": "Use volumes as marimo remote storage"
+      },
+      "next": {
+        "route": "/docs/how-to/run-functions/",
+        "title": "Run catalog functions in applications and notebooks"
+      }
+    },
+    {
+      "route": "/docs/how-to/run-functions/",
+      "file": "how-to/run-functions.md",
+      "title": "Run catalog functions in applications and notebooks",
+      "summary": "unitycatalog-ai runs a catalog function on the caller's machine, in a sandboxed child process by default. Call it sync or async, set limits, and read errors.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Functions and AI"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "call-a-function-from-synchronous-code",
+          "text": "Call a function from synchronous code",
+          "level": 2
+        },
+        {
+          "id": "call-a-function-from-async-code",
+          "text": "Call a function from async code",
+          "level": 2
+        },
+        {
+          "id": "run-calls-concurrently",
+          "text": "Run calls concurrently",
+          "level": 3
+        },
+        {
+          "id": "call-from-worker-threads",
+          "text": "Call from worker threads",
+          "level": 3
+        },
+        {
+          "id": "run-on-asyncios-default-event-loop",
+          "text": "Run on asyncio's default event loop",
+          "level": 3
+        },
+        {
+          "id": "call-a-function-in-a-marimo-notebook",
+          "text": "Call a function in a marimo notebook",
+          "level": 2
+        },
+        {
+          "id": "choose-an-execution-mode",
+          "text": "Choose an execution mode",
+          "level": 2
+        },
+        {
+          "id": "make-dependencies-available",
+          "text": "Make dependencies available",
+          "level": 2
+        },
+        {
+          "id": "set-time-and-memory-limits",
+          "text": "Set time and memory limits",
+          "level": 2
+        },
+        {
+          "id": "handle-errors",
+          "text": "Handle errors",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/run-functions.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/run-functions/snippets/errors.py",
+          "file": "errors.py",
+          "kind": "python",
+          "summary": "The two ways a call fails: an exception raised before the function runs,"
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/limits.py",
+          "file": "limits.py",
+          "kind": "python",
+          "summary": "The sandbox's wall-clock, CPU-time, and memory limits, read from"
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/modes.py",
+          "file": "modes.py",
+          "kind": "python",
+          "summary": "Sandbox and local execution modes: where a call runs, what each refuses,"
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/notebook.py",
+          "file": "notebook.py",
+          "kind": "python",
+          "summary": "Call a catalog function from notebook cells: a marimo notebook."
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/run_async.py",
+          "file": "run_async.py",
+          "kind": "python",
+          "summary": "Call catalog functions from async code: one call, concurrent calls, and"
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/run_sync.py",
+          "file": "run_sync.py",
+          "kind": "python",
+          "summary": "Call a catalog function from a plain, synchronous Python script."
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/seed.py",
+          "file": "seed.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        },
+        {
+          "url": "/docs/how-to/run-functions/snippets/pricing.py",
+          "file": "pricing.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/manage-python-functions/",
+        "title": "Manage Python functions"
+      },
+      "next": {
+        "route": "/docs/how-to/langchain-tools/",
+        "title": "Use catalog functions as LangChain tools"
+      }
+    },
+    {
+      "route": "/docs/how-to/langchain-tools/",
+      "file": "how-to/langchain-tools.md",
+      "title": "Use catalog functions as LangChain tools",
+      "summary": "UCFunctionToolkit turns Unity Catalog functions into LangChain tools. Each call fetches the function from the catalog and runs it on the agent's machine.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Functions and AI"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "register-the-functions-the-agent-may-call",
+          "text": "Register the functions the agent may call",
+          "level": 2
+        },
+        {
+          "id": "choose-which-functions-become-tools",
+          "text": "Choose which functions become tools",
+          "level": 2
+        },
+        {
+          "id": "check-what-the-model-sees",
+          "text": "Check what the model sees",
+          "level": 2
+        },
+        {
+          "id": "call-a-tool-directly",
+          "text": "Call a tool directly",
+          "level": 2
+        },
+        {
+          "id": "give-the-tools-to-an-agent",
+          "text": "Give the tools to an agent",
+          "level": 2
+        },
+        {
+          "id": "workaround-run-the-tools-on-the-sessions-event-loop",
+          "text": "Workaround: run the tools on the session's event loop",
+          "level": 3
+        },
+        {
+          "id": "run-the-agent",
+          "text": "Run the agent",
+          "level": 3
+        },
+        {
+          "id": "trace-the-agents-tool-calls-with-mlflow",
+          "text": "Trace the agent's tool calls with MLflow",
+          "level": 2
+        },
+        {
+          "id": "route-the-model-through-the-mlflow-ai-gateway",
+          "text": "Route the model through the MLflow AI Gateway",
+          "level": 2
+        },
+        {
+          "id": "control-who-can-call-a-function",
+          "text": "Control who can call a function",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/langchain-tools.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with MLflow, simulated S3, and PostgreSQL",
+        "bundle": "/docs/env/uc-mlflow.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-mlflow.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-mlflow && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export MLFLOW_AI_GATEWAY_URL=http://localhost:8080/ai-gateway",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD=false",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD=false",
+          "export MLFLOW_REGISTRY_URI=uc:http://localhost:8080",
+          "export MLFLOW_TRACKING_URI=http://localhost:8080",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/langchain-tools/snippets/error_py313.py",
+          "file": "error_py313.py",
+          "kind": "python",
+          "summary": "On Python 3.13.0-3.13.2, an error a catalog function raises is lost through the tool."
+        },
+        {
+          "url": "/docs/how-to/langchain-tools/snippets/tool_types.py",
+          "file": "tool_types.py",
+          "kind": "python",
+          "summary": "Which parameter and return types survive each way an agent calls a tool."
+        },
+        {
+          "url": "/docs/how-to/langchain-tools/snippets/tools.py",
+          "file": "tools.py",
+          "kind": "python",
+          "summary": "Turn Unity Catalog functions into LangChain tools, inspect them, call them,"
+        },
+        {
+          "url": "/docs/how-to/langchain-tools/snippets/pricing.py",
+          "file": "pricing.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/run-functions/",
+        "title": "Run catalog functions in applications and notebooks"
+      },
+      "next": {
+        "route": "/docs/how-to/manage-models/",
+        "title": "Manage registered models"
+      }
+    },
+    {
+      "route": "/docs/how-to/manage-models/",
+      "file": "how-to/manage-models.md",
+      "title": "Manage registered models",
+      "summary": "Register MLflow models as Unity Catalog model versions, load a version by number, and update, rename, and delete models and versions.",
+      "diataxis": "how-to",
+      "section": [
+        "Use Unity Catalog",
+        "Models"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "register-a-model-version",
+          "text": "Register a model version",
+          "level": 2
+        },
+        {
+          "id": "view-models-and-versions",
+          "text": "View models and versions",
+          "level": 2
+        },
+        {
+          "id": "load-a-model-version",
+          "text": "Load a model version",
+          "level": 2
+        },
+        {
+          "id": "update-comments",
+          "text": "Update comments",
+          "level": 2
+        },
+        {
+          "id": "rename-a-model",
+          "text": "Rename a model",
+          "level": 2
+        },
+        {
+          "id": "delete-versions-and-models",
+          "text": "Delete versions and models",
+          "level": 2
+        },
+        {
+          "id": "delete-a-version",
+          "text": "Delete a version",
+          "level": 3
+        },
+        {
+          "id": "delete-a-model",
+          "text": "Delete a model",
+          "level": 3
+        },
+        {
+          "id": "what-happens-to-the-files",
+          "text": "What happens to the files",
+          "level": 3
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/manage-models.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with MLflow, simulated S3, and PostgreSQL",
+        "bundle": "/docs/env/uc-mlflow.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-mlflow.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-mlflow && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export MLFLOW_AI_GATEWAY_URL=http://localhost:8080/ai-gateway",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD=false",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD=false",
+          "export MLFLOW_REGISTRY_URI=uc:http://localhost:8080",
+          "export MLFLOW_TRACKING_URI=http://localhost:8080",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/manage-models/snippets/models.sh",
+          "file": "models.sh",
+          "kind": "shell",
+          "summary": "View, update, rename, and delete registered models with the uc CLI."
+        },
+        {
+          "url": "/docs/how-to/manage-models/snippets/models_mlflow.py",
+          "file": "models_mlflow.py",
+          "kind": "python",
+          "summary": "Register, view, load, update, and delete Unity Catalog models with MLflow."
+        },
+        {
+          "url": "/docs/how-to/manage-models/snippets/models_sdk.py",
+          "file": "models_sdk.py",
+          "kind": "python",
+          "summary": "View, update, rename, and delete registered models with the Python SDK."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/langchain-tools/",
+        "title": "Use catalog functions as LangChain tools"
+      },
+      "next": {
+        "route": "/docs/how-to/configure-spark/",
+        "title": "Use Spark with Unity Catalog"
+      }
+    },
+    {
+      "route": "/docs/how-to/configure-spark/",
+      "file": "how-to/configure-spark.md",
+      "title": "Use Spark with Unity Catalog",
+      "summary": "Pick matching Spark, Delta, and Unity Catalog connector versions, register a Unity Catalog catalog in a SparkSession, and choose how Spark authenticates to the server.",
+      "diataxis": "how-to",
+      "section": [
+        "Connect engines and clients"
+      ],
+      "headings": [
+        {
+          "id": "choose-matching-versions",
+          "text": "Choose matching versions",
+          "level": 2
+        },
+        {
+          "id": "connector-versions-by-release",
+          "text": "Connector versions by release",
+          "level": 3
+        },
+        {
+          "id": "configure-the-session",
+          "text": "Configure the session",
+          "level": 2
+        },
+        {
+          "id": "authenticate-to-the-server",
+          "text": "Authenticate to the server",
+          "level": 2
+        },
+        {
+          "id": "check-the-connection",
+          "text": "Check the connection",
+          "level": 2
+        },
+        {
+          "id": "tune-storage-credentials",
+          "text": "Tune storage credentials",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/configure-spark.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/configure-spark/snippets/spark_session.py",
+          "file": "spark_session.py",
+          "kind": "python",
+          "summary": "Connect Spark to Unity Catalog and list what the catalog holds."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/manage-models/",
+        "title": "Manage registered models"
+      },
+      "next": {
+        "route": "/docs/how-to/duckdb/",
+        "title": "Use DuckDB with Unity Catalog"
+      }
+    },
+    {
+      "route": "/docs/how-to/duckdb/",
+      "file": "how-to/duckdb.md",
+      "title": "Use DuckDB with Unity Catalog",
+      "summary": "Attach a Unity Catalog catalog in DuckDB, query its Delta tables with SQL, append rows, and create tables.",
+      "diataxis": "how-to",
+      "section": [
+        "Connect engines and clients"
+      ],
+      "headings": [
+        {
+          "id": "install-the-extensions",
+          "text": "Install the extensions",
+          "level": 2
+        },
+        {
+          "id": "attach-a-catalog",
+          "text": "Attach a catalog",
+          "level": 2
+        },
+        {
+          "id": "list-tables",
+          "text": "List tables",
+          "level": 2
+        },
+        {
+          "id": "query-a-table",
+          "text": "Query a table",
+          "level": 2
+        },
+        {
+          "id": "append-rows",
+          "text": "Append rows",
+          "level": 2
+        },
+        {
+          "id": "create-change-and-drop-tables",
+          "text": "Create, change, and drop tables",
+          "level": 2
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/duckdb.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/duckdb/snippets/duckdb_tables.py",
+          "file": "duckdb_tables.py",
+          "kind": "python",
+          "summary": "Read and append to a Unity Catalog managed Delta table from DuckDB."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/configure-spark/",
+        "title": "Use Spark with Unity Catalog"
+      },
+      "next": {
+        "route": "/docs/how-to/python-dataframes/",
+        "title": "Query Unity Catalog tables from Python DataFrame libraries"
+      }
+    },
+    {
+      "route": "/docs/how-to/python-dataframes/",
+      "file": "how-to/python-dataframes.md",
+      "title": "Query Unity Catalog tables from Python DataFrame libraries",
+      "summary": "Find, read, and append to external Delta tables in Unity Catalog from Polars, Daft, and pandas, with storage credentials vended by the server.",
+      "diataxis": "how-to",
+      "section": [
+        "Connect engines and clients"
+      ],
+      "headings": [
+        {
+          "id": "connect-to-the-server",
+          "text": "Connect to the server",
+          "level": 2
+        },
+        {
+          "id": "list-tables",
+          "text": "List tables",
+          "level": 2
+        },
+        {
+          "id": "read-a-table",
+          "text": "Read a table",
+          "level": 2
+        },
+        {
+          "id": "append-rows",
+          "text": "Append rows",
+          "level": 2
+        },
+        {
+          "id": "other-table-operations",
+          "text": "Other table operations",
+          "level": 2
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/python-dataframes.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/python-dataframes/snippets/daft_tables.py",
+          "file": "daft_tables.py",
+          "kind": "python",
+          "summary": "List and read a Unity Catalog table on local storage from Daft."
+        },
+        {
+          "url": "/docs/how-to/python-dataframes/snippets/managed_tables_fail.py",
+          "file": "managed_tables_fail.py",
+          "kind": "python",
+          "summary": "Pin that Polars, Daft, and pandas (deltalake) can't read or append to a catalog-managed table."
+        },
+        {
+          "url": "/docs/how-to/python-dataframes/snippets/pandas_tables.py",
+          "file": "pandas_tables.py",
+          "kind": "python",
+          "summary": "Read and append to a Unity Catalog table on S3 from pandas, through deltalake."
+        },
+        {
+          "url": "/docs/how-to/python-dataframes/snippets/polars_tables.py",
+          "file": "polars_tables.py",
+          "kind": "python",
+          "summary": "List, read, and append to a Unity Catalog table on S3 from Polars."
+        },
+        {
+          "url": "/docs/how-to/python-dataframes/snippets/_seed.py",
+          "file": "_seed.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/duckdb/",
+        "title": "Use DuckDB with Unity Catalog"
+      },
+      "next": {
+        "route": "/docs/how-to/iceberg-rest/",
+        "title": "Use Iceberg REST clients with Unity Catalog"
+      }
+    },
+    {
+      "route": "/docs/how-to/iceberg-rest/",
+      "file": "how-to/iceberg-rest.md",
+      "title": "Use Iceberg REST clients with Unity Catalog",
+      "summary": "Connect Spark, DuckDB, PyIceberg, and DataFusion to Unity Catalog's Iceberg REST API, then create, write, change, rename, and drop managed Iceberg tables with vended S3 credentials.",
+      "diataxis": "how-to",
+      "section": [
+        "Connect engines and clients"
+      ],
+      "headings": [
+        {
+          "id": "how-iceberg-names-map-to-the-catalog",
+          "text": "How Iceberg names map to the catalog",
+          "level": 2
+        },
+        {
+          "id": "connect-a-client",
+          "text": "Connect a client",
+          "level": 2
+        },
+        {
+          "id": "create-a-schema",
+          "text": "Create a schema",
+          "level": 2
+        },
+        {
+          "id": "create-a-table",
+          "text": "Create a table",
+          "level": 2
+        },
+        {
+          "id": "write-and-read-rows",
+          "text": "Write and read rows",
+          "level": 2
+        },
+        {
+          "id": "update-and-delete-rows",
+          "text": "Update and delete rows",
+          "level": 2
+        },
+        {
+          "id": "rename-and-drop-a-table",
+          "text": "Rename and drop a table",
+          "level": 2
+        },
+        {
+          "id": "join-delta-and-iceberg-tables-in-spark",
+          "text": "Join Delta and Iceberg tables in Spark",
+          "level": 2
+        },
+        {
+          "id": "required-privileges",
+          "text": "Required privileges",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/iceberg-rest.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/datafusion_iceberg.rs",
+          "file": "datafusion_iceberg.rs",
+          "kind": "rust",
+          "summary": "Create, change, and drop an Iceberg table in Unity Catalog from DataFusion in Rust, through"
+        },
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/duckdb_iceberg.py",
+          "file": "duckdb_iceberg.py",
+          "kind": "python",
+          "summary": "Create, change, and drop an Iceberg table in Unity Catalog from DuckDB, through Iceberg REST."
+        },
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/pyiceberg_tables.py",
+          "file": "pyiceberg_tables.py",
+          "kind": "python",
+          "summary": "Create, change, and drop an Iceberg table in Unity Catalog from PyIceberg, through Iceberg REST."
+        },
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/spark_cross_format.py",
+          "file": "spark_cross_format.py",
+          "kind": "python",
+          "summary": "Join a Delta table and an Iceberg table from the same Unity Catalog catalog in one Spark session."
+        },
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/spark_iceberg.py",
+          "file": "spark_iceberg.py",
+          "kind": "python",
+          "summary": "Create, change, and drop an Iceberg table in Unity Catalog from Spark, through Iceberg REST."
+        },
+        {
+          "url": "/docs/how-to/iceberg-rest/snippets/_setup.py",
+          "file": "_setup.py",
+          "kind": "python",
+          "summary": "Imported by the scripts above; save it beside them."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/python-dataframes/",
+        "title": "Query Unity Catalog tables from Python DataFrame libraries"
+      },
+      "next": {
+        "route": "/docs/how-to/java-client/",
+        "title": "Use the Java client in an application"
+      }
+    },
+    {
+      "route": "/docs/how-to/java-client/",
+      "file": "how-to/java-client.md",
+      "title": "Use the Java client in an application",
+      "summary": "Add the unitycatalog-client artifact to a JVM application, connect with a token, create and look up catalogs, schemas, and tables, page through lists, and handle API errors.",
+      "diataxis": "how-to",
+      "section": [
+        "Connect engines and clients"
+      ],
+      "headings": [
+        {
+          "id": "add-the-dependency",
+          "text": "Add the dependency",
+          "level": 2
+        },
+        {
+          "id": "connect-to-the-server",
+          "text": "Connect to the server",
+          "level": 2
+        },
+        {
+          "id": "create-a-catalog-and-a-schema",
+          "text": "Create a catalog and a schema",
+          "level": 2
+        },
+        {
+          "id": "page-through-a-list",
+          "text": "Page through a list",
+          "level": 2
+        },
+        {
+          "id": "register-a-table",
+          "text": "Register a table",
+          "level": 2
+        },
+        {
+          "id": "look-up-objects-by-name",
+          "text": "Look up objects by name",
+          "level": 2
+        },
+        {
+          "id": "handle-errors",
+          "text": "Handle errors",
+          "level": 2
+        },
+        {
+          "id": "clean-up",
+          "text": "Clean up",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/java-client.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/java-client/snippets/JavaClient.java",
+          "file": "JavaClient.java",
+          "kind": "java",
+          "summary": "Manage Unity Catalog objects from Java with the unitycatalog-client SDK."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/iceberg-rest/",
+        "title": "Use Iceberg REST clients with Unity Catalog"
+      },
+      "next": {
+        "route": "/docs/how-to/run-server-with-java/",
+        "title": "Run the Unity Catalog server with Java"
+      }
+    },
+    {
+      "route": "/docs/how-to/run-server-with-java/",
+      "file": "how-to/run-server-with-java.md",
+      "title": "Run the Unity Catalog server with Java",
+      "summary": "Start the Unity Catalog server from its published Maven artifact with JBang, without Docker, and keep its metadata in an H2 file between restarts.",
+      "diataxis": "how-to",
+      "section": [
+        "Operate Unity Catalog",
+        "Plan and deploy"
+      ],
+      "headings": [
+        {
+          "id": "start-the-server",
+          "text": "Start the server",
+          "level": 2
+        },
+        {
+          "id": "check-that-its-running",
+          "text": "Check that it's running",
+          "level": 2
+        },
+        {
+          "id": "keep-the-metadata-between-restarts",
+          "text": "Keep the metadata between restarts",
+          "level": 2
+        },
+        {
+          "id": "configure-the-server",
+          "text": "Configure the server",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/run-server-with-java.md",
+      "environment": null,
+      "scripts": [
+        {
+          "url": "/docs/how-to/run-server-with-java/snippets/run_server.sh",
+          "file": "run_server.sh",
+          "kind": "shell",
+          "summary": "Run the Unity Catalog server from its Maven artifact with JBang, keep its metadata in an H2 file, and query it. Each region is one step of the page."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/java-client/",
+        "title": "Use the Java client in an application"
+      },
+      "next": {
+        "route": "/docs/how-to/configure-backend-db/",
+        "title": "Configure PostgreSQL as the metadata database"
+      }
+    },
+    {
+      "route": "/docs/how-to/configure-backend-db/",
+      "file": "how-to/configure-backend-db.md",
+      "title": "Configure PostgreSQL as the metadata database",
+      "summary": "Store Unity Catalog's metadata in PostgreSQL instead of the default in-container H2 database, so catalogs survive restarts.",
+      "diataxis": "how-to",
+      "section": [
+        "Operate Unity Catalog",
+        "Plan and deploy"
+      ],
+      "headings": [
+        {
+          "id": "create-the-database",
+          "text": "Create the database",
+          "level": 2
+        },
+        {
+          "id": "point-the-server-at-postgresql",
+          "text": "Point the server at PostgreSQL",
+          "level": 2
+        },
+        {
+          "id": "try-it-on-the-local-server",
+          "text": "Try it on the local server",
+          "level": 2
+        },
+        {
+          "id": "check-that-metadata-survives-a-new-container",
+          "text": "Check that metadata survives a new container",
+          "level": 2
+        },
+        {
+          "id": "back-up-and-upgrade",
+          "text": "Back up and upgrade",
+          "level": 2
+        },
+        {
+          "id": "reset-the-local-metadata",
+          "text": "Reset the local metadata",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/configure-backend-db.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/configure-backend-db/snippets/backend_db.sh",
+          "file": "backend_db.sh",
+          "kind": "shell",
+          "summary": "Run the local server on PostgreSQL and check that its metadata survives."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/run-server-with-java/",
+        "title": "Run the Unity Catalog server with Java"
+      },
+      "next": {
+        "route": "/docs/how-to/configure-aws-storage/",
+        "title": "Configure AWS storage credentials and external locations"
+      }
+    },
+    {
+      "route": "/docs/how-to/configure-aws-storage/",
+      "file": "how-to/configure-aws-storage.md",
+      "title": "Configure AWS storage credentials and external locations",
+      "summary": "Run Unity Catalog on AWS under a master IAM role, register an S3 storage role as a storage credential, bind an S3 prefix to it with an external location, and check that the server vends scoped credentials.",
+      "diataxis": "how-to",
+      "section": [
+        "Operate Unity Catalog",
+        "Storage"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "run-the-server-as-a-master-role",
+          "text": "Run the server as a master role",
+          "level": 2
+        },
+        {
+          "id": "run-outside-aws",
+          "text": "Run outside AWS",
+          "level": 3
+        },
+        {
+          "id": "create-a-storage-credential",
+          "text": "Create a storage credential",
+          "level": 2
+        },
+        {
+          "id": "update-the-storage-roles-trust-policy",
+          "text": "Update the storage role's trust policy",
+          "level": 2
+        },
+        {
+          "id": "create-an-external-location",
+          "text": "Create an external location",
+          "level": 2
+        },
+        {
+          "id": "check-that-the-server-vends-credentials",
+          "text": "Check that the server vends credentials",
+          "level": 2
+        },
+        {
+          "id": "view-storage-credentials-and-external-locations",
+          "text": "View storage credentials and external locations",
+          "level": 2
+        },
+        {
+          "id": "update-a-credential-or-external-location",
+          "text": "Update a credential or external location",
+          "level": 2
+        },
+        {
+          "id": "delete-an-external-location-and-credential",
+          "text": "Delete an external location and credential",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/configure-aws-storage.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/configure-aws-storage/snippets/aws_storage.py",
+          "file": "aws_storage.py",
+          "kind": "python",
+          "summary": "Register an S3 storage credential and external location, and check vending."
+        },
+        {
+          "url": "/docs/how-to/configure-aws-storage/snippets/aws_storage.sh",
+          "file": "aws_storage.sh",
+          "kind": "shell",
+          "summary": "Register an S3 storage credential and external location with the uc CLI, and check vending."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/configure-backend-db/",
+        "title": "Configure PostgreSQL as the metadata database"
+      },
+      "next": {
+        "route": "/docs/how-to/managed-storage-s3/",
+        "title": "Set managed storage for catalogs and schemas on S3"
+      }
+    },
+    {
+      "route": "/docs/how-to/managed-storage-s3/",
+      "file": "how-to/managed-storage-s3.md",
+      "title": "Set managed storage for catalogs and schemas on S3",
+      "summary": "Give Unity Catalog catalogs and schemas S3 storage roots under an external location, and see where the server places managed volumes and tables.",
+      "diataxis": "how-to",
+      "section": [
+        "Operate Unity Catalog",
+        "Storage"
+      ],
+      "headings": [
+        {
+          "id": "set-up-the-client",
+          "text": "Set up the client",
+          "level": 2
+        },
+        {
+          "id": "create-a-catalog-with-a-storage-root",
+          "text": "Create a catalog with a storage root",
+          "level": 2
+        },
+        {
+          "id": "give-a-schema-its-own-storage-root",
+          "text": "Give a schema its own storage root",
+          "level": 2
+        },
+        {
+          "id": "create-managed-objects",
+          "text": "Create managed objects",
+          "level": 2
+        },
+        {
+          "id": "delete-a-catalog-with-managed-storage",
+          "text": "Delete a catalog with managed storage",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/how-to/managed-storage-s3.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+        "bundle": "/docs/env/uc-aws.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/how-to/managed-storage-s3/snippets/managed_storage.py",
+          "file": "managed_storage.py",
+          "kind": "python",
+          "summary": "Give a catalog and a schema S3 storage roots and see where managed data lands."
+        },
+        {
+          "url": "/docs/how-to/managed-storage-s3/snippets/managed_storage.sh",
+          "file": "managed_storage.sh",
+          "kind": "shell",
+          "summary": "Give a catalog and a schema S3 storage roots with the uc CLI and see where managed data lands."
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/configure-aws-storage/",
+        "title": "Configure AWS storage credentials and external locations"
+      },
+      "next": {
+        "route": "/docs/explanation/delta-api/",
+        "title": "The Unity Catalog Delta API"
+      }
+    },
+    {
+      "route": "/docs/explanation/delta-api/",
+      "file": "explanation/delta-api.md",
+      "title": "The Unity Catalog Delta API",
+      "summary": "Unity Catalog's Delta API applies requirements and updates all or nothing, and carries Delta's own schema and table features on the wire.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "Architecture"
+      ],
+      "headings": [
+        {
+          "id": "one-endpoint-takes-requirements-and-updates",
+          "text": "One endpoint takes requirements and updates",
+          "level": 2
+        },
+        {
+          "id": "negotiation-comes-first",
+          "text": "Negotiation comes first",
+          "level": 2
+        },
+        {
+          "id": "the-catalog-sets-table-features-at-staging",
+          "text": "The catalog sets table features at staging",
+          "level": 2
+        },
+        {
+          "id": "optimistic-concurrency-with-assert-table-uuid-and-assert-etag",
+          "text": "Optimistic concurrency with assert-table-uuid and assert-etag",
+          "level": 2
+        },
+        {
+          "id": "retry-or-rebase",
+          "text": "Retry or rebase",
+          "level": 3
+        },
+        {
+          "id": "metadata-changes-travel-with-add-commit",
+          "text": "Metadata changes travel with add-commit",
+          "level": 2
+        },
+        {
+          "id": "deltas-own-schema-on-the-wire",
+          "text": "Delta's own schema on the wire",
+          "level": 2
+        },
+        {
+          "id": "further-reading",
+          "text": "Further reading",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/delta-api.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/explanation/delta-api/snippets/delta_api_semantics.py",
+          "file": "delta_api_semantics.py",
+          "kind": "python",
+          "summary": "How the Unity Catalog Delta API behaves on the wire, with plain HTTP. It is"
+        }
+      ],
+      "prev": {
+        "route": "/docs/how-to/managed-storage-s3/",
+        "title": "Set managed storage for catalogs and schemas on S3"
+      },
+      "next": {
+        "route": "/docs/explanation/uc-basics/",
+        "title": "Core concepts"
+      }
+    },
+    {
+      "route": "/docs/explanation/uc-basics/",
+      "file": "explanation/uc-basics.md",
+      "title": "Core concepts",
+      "summary": "How Unity Catalog organizes data and AI assets into a three-level namespace, how catalogs reach storage, which privileges the open source server enforces on each object, and how it manages users.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "Data and governance"
+      ],
+      "headings": [
+        {
+          "id": "the-three-level-namespace",
+          "text": "The three-level namespace",
+          "level": 2
+        },
+        {
+          "id": "catalog-administration",
+          "text": "Catalog administration",
+          "level": 2
+        },
+        {
+          "id": "metastore-catalogs-and-schemas",
+          "text": "Metastore, catalogs, and schemas",
+          "level": 3
+        },
+        {
+          "id": "external-data-access",
+          "text": "External data access",
+          "level": 3
+        },
+        {
+          "id": "managed-storage-roots",
+          "text": "Managed storage roots",
+          "level": 3
+        },
+        {
+          "id": "data-and-ai-assets",
+          "text": "Data and AI assets",
+          "level": 2
+        },
+        {
+          "id": "objects-versus-files",
+          "text": "Objects versus files",
+          "level": 2
+        },
+        {
+          "id": "ownership-and-privileges",
+          "text": "Ownership and privileges",
+          "level": 2
+        },
+        {
+          "id": "principals-and-users",
+          "text": "Principals and users",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/uc-basics.md",
+      "environment": null,
+      "scripts": [],
+      "prev": {
+        "route": "/docs/explanation/delta-api/",
+        "title": "The Unity Catalog Delta API"
+      },
+      "next": {
+        "route": "/docs/explanation/external-and-managed-tables/",
+        "title": "External tables and catalog-managed Delta tables"
+      }
+    },
+    {
+      "route": "/docs/explanation/external-and-managed-tables/",
+      "file": "explanation/external-and-managed-tables.md",
+      "title": "External tables and catalog-managed Delta tables",
+      "summary": "Who owns a table's files and who decides its latest version, how a catalog-managed Delta table is created and committed through the Delta API, and why path-based access isn't a substitute.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "Data and governance"
+      ],
+      "headings": [
+        {
+          "id": "two-questions-decide-the-kind",
+          "text": "Two questions decide the kind",
+          "level": 2
+        },
+        {
+          "id": "why-a-catalog-should-accept-commits",
+          "text": "Why a catalog should accept commits",
+          "level": 2
+        },
+        {
+          "id": "the-lifecycle-through-the-delta-api",
+          "text": "The lifecycle through the Delta API",
+          "level": 2
+        },
+        {
+          "id": "what-clients-must-support",
+          "text": "What clients must support",
+          "level": 2
+        },
+        {
+          "id": "when-to-use-which",
+          "text": "When to use which",
+          "level": 2
+        },
+        {
+          "id": "further-reading",
+          "text": "Further reading",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/external-and-managed-tables.md",
+      "environment": null,
+      "scripts": [],
+      "prev": {
+        "route": "/docs/explanation/uc-basics/",
+        "title": "Core concepts"
+      },
+      "next": {
+        "route": "/docs/explanation/credential-vending/",
+        "title": "Credential vending"
+      }
+    },
+    {
+      "route": "/docs/explanation/credential-vending/",
+      "file": "explanation/credential-vending.md",
+      "title": "Credential vending",
+      "summary": "How Unity Catalog issues short-lived storage credentials scoped to one table, volume, or path, and why that makes the catalog the gatekeeper for data access.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "Data and governance"
+      ],
+      "headings": [
+        {
+          "id": "why-vend-credentials-instead-of-sharing-keys",
+          "text": "Why vend credentials instead of sharing keys",
+          "level": 2
+        },
+        {
+          "id": "the-flow",
+          "text": "The flow",
+          "level": 2
+        },
+        {
+          "id": "what-a-credential-covers",
+          "text": "What a credential covers",
+          "level": 2
+        },
+        {
+          "id": "how-the-server-mints-a-credential",
+          "text": "How the server mints a credential",
+          "level": 2
+        },
+        {
+          "id": "expiry-and-renewal",
+          "text": "Expiry and renewal",
+          "level": 2
+        },
+        {
+          "id": "where-the-trust-boundary-sits",
+          "text": "Where the trust boundary sits",
+          "level": 2
+        },
+        {
+          "id": "further-reading",
+          "text": "Further reading",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/credential-vending.md",
+      "environment": null,
+      "scripts": [],
+      "prev": {
+        "route": "/docs/explanation/external-and-managed-tables/",
+        "title": "External tables and catalog-managed Delta tables"
+      },
+      "next": {
+        "route": "/docs/explanation/models-and-mlflow/",
+        "title": "How Unity Catalog and MLflow divide responsibilities"
+      }
+    },
+    {
+      "route": "/docs/explanation/models-and-mlflow/",
+      "file": "explanation/models-and-mlflow.md",
+      "title": "How Unity Catalog and MLflow divide responsibilities",
+      "summary": "MLflow tracks experiments, runs, and logged models. Unity Catalog registers the model, numbers its versions, stores their files, and governs access.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "AI and semantics"
+      ],
+      "headings": [
+        {
+          "id": "what-mlflow-tracks",
+          "text": "What MLflow tracks",
+          "level": 2
+        },
+        {
+          "id": "what-unity-catalog-registers",
+          "text": "What Unity Catalog registers",
+          "level": 2
+        },
+        {
+          "id": "where-each-piece-is-stored",
+          "text": "Where each piece is stored",
+          "level": 2
+        },
+        {
+          "id": "what-registering-a-model-version-does",
+          "text": "What registering a model version does",
+          "level": 2
+        },
+        {
+          "id": "what-the-registry-doesnt-do",
+          "text": "What the registry doesn't do",
+          "level": 2
+        },
+        {
+          "id": "what-each-client-can-do",
+          "text": "What each client can do",
+          "level": 2
+        },
+        {
+          "id": "next-steps",
+          "text": "Next steps",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/models-and-mlflow.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0 with MLflow, simulated S3, and PostgreSQL",
+        "bundle": "/docs/env/uc-mlflow.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/uc-mlflow.tar.gz | tar -xz",
+          "cd uc-docs-env/uc-mlflow && docker compose up -d --wait",
+          "export AWS_ALLOW_HTTP=true",
+          "export AWS_ENDPOINT_URL=http://localhost:9000",
+          "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+          "export AWS_REGION=us-east-1",
+          "export MLFLOW_AI_GATEWAY_URL=http://localhost:8080/ai-gateway",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD=false",
+          "export MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD=false",
+          "export MLFLOW_REGISTRY_URI=uc:http://localhost:8080",
+          "export MLFLOW_TRACKING_URI=http://localhost:8080",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/explanation/models-and-mlflow/snippets/model_split.py",
+          "file": "model_split.py",
+          "kind": "python",
+          "summary": "Which service keeps which part of a registered model: MLflow or Unity Catalog."
+        }
+      ],
+      "prev": {
+        "route": "/docs/explanation/credential-vending/",
+        "title": "Credential vending"
+      },
+      "next": {
+        "route": "/docs/explanation/views-and-metric-views/",
+        "title": "SQL views and metric views as catalog objects"
+      }
+    },
+    {
+      "route": "/docs/explanation/views-and-metric-views/",
+      "file": "explanation/views-and-metric-views.md",
+      "title": "SQL views and metric views as catalog objects",
+      "summary": "Unity Catalog stores a view's definition, columns, and dependencies, and the engine runs it. A metric view's definition is YAML with measures and dimensions.",
+      "diataxis": "explanation",
+      "section": [
+        "Concepts",
+        "AI and semantics"
+      ],
+      "headings": [
+        {
+          "id": "what-the-catalog-stores-for-a-view",
+          "text": "What the catalog stores for a view",
+          "level": 2
+        },
+        {
+          "id": "where-a-view-runs",
+          "text": "Where a view runs",
+          "level": 2
+        },
+        {
+          "id": "sql-views-versus-metric-views",
+          "text": "SQL views versus metric views",
+          "level": 2
+        },
+        {
+          "id": "changing-a-stored-definition",
+          "text": "Changing a stored definition",
+          "level": 2
+        },
+        {
+          "id": "permissions",
+          "text": "Permissions",
+          "level": 2
+        },
+        {
+          "id": "related",
+          "text": "Related",
+          "level": 2
+        }
+      ],
+      "twin": "/docs/explanation/views-and-metric-views.md",
+      "environment": {
+        "title": "Unity Catalog 0.7.0",
+        "bundle": "/docs/env/unitycatalog.tar.gz",
+        "commands": [
+          "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+          "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+          "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+        ]
+      },
+      "scripts": [
+        {
+          "url": "/docs/explanation/views-and-metric-views/snippets/stored_definitions.py",
+          "file": "stored_definitions.py",
+          "kind": "python",
+          "summary": "What Unity Catalog stores for a SQL view and a metric view, and what it"
+        }
+      ],
+      "prev": {
+        "route": "/docs/explanation/models-and-mlflow/",
+        "title": "How Unity Catalog and MLflow divide responsibilities"
+      },
+      "next": null
+    }
+  ],
+  "apis": [
+    {
+      "route": "/docs/api/catalog/",
+      "slug": "catalog",
+      "title": "Unity Catalog REST API",
+      "summary": "Catalogs, schemas, tables, volumes, functions, registered models, temporary credentials, and permissions.",
+      "hint": "Catalogs, tables, volumes, and more",
+      "ref": "v0.7.0",
+      "specUrl": "https://raw.githubusercontent.com/unitycatalog/unitycatalog/v0.7.0/api/all.yaml",
+      "sourceUrl": "https://github.com/unitycatalog/unitycatalog/blob/v0.7.0/api/all.yaml",
+      "serverUrl": null,
+      "default": true
+    },
+    {
+      "route": "/docs/api/control/",
+      "slug": "control",
+      "title": "Unity Control API",
+      "summary": "SCIM user management, token exchange, and logout on the Unity Catalog server.",
+      "hint": "Users and tokens",
+      "ref": "v0.7.0",
+      "specUrl": "https://raw.githubusercontent.com/unitycatalog/unitycatalog/v0.7.0/api/control.yaml",
+      "sourceUrl": "https://github.com/unitycatalog/unitycatalog/blob/v0.7.0/api/control.yaml",
+      "serverUrl": null,
+      "default": false
+    },
+    {
+      "route": "/docs/api/delta/",
+      "slug": "delta",
+      "title": "UC Delta API",
+      "summary": "The Delta-native REST catalog for Delta clients: configuration, tables and commits, and temporary credentials.",
+      "hint": "Delta-native REST catalog",
+      "ref": "v0.7.0",
+      "specUrl": "https://raw.githubusercontent.com/unitycatalog/unitycatalog/v0.7.0/api/delta.yaml",
+      "sourceUrl": "https://github.com/unitycatalog/unitycatalog/blob/v0.7.0/api/delta.yaml",
+      "serverUrl": null,
+      "default": false
+    },
+    {
+      "route": "/docs/api/iceberg/",
+      "slug": "iceberg",
+      "title": "Iceberg REST Catalog API",
+      "summary": "The Apache Iceberg REST Catalog spec, which Unity Catalog implements at /api/2.1/unity-catalog/iceberg.",
+      "hint": "Iceberg REST catalog",
+      "ref": "apache-iceberg-1.11.0",
+      "specUrl": "https://raw.githubusercontent.com/apache/iceberg/apache-iceberg-1.11.0/open-api/rest-catalog-open-api.yaml",
+      "sourceUrl": "https://github.com/apache/iceberg/blob/apache-iceberg-1.11.0/open-api/rest-catalog-open-api.yaml",
+      "serverUrl": "http://localhost:8080/api/2.1/unity-catalog/iceberg",
+      "default": false
+    }
+  ],
+  "apiIndex": "/docs/api/"
+}

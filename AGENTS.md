@@ -47,3 +47,23 @@ bun run strip-lock-proxy:check  # no proxy URLs in bun.lock
 
 The repo installs no git hooks; run the commands above yourself. Git still
 runs any globally configured hooks.
+
+## The docs at `/docs/`
+
+The documentation is written and tested in
+[docs-factory](https://github.com/open-lakehouse/docs-factory), whose emitter
+writes it into four directories here. Don't hand-edit them: change the source
+in docs-factory and re-emit (`just uc-docs` there), or let its sync open the
+PR. Prettier and ESLint skip them, because the emitter compares bytes.
+
+| Path                       | What                                                          |
+| -------------------------- | ------------------------------------------------------------- |
+| `src/content/docs/`        | each page's Markdown, compiled by `plugins/docs-mdx.ts`       |
+| `src/generated/docs/`      | nav and page data, heads, search records, redirects, coverage |
+| `src/vendor/docs-plugins/` | the remark plugins that render the pages' directives          |
+| `public/docs/`             | Markdown twins, runnable scripts, env archives, `llms.txt`    |
+
+This repo owns how the docs look and behave: the routes in `src/routes/docs/`
+and the components in `src/components/docs/`, which the vendored plugins import
+as `@/components/<name>`. `test/docs.test.ts` checks the emitter's output
+against what they expect.

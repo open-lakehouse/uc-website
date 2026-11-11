@@ -1,0 +1,1822 @@
+{
+  "version": 2,
+  "scripts": [
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/explanation/006-delta-api/snippets/delta_api_semantics.py",
+      "tutorialRoute": "/docs/explanation/delta-api/",
+      "fetchUrl": "/docs/explanation/delta-api/snippets/delta_api_semantics.py",
+      "tutorialSlug": "delta-api",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "How the Unity Catalog Delta API behaves on the wire, with plain HTTP. It is"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/explanation/007-views-and-metric-views/snippets/stored_definitions.py",
+      "tutorialRoute": "/docs/explanation/views-and-metric-views/",
+      "fetchUrl": "/docs/explanation/views-and-metric-views/snippets/stored_definitions.py",
+      "tutorialSlug": "views-and-metric-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "What Unity Catalog stores for a SQL view and a metric view, and what it"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/explanation/008-models-and-mlflow/snippets/model_split.py",
+      "tutorialRoute": "/docs/explanation/models-and-mlflow/",
+      "fetchUrl": "/docs/explanation/models-and-mlflow/snippets/model_split.py",
+      "tutorialSlug": "models-and-mlflow",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "mlflow==3.17.0",
+        "boto3==1.43.114",
+        "unitycatalog-client==0.7.0",
+        "scikit-learn==1.9.1"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Which service keeps which part of a registered model: MLflow or Unity Catalog."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/001-table-storage-formats/snippets/file_formats.py",
+      "tutorialRoute": "/docs/how-to/table-storage-formats/",
+      "fetchUrl": "/docs/how-to/table-storage-formats/snippets/file_formats.py",
+      "tutorialSlug": "table-storage-formats",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "pyarrow>=18",
+        "polars==1.44.2",
+        "duckdb==2.0.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register Parquet, CSV, and JSON files as external tables, read them, and drop them."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/001-table-storage-formats/snippets/file_formats.sh",
+      "tutorialRoute": "/docs/how-to/table-storage-formats/",
+      "fetchUrl": "/docs/how-to/table-storage-formats/snippets/file_formats.sh",
+      "tutorialSlug": "table-storage-formats",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register Parquet, CSV, and JSON files as external tables with the uc CLI, and drop them."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/002-configure-backend-db/snippets/backend_db.sh",
+      "tutorialRoute": "/docs/how-to/configure-backend-db/",
+      "fetchUrl": "/docs/how-to/configure-backend-db/snippets/backend_db.sh",
+      "tutorialSlug": "configure-backend-db",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Run the local server on PostgreSQL and check that its metadata survives."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/003-seed-tpch-data/seed_tpch.py",
+      "tutorialRoute": "/docs/how-to/seed-tpch-data/",
+      "fetchUrl": "/docs/how-to/seed-tpch-data/seed_tpch.py",
+      "tutorialSlug": "seed-tpch-data",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client>=0.5",
+        "duckdb>=1.5.6",
+        "deltalake>=0.20",
+        "pyarrow>=14"
+      ],
+      "compose": "../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Seed the classic TPC-H dataset into Unity Catalog as governed Delta tables."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/004-manage-catalogs-and-schemas/snippets/catalogs.py",
+      "tutorialRoute": "/docs/how-to/manage-catalogs-and-schemas/",
+      "fetchUrl": "/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.py",
+      "tutorialSlug": "manage-catalogs-and-schemas",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, inspect, update, and delete a catalog and a schema with the Python SDK."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/004-manage-catalogs-and-schemas/snippets/catalogs.sh",
+      "tutorialRoute": "/docs/how-to/manage-catalogs-and-schemas/",
+      "fetchUrl": "/docs/how-to/manage-catalogs-and-schemas/snippets/catalogs.sh",
+      "tutorialSlug": "manage-catalogs-and-schemas",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, inspect, update, and delete a catalog and a schema with the uc CLI."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/005-register-external-table/snippets/external_table.py",
+      "tutorialRoute": "/docs/how-to/register-external-table/",
+      "fetchUrl": "/docs/how-to/register-external-table/snippets/external_table.py",
+      "tutorialSlug": "register-external-table",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "deltalake==1.6.6",
+        "pyarrow>=18"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register an existing Delta table in Unity Catalog, read it back, and drop it."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/005-register-external-table/snippets/external_table.sh",
+      "tutorialRoute": "/docs/how-to/register-external-table/",
+      "fetchUrl": "/docs/how-to/register-external-table/snippets/external_table.sh",
+      "tutorialSlug": "register-external-table",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register an existing Delta table in Unity Catalog with the uc CLI, read it back, and drop it."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/005-register-external-table/snippets/read_engines.py",
+      "tutorialRoute": "/docs/how-to/register-external-table/",
+      "fetchUrl": "/docs/how-to/register-external-table/snippets/read_engines.py",
+      "tutorialSlug": "register-external-table",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "polars==1.44.2",
+        "daft[unity]==0.7.25",
+        "tenacity",
+        "duckdb==2.0.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Read the registered external table by name from Polars, Daft, and DuckDB."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/006-manage-volumes/snippets/volumes.py",
+      "tutorialRoute": "/docs/how-to/manage-volumes/",
+      "fetchUrl": "/docs/how-to/manage-volumes/snippets/volumes.py",
+      "tutorialSlug": "manage-volumes",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, inspect, update, and delete external and managed volumes."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/006-manage-volumes/snippets/volumes.sh",
+      "tutorialRoute": "/docs/how-to/manage-volumes/",
+      "fetchUrl": "/docs/how-to/manage-volumes/snippets/volumes.sh",
+      "tutorialSlug": "manage-volumes",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, inspect, update, and delete external and managed volumes with the uc CLI."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/007-configure-spark/snippets/spark_session.py",
+      "tutorialRoute": "/docs/how-to/configure-spark/",
+      "fetchUrl": "/docs/how-to/configure-spark/snippets/spark_session.py",
+      "tutorialSlug": "configure-spark",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Connect Spark to Unity Catalog and list what the catalog holds."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/008-duckdb/snippets/duckdb_tables.py",
+      "tutorialRoute": "/docs/how-to/duckdb/",
+      "fetchUrl": "/docs/how-to/duckdb/snippets/duckdb_tables.py",
+      "tutorialSlug": "duckdb",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "duckdb==2.0.0",
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Read and append to a Unity Catalog managed Delta table from DuckDB."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/009-configure-aws-storage/snippets/aws_storage.py",
+      "tutorialRoute": "/docs/how-to/configure-aws-storage/",
+      "fetchUrl": "/docs/how-to/configure-aws-storage/snippets/aws_storage.py",
+      "tutorialSlug": "configure-aws-storage",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register an S3 storage credential and external location, and check vending."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/009-configure-aws-storage/snippets/aws_storage.sh",
+      "tutorialRoute": "/docs/how-to/configure-aws-storage/",
+      "fetchUrl": "/docs/how-to/configure-aws-storage/snippets/aws_storage.sh",
+      "tutorialSlug": "configure-aws-storage",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register an S3 storage credential and external location with the uc CLI, and check vending."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/daft_tables.py",
+      "tutorialRoute": "/docs/how-to/python-dataframes/",
+      "fetchUrl": "/docs/how-to/python-dataframes/snippets/daft_tables.py",
+      "tutorialSlug": "python-dataframes",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "daft[unity]==0.7.25",
+        "tenacity",
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/_seed.py",
+          "fetchUrl": "/docs/how-to/python-dataframes/snippets/_seed.py"
+        }
+      ],
+      "summary": "List and read a Unity Catalog table on local storage from Daft."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/managed_tables_fail.py",
+      "tutorialRoute": "/docs/how-to/python-dataframes/",
+      "fetchUrl": "/docs/how-to/python-dataframes/snippets/managed_tables_fail.py",
+      "tutorialSlug": "python-dataframes",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "polars==1.44.2",
+        "daft[unity]==0.7.25",
+        "tenacity",
+        "pandas==2.3.3",
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Pin that Polars, Daft, and pandas (deltalake) can't read or append to a catalog-managed table."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/pandas_tables.py",
+      "tutorialRoute": "/docs/how-to/python-dataframes/",
+      "fetchUrl": "/docs/how-to/python-dataframes/snippets/pandas_tables.py",
+      "tutorialSlug": "python-dataframes",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pandas==2.3.3",
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/_seed.py",
+          "fetchUrl": "/docs/how-to/python-dataframes/snippets/_seed.py"
+        }
+      ],
+      "summary": "Read and append to a Unity Catalog table on S3 from pandas, through deltalake."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/polars_tables.py",
+      "tutorialRoute": "/docs/how-to/python-dataframes/",
+      "fetchUrl": "/docs/how-to/python-dataframes/snippets/polars_tables.py",
+      "tutorialSlug": "python-dataframes",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "polars==1.44.2",
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/009-python-dataframes/snippets/_seed.py",
+          "fetchUrl": "/docs/how-to/python-dataframes/snippets/_seed.py"
+        }
+      ],
+      "summary": "List, read, and append to a Unity Catalog table on S3 from Polars."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/010-managed-storage-s3/snippets/managed_storage.py",
+      "tutorialRoute": "/docs/how-to/managed-storage-s3/",
+      "fetchUrl": "/docs/how-to/managed-storage-s3/snippets/managed_storage.py",
+      "tutorialSlug": "managed-storage-s3",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Give a catalog and a schema S3 storage roots and see where managed data lands."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/010-managed-storage-s3/snippets/managed_storage.sh",
+      "tutorialRoute": "/docs/how-to/managed-storage-s3/",
+      "fetchUrl": "/docs/how-to/managed-storage-s3/snippets/managed_storage.sh",
+      "tutorialSlug": "managed-storage-s3",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Give a catalog and a schema S3 storage roots with the uc CLI and see where managed data lands."
+    },
+    {
+      "kind": "rust",
+      "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/datafusion_iceberg.rs",
+      "tutorialRoute": "/docs/how-to/iceberg-rest/",
+      "fetchUrl": "/docs/how-to/iceberg-rest/snippets/datafusion_iceberg.rs",
+      "tutorialSlug": "iceberg-rest",
+      "requiresPython": null,
+      "dependencies": [
+        "datafusion@55.1",
+        "iceberg --git https://github.com/apache/iceberg-rust --rev 5b82ab99aeaf50bf4f5b3b776ac9cd6380a5f3e3",
+        "iceberg-catalog-rest --git https://github.com/apache/iceberg-rust --rev 5b82ab99aeaf50bf4f5b3b776ac9cd6380a5f3e3",
+        "iceberg-datafusion --git https://github.com/apache/datafusion-iceberg --rev 8979482936eff6509e40c2e4e3bfc1235d965d60",
+        "iceberg-storage-opendal --git https://github.com/apache/iceberg-rust --rev 5b82ab99aeaf50bf4f5b3b776ac9cd6380a5f3e3",
+        "reqwest@0.12 --features json",
+        "serde_json@1",
+        "tokio@1 --features macros,rt-multi-thread"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, change, and drop an Iceberg table in Unity Catalog from DataFusion in Rust, through"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/duckdb_iceberg.py",
+      "tutorialRoute": "/docs/how-to/iceberg-rest/",
+      "fetchUrl": "/docs/how-to/iceberg-rest/snippets/duckdb_iceberg.py",
+      "tutorialSlug": "iceberg-rest",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "duckdb==2.0.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/_setup.py",
+          "fetchUrl": "/docs/how-to/iceberg-rest/snippets/_setup.py"
+        }
+      ],
+      "summary": "Create, change, and drop an Iceberg table in Unity Catalog from DuckDB, through Iceberg REST."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/pyiceberg_tables.py",
+      "tutorialRoute": "/docs/how-to/iceberg-rest/",
+      "fetchUrl": "/docs/how-to/iceberg-rest/snippets/pyiceberg_tables.py",
+      "tutorialSlug": "iceberg-rest",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyiceberg[pyarrow]==0.12.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/_setup.py",
+          "fetchUrl": "/docs/how-to/iceberg-rest/snippets/_setup.py"
+        }
+      ],
+      "summary": "Create, change, and drop an Iceberg table in Unity Catalog from PyIceberg, through Iceberg REST."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/spark_cross_format.py",
+      "tutorialRoute": "/docs/how-to/iceberg-rest/",
+      "fetchUrl": "/docs/how-to/iceberg-rest/snippets/spark_cross_format.py",
+      "tutorialSlug": "iceberg-rest",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/_setup.py",
+          "fetchUrl": "/docs/how-to/iceberg-rest/snippets/_setup.py"
+        }
+      ],
+      "summary": "Join a Delta table and an Iceberg table from the same Unity Catalog catalog in one Spark session."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/spark_iceberg.py",
+      "tutorialRoute": "/docs/how-to/iceberg-rest/",
+      "fetchUrl": "/docs/how-to/iceberg-rest/snippets/spark_iceberg.py",
+      "tutorialSlug": "iceberg-rest",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/012-iceberg-rest/snippets/_setup.py",
+          "fetchUrl": "/docs/how-to/iceberg-rest/snippets/_setup.py"
+        }
+      ],
+      "summary": "Create, change, and drop an Iceberg table in Unity Catalog from Spark, through Iceberg REST."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/013-metric-views/snippets/metric_views.py",
+      "tutorialRoute": "/docs/how-to/metric-views/",
+      "fetchUrl": "/docs/how-to/metric-views/snippets/metric_views.py",
+      "tutorialSlug": "metric-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, query, inspect, change, and drop metric views over the TPC-H sample."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/013-metric-views/snippets/register_metric_view.py",
+      "tutorialRoute": "/docs/how-to/metric-views/",
+      "fetchUrl": "/docs/how-to/metric-views/snippets/register_metric_view.py",
+      "tutorialSlug": "metric-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register a metric view through the Unity Catalog REST API, then query it"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/014-managed-delta-tables/snippets/managed_tables.py",
+      "tutorialRoute": "/docs/how-to/managed-delta-tables/",
+      "fetchUrl": "/docs/how-to/managed-delta-tables/snippets/managed_tables.py",
+      "tutorialSlug": "managed-delta-tables",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "duckdb==2.0.0",
+        "pyspark==4.1.0",
+        "deltalake==1.6.6",
+        "pyarrow"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, write, read, and drop a catalog-managed Delta table with Spark and DuckDB."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/015-change-table-schema/snippets/change_schema.py",
+      "tutorialRoute": "/docs/how-to/change-table-schema/",
+      "fetchUrl": "/docs/how-to/change-table-schema/snippets/change_schema.py",
+      "tutorialSlug": "change-table-schema",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0",
+        "duckdb==2.0.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Change a managed Delta table's columns and properties with Spark, and check"
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/015-change-table-schema/snippets/change_schema.sh",
+      "tutorialRoute": "/docs/how-to/change-table-schema/",
+      "fetchUrl": "/docs/how-to/change-table-schema/snippets/change_schema.sh",
+      "tutorialSlug": "change-table-schema",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Show what Unity Catalog records for a table after a schema change, with the uc CLI."
+    },
+    {
+      "kind": "sql",
+      "gitPath": "content/unitycatalog/how-to/015-change-table-schema/snippets/change_schema.sql",
+      "tutorialRoute": "/docs/how-to/change-table-schema/",
+      "fetchUrl": "/docs/how-to/change-table-schema/snippets/change_schema.sql",
+      "tutorialSlug": "change-table-schema",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Change a managed Delta table's columns and properties, rename it by copying, and change an external table's Delta log. Enter the statements in the spark-sql shell that spark_sql.sh starts."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/015-change-table-schema/snippets/delta_api.py",
+      "tutorialRoute": "/docs/how-to/change-table-schema/",
+      "fetchUrl": "/docs/how-to/change-table-schema/snippets/delta_api.py",
+      "tutorialSlug": "change-table-schema",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Change an external table's columns, comment, and properties with Spark, then"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/015-change-table-schema/snippets/external_deltalake.py",
+      "tutorialRoute": "/docs/how-to/change-table-schema/",
+      "fetchUrl": "/docs/how-to/change-table-schema/snippets/external_deltalake.py",
+      "tutorialSlug": "change-table-schema",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "deltalake==1.6.6",
+        "pyarrow>=18",
+        "unitycatalog-client==0.7.0",
+        "duckdb==2.0.0",
+        "pyspark==4.1.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Change an external Delta table's columns, comment, and properties with"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/016-replace-and-overwrite-tables/snippets/replace_overwrite.py",
+      "tutorialRoute": "/docs/how-to/replace-and-overwrite-tables/",
+      "fetchUrl": "/docs/how-to/replace-and-overwrite-tables/snippets/replace_overwrite.py",
+      "tutorialSlug": "replace-and-overwrite-tables",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Replace and overwrite a catalog-managed Delta table with Spark SQL."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/017-langchain-tools/snippets/error_py313.py",
+      "tutorialRoute": "/docs/how-to/langchain-tools/",
+      "fetchUrl": "/docs/how-to/langchain-tools/snippets/error_py313.py",
+      "tutorialSlug": "langchain-tools",
+      "requiresPython": ">=3.13,<3.13.3",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0",
+        "unitycatalog-langchain==0.4.0",
+        "langgraph-prebuilt==1.0.8"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "On Python 3.13.0-3.13.2, an error a catalog function raises is lost through the tool."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/017-langchain-tools/snippets/tool_types.py",
+      "tutorialRoute": "/docs/how-to/langchain-tools/",
+      "fetchUrl": "/docs/how-to/langchain-tools/snippets/tool_types.py",
+      "tutorialSlug": "langchain-tools",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0",
+        "unitycatalog-langchain==0.4.0",
+        "langgraph-prebuilt==1.0.8"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Which parameter and return types survive each way an agent calls a tool."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/017-langchain-tools/snippets/tools.py",
+      "tutorialRoute": "/docs/how-to/langchain-tools/",
+      "fetchUrl": "/docs/how-to/langchain-tools/snippets/tools.py",
+      "tutorialSlug": "langchain-tools",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0",
+        "unitycatalog-langchain==0.4.0",
+        "langgraph-prebuilt==1.0.8",
+        "mlflow==3.17.0"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/017-langchain-tools/snippets/pricing.py",
+          "fetchUrl": "/docs/how-to/langchain-tools/snippets/pricing.py"
+        }
+      ],
+      "summary": "Turn Unity Catalog functions into LangChain tools, inspect them, call them,"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/018-manage-python-functions/snippets/caching.py",
+      "tutorialRoute": "/docs/how-to/manage-python-functions/",
+      "fetchUrl": "/docs/how-to/manage-python-functions/snippets/caching.py",
+      "tutorialSlug": "manage-python-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "How a client's function cache behaves across a replace."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/018-manage-python-functions/snippets/functions.py",
+      "tutorialRoute": "/docs/how-to/manage-python-functions/",
+      "fetchUrl": "/docs/how-to/manage-python-functions/snippets/functions.py",
+      "tutorialSlug": "manage-python-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/018-manage-python-functions/snippets/pricing.py",
+          "fetchUrl": "/docs/how-to/manage-python-functions/snippets/pricing.py"
+        }
+      ],
+      "summary": "Register, view, replace, and delete Python functions in Unity Catalog."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/018-manage-python-functions/snippets/signatures.py",
+      "tutorialRoute": "/docs/how-to/manage-python-functions/",
+      "fetchUrl": "/docs/how-to/manage-python-functions/snippets/signatures.py",
+      "tutorialSlug": "manage-python-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Which Python signatures and docstrings the catalog can store."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/019-sql-views/snippets/register_view.py",
+      "tutorialRoute": "/docs/how-to/sql-views/",
+      "fetchUrl": "/docs/how-to/sql-views/snippets/register_view.py",
+      "tutorialSlug": "sql-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register a SQL view through the Unity Catalog REST API, then query it with"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/019-sql-views/snippets/sql_views.py",
+      "tutorialRoute": "/docs/how-to/sql-views/",
+      "fetchUrl": "/docs/how-to/sql-views/snippets/sql_views.py",
+      "tutorialSlug": "sql-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create, query, list, inspect, change, and drop SQL views over the TPC-H sample."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/019-sql-views/snippets/sql_views_spark41.py",
+      "tutorialRoute": "/docs/how-to/sql-views/",
+      "fetchUrl": "/docs/how-to/sql-views/snippets/sql_views_spark41.py",
+      "tutorialSlug": "sql-views",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Compatibility evidence: Spark 4.1 reads Unity Catalog views but can't"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/errors.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/errors.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/seed.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/seed.py"
+        }
+      ],
+      "summary": "The two ways a call fails: an exception raised before the function runs,"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/limits.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/limits.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/seed.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/seed.py"
+        }
+      ],
+      "summary": "The sandbox's wall-clock, CPU-time, and memory limits, read from"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/modes.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/modes.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/pricing.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/pricing.py"
+        },
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/seed.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/seed.py"
+        }
+      ],
+      "summary": "Sandbox and local execution modes: where a call runs, what each refuses,"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/notebook.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/notebook.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0",
+        "marimo==0.25.1"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Call a catalog function from notebook cells: a marimo notebook."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/run_async.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/run_async.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0",
+        "uvloop==0.23.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/seed.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/seed.py"
+        }
+      ],
+      "summary": "Call catalog functions from async code: one call, concurrent calls, and"
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/run_sync.py",
+      "tutorialRoute": "/docs/how-to/run-functions/",
+      "fetchUrl": "/docs/how-to/run-functions/snippets/run_sync.py",
+      "tutorialSlug": "run-functions",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/how-to/020-run-functions/snippets/seed.py",
+          "fetchUrl": "/docs/how-to/run-functions/snippets/seed.py"
+        }
+      ],
+      "summary": "Call a catalog function from a plain, synchronous Python script."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/021-manage-models/snippets/models.sh",
+      "tutorialRoute": "/docs/how-to/manage-models/",
+      "fetchUrl": "/docs/how-to/manage-models/snippets/models.sh",
+      "tutorialSlug": "manage-models",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "View, update, rename, and delete registered models with the uc CLI."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/021-manage-models/snippets/models_mlflow.py",
+      "tutorialRoute": "/docs/how-to/manage-models/",
+      "fetchUrl": "/docs/how-to/manage-models/snippets/models_mlflow.py",
+      "tutorialSlug": "manage-models",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "mlflow==3.17.0",
+        "boto3==1.43.114",
+        "unitycatalog-client==0.7.0",
+        "scikit-learn==1.9.1"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register, view, load, update, and delete Unity Catalog models with MLflow."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/021-manage-models/snippets/models_sdk.py",
+      "tutorialRoute": "/docs/how-to/manage-models/",
+      "fetchUrl": "/docs/how-to/manage-models/snippets/models_sdk.py",
+      "tutorialSlug": "manage-models",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "View, update, rename, and delete registered models with the Python SDK."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/022-temporary-credentials/snippets/temporary_credentials.py",
+      "tutorialRoute": "/docs/how-to/temporary-credentials/",
+      "fetchUrl": "/docs/how-to/temporary-credentials/snippets/temporary_credentials.py",
+      "tutorialSlug": "temporary-credentials",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Request temporary S3 credentials for a table, a volume, a model version, and a path."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/022-temporary-credentials/snippets/temporary_credentials.sh",
+      "tutorialRoute": "/docs/how-to/temporary-credentials/",
+      "fetchUrl": "/docs/how-to/temporary-credentials/snippets/temporary_credentials.sh",
+      "tutorialSlug": "temporary-credentials",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Request temporary S3 credentials from the Unity Catalog REST API with curl and jq."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/023-obstore-credentials/snippets/obstore_credentials.py",
+      "tutorialRoute": "/docs/how-to/obstore-credentials/",
+      "fetchUrl": "/docs/how-to/obstore-credentials/snippets/obstore_credentials.py",
+      "tutorialSlug": "obstore-credentials",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Give obstore a credential provider that asks Unity Catalog for storage credentials."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/how-to/024-marimo-remote-storage/snippets/notebook.py",
+      "tutorialRoute": "/docs/how-to/marimo-remote-storage/",
+      "fetchUrl": "/docs/how-to/marimo-remote-storage/snippets/notebook.py",
+      "tutorialSlug": "marimo-remote-storage",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1",
+        "marimo==0.25.1"
+      ],
+      "compose": "../../../../../envs/uc-aws/compose.yaml",
+      "environment": "uc-aws/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Browse a Unity Catalog volume in marimo's Remote Storage panel."
+    },
+    {
+      "kind": "java",
+      "gitPath": "content/unitycatalog/how-to/025-java-client/snippets/JavaClient.java",
+      "tutorialRoute": "/docs/how-to/java-client/",
+      "fetchUrl": "/docs/how-to/java-client/snippets/JavaClient.java",
+      "tutorialSlug": "java-client",
+      "requiresPython": null,
+      "dependencies": [
+        "io.unitycatalog:unitycatalog-client:0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Manage Unity Catalog objects from Java with the unitycatalog-client SDK."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/how-to/026-run-server-with-java/snippets/run_server.sh",
+      "tutorialRoute": "/docs/how-to/run-server-with-java/",
+      "fetchUrl": "/docs/how-to/run-server-with-java/snippets/run_server.sh",
+      "tutorialSlug": "run-server-with-java",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": null,
+      "environment": null,
+      "services": [],
+      "baseUrlEnv": null,
+      "env": {},
+      "helpers": [],
+      "summary": "Run the Unity Catalog server from its Maven artifact with JBang, keep its metadata in an H2 file, and query it. Each region is one step of the page."
+    },
+    {
+      "kind": "shell",
+      "gitPath": "content/unitycatalog/tutorials/001-getting-started/snippets/first_catalog.sh",
+      "tutorialRoute": "/docs/tutorials/getting-started/",
+      "fetchUrl": "/docs/tutorials/getting-started/snippets/first_catalog.sh",
+      "tutorialSlug": "getting-started",
+      "requiresPython": null,
+      "dependencies": [],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create a catalog, schema, and table with the uc CLI, write and read rows, then clean up."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/002-python-client/snippets/catalog_flow.py",
+      "tutorialRoute": "/docs/tutorials/python-client/",
+      "fetchUrl": "/docs/tutorials/python-client/snippets/catalog_flow.py",
+      "tutorialSlug": "python-client",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create a catalog, schema, and table with the Unity Catalog Python client."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/005-first-python-function/snippets/asyncio_py314.py",
+      "tutorialRoute": "/docs/tutorials/first-python-function/",
+      "fetchUrl": "/docs/tutorials/first-python-function/snippets/asyncio_py314.py",
+      "tutorialSlug": "first-python-function",
+      "requiresPython": ">=3.14,<3.15",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": null,
+      "environment": null,
+      "services": [],
+      "baseUrlEnv": null,
+      "env": {},
+      "helpers": [],
+      "summary": "On Python 3.14, asyncio.run fails at exit once unitycatalog-ai's client is imported."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/005-first-python-function/snippets/first_function.py",
+      "tutorialRoute": "/docs/tutorials/first-python-function/",
+      "fetchUrl": "/docs/tutorials/first-python-function/snippets/first_function.py",
+      "tutorialSlug": "first-python-function",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "unitycatalog-ai==0.4.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [
+        {
+          "gitPath": "content/unitycatalog/tutorials/005-first-python-function/snippets/pricing.py",
+          "fetchUrl": "/docs/tutorials/first-python-function/snippets/pricing.py"
+        }
+      ],
+      "summary": "Register a Python function in Unity Catalog, inspect it, run it, and remove it."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/006-read-volume-files/snippets/volume_files.py",
+      "tutorialRoute": "/docs/tutorials/read-volume-files/",
+      "fetchUrl": "/docs/tutorials/read-volume-files/snippets/volume_files.py",
+      "tutorialSlug": "read-volume-files",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "unitycatalog-client==0.7.0",
+        "obstore==0.11.1"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Register a folder of files as a volume, then find and read it by name."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/007-managed-delta-table/snippets/managed_table.py",
+      "tutorialRoute": "/docs/tutorials/managed-delta-table/",
+      "fetchUrl": "/docs/tutorials/managed-delta-table/snippets/managed_table.py",
+      "tutorialSlug": "managed-delta-table",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.1.0",
+        "unitycatalog-client==0.7.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Create a catalog-managed Delta table with Spark, change it, and drop it."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/008-first-metric-view/snippets/metric_view.py",
+      "tutorialRoute": "/docs/tutorials/first-metric-view/",
+      "fetchUrl": "/docs/tutorials/first-metric-view/snippets/metric_view.py",
+      "tutorialSlug": "first-metric-view",
+      "requiresPython": ">=3.11",
+      "dependencies": [
+        "pyspark==4.2.0"
+      ],
+      "compose": "../../../../../envs/unitycatalog/compose.yaml",
+      "environment": "unitycatalog/compose.yaml",
+      "services": [
+        "unitycatalog"
+      ],
+      "baseUrlEnv": null,
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Define a metric view over a small orders table with Spark, and query it."
+    },
+    {
+      "kind": "python",
+      "gitPath": "content/unitycatalog/tutorials/009-register-model-mlflow/snippets/hello_mlflow.py",
+      "tutorialRoute": "/docs/tutorials/register-model-mlflow/",
+      "fetchUrl": "/docs/tutorials/register-model-mlflow/snippets/hello_mlflow.py",
+      "tutorialSlug": "register-model-mlflow",
+      "requiresPython": "==3.12.*",
+      "dependencies": [
+        "mlflow==3.17.0",
+        "boto3==1.43.114",
+        "unitycatalog-client==0.7.0",
+        "scikit-learn==1.9.1"
+      ],
+      "compose": "../../../../../envs/uc-mlflow/compose.yaml",
+      "environment": "uc-mlflow/compose.yaml",
+      "services": [
+        "unitycatalog",
+        "mlflow"
+      ],
+      "baseUrlEnv": "UC_BASE_URL",
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "MLFLOW_AI_GATEWAY_URL": "http://localhost:8080/ai-gateway",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_DOWNLOAD": "false",
+        "MLFLOW_ENABLE_PROXY_MULTIPART_UPLOAD": "false",
+        "MLFLOW_REGISTRY_URI": "uc:http://localhost:8080",
+        "MLFLOW_TRACKING_URI": "http://localhost:8080",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "helpers": [],
+      "summary": "Train a small model, log it to MLflow, register it in Unity Catalog, load it back."
+    }
+  ]
+}
