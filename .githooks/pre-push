@@ -15,7 +15,7 @@
 set -e
 
 # GUI git clients don't load the shell profile; make Homebrew and Bun findable.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.bun/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.bun/bin"
 
 # git passes the refs being pushed on stdin, one per line:
 #   <local ref> <local sha> <remote ref> <remote sha>
