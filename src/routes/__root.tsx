@@ -73,6 +73,9 @@ function RootDocument({ children }: { children: ReactNode }) {
         {/* Vercel Web Analytics: injects /_vercel/insights/script.js in the
             browser and tracks client-side navigation. Renders nothing. */}
         <Analytics />
+        {/* Vercel Speed Insights: injects /_vercel/speed-insights/script.js
+            in the browser and reports Core Web Vitals, including on
+            client-side navigation. Renders nothing. */}
         <SpeedInsights />
         <Scripts />
       </body>
