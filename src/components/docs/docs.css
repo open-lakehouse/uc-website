@@ -15,7 +15,7 @@
 .docs-root {
   /* The fixed site header (Header.module.css) sits above the docs bar. */
   --site-header: 4rem;
-  --chrome: calc(var(--site-header) + var(--topbar-height));
+  --chrome: var(--site-header);
 
   --background: var(--uc-bg);
   --panel: var(--uc-surface);
@@ -51,7 +51,6 @@
 
   --radius: 6px;
   --radius-sm: 4px;
-  --topbar-height: 3rem;
   --statusbar-height: 1.9rem;
   --anchor-offset: calc(var(--chrome) + 1.5rem);
 
@@ -147,147 +146,7 @@ html:has(.docs-root) {
   border-color: transparent;
 }
 
-/* --- Topbar (editor title bar) --- */
-.topbar {
-  position: sticky;
-  top: var(--site-header);
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  height: var(--topbar-height);
-  padding: 0 1rem;
-  background: var(--panel);
-  border-bottom: 1px solid var(--border);
-}
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: var(--heading);
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.875rem;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.brand-mark {
-  width: 1.2rem;
-  height: 1.2rem;
-  flex: none;
-  transition: transform 0.4s ease;
-}
-.brand-path {
-  color: var(--subtle);
-  font-weight: 400;
-}
-/* `/ docs ▾ / catalog ▾`: breadcrumb segments double as switchers. */
-.crumb-menu {
-  position: relative;
-  display: inline-flex;
-  margin-left: -0.35rem;
-}
-.crumb-menu + .crumb-menu {
-  margin-left: -0.5rem;
-}
-.crumb-menu .brand-path {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  height: 1.6rem;
-  padding: 0 0.3rem 0 0.4rem;
-  font: 400 0.875rem var(--font-mono);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition:
-    color 0.12s,
-    border-color 0.12s,
-    background 0.12s;
-}
-.crumb-menu-chevron {
-  width: 0.8rem;
-  height: 0.8rem;
-  opacity: 0.6;
-  transition:
-    transform 0.15s,
-    opacity 0.12s;
-}
-.crumb-menu .brand-path:hover,
-.crumb-menu .brand-path[aria-expanded="true"] {
-  color: var(--foreground);
-  background: var(--surface);
-  border-color: var(--border);
-}
-.crumb-menu .brand-path:hover .crumb-menu-chevron {
-  opacity: 1;
-}
-.crumb-menu .brand-path[aria-expanded="true"] .crumb-menu-chevron {
-  opacity: 1;
-  transform: rotate(180deg);
-}
-.crumb-menu .pa-menu {
-  left: 0;
-  right: auto;
-  width: 17rem;
-}
-.crumb-menu [role="menuitemradio"] {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.55rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--foreground);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-}
-.crumb-menu [role="menuitemradio"]:hover,
-.crumb-menu [role="menuitemradio"]:focus-visible {
-  background: var(--surface);
-  outline: none;
-}
-.crumb-menu [role="menuitemradio"] .theme-check {
-  margin-left: auto;
-  width: 0.85rem;
-  height: 0.85rem;
-  flex: none;
-}
-
-/* Docs | API: which half of the site you're in, editor-tab style. */
-.section-tabs {
-  display: flex;
-  align-self: stretch;
-  margin-left: auto;
-}
-.section-tabs + .topbar-links {
-  margin-left: 0.75rem;
-}
-.section-tab {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--muted-foreground);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-}
-.section-tab:hover {
-  color: var(--foreground);
-}
-.section-tab[aria-current] {
-  color: var(--foreground);
-  border-bottom-color: var(--accent-fill);
-}
-.topbar-links {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
+/* --- Buttons --- */
 .icon-button {
   display: inline-flex;
   align-items: center;
@@ -311,6 +170,20 @@ html:has(.docs-root) {
 }
 .nav-toggle {
   display: none;
+}
+/* Narrow screens: opens the sidebar drawer, pinned under the site header. */
+.main > .nav-toggle {
+  position: sticky;
+  top: calc(var(--chrome) + 0.5rem);
+  z-index: 10;
+  width: auto;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border-color: var(--border);
+  background: var(--background);
 }
 
 /* --- Search trigger + command palette --- */
@@ -2009,7 +1882,7 @@ html:has(.docs-root) {
 
 /* --- REST API reference ---
    Scalar brings its own endpoint sidebar, so API pages render without the docs
-   one; the topbar's section tabs lead back. */
+   one; the site header leads back, and .api-switch moves between the APIs. */
 .shell[data-no-sidebar] .layout {
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "main" "status";
@@ -2070,16 +1943,6 @@ html:has(.docs-root) {
   .main {
     padding-top: 1.5rem;
   }
-  .brand-path {
-    display: none;
-  }
-  /* The breadcrumb switcher covers it; the tabs need the room. */
-  .section-tabs {
-    display: none;
-  }
-  .crumb-menu .brand-path {
-    display: inline-flex;
-  }
   .search-trigger {
     width: 1.85rem;
     justify-content: center;
@@ -2100,28 +1963,6 @@ html:has(.docs-root) {
     flex-wrap: wrap;
   }
 }
-/* Phone widths can't fit every social mark beside the brand; GitHub stays. */
-@media (max-width: 480px) {
-  .topbar-links .social ~ .social {
-    display: none;
-  }
-  .topbar {
-    gap: 0.5rem;
-    padding: 0 0.75rem;
-  }
-  /* Two switcher levels leave no room for the wordmark; the logo stays. */
-  .brand:has(~ .crumb-menu + .crumb-menu) > span {
-    display: none;
-  }
-  .crumb-menu .pa-menu {
-    position: fixed;
-    top: calc(var(--chrome) + 0.25rem);
-    left: 0.75rem;
-    right: 0.75rem;
-    width: auto;
-  }
-}
-
 /* Brand colors from the unitycatalog.io glyph; the navy core would vanish on dark. */
 .hero-mark .uc-mark-core {
   fill: #163357;
@@ -2134,4 +1975,30 @@ html:has(.docs-root) {
 }
 .dark .hero-mark .uc-mark-core {
   fill: var(--heading);
+}
+
+/* The REST APIs, one row above the explorer. */
+.api-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 1rem clamp(1.25rem, 4vw, 3.5rem) 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.api-switch a {
+  padding: 0.3rem 0.6rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.api-switch a:hover {
+  color: var(--foreground);
+  background: var(--surface);
+}
+.api-switch a[aria-current="page"] {
+  color: var(--accent-fg);
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
 }
