@@ -1692,21 +1692,8 @@ html:has(.docs-root) {
   .main {
     padding-top: 1.5rem;
   }
-  .search-trigger {
-    width: 1.85rem;
-    justify-content: center;
-    padding: 0;
-    border-color: transparent;
-    background: transparent;
-  }
-  .search-trigger-label,
-  .search-trigger kbd,
-  .cmdk-footer,
   .statusbar-legal {
     display: none;
-  }
-  .cmdk {
-    padding-top: 0.75rem;
   }
   .page-head {
     flex-wrap: wrap;
