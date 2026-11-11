@@ -5,6 +5,7 @@ import {
   createRootRoute,
 } from "@tanstack/react-router";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useEffect, type ReactNode } from "react";
 
 import { Favicons } from "../components/Favicons";
@@ -72,6 +73,7 @@ function RootDocument({ children }: { children: ReactNode }) {
         {/* Vercel Web Analytics: injects /_vercel/insights/script.js in the
             browser and tracks client-side navigation. Renders nothing. */}
         <Analytics />
+        <SpeedInsights />
         <Scripts />
       </body>
     </html>
