@@ -1,0 +1,95 @@
+{
+  "version": 2,
+  "guide": "https://unitycatalog.io/docs/how-to/run-local-server/",
+  "environments": [
+    {
+      "key": "unitycatalog/compose.yaml",
+      "title": "Unity Catalog 0.7.0",
+      "ports": [
+        8080
+      ],
+      "env": {
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "archive": "https://unitycatalog.io/docs/env/unitycatalog.tar.gz",
+      "dir": "uc-docs-env/unitycatalog",
+      "start": [
+        "curl -fsSL https://unitycatalog.io/docs/env/unitycatalog.tar.gz | tar -xz",
+        "cd uc-docs-env/unitycatalog && docker compose up -d --wait",
+        "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+      ],
+      "stop": "docker compose down"
+    },
+    {
+      "key": "uc-aws/compose.yaml",
+      "title": "Unity Catalog 0.7.0 with simulated S3 and PostgreSQL",
+      "ports": [
+        8080,
+        9000
+      ],
+      "env": {
+        "AWS_ALLOW_HTTP": "true",
+        "AWS_ENDPOINT_URL": "http://localhost:9000",
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "archive": "https://unitycatalog.io/docs/env/uc-aws.tar.gz",
+      "dir": "uc-docs-env/uc-aws",
+      "start": [
+        "curl -fsSL https://unitycatalog.io/docs/env/uc-aws.tar.gz | tar -xz",
+        "cd uc-docs-env/uc-aws && docker compose up -d --wait",
+        "export AWS_ALLOW_HTTP=true",
+        "export AWS_ENDPOINT_URL=http://localhost:9000",
+        "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+        "export AWS_REGION=us-east-1",
+        "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+      ],
+      "stop": "docker compose down"
+    },
+    {
+      "key": "uc-local/compose.yaml",
+      "title": "Unity Catalog 0.7.0 with PostgreSQL and RustFS on one machine",
+      "ports": [
+        8080,
+        9000
+      ],
+      "env": {
+        "AWS_ENDPOINT_URL_S3": "http://localhost:9000",
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "archive": "https://unitycatalog.io/docs/env/uc-local.tar.gz",
+      "dir": "uc-docs-env/uc-local",
+      "start": [
+        "curl -fsSL https://unitycatalog.io/docs/env/uc-local.tar.gz | tar -xz",
+        "cd uc-docs-env/uc-local && docker compose up -d --wait",
+        "export AWS_ENDPOINT_URL_S3=http://localhost:9000",
+        "export AWS_REGION=us-east-1",
+        "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+      ],
+      "stop": "docker compose down"
+    },
+    {
+      "key": "uc-hybrid/compose.yaml",
+      "title": "Unity Catalog 0.7.0 with hosted PostgreSQL and S3-compatible storage",
+      "ports": [
+        8080
+      ],
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "UNITY_CATALOG_URL": "http://localhost:8080/api/2.1/unity-catalog"
+      },
+      "archive": "https://unitycatalog.io/docs/env/uc-hybrid.tar.gz",
+      "dir": "uc-docs-env/uc-hybrid",
+      "start": [
+        "curl -fsSL https://unitycatalog.io/docs/env/uc-hybrid.tar.gz | tar -xz",
+        "cd uc-docs-env/uc-hybrid && docker compose up -d --wait",
+        "export AWS_REGION=us-east-1",
+        "export UNITY_CATALOG_URL=http://localhost:8080/api/2.1/unity-catalog"
+      ],
+      "stop": "docker compose down"
+    }
+  ],
+  "concepts": "https://unitycatalog.io/docs/concepts.json"
+}

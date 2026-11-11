@@ -1,0 +1,69 @@
+{
+  "format": "trestle-graph",
+  "version": 1,
+  "generator": "docs-factory",
+  "title": "Unity Catalog 0.7.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "@clients",
+        "model": null,
+        "kind": "clients",
+        "display_name": "Clients",
+        "summary": "Browsers, SDKs and CLIs on the host.",
+        "category": null,
+        "role": null,
+        "placement": null,
+        "cloud": null,
+        "surfaces": [],
+        "offers": [],
+        "provisions": [],
+        "resource_nouns": []
+      },
+      {
+        "id": "unity-catalog",
+        "model": "unityCatalogServer",
+        "kind": "component",
+        "display_name": "Unity Catalog",
+        "summary": "Open-source Unity Catalog server; Databricks-shaped REST API.",
+        "category": "catalog",
+        "role": "data_catalog",
+        "placement": "container:unitycatalog",
+        "cloud": null,
+        "surfaces": [],
+        "offers": [],
+        "provisions": [],
+        "resource_nouns": []
+      }
+    ],
+    "edges": [
+      {
+        "kind": "access",
+        "key": "access:@clients→unity-catalog:8080",
+        "from": "@clients",
+        "to": "unity-catalog",
+        "host_port": 8080
+      }
+    ]
+  },
+  "files": [
+    "compose.yaml",
+    ".env",
+    ".gitignore",
+    "client/host.env",
+    "client/container.env",
+    "LAYOUT.md",
+    "README.md",
+    "modules/unity-catalog/compose.yaml",
+    "modules/unity-catalog/secrets/server.properties"
+  ],
+  "deploy": [
+    {
+      "order": 1,
+      "phase": "start",
+      "id": "up",
+      "title": "Start the stack",
+      "instructions": "Start every service and wait until each one is healthy:\n\n```bash\ndocker compose up -d --wait\n```\n\nEach service is then published on its own host port. [LAYOUT.md](LAYOUT.md) lists every route and address."
+    }
+  ]
+}

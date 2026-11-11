@@ -1,0 +1,11 @@
+# Top-level compose entrypoint. Every backing service is pulled in via `include:`.
+# The file list is owned by the planner, not edited by hand.
+name: uc-docs
+
+secrets:
+  unitycatalog_server_properties:
+    file: ./modules/unity-catalog/secrets/server.properties
+
+include:
+  - path: ./modules/unity-catalog/compose.yaml
+    project_directory: .

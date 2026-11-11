@@ -1,0 +1,42 @@
+{
+  "redirects": {
+    "/docs/ai/client": "/docs/tutorials/first-python-function/",
+    "/docs/ai/quickstart": "/docs/tutorials/first-python-function/",
+    "/docs/ai/usage": "/docs/tutorials/first-python-function/",
+    "/docs/docker_compose": "/docs/how-to/run-local-server/",
+    "/docs/env/uc-docs-env.tar.gz": "/docs/env/unitycatalog.tar.gz",
+    "/docs/integrations/unity-catalog-celerdata": "/docs/explanation/what-is-unity-catalog/",
+    "/docs/integrations/unity-catalog-daft": "/docs/how-to/python-dataframes/",
+    "/docs/integrations/unity-catalog-duckdb": "/docs/how-to/duckdb/",
+    "/docs/integrations/unity-catalog-kuzu": "/docs/explanation/what-is-unity-catalog/",
+    "/docs/integrations/unity-catalog-puppygraph": "/docs/explanation/what-is-unity-catalog/",
+    "/docs/integrations/unity-catalog-spark": "/docs/how-to/configure-spark/",
+    "/docs/integrations/unity-catalog-spiceai": "/docs/explanation/what-is-unity-catalog/",
+    "/docs/integrations/unity-catalog-trino": "/docs/how-to/iceberg-rest/",
+    "/docs/integrations/unity-catalog-xtable": "/docs/how-to/iceberg-rest/",
+    "/docs/quickstart": "/docs/tutorials/getting-started/",
+    "/docs/reference/api": "/docs/api/catalog/",
+    "/docs/reference/api/catalog": "/docs/api/catalog/",
+    "/docs/reference/api/control": "/docs/api/control/",
+    "/docs/reference/api/delta": "/docs/api/delta/",
+    "/docs/reference/api/iceberg": "/docs/api/iceberg/",
+    "/docs/server/auth": "/docs/explanation/uc-basics/",
+    "/docs/server/configuration": "/docs/how-to/run-local-server/",
+    "/docs/server/google-auth": "/docs/explanation/uc-basics/",
+    "/docs/server/users-privileges": "/docs/explanation/uc-basics/",
+    "/docs/usage/cli": "/docs/how-to/run-local-server/#run-the-uc-cli",
+    "/docs/usage/functions": "/docs/tutorials/first-python-function/",
+    "/docs/usage/models": "/docs/explanation/uc-basics/",
+    "/docs/usage/tables/deltalake": "/docs/how-to/python-dataframes/",
+    "/docs/usage/tables/formats": "/docs/how-to/table-storage-formats/",
+    "/docs/usage/tables/uniform": "/docs/how-to/iceberg-rest/",
+    "/docs/usage/ui": "/docs/how-to/run-local-server/",
+    "/docs/usage/volumes": "/docs/how-to/manage-volumes/"
+  },
+  "patterns": [
+    {
+      "source": "^/docs/ai/integrations/[^/]+/?$",
+      "destination": "/docs/how-to/langchain-tools/"
+    }
+  ]
+}

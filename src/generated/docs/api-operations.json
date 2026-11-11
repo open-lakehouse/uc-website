@@ -1,0 +1,657 @@
+{
+  "catalog": {
+    "server": "http://localhost:8080/api/2.1/unity-catalog",
+    "groups": [
+      {
+        "tag": "Catalogs",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/catalogs",
+            "summary": "List catalogs"
+          },
+          {
+            "method": "POST",
+            "path": "/catalogs",
+            "summary": "Create a catalog"
+          },
+          {
+            "method": "GET",
+            "path": "/catalogs/{name}",
+            "summary": "Get a catalog"
+          },
+          {
+            "method": "PATCH",
+            "path": "/catalogs/{name}",
+            "summary": "Update a catalog"
+          },
+          {
+            "method": "DELETE",
+            "path": "/catalogs/{name}",
+            "summary": "Delete a catalog"
+          }
+        ]
+      },
+      {
+        "tag": "Schemas",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/schemas",
+            "summary": "List schemas"
+          },
+          {
+            "method": "POST",
+            "path": "/schemas",
+            "summary": "Create a schema"
+          },
+          {
+            "method": "GET",
+            "path": "/schemas/{full_name}",
+            "summary": "Get a schema"
+          },
+          {
+            "method": "PATCH",
+            "path": "/schemas/{full_name}",
+            "summary": "Update a schema"
+          },
+          {
+            "method": "DELETE",
+            "path": "/schemas/{full_name}",
+            "summary": "Delete a schema"
+          }
+        ]
+      },
+      {
+        "tag": "Tables",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/staging-tables",
+            "summary": "Create a staging table"
+          },
+          {
+            "method": "GET",
+            "path": "/tables",
+            "summary": "List tables"
+          },
+          {
+            "method": "POST",
+            "path": "/tables",
+            "summary": "Create a table. Only external table creation is supported.\nWARNING: This API is experimental and will change in future versions."
+          },
+          {
+            "method": "GET",
+            "path": "/tables/{full_name}",
+            "summary": "Get a table"
+          },
+          {
+            "method": "DELETE",
+            "path": "/tables/{full_name}",
+            "summary": "Delete a table"
+          }
+        ]
+      },
+      {
+        "tag": "Volumes",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/volumes",
+            "summary": "List Volumes"
+          },
+          {
+            "method": "POST",
+            "path": "/volumes",
+            "summary": "Create a Volume"
+          },
+          {
+            "method": "GET",
+            "path": "/volumes/{name}",
+            "summary": "Get a Volume"
+          },
+          {
+            "method": "PATCH",
+            "path": "/volumes/{name}",
+            "summary": "Update a Volume"
+          },
+          {
+            "method": "DELETE",
+            "path": "/volumes/{name}",
+            "summary": "Delete a Volume"
+          }
+        ]
+      },
+      {
+        "tag": "Functions",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/functions",
+            "summary": "List functions"
+          },
+          {
+            "method": "POST",
+            "path": "/functions",
+            "summary": "Create a function.\nWARNING: This API is experimental and will change in future versions."
+          },
+          {
+            "method": "GET",
+            "path": "/functions/{name}",
+            "summary": "Get a function"
+          },
+          {
+            "method": "DELETE",
+            "path": "/functions/{name}",
+            "summary": "Delete a function"
+          }
+        ]
+      },
+      {
+        "tag": "RegisteredModels",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/models",
+            "summary": "List models"
+          },
+          {
+            "method": "POST",
+            "path": "/models",
+            "summary": "Create a model.\nWARNING: This API is experimental and will change in future versions."
+          },
+          {
+            "method": "GET",
+            "path": "/models/{full_name}",
+            "summary": "Get a specified registered model"
+          },
+          {
+            "method": "PATCH",
+            "path": "/models/{full_name}",
+            "summary": "Update a registered model"
+          },
+          {
+            "method": "DELETE",
+            "path": "/models/{full_name}",
+            "summary": "Delete a specified registered model."
+          }
+        ]
+      },
+      {
+        "tag": "ModelVersions",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/models/versions",
+            "summary": "Create a model version."
+          },
+          {
+            "method": "GET",
+            "path": "/models/{full_name}/versions",
+            "summary": "List model versions of the specified registered model."
+          },
+          {
+            "method": "GET",
+            "path": "/models/{full_name}/versions/{version}",
+            "summary": "Get a model version"
+          },
+          {
+            "method": "PATCH",
+            "path": "/models/{full_name}/versions/{version}",
+            "summary": "Update a model version"
+          },
+          {
+            "method": "DELETE",
+            "path": "/models/{full_name}/versions/{version}",
+            "summary": "Delete a model version"
+          },
+          {
+            "method": "PATCH",
+            "path": "/models/{full_name}/versions/{version}/finalize",
+            "summary": "Finalize a model version"
+          }
+        ]
+      },
+      {
+        "tag": "TemporaryCredentials",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/temporary-model-version-credentials",
+            "summary": "Generate temporary model version credentials. These credentials are used by clients to write and retrieve model artifacts from the model versions external storage location."
+          },
+          {
+            "method": "POST",
+            "path": "/temporary-table-credentials",
+            "summary": "Generate temporary table credentials."
+          },
+          {
+            "method": "POST",
+            "path": "/temporary-volume-credentials",
+            "summary": "Generate temporary volume credentials."
+          },
+          {
+            "method": "POST",
+            "path": "/temporary-path-credentials",
+            "summary": "Generate temporary path credentials."
+          }
+        ]
+      },
+      {
+        "tag": "Metastores",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/metastore_summary",
+            "summary": "Get metastore summary"
+          }
+        ]
+      },
+      {
+        "tag": "DeltaCommits",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/delta/preview/commits",
+            "summary": "List unbackfilled Delta table commits.\nWARNING: This API is experimental and may change in future versions."
+          },
+          {
+            "method": "POST",
+            "path": "/delta/preview/commits",
+            "summary": "Commit changes to a specified Delta table.\nThe server has a limit defined in config on how many unbackfilled commits it can hold.\nClients are expected to do active backfill of the commit after committing to UC. So in\nmost cases the number of unbackfilled commits should be close to zero or one. But if\nclients misbehave and unbackfilled commits accumulate beyond the limit, server will\nreject further commits until more backfill is done.\nReplaying an already-accepted commit (same version and file-name) is an idempotent no-op\nthat returns 200, so a client that lost the response can safely resend.\nWARNING: This API is experimental and may change in future versions."
+          }
+        ]
+      },
+      {
+        "tag": "Grants",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/permissions/{securable_type}/{full_name}",
+            "summary": "Get permissions"
+          },
+          {
+            "method": "PATCH",
+            "path": "/permissions/{securable_type}/{full_name}",
+            "summary": "Update a permission"
+          }
+        ]
+      },
+      {
+        "tag": "Credentials",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/credentials",
+            "summary": "List credentials"
+          },
+          {
+            "method": "POST",
+            "path": "/credentials",
+            "summary": "Create a credential"
+          },
+          {
+            "method": "GET",
+            "path": "/credentials/{name}",
+            "summary": "Get a credential"
+          },
+          {
+            "method": "PATCH",
+            "path": "/credentials/{name}",
+            "summary": "Update a credential"
+          },
+          {
+            "method": "DELETE",
+            "path": "/credentials/{name}",
+            "summary": "Delete a credential"
+          }
+        ]
+      },
+      {
+        "tag": "External Locations",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/external-locations",
+            "summary": "List external locations"
+          },
+          {
+            "method": "POST",
+            "path": "/external-locations",
+            "summary": "Create an external location"
+          },
+          {
+            "method": "GET",
+            "path": "/external-locations/{name}",
+            "summary": "Get an external location"
+          },
+          {
+            "method": "PATCH",
+            "path": "/external-locations/{name}",
+            "summary": "Update an external location"
+          },
+          {
+            "method": "DELETE",
+            "path": "/external-locations/{name}",
+            "summary": "Delete an external location"
+          }
+        ]
+      }
+    ]
+  },
+  "control": {
+    "server": "http://localhost:8080/api/1.0/unity-control",
+    "groups": [
+      {
+        "tag": "Users",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/scim2/Users",
+            "summary": "List users"
+          },
+          {
+            "method": "POST",
+            "path": "/scim2/Users",
+            "summary": "Create a user"
+          },
+          {
+            "method": "GET",
+            "path": "/scim2/Users/{id}",
+            "summary": "Get a user"
+          },
+          {
+            "method": "PUT",
+            "path": "/scim2/Users/{id}",
+            "summary": "Update a user"
+          },
+          {
+            "method": "DELETE",
+            "path": "/scim2/Users/{id}",
+            "summary": "Delete a user"
+          },
+          {
+            "method": "GET",
+            "path": "/scim2/Me",
+            "summary": "Get the current user"
+          }
+        ]
+      },
+      {
+        "tag": "OAuth2",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/auth/tokens",
+            "summary": "Get a token using an OAuth2 flow"
+          },
+          {
+            "method": "POST",
+            "path": "/auth/logout",
+            "summary": "Revoke access token cookie"
+          }
+        ]
+      }
+    ]
+  },
+  "delta": {
+    "server": "http://localhost:8080/api/2.1/unity-catalog",
+    "groups": [
+      {
+        "tag": "DeltaConfiguration",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/delta/v1/config",
+            "summary": "Get catalog configuration"
+          }
+        ]
+      },
+      {
+        "tag": "DeltaTables",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/staging-tables",
+            "summary": "Create a staging table"
+          },
+          {
+            "method": "POST",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables",
+            "summary": "Create a table"
+          },
+          {
+            "method": "GET",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}",
+            "summary": "Load table metadata"
+          },
+          {
+            "method": "POST",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}",
+            "summary": "Update table"
+          },
+          {
+            "method": "DELETE",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}",
+            "summary": "Delete a table"
+          },
+          {
+            "method": "HEAD",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}",
+            "summary": "Check if table exists"
+          },
+          {
+            "method": "POST",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}/metrics",
+            "summary": "Report commit metrics"
+          },
+          {
+            "method": "POST",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}/rename",
+            "summary": "Rename a table"
+          }
+        ]
+      },
+      {
+        "tag": "DeltaTemporaryCredentials",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/delta/v1/catalogs/{catalog}/schemas/{schema}/tables/{table}/credentials",
+            "summary": "Get table credentials"
+          },
+          {
+            "method": "GET",
+            "path": "/delta/v1/staging-tables/{table_id}/credentials",
+            "summary": "Get staging table credentials by UUID"
+          },
+          {
+            "method": "GET",
+            "path": "/delta/v1/temporary-path-credentials",
+            "summary": "Get temporary path credentials"
+          }
+        ]
+      }
+    ]
+  },
+  "iceberg": {
+    "server": null,
+    "groups": [
+      {
+        "tag": "Configuration API",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/v1/config",
+            "summary": "List all catalog configuration settings"
+          }
+        ]
+      },
+      {
+        "tag": "OAuth2 API",
+        "operations": [
+          {
+            "method": "POST",
+            "path": "/v1/oauth/tokens",
+            "summary": "Get a token using an OAuth2 flow (DEPRECATED for REMOVAL)"
+          }
+        ]
+      },
+      {
+        "tag": "Catalog API",
+        "operations": [
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces",
+            "summary": "List namespaces, optionally providing a parent namespace to list underneath"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces",
+            "summary": "Create a namespace"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}",
+            "summary": "Load the metadata properties for a namespace"
+          },
+          {
+            "method": "DELETE",
+            "path": "/v1/{prefix}/namespaces/{namespace}",
+            "summary": "Drop a namespace from the catalog. Namespace must be empty."
+          },
+          {
+            "method": "HEAD",
+            "path": "/v1/{prefix}/namespaces/{namespace}",
+            "summary": "Check if a namespace exists"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/properties",
+            "summary": "Set or remove properties on a namespace"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables",
+            "summary": "List all table identifiers underneath a given namespace"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables",
+            "summary": "Create a table in the given namespace"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/plan",
+            "summary": "Submit a scan for planning"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/plan/{plan-id}",
+            "summary": "Fetches the result of scan planning for a plan-id"
+          },
+          {
+            "method": "DELETE",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/plan/{plan-id}",
+            "summary": "Cancels scan planning for a plan-id"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/tasks",
+            "summary": "Fetches result tasks for a plan task"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/register",
+            "summary": "Register a table in the given namespace using given metadata file location"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}",
+            "summary": "Load a table from the catalog"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}",
+            "summary": "Commit updates to a table"
+          },
+          {
+            "method": "DELETE",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}",
+            "summary": "Drop a table from the catalog"
+          },
+          {
+            "method": "HEAD",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}",
+            "summary": "Check if a table exists"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials",
+            "summary": "Load vended credentials for a table from the catalog"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/sign",
+            "summary": "Remotely signs requests to object storage"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/tables/rename",
+            "summary": "Rename a table from its current name to a new name"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics",
+            "summary": "Send a metrics report to this endpoint to be processed by the backend"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/transactions/commit",
+            "summary": "Commit updates to multiple tables in an atomic operation"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views",
+            "summary": "List all view identifiers underneath a given namespace"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views",
+            "summary": "Create a view in the given namespace"
+          },
+          {
+            "method": "GET",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views/{view}",
+            "summary": "Load a view from the catalog"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views/{view}",
+            "summary": "Replace a view"
+          },
+          {
+            "method": "DELETE",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views/{view}",
+            "summary": "Drop a view from the catalog"
+          },
+          {
+            "method": "HEAD",
+            "path": "/v1/{prefix}/namespaces/{namespace}/views/{view}",
+            "summary": "Check if a view exists"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/views/rename",
+            "summary": "Rename a view from its current name to a new name"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/{prefix}/namespaces/{namespace}/register-view",
+            "summary": "Register a view in the catalog"
+          }
+        ]
+      }
+    ]
+  }
+}
