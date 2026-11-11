@@ -7,7 +7,7 @@
  * `remark-callouts` (which emits a React `<Callout>`). Blog drafts authored in
  * docs-factory stay portable CommonMark using the `:::` directive convention
  * (see blogs/CONVENTIONS.md §5); the emitter passes callouts through untouched,
- * and THIS plugin — added to `markdown.remarkPlugins` in astro.config — styles
+ * and THIS plugin — in the MDX pipeline (plugins/mdx.ts) — styles
  * them. Because it operates on the directive's hast projection, it works for both
  * `.md` and `.mdx` posts.
  *
