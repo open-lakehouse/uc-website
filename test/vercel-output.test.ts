@@ -281,6 +281,43 @@ describe("vercelOutputConfig", () => {
     });
   });
 
+  test("keeps a destination's #heading after its trailing slash", () => {
+    const { routes } = vercelOutputConfig({
+      redirects: {
+        "/docs/usage/cli": "/docs/how-to/run-local-server#run-the-uc-cli",
+      },
+      pages: [],
+    });
+    expect(
+      route(routes, "/docs/usage/cli", { files: new Set() }),
+    ).toMatchObject({
+      status: 301,
+      location: "/docs/how-to/run-local-server/#run-the-uc-cli",
+    });
+  });
+
+  test("redirects every path a pattern matches", () => {
+    const { routes } = vercelOutputConfig({
+      redirects: {},
+      patterns: [
+        {
+          source: "^/docs/ai/integrations/[^/]+/?$",
+          destination: "/docs/how-to/langchain-tools/",
+        },
+      ],
+      pages: [],
+    });
+    for (const path of [
+      "/docs/ai/integrations/openai",
+      "/docs/ai/integrations/crewai/",
+    ]) {
+      expect(route(routes, path, { files: new Set() })).toMatchObject({
+        status: 301,
+        location: "/docs/how-to/langchain-tools/",
+      });
+    }
+  });
+
   test("leaves a Location's own query string alone", () => {
     const routes: Route[] = [
       { src: "^/a$", headers: { Location: "/b?c=1" }, status: 301 },

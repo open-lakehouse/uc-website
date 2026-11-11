@@ -9,7 +9,11 @@ import { renderSitemap, renderSitemapIndex } from "../lib/sitemap";
 import { posts } from "./posts";
 
 export function sitemapIndex(): string {
-  return renderSitemapIndex([new URL("/sitemap-0.xml", site).href]);
+  return renderSitemapIndex([
+    new URL("/sitemap-0.xml", site).href,
+    // The docs' own, with their pages' lastmod dates (docs-factory emits it).
+    new URL("/docs/sitemap.xml", site).href,
+  ]);
 }
 
 export function sitemap(): string {

@@ -6,6 +6,7 @@
  * @typedef {object} MenuItem
  * @property {string} label
  * @property {string} href
+ * @property {"docs-apis"} [submenu] A dropdown of the REST APIs the docs emit.
  */
 
 /**
@@ -50,11 +51,8 @@ export const menus = {
   header: [
     { label: "Features", href: "/#features" },
     { label: "Ecosystem", href: "/#partner-ecosystem" },
-    { label: "Docs", href: "https://go.unitycatalog.io/docs" },
-    {
-      label: "API",
-      href: "https://docs.unitycatalog.io/reference/api/catalog",
-    },
+    { label: "Docs", href: "/docs/" },
+    { label: "API", href: "/docs/api/", submenu: "docs-apis" },
     { label: "Blog", href: "/blogs" },
     { label: "Events", href: "/events" },
   ],
@@ -80,8 +78,8 @@ export const menus = {
     { label: "Partner Ecosystem", href: "/#partner-ecosystem" },
     {
       label: "API",
-      href: "https://docs.unitycatalog.io/reference/api/catalog",
+      href: "/docs/api/catalog/",
     },
-    { label: "Documentation", href: "https://go.unitycatalog.io/docs" },
+    { label: "Documentation", href: "/docs/" },
   ],
 };

@@ -16,14 +16,14 @@ const resources = [
     title: "Everything you need to run Unity Catalog",
     body: "Quickstart, deployment guides, integrations, and the server and CLI reference.",
     cta: "Read the docs",
-    href: "https://go.unitycatalog.io/docs",
+    href: "/docs/",
   },
   {
     kicker: "API reference",
     title: "An open, documented REST API",
     body: "Browse the REST API reference for catalogs, schemas, tables, volumes, functions, and models.",
     cta: "Explore the API",
-    href: "https://docs.unitycatalog.io/reference/api/catalog",
+    href: "/docs/api/catalog/",
   },
   {
     kicker: "Community",

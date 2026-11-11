@@ -9,7 +9,7 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
-import { redirects } from "./site.config.mjs";
+import { redirects as siteRedirects } from "./site.config.mjs";
 import { caseRedirects } from "./src/lib/case-redirects.mjs";
 import { assetFileNames } from "./plugins/asset-file-names.ts";
 import { contentCollections } from "./plugins/content-collections.ts";
@@ -48,6 +48,20 @@ if (existsSync(docsSite)) {
   );
 }
 const pages = [...pagePaths(postIds), ...docsPages];
+
+// The docs' legacy URLs (docs.unitycatalog.io paths, under /docs/), which
+// docs-factory resolves against the pages it emits.
+const docsRedirectsFile = new URL(
+  "./src/generated/docs/redirects.json",
+  import.meta.url,
+);
+const docsRedirects = existsSync(docsRedirectsFile)
+  ? (JSON.parse(readFileSync(docsRedirectsFile, "utf8")) as {
+      redirects: Record<string, string>;
+      patterns: { source: string; destination: string }[];
+    })
+  : { redirects: {}, patterns: [] };
+const redirects = { ...siteRedirects, ...docsRedirects.redirects };
 const pageRedirects = caseRedirects(pages);
 const redirectSources = new Set(
   Object.keys(redirects).flatMap((from) => [from, `${from}/`]),
@@ -141,6 +155,7 @@ export default defineConfig({
           version: 3,
           ...vercelOutputConfig({
             redirects,
+            patterns: docsRedirects.patterns,
             pages,
             noindex: process.env.NOINDEX === "1",
           }),

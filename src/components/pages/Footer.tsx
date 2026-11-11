@@ -8,10 +8,10 @@ const columns = [
     links: [
       { label: "Features", href: "/#features" },
       { label: "Ecosystem", href: "/#partner-ecosystem" },
-      { label: "Documentation", href: "https://go.unitycatalog.io/docs" },
+      { label: "Documentation", href: "/docs/" },
       {
         label: "API reference",
-        href: "https://docs.unitycatalog.io/reference/api/catalog",
+        href: "/docs/api/catalog/",
       },
       {
         label: "Releases",
@@ -41,7 +41,7 @@ const columns = [
     title: "Learn",
     links: [
       { label: "Blog", href: "/blogs" },
-      { label: "Quickstart", href: "https://docs.unitycatalog.io/quickstart/" },
+      { label: "Quickstart", href: "/docs/tutorials/getting-started/" },
       { label: "LF AI & Data", href: "https://lfaidata.foundation/" },
     ],
   },

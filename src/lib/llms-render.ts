@@ -19,22 +19,22 @@ const SUMMARY =
 const DOCS = [
   {
     label: "Documentation index for LLMs",
-    href: "https://docs.unitycatalog.io/llms.txt",
+    path: "/docs/llms.txt",
     desc: "Every tutorial, how-to guide, and reference page in the Unity Catalog docs, each also available as Markdown.",
   },
   {
     label: "Full documentation text",
-    href: "https://docs.unitycatalog.io/llms-full.txt",
+    path: "/docs/llms-full.txt",
     desc: "The complete Unity Catalog documentation in one file.",
   },
   {
     label: "Create your first catalog",
-    href: "https://docs.unitycatalog.io/tutorials/getting-started",
+    path: "/docs/tutorials/getting-started/",
     desc: "Getting started: run a local server, browse the sample data, and create a catalog, schema, and Delta table with the uc CLI.",
   },
   {
     label: "REST API reference",
-    href: "https://docs.unitycatalog.io/reference/api/catalog",
+    path: "/docs/api/catalog/",
     desc: "The Unity Catalog REST API for catalogs, schemas, tables, volumes, functions, and models.",
   },
 ];
@@ -169,10 +169,10 @@ export function renderLlmsIndex(site: URL, sources: LlmsSources): string {
     "",
     `> ${SUMMARY}`,
     "",
-    `This is the index of ${new URL("/", site).host}, the Unity Catalog project site. The full text of every blog post and the FAQ is in ${new URL("/llms-full.txt", site).href}. For reference documentation, use the docs site's own index at https://docs.unitycatalog.io/llms.txt.`,
+    `This is the index of ${new URL("/", site).host}, the Unity Catalog project site. The full text of every blog post and the FAQ is in ${new URL("/llms-full.txt", site).href}. For reference documentation, use the docs' own index at ${new URL("/docs/llms.txt", site).href}.`,
     "",
     "## Documentation",
-    ...DOCS.map((d) => link(d.label, d.href, d.desc)),
+    ...DOCS.map((d) => link(d.label, new URL(d.path, site).href, d.desc)),
     "",
     "## Site",
     ...PAGES.map((p) => link(p.label, pageUrl(p.path, site), p.desc)),
@@ -204,7 +204,7 @@ export function renderLlmsFull(site: URL, sources: LlmsSources): string {
     "",
     `> ${SUMMARY}`,
     "",
-    `Every blog post on ${new URL("/", site).host}, newest first, followed by the homepage FAQ. Curated index: ${new URL("/llms.txt", site).href}. Reference documentation: https://docs.unitycatalog.io/llms-full.txt`,
+    `Every blog post on ${new URL("/", site).host}, newest first, followed by the homepage FAQ. Curated index: ${new URL("/llms.txt", site).href}. Reference documentation: ${new URL("/docs/llms-full.txt", site).href}`,
     "",
   ];
   for (const p of posts) {

@@ -80,8 +80,11 @@ describe("discovery files", () => {
     expect(robots).toContain(`Sitemap: ${url("/sitemap-index.xml")}\n`);
   });
 
-  test("/sitemap-index.xml lists /sitemap-0.xml", () => {
-    expect(locs(sitemapIndex())).toEqual([url("/sitemap-0.xml")]);
+  test("/sitemap-index.xml lists /sitemap-0.xml and the docs' sitemap", () => {
+    expect(locs(sitemapIndex())).toEqual([
+      url("/sitemap-0.xml"),
+      url("/docs/sitemap.xml"),
+    ]);
   });
 
   test("/sitemap-0.xml lists every page and post once", () => {
