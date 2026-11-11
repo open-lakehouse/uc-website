@@ -3,10 +3,10 @@ title: Fighting entropy with metric views
 authors:
   - robert-pack
 category: guide
+date: August 24, 2026
 topics:
   - releases
   - guide
-date: August 24, 2026
 thumbnail: ./thumbnail.jpeg
 ---
 
@@ -19,7 +19,9 @@ import JourneyStep from "@/components/blog/JourneyStep.astro";
 - Metric Views as part of your semantic layer allow you to centrally
   define and govern metrics and KPIs for your business.
 - Metric views are specifically designed to also be consumed by agents.
-- You can test metric views today using Unity Catalog `0.6` with Apache Spark `4.3`.
+- Metric views are new in open source Unity Catalog. Try them today with
+  Unity Catalog `0.7` and Apache Spark `4.2`:
+  [define and query your first metric view](/docs/tutorials/first-metric-view/).
   :::
 
 When people asked me in one of my previous roles as chief architect
@@ -62,8 +64,8 @@ The core components you define are sources, joins, filters, fields, and measures
 ### Providing Agent Metadata
 
 And while we may be glossing over some of the finer points of thermodynamic
-vs. Shannon entropy a bit, when talking about agents, the entropy analogy goes from
-a metaphor to something we could directly see if we were to write down the formula for
+vs. Shannon entropy a bit, when talking about agents, the entropy analogy goes
+from a metaphor to something we could directly see if we were to write down the formula for
 the next output token's probability. As such, context rot and context management are prime
 examples of the effects of entropy on a system and the need to keep it in check.
 
@@ -72,7 +74,7 @@ context an LLM/Agent requires to reason about your question, which directly tran
 desired grounding effects we aim for in context management.
 Agent metadata includes display names, format specifications, and synonyms that provide additional context.
 This in turn grounds your agents' and natural language tools' exploration in facts, rather than having
-to research or guess as to how to interpret the users' questions.
+to research or guess as to how to interpret the users questions.
 
 We'll be diving deeper into what specifically fields are in the context of metric views,
 but for now let's examine a full definition of a field including some agent metadata.
@@ -99,7 +101,7 @@ with spaces in field names.
 
 Dates are one of my favourites. While today this specific scenario has been solved,
 I still vividly remember debugging a data pipeline where we were parsing CSV, and the
-parser would default to "MM-DD-YYYY" format, and switch to "DD-MM-YYYY" `format` mid-parsing
+parser would default to "MM-DD-YYYY" format, then switch to "DD-MM-YYYY" `format` mid-parsing
 as it encountered values that could not be parsed using the prior format. Without additional
 metadata, agents and humans alike are left to guess, especially when seeing only a few
 ambiguous values.
@@ -121,18 +123,26 @@ However all of this is a bit abstract, so let's put it into practice.
 Since metric views require some tabular assets as a foundation,
 we first need some interesting data. For the remainder of this tutorial,
 we assume that you created TPC-H tables per the
-[TPC-H tutorial](https://docs.unitycatalog.io/how-to/seed-tpch-data).
+[TPC-H how-to](/docs/how-to/seed-tpch-data/).
 
 With that data in place, let's create our first metric view.
+
+:::note[Which YAML Spark reads]
+The definition below uses the version 1.1 syntax from the Databricks documentation,
+with `joins`, `fields`, and agent metadata. Apache Spark 4.2, the engine that runs
+metric views against Unity Catalog OSS, reads only version `"0.1"` so far:
+`source`, `filter`, `dimensions`, and `measures`, with the join written in the
+`source` query. [Manage metric views](/docs/how-to/metric-views/) shows this view in that form.
+:::
 
 <Journey>
   <JourneyStep step="Define the source data">
     The definition of a metric-view is just yaml data.
 
-    The source data is defined via the `source` field. So let's
+    The source data is defined via the `source` field. So lets
     define the base for our metric view along with some common metadata.
 
-    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="2" srcregion="start:source..end:source"
+    ```yaml title="metric-view.yaml"
     version: 1.1
     comment: 'Orders KPIs for sales analysis'
     source: samples.tpch.orders
@@ -144,7 +154,7 @@ With that data in place, let's create our first metric view.
     To have a view actually be useful, we should probably enrich the data
     by joining it with data from another table and maybe applying some filters.
 
-    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="8" srcregion="start:enrich..end:enrich"
+    ```yaml title="metric-view.yaml"
     joins:
       - name: customer
         source: samples.tpch.customer
@@ -156,15 +166,19 @@ With that data in place, let's create our first metric view.
     ```
 
     As you can see, joins are defined as an array so you can accommodate complex
-    scenarios, like warehouses built on [star or snowflake schemas](https://docs.databricks.com/aws/en/uc-semantics/metric-views/joins).
+    scenarios, like warehouses built on
+    [star](https://docs.databricks.com/aws/en/uc-semantics/metric-views/joins#star-schema-joins)
+    or [snowflake](https://docs.databricks.com/aws/en/uc-semantics/metric-views/joins#snowflake-schema-joins)
+    schemas.
 
   </JourneyStep>
 
   <JourneyStep step="Define relevant fields">
-    Fields are essentially projections (i.e. by row computations) we apply to process the data
-    within our metric view along with additional metadata as we saw earlier.
+    Fields are expressions computed for each row of the source, like a truncated
+    date or a status code mapped to a readable label. They're the dimensions you
+    group and slice by, and they carry the same kind of metadata we saw earlier.
 
-    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="19" srcregion="start:fields..end:fields"
+    ```yaml title="metric-view.yaml"
     fields:
       - name: Order Month
         expr: DATE_TRUNC('MONTH', source.o_orderdate)
@@ -190,7 +204,7 @@ With that data in place, let's create our first metric view.
     Now we get to the heart of the matter and define measures/KPIs we are using
     to steer our business.
 
-    ```yaml title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="39" srcregion="start:measures..end:measures"
+    ```yaml title="metric-view.yaml"
     measures:
       - name: Order Count
         expr: COUNT(1)
@@ -206,21 +220,18 @@ With that data in place, let's create our first metric view.
     ```
 
     They mainly differ from fields in that the expressions for a measure
-    are aggregates over some group vs. projections. The SQL statements
+    aggregate over a group of rows, while a field computes one value per row.
 
   </JourneyStep>
 
   <JourneyStep step="Register the metric view">
     Copy the full definition of the metric view from below into a local file `metric-view.yaml`.
 
-    ```yaml collapse title="metric-view.yaml" srcpath="blogs/uc-metric-views/metric-view.yaml" srcstart="1"
-    # --8<-- [start:source]
+    ```yaml collapse title="metric-view.yaml"
     version: 1.1
     comment: 'Orders KPIs for sales analysis'
     source: samples.tpch.orders
-    # --8<-- [end:source]
 
-    # --8<-- [start:enrich]
     joins:
       - name: customer
         source: samples.tpch.customer
@@ -229,9 +240,7 @@ With that data in place, let's create our first metric view.
           at_most_one_match: true
 
     filter: source.o_orderdate > '1990-01-01'
-    # --8<-- [end:enrich]
 
-    # --8<-- [start:fields]
     fields:
       - name: Order Month
         expr: DATE_TRUNC('MONTH', source.o_orderdate)
@@ -249,9 +258,7 @@ With that data in place, let's create our first metric view.
       - name: Market Segment
         expr: customer.c_mktsegment
         comment: 'Customer market segment'
-    # --8<-- [end:fields]
 
-    # --8<-- [start:measures]
     measures:
       - name: Order Count
         expr: COUNT(1)
@@ -264,12 +271,11 @@ With that data in place, let's create our first metric view.
       - name: Total Revenue per Customer
         expr: SUM(source.o_totalprice) / COUNT(DISTINCT source.o_custkey)
         comment: 'Average revenue per unique customer'
-    # --8<-- [end:measures]
     ```
 
     We now register the metric view as a securable in Unity Catalog.
 
-    ```python title="create_metric_view.py" srcpath="blogs/uc-metric-views/create_metric_view.py" srcstart="6" srcregion="start:create-metric-view..end:create-metric-view"
+    ```python title="create_metric_view.py"
     import asyncio
     import os
     from pathlib import Path
@@ -321,7 +327,8 @@ With that data in place, let's create our first metric view.
   </JourneyStep>
 
   <JourneyStep step="Query the metric view">
-    We can now query the metric view, using the latest (py)spark version
+    We can now query the metric view with Apache Spark 4.2 (the
+    [tutorial](/docs/tutorials/first-metric-view/) shows the session setup).
 
     ```sql
     SELECT
@@ -343,9 +350,11 @@ With that data in place, let's create our first metric view.
 ## What we learned
 
 As we have seen, defining key metrics in a way that you can centrally track and govern
-can have a tremendous effect in reducing friction (yet another great energy dissipation/entropy
+can have a tremendous effect on reducing friction (yet another great energy dissipation/entropy
 analogy \:D) across your organization and within your agent sessions.
 As an aside, the process of writing the metric view definitions themselves can be a great catalyst
 for internal alignment on what your actual KPIs should be.
 
-And you can get started today using the latest Unity Catalog 0.6 release.
+And you can get started today with Unity Catalog 0.7 and Apache Spark 4.2:
+[Working with metric views](/docs/tutorials/first-metric-view/) walks through a first one, and
+[Manage metric views](/docs/how-to/metric-views/) covers the rest.
