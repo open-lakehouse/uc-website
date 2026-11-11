@@ -46,7 +46,7 @@
 }
 
 .blog-card-topic {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .blog-card-sep {
@@ -62,7 +62,7 @@
 }
 
 .blog-card:hover .blog-card-title {
-  color: #fff;
+  color: var(--uc-text);
 }
 
 .blog-card-desc {
@@ -130,7 +130,7 @@
 }
 
 .is-side:hover {
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }
 
 .is-side .blog-card-media {

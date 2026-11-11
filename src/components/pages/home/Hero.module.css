@@ -56,7 +56,7 @@
   margin-bottom: 2rem;
   border: 1px solid var(--uc-line-strong);
   border-radius: 9999px;
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(var(--uc-ink-rgb) / 0.03);
   font-size: 0.8125rem;
   color: var(--uc-text-muted);
   transition:
@@ -73,7 +73,7 @@
   padding: 0.125rem 0.5rem;
   border-radius: 9999px;
   background: rgb(255 188 0 / 0.14);
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
@@ -138,7 +138,7 @@
     140deg,
     rgb(244 59 166 / 0.55),
     rgb(255 188 0 / 0.25) 35%,
-    rgb(154 178 201 / 0.12) 60%
+    rgb(var(--uc-line-rgb) / 0.12) 60%
   );
   z-index: -1;
 }
@@ -147,7 +147,7 @@
   border-radius: var(--uc-radius-lg);
   background: linear-gradient(180deg, #0a1626 0%, #060e1a 100%);
   box-shadow:
-    0 40px 80px -30px rgb(0 0 0 / 0.8),
+    0 40px 80px -30px rgb(var(--uc-shadow-rgb) / calc(0.8 * var(--uc-shadow-k))),
     0 0 120px -40px rgb(244 59 166 / 0.35);
   overflow: hidden;
   font-family: var(--font-mono);
@@ -227,16 +227,16 @@
   color: var(--uc-text-muted);
 }
 .type-table .explorer-icon {
-  color: var(--uc-sky);
+  color: var(--uc-sky-ink);
 }
 .type-volume .explorer-icon {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 .type-function .explorer-icon {
-  color: var(--uc-pink);
+  color: var(--uc-pink-ink);
 }
 .type-model .explorer-icon {
-  color: #c4b5fd;
+  color: var(--uc-violet-ink);
 }
 
 .type-catalog .explorer-name,
@@ -257,14 +257,14 @@
 
 .selected .explorer-meta {
   border-color: rgb(255 188 0 / 0.35);
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .explorer-grant {
   margin: 0 1rem;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: rgb(0 0 0 / 0.3);
+  background: rgb(var(--uc-shadow-rgb) / calc(0.3 * var(--uc-shadow-k)));
   border: 1px solid var(--uc-line);
   color: var(--uc-text);
   font-size: 0.75rem;
@@ -272,11 +272,11 @@
 }
 
 .grant-kw {
-  color: var(--uc-pink);
+  color: var(--uc-pink-ink);
 }
 
 .grant-obj {
-  color: var(--uc-sky);
+  color: var(--uc-sky-ink);
 }
 
 .explorer-engines {

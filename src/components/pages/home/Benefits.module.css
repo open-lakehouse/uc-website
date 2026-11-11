@@ -64,7 +64,7 @@
   --accent: var(--uc-pink);
 }
 .accent-violet {
-  --accent: #c4b5fd;
+  --accent: var(--uc-violet-ink);
 }
 
 .benefit-icon {

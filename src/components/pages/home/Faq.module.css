@@ -24,7 +24,7 @@
 }
 
 .faq-link:hover {
-  text-decoration-color: var(--uc-yellow);
+  text-decoration-color: var(--uc-yellow-ink);
 }
 
 .faq-list {
@@ -54,7 +54,7 @@
 }
 
 .faq-q:hover {
-  color: #fff;
+  color: var(--uc-text);
 }
 
 .faq-icon {

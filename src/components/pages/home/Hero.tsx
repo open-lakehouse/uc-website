@@ -185,7 +185,7 @@ export function Hero() {
         </div>
 
         <div className={styles.heroVisual} aria-hidden="true">
-          <div className={styles.explorer}>
+          <div className={clsx("uc-dark", styles.explorer)}>
             <div className={styles.explorerBar}>
               <span className={styles.explorerDots}>
                 <i></i>

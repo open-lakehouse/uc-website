@@ -9,7 +9,9 @@ import { Button } from "../Button";
 import { GitHubIcon } from "../icons/GitHubIcon";
 import { LumaIcon } from "../icons/LumaIcon";
 import { SlackIcon } from "../icons/SlackIcon";
+import { Logo } from "../Logo";
 import { SiteLink } from "../SiteLink";
+import { ThemeMenu } from "../ThemeMenu";
 import styles from "./Header.module.css";
 import { useGithubStars } from "./useGithubStars";
 
@@ -106,7 +108,7 @@ export function Header({ githubStars }: { githubStars: number | null }) {
           className={styles.headerLogo}
           aria-label="Unity Catalog home"
         >
-          <img src="/uc-logo.svg" alt="Unity Catalog" width="100" height="36" />
+          <Logo width={100} height={36} />
         </SiteLink>
 
         <nav className={styles.headerNav} aria-label="Primary">
@@ -136,6 +138,10 @@ export function Header({ githubStars }: { githubStars: number | null }) {
               {ctaContent(btn)}
             </Button>
           ))}
+        </div>
+
+        <div className={styles.headerTheme}>
+          <ThemeMenu />
         </div>
 
         <button

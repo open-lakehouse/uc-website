@@ -183,8 +183,6 @@
    404 that asset, which zeroed padding and turned the dots into a solid pill. */
 
 .blog-article .expressive-code {
-  --uc-code-bg: #152a40;
-  --uc-code-titlebar: #0a1a2c;
   --uc-code-pad-inl: 1.35rem;
   --uc-code-pad-blk: 1rem;
   --uc-code-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 16' preserveAspectRatio='xMidYMid meet'%3E%3Ccircle cx='8' cy='8' r='8' fill='%237a92ab'/%3E%3Ccircle cx='30' cy='8' r='8' fill='%237a92ab'/%3E%3Ccircle cx='52' cy='8' r='8' fill='%237a92ab'/%3E%3C/svg%3E");
@@ -193,10 +191,11 @@
 .blog-article .expressive-code .frame {
   --code-background: var(--uc-code-bg);
   overflow: hidden;
-  border: 1px solid rgb(154 178 201 / 0.32);
+  border: 1px solid rgb(var(--uc-line-rgb) / 0.32);
   border-radius: 0.75rem;
   background: var(--uc-code-bg);
-  box-shadow: 0 18px 48px rgb(0 0 0 / 0.55);
+  box-shadow: 0 18px 48px
+    rgb(var(--uc-shadow-rgb) / calc(0.55 * var(--uc-shadow-k)));
 }
 
 .blog-article .expressive-code .frame .header {
@@ -207,8 +206,8 @@
   min-height: 2rem;
   padding: 0.45rem 0.85rem 0.45rem 3.1rem;
   background: var(--uc-code-titlebar);
-  border-bottom: 1px solid rgb(154 178 201 / 0.18);
-  color: #9ab2c9;
+  border-bottom: 1px solid rgb(var(--uc-line-rgb) / 0.18);
+  color: var(--uc-code-titlebar-text);
   font-weight: 500;
   letter-spacing: 0.025ch;
 }

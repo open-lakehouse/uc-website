@@ -24,13 +24,18 @@
 .share-btn:hover {
   color: var(--uc-text);
   border-color: var(--uc-yellow);
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }
 
-.share-btn img {
+/* The icon file is a mask over the button's text color, so it follows the
+   theme and the hover color. */
+.share-icon {
   width: 14px;
   height: 14px;
-  filter: invert(1) opacity(0.75);
+  background: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
 }
 
 .share-copied {

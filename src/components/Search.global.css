@@ -79,8 +79,8 @@
   border-radius: 0.75rem;
   background: var(--uc-surface);
   box-shadow:
-    0 24px 48px -20px rgb(0 0 0 / 0.7),
-    0 0 0 1px rgb(255 255 255 / 0.03);
+    0 24px 48px -20px rgb(var(--uc-shadow-rgb) / calc(0.7 * var(--uc-shadow-k))),
+    0 0 0 1px rgb(var(--uc-ink-rgb) / 0.03);
 }
 
 #pagefind-ui .pagefind-ui__drawer:empty,
@@ -131,7 +131,7 @@
 }
 
 #pagefind-ui .pagefind-ui__result:hover {
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }
 
 #pagefind-ui .pagefind-ui__result-inner {
@@ -160,7 +160,7 @@
 
 #pagefind-ui .pagefind-ui__result mark {
   background: transparent;
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
   font-weight: 600;
 }
 
@@ -187,5 +187,5 @@
 #pagefind-ui .pagefind-ui__button:focus {
   color: var(--uc-text);
   border-color: var(--uc-yellow);
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }

@@ -113,7 +113,7 @@ function Events() {
         <p
           id="luma-fallback"
           role="status"
-          className="rounded-xl border border-neutral-800 bg-neutral-900 px-6 py-16 text-center text-lg"
+          className="rounded-xl border border-[var(--uc-line)] bg-[var(--uc-surface)] px-6 py-16 text-center text-lg"
           hidden={!failed}
         >
           Luma failed to load the calendar. Please refresh the page or go

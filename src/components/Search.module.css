@@ -17,7 +17,7 @@
 
 .search-container:hover,
 .search-container:focus-within {
-  border-color: rgb(154 178 201 / 0.4);
+  border-color: rgb(var(--uc-line-rgb) / 0.4);
 }
 
 .search-dev {
