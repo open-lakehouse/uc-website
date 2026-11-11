@@ -20,8 +20,8 @@
  *   bun run strip-lock-proxy          # rewrite bun.lock in place
  *   bun run strip-lock-proxy:check    # exit 1 if proxy URLs exist (no write)
  *
- *   # Check lockfile text from stdin instead (implies --check). The pre-push
- *   # hook uses this to check bun.lock as committed in each pushed commit:
+ *   # Check lockfile text from stdin instead (implies --check), e.g. bun.lock
+ *   # as committed:
  *   git show HEAD:bun.lock | bun scripts/strip-bun-lock-proxy.ts --stdin
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";

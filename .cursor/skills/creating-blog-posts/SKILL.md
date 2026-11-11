@@ -124,7 +124,7 @@ bun run build
 ```
 
 - `check-post.mjs` enforces everything above (folder name, frontmatter, authors, thumbnail, callouts, colon deletion, missing images). Fix every `error`; fix `warn`s unless there is a reason not to. Run it with no arguments to check all posts.
-- Prettier reformats Markdown (tables, list indentation). CI runs `bun run lint` and `bun run format`, and the pre-commit hook runs lint-staged and the link check.
+- Prettier reformats Markdown (tables, list indentation). CI runs `bun run lint`, `bun run format`, and the link check.
 - Preview with `bun run dev` at `/blogs/<slug>/` (in lowercase) on the URL it prints, then click every TOC link and check callouts, code titles, and images.
 
 Commit messages follow `feat: add <topic> blog`. Only commit when the user asks.

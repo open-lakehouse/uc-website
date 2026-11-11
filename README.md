@@ -42,13 +42,9 @@ default registry". `test/lockfile.test.ts` fails until you run it. Versions
 are exact (`bunfig.toml`). See
 [.agents/rules/bun-clean-lock-rule.mdc](.agents/rules/bun-clean-lock-rule.mdc).
 
-The pre-commit hook (`.githooks/pre-commit`) runs any globally configured
-pre-commit hook (the repo-local `core.hooksPath` would otherwise skip it),
-strips proxy URLs from a staged `bun.lock`, and runs lint-staged and the link
-check on what is being committed. The pre-push hook (`.githooks/pre-push`)
-runs any global pre-push hook and blocks the push if `bun.lock` has proxy
-URLs in any pushed commit. `bun install` enables both through the `prepare`
-script; to enable them by hand, run `git config core.hooksPath .githooks`.
+You rarely run it by hand: `postinstall` runs it after every `bun install`,
+`add`, `remove`, and `update`, so the `bun.lock` on disk is already clean. The repo installs no
+git hooks of its own; CI runs lint, format, and the link check.
 
 ## Layout
 
