@@ -18,11 +18,18 @@ import { useGithubStars } from "./useGithubStars";
 
 type CtaItem = (typeof menus.headerCtas)[number];
 
-const isActive = (href: string, currentPath: string) =>
+const matches = (href: string, currentPath: string) =>
   !href.startsWith("http") &&
   !href.includes("#") &&
   href !== "/" &&
   currentPath.startsWith(href);
+
+// The longest matching link wins, so /docs/api/… marks API, not Docs.
+const activeHref = (currentPath: string) =>
+  menus.header
+    .map((item) => item.href)
+    .filter((href) => matches(href, currentPath))
+    .sort((a, b) => b.length - a.length)[0];
 
 export function Header({
   githubStars,
@@ -38,6 +45,7 @@ export function Header({
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
   const stars = useGithubStars(githubStars);
+  const active = activeHref(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -131,7 +139,7 @@ export function Header({
               key={item.href}
               className={clsx(
                 styles.headerLink,
-                isActive(item.href, pathname) && styles.active,
+                item.href === active && styles.active,
               )}
               href={item.href}
             >

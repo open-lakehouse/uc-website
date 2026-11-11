@@ -161,7 +161,7 @@ export function Hero() {
 
           <div className={styles.heroCtas}>
             <Button
-              href="https://docs.unitycatalog.io/quickstart/"
+              href="/docs/tutorials/getting-started/"
               color="secondary"
               size="lg"
             >

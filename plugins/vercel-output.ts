@@ -34,11 +34,14 @@ export const noindexHeaders: Record<string, string> = {
 
 export function vercelOutputConfig({
   redirects,
+  patterns = [],
   pages,
   noindex = false,
 }: {
   /** Source path to destination path, as in site.config.mjs. */
   redirects: Record<string, string>;
+  /** 301s whose source is a regex, such as a legacy docs section. */
+  patterns?: ReadonlyArray<{ source: string; destination: string }>;
   /** Every page's canonical path (src/lib/pages.ts). */
   pages: readonly string[];
   /**
@@ -72,6 +75,11 @@ export function vercelOutputConfig({
         caseSensitive: true,
       })),
       ...Object.entries(redirects).map(([from, to]) => redirect(from, to)),
+      ...patterns.map(({ source, destination }): VercelRoute => ({
+        src: source,
+        headers: { Location: destination },
+        status: 301,
+      })),
       // Any other letter case or slash form of a page, in one 301, as Netlify
       // does.
       ...[...pageRedirects].map(([from, page]) => redirect(from, page)),
@@ -98,10 +106,13 @@ export function vercelOutputConfig({
 
 // Either slash form of `from` goes straight to the canonical URL of `to`:
 // with a trailing slash unless its last segment has a dot, like /llms.txt.
+// A `#heading` stays after the path's slash.
 function redirect(from: string, to: string): VercelRoute {
+  const [path = "", hash] = to.split("#");
+  const canonical = /\/[^/.]+$/.test(path) ? `${path}/` : path;
   return {
     src: `^${escapeRegExp(from)}/?$`,
-    headers: { Location: /\/[^/.]+$/.test(to) ? `${to}/` : to },
+    headers: { Location: hash ? `${canonical}#${hash}` : canonical },
     status: 301,
   };
 }

@@ -50,10 +50,10 @@ export const menus = {
   header: [
     { label: "Features", href: "/#features" },
     { label: "Ecosystem", href: "/#partner-ecosystem" },
-    { label: "Docs", href: "https://go.unitycatalog.io/docs" },
+    { label: "Docs", href: "/docs/" },
     {
       label: "API",
-      href: "https://docs.unitycatalog.io/reference/api/catalog",
+      href: "/docs/api/catalog/",
     },
     { label: "Blog", href: "/blogs" },
     { label: "Events", href: "/events" },
@@ -80,8 +80,8 @@ export const menus = {
     { label: "Partner Ecosystem", href: "/#partner-ecosystem" },
     {
       label: "API",
-      href: "https://docs.unitycatalog.io/reference/api/catalog",
+      href: "/docs/api/catalog/",
     },
-    { label: "Documentation", href: "https://go.unitycatalog.io/docs" },
+    { label: "Documentation", href: "/docs/" },
   ],
 };

@@ -35,7 +35,7 @@ const examples: Example[] = [
       "Register Unity Catalog as a Spark catalog and work with governed Delta tables.",
     link: {
       label: "View tutorial",
-      href: "https://docs.unitycatalog.io/tutorials/managed-delta-table",
+      href: "/docs/tutorials/managed-delta-table/",
     },
   },
   {
@@ -47,7 +47,7 @@ const examples: Example[] = [
       "Attach a catalog in DuckDB, then query and append to its Delta tables with SQL.",
     link: {
       label: "View tutorial",
-      href: "https://docs.unitycatalog.io/how-to/duckdb",
+      href: "/docs/how-to/duckdb/",
     },
   },
   {
@@ -67,7 +67,7 @@ const examples: Example[] = [
       "Browse the sample data, then create a catalog, schema, and Delta table with the uc CLI.",
     link: {
       label: "Getting started guide",
-      href: "https://docs.unitycatalog.io/tutorials/getting-started",
+      href: "/docs/tutorials/getting-started/",
     },
   },
 ];
@@ -167,7 +167,7 @@ export function TryIt() {
           </SectionHeader>
           <a
             className={styles.tryDocs}
-            href="https://go.unitycatalog.io/docs"
+            href="/docs/"
             rel="noopener"
             target="_blank"
           >
