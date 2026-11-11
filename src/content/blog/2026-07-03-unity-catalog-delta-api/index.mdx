@@ -13,7 +13,7 @@ import Journey from "@/components/blog/Journey.astro";
 
 import JourneyStep from "@/components/blog/JourneyStep.astro";
 
-**TL;DR**
+:::tldr
 
 - The UC Delta API is a **versioned, intent-based, atomic** REST surface for the Delta
   ecosystem, shipped in open source [Unity Catalog](https://github.com/unitycatalog/unitycatalog) 0.5.
@@ -23,6 +23,7 @@ import JourneyStep from "@/components/blog/JourneyStep.astro";
   protocol, and column metadata travel over the wire.
 - You can **run all of it locally today** against OSS UC 0.5 — with Spark and DuckDB support
   out of the box. More to follow.
+  :::
 
 ## Introducing the UC Delta API
 
@@ -190,7 +191,7 @@ between the client and server supported versions, note how we specified the
 ```
 
 UC Delta API being an open specification, there is of course some meaning attached
-to the protocol version. The official [protocol specification][ManagedTablesSpec]
+to the protocol version. The official [protocol specification](https://github.com/unitycatalog/unitycatalog/blob/v0.5.0/spec/protocols/ManagedTablesSpec.md)
 defines how these endpoints are to be used to read and write data.
 
 ### The managed table protocol
@@ -199,7 +200,10 @@ The interactive diagram below explains the full end to end flow of creating
 a table and writing data into a table via the UC Delta API. Expand it and
 click through the sequence to get the full picture.
 
-<LikeC4View viewId="ucDeltaApi_managedTableFlow" />
+<LikeC4View
+  viewId="ucDeltaApi_managedTableFlow"
+  alt="A query engine negotiates with GET /delta/v1/config, stages a table and gets back its location, a READ_WRITE credential, and the required protocol, writes version 0 to object storage, creates the table, then loads it, writes a staged commit, and posts that commit with assert-table-uuid and assert-etag before publishing it to the Delta log"
+/>
 
 Rather than reiterating the full sequence piece by piece, we'll focus on
 two moments in that sequence which highlight some Delta specifics in the specification.
@@ -291,8 +295,7 @@ read that same data using DuckDB.
 
     con.execute("INSTALL delta")
     con.execute("LOAD delta")
-    # Switch to a regular install once the updated extension is released.
-    con.execute("FORCE INSTALL unity_catalog FROM core_nightly")
+    con.execute("INSTALL unity_catalog")
     con.execute("LOAD unity_catalog")
     ```
 
@@ -342,8 +345,5 @@ flattening any of them.
 If you want to see it yourself: stand up OSS UC 0.5, run `GET /delta/v1/config`, and
 walk the create → commit → load lifecycle. Point your own Delta engine at it.
 
-If you are building a client, read the [openapi spec][delta-yaml] and the
-[managed-tables protocol][ManagedTablesSpec].
-
-[ManagedTablesSpec]: https://github.com/unitycatalog/unitycatalog/blob/v0.5.0/spec/protocols/ManagedTablesSpec.md
-[delta-yaml]: https://github.com/unitycatalog/unitycatalog/blob/v0.5.0/api/delta.yaml
+If you are building a client, read the [openapi spec](https://github.com/unitycatalog/unitycatalog/blob/v0.5.0/api/delta.yaml) and the
+[managed-tables protocol](https://github.com/unitycatalog/unitycatalog/blob/v0.5.0/spec/protocols/ManagedTablesSpec.md).
