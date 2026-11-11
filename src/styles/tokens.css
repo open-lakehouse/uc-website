@@ -79,18 +79,6 @@
   --color-black-last-block-section: #071a2e0d;
   --color-black-222: #222;
 
-  /*
-   * Surfaces, lines and text for the dark UI
-   */
-  --uc-bg: var(--color-neutral-950);
-  --uc-surface: #08111e;
-  --uc-surface-2: #0c1828;
-  --uc-surface-3: #112136;
-  --uc-line: rgb(154 178 201 / 0.12);
-  --uc-line-strong: rgb(154 178 201 / 0.22);
-  --uc-text: #f3f6fa;
-  --uc-text-muted: #9aa9bc;
-  --uc-text-dim: #66788f;
   --uc-pink: var(--color-primary-500);
   --uc-yellow: var(--color-secondary-500);
   --uc-sky: var(--color-accent-500);
@@ -111,8 +99,76 @@
   );
 }
 
+/*
+ * Surfaces, lines and text per theme. <html> carries `.dark` unless the
+ * reader chose light (or their system prefers it): the prerendered page
+ * ships `.dark` and the inline script in __root.tsx corrects it before
+ * paint. `.uc-dark` pins a subtree to the dark palette in either theme
+ * (terminal mock-ups, the hero window).
+ *
+ * The *-rgb triples feed translucent fills: `rgb(var(--uc-ink-rgb) / 0.04)`
+ * is a faint white wash in dark mode and a faint navy one in light mode.
+ * Brand fills (--uc-pink/yellow/sky) are the same in both; text in a brand
+ * color uses the *-ink variant, which is darkened for contrast on light.
+ */
+:root.dark,
+.uc-dark {
+  color-scheme: dark;
+  --uc-bg: var(--color-neutral-950);
+  --uc-surface: #08111e;
+  --uc-surface-2: #0c1828;
+  --uc-surface-3: #112136;
+  --uc-line-rgb: 154 178 201;
+  --uc-line: rgb(var(--uc-line-rgb) / 0.12);
+  --uc-line-strong: rgb(var(--uc-line-rgb) / 0.22);
+  --uc-ink-rgb: 255 255 255;
+  --uc-shadow-rgb: 0 0 0;
+  --uc-shadow-k: 1;
+  --uc-text: #f3f6fa;
+  --uc-text-muted: #9aa9bc;
+  --uc-text-dim: #66788f;
+  --uc-pink-ink: var(--uc-pink);
+  --uc-yellow-ink: var(--uc-yellow);
+  --uc-sky-ink: var(--uc-sky);
+  --uc-violet-ink: #c4b5fd;
+  --uc-code-bg: #152a40;
+  --uc-code-titlebar: #0a1a2c;
+  --uc-code-titlebar-text: #9ab2c9;
+}
+
+:root:not(.dark) {
+  color-scheme: light;
+  --uc-bg: #ffffff;
+  --uc-surface: #f7f9fc;
+  --uc-surface-2: #eef2f7;
+  --uc-surface-3: #e2e8f0;
+  --uc-line-rgb: 52 92 129;
+  --uc-line: rgb(var(--uc-line-rgb) / 0.16);
+  --uc-line-strong: rgb(var(--uc-line-rgb) / 0.28);
+  --uc-ink-rgb: 13 27 44;
+  --uc-shadow-rgb: 27 50 75;
+  --uc-shadow-k: 0.35;
+  --uc-text: #0d1b2c;
+  --uc-text-muted: #45586d;
+  --uc-text-dim: #6b7d92;
+  --uc-pink-ink: var(--color-primary-700);
+  --uc-yellow-ink: #9a6700;
+  --uc-sky-ink: var(--color-accent-800);
+  --uc-violet-ink: #6d28d9;
+  --uc-code-bg: #f6f8fa;
+  --uc-code-titlebar: #eef2f7;
+  --uc-code-titlebar-text: #45586d;
+}
+
+/* Theme-specific markup, e.g. the logo's two variants (Logo.tsx). */
+:root:not(.dark) .uc-only-dark,
+:root.dark .uc-only-light {
+  display: none;
+}
+
 html {
   background: var(--uc-bg);
+  color: var(--uc-text);
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
@@ -128,7 +184,7 @@ main,
 
 ::selection {
   background: rgb(244 59 166 / 0.35);
-  color: #fff;
+  color: var(--uc-text);
 }
 
 /* Only style the main page scrollbar */

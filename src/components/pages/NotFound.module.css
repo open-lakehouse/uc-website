@@ -31,11 +31,11 @@
 }
 
 .not-found-missing {
-  color: var(--uc-sky);
+  color: var(--uc-sky-ink);
 }
 
 .not-found-err {
-  color: var(--uc-pink);
+  color: var(--uc-pink-ink);
 }
 
 .not-found-ctas {

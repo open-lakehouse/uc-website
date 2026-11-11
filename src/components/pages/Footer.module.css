@@ -108,8 +108,8 @@
   white-space: nowrap;
   background: linear-gradient(
     180deg,
-    rgb(154 178 201 / 0.14) 0%,
-    rgb(154 178 201 / 0) 85%
+    rgb(var(--uc-line-rgb) / 0.14) 0%,
+    rgb(var(--uc-line-rgb) / 0) 85%
   );
   -webkit-background-clip: text;
   background-clip: text;

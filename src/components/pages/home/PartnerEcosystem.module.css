@@ -32,7 +32,7 @@
   padding: 1.75rem;
   border-radius: var(--uc-radius-lg);
   border: 1px solid var(--uc-line);
-  background: rgb(8 17 30 / 0.7);
+  background: color-mix(in srgb, var(--uc-surface) 70%, transparent);
   backdrop-filter: blur(8px);
 }
 
@@ -68,7 +68,7 @@
 }
 
 .eco-item:hover {
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }
 
 .eco-item img {

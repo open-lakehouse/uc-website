@@ -37,7 +37,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .learn-title {
@@ -131,6 +131,6 @@
 }
 
 .blog-row:hover .blog-row-arrow {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
   transform: translateX(3px);
 }

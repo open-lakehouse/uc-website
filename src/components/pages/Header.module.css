@@ -10,7 +10,7 @@
 
 .site-header.is-scrolled,
 .site-header.is-open {
-  background: rgb(4 10 20 / 0.72);
+  background: color-mix(in srgb, var(--uc-bg) 72%, transparent);
   /* Prefixed first: Lightning CSS (Vite's minifier) drops a standard
      property that a prefixed one follows. */
   -webkit-backdrop-filter: saturate(160%) blur(14px);
@@ -56,7 +56,7 @@
 .header-link:hover,
 .header-link.active {
   color: var(--uc-text);
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--uc-ink-rgb) / 0.04);
 }
 
 .header-ctas {
@@ -83,14 +83,14 @@
   gap: 0.25rem;
   margin-left: 0.125rem;
   padding-left: 0.5rem;
-  border-left: 1px solid rgb(154 178 201 / 0.28);
+  border-left: 1px solid rgb(var(--uc-line-rgb) / 0.28);
   font-variant-numeric: tabular-nums;
   color: var(--uc-text-muted);
 }
 
 .header-github-star-icon {
   flex-shrink: 0;
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .cta:hover .header-github-stars {
@@ -156,12 +156,21 @@
   margin-top: 2rem;
 }
 
+.header-theme {
+  display: flex;
+  margin-left: -1.75rem; /* sit close to the CTAs despite the row gap */
+}
+
 @media (max-width: 1100px) {
   .header-nav,
   .header-ctas {
     display: none;
   }
+  .header-theme {
+    margin-left: auto;
+  }
   .header-toggle {
     display: flex;
+    margin-left: -1.75rem;
   }
 }

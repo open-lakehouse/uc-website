@@ -49,7 +49,7 @@
 }
 
 .post-topic {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .post-sep {
@@ -195,7 +195,7 @@ a.post-tag:hover {
 }
 
 .post-recommended a:hover .post-recommended-title {
-  color: #fff;
+  color: var(--uc-text);
 }
 
 .post-recommended-date {
@@ -287,7 +287,7 @@ a.post-tag:hover {
 
 .blog-article.blog-article :global(:not(pre) > code) {
   background: var(--uc-surface-2);
-  color: var(--uc-sky);
+  color: var(--uc-sky-ink);
   padding: 0.1em 0.4em;
   border-radius: 0.3rem;
   border: 1px solid var(--uc-line);
@@ -296,14 +296,14 @@ a.post-tag:hover {
 }
 
 .blog-article.blog-article :global(a) {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
   text-decoration: underline;
   text-decoration-color: rgb(255 188 0 / 0.35);
   text-underline-offset: 3px;
 }
 
 .blog-article.blog-article :global(a:hover) {
-  text-decoration-color: var(--uc-yellow);
+  text-decoration-color: var(--uc-yellow-ink);
 }
 
 .blog-article.blog-article :global(img) {

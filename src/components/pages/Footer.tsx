@@ -1,4 +1,5 @@
 import { SiteLink } from "../SiteLink";
+import { Logo } from "../Logo";
 import styles from "./Footer.module.css";
 
 const columns = [
@@ -54,13 +55,7 @@ export function Footer({ year }: { year: number }) {
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
             <SiteLink href="/" aria-label="Unity Catalog home">
-              <img
-                src="/uc-logo.svg"
-                alt="Unity Catalog"
-                width="120"
-                height="43"
-                loading="lazy"
-              />
+              <Logo width={120} height={43} loading="lazy" />
             </SiteLink>
             <p className={styles.footerTagline}>
               The open, universal catalog for data and AI.

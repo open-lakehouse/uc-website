@@ -62,7 +62,7 @@
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 0.625rem;
   border: 1px solid var(--uc-line-strong);
-  background: rgb(8 17 30 / 0.8);
+  background: color-mix(in srgb, var(--uc-surface) 80%, transparent);
   backdrop-filter: blur(8px);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
@@ -70,7 +70,7 @@
 }
 
 .cta-prompt {
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .cta-command code {
@@ -107,7 +107,7 @@
 
 .cta-copy.copied .icon-check {
   display: block;
-  color: var(--uc-yellow);
+  color: var(--uc-yellow-ink);
 }
 
 .cta-actions {

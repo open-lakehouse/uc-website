@@ -37,7 +37,7 @@
 
 .toc-link:hover {
   color: var(--uc-text);
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(var(--uc-ink-rgb) / 0.03);
 }
 
 .toc-link.active {

@@ -63,7 +63,11 @@ export function CtaSocial({
           rel="noopener noreferrer"
           aria-label="Share on X"
         >
-          <img src="/icons/twitter.svg" alt="" width="14" height="14" />
+          <span
+            className={styles.shareIcon}
+            style={{ maskImage: "url(/icons/twitter.svg)" }}
+            aria-hidden="true"
+          />
         </a>
         <a
           className={styles.shareBtn}
@@ -72,7 +76,11 @@ export function CtaSocial({
           rel="noopener noreferrer"
           aria-label="Share on LinkedIn"
         >
-          <img src="/icons/linkedin.svg" alt="" width="14" height="14" />
+          <span
+            className={styles.shareIcon}
+            style={{ maskImage: "url(/icons/linkedin.svg)" }}
+            aria-hidden="true"
+          />
         </a>
       </div>
     </section>

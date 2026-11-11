@@ -15,6 +15,7 @@ import { NotFound } from "../components/pages/NotFound";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
 import { getBuildInfo } from "../lib/build-info";
 import { canonicalUrl, pageHead } from "../lib/seo";
+import { themeScript } from "../lib/theme";
 import appCss from "../styles/app.css?url";
 
 export const Route = createRootRoute({
@@ -52,8 +53,11 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // The prerendered page is dark; themeScript corrects the class before
+    // paint, so React must not treat the difference as a hydration error.
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <HeadContent />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +77,7 @@ function RootDocument({ children }: { children: ReactNode }) {
           src="https://plausible.io/js/script.js"
         ></script>
       </head>
-      <body className="bg-neutral-950 text-neutral-0">
+      <body>
         {children}
         {/* Vercel Web Analytics: injects /_vercel/insights/script.js in the
             browser and tracks client-side navigation. Renders nothing. */}
