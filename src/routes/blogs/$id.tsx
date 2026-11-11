@@ -16,6 +16,7 @@ export const Route = createFileRoute("/blogs/$id")({
     // and ready while the body's module is still loading in the browser.
     const { headings } = await loadPostModule(post);
     return {
+      canonical: post.data.canonical,
       toc: headings
         .filter((h) => h.depth === 2)
         .map((h) => ({ label: h.text, href: `#${h.slug}` })),

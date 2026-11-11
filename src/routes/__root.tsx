@@ -27,7 +27,12 @@ export const Route = createRootRoute({
     // can't depend on the path.
     const notFound = matches.some((match) => match._notFound);
     const { meta } = pageHead(notFound ? { title: "Not Found" } : {});
-    const pathname = notFound ? "/404" : (matches.at(-1)?.pathname ?? "/");
+    const leaf = matches.at(-1);
+    const pathname = notFound ? "/404" : (leaf?.pathname ?? "/");
+    // A cross-posted page names its original as canonical.
+    const ownCanonical = (
+      leaf?.loaderData as { canonical?: string } | undefined
+    )?.canonical;
     return {
       meta: [
         { charSet: "utf-8" },
@@ -35,7 +40,7 @@ export const Route = createRootRoute({
         ...meta,
       ],
       links: [
-        { rel: "canonical", href: canonicalUrl(pathname) },
+        { rel: "canonical", href: ownCanonical ?? canonicalUrl(pathname) },
         { rel: "stylesheet", href: appCss },
       ],
     };

@@ -34,6 +34,8 @@ const postSchema = z.object({
   topics: z.array(z.enum(blogTopics as [BlogTopic, ...BlogTopic[]])).optional(),
   date: z.string(),
   slug: z.string().optional(),
+  /** Absolute URL of the original when this post is a cross-post. */
+  canonical: z.url().optional(),
   content: z.string(),
 });
 
@@ -134,6 +136,7 @@ export function defineContent({
           category: doc.category,
           topics: doc.topics,
           date: doc.date,
+          canonical: doc.canonical,
         },
         readingTime: readingTime(doc.content),
         /** Path relative to src/content/blog; keys the post's MDX module. */

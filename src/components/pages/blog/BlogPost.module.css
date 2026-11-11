@@ -252,8 +252,10 @@ a.post-tag:hover {
   margin: 1.25rem 0;
 }
 
+/* Journeys (`ol.jr`, blog-rich.css) draw their own numbered bubbles, so the
+   list rules skip them; otherwise each step shows a marker too. */
 .blog-article.blog-article :global(ul),
-.blog-article.blog-article :global(ol) {
+.blog-article.blog-article :global(ol:not(.jr)) {
   margin: 1.25rem 0;
   padding-left: 1.5rem;
 }
@@ -262,11 +264,11 @@ a.post-tag:hover {
   list-style: disc;
 }
 
-.blog-article.blog-article :global(ol) {
+.blog-article.blog-article :global(ol:not(.jr)) {
   list-style: decimal;
 }
 
-.blog-article.blog-article :global(li) {
+.blog-article.blog-article :global(li:not(.jr-step)) {
   margin: 0.4rem 0;
   color: var(--uc-text-muted);
 }

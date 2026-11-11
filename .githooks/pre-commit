@@ -14,7 +14,7 @@
 set -e
 
 # GUI git clients don't load the shell profile; make Homebrew and Bun findable.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.bun/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.bun/bin"
 
 # --- 1) Run the globally configured pre-commit hook, if any ------------------
 global_hooks="$(git config --global core.hooksPath 2>/dev/null || true)"
