@@ -73,25 +73,16 @@ bun install --frozen-lockfile   # bun.lock still matches package.json
 
 ## Automated Safety Nets
 
-- **Pre-commit hook**: [`.githooks/pre-commit`](../../.githooks/pre-commit)
-  strips `bun.lock` and re-stages it whenever it is staged. The `prepare`
-  script enables it on `bun install` (`git config core.hooksPath .githooks`),
-  so no manual setup is needed. Because that repo-local `core.hooksPath`
-  shadows any global one, the hook first re-runs the globally configured
-  `pre-commit` hook (e.g. a company secret scanner) so that hook keeps working
-  here.
-- **Pre-push hook**: [`.githooks/pre-push`](../../.githooks/pre-push)
-  blocks the push if `bun.lock` has proxy URLs in the pushed tip or in any
-  pushed commit not yet on a remote. This catches what the pre-commit hook
-  can't: `--no-verify` commits, rebases, and commits from clones without the
-  hooks enabled. It also re-runs the global `pre-push` hook first.
+- **postinstall**: [`scripts/postinstall.ts`](../../scripts/postinstall.ts)
+  runs the strip after every `bun install`, `bun add`, `bun remove`, and
+  `bun update`, so the `bun.lock` on disk never carries proxy URLs. It also
+  unsets a leftover `core.hooksPath=.githooks` from when the repo had its own
+  git hooks.
 - **Tests / CI**: `test/lockfile.test.ts` fails in `bun test` (and so in CI)
   if `bun.lock` contains a non-npmjs tarball URL.
 
-Vercel deploys on push without waiting for CI, so the pre-push hook is the
-last check before a deploy. If it blocks on the tip, run
-`bun run strip-lock-proxy` and commit. If it blocks on an older commit,
-amend, squash, or rebase so no pushed commit keeps the URLs.
+Vercel deploys on push without waiting for CI. If a hand-edited or rebased
+`bun.lock` still has proxy URLs, run `bun run strip-lock-proxy` and commit.
 
 ## Diagnosing a Failed Vercel Install
 
@@ -105,8 +96,6 @@ amend, squash, or rebase so no pushed commit keeps the URLs.
 ## Rules
 
 - **Never commit or push `bun.lock` with proxy URLs.**
-- Never bypass the pre-commit or pre-push hook (`--no-verify`) for changes
-  that touch `bun.lock`.
 - Keep the strip logic host-agnostic. Do not hardcode a proxy hostname.
 - Only the resolution field is changed. Names, versions, dependency maps, and
   integrity hashes are never modified.

@@ -19,13 +19,7 @@
     "links:dist": "bun scripts/check-links.mjs --dist",
     "strip-lock-proxy": "bun scripts/strip-bun-lock-proxy.ts",
     "strip-lock-proxy:check": "bun scripts/strip-bun-lock-proxy.ts --check",
-    "prepare": "git config core.hooksPath .githooks || true"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js,mjs,cjs}": [
-      "eslint --fix --no-warn-ignored"
-    ],
-    "**/*": "prettier --write --ignore-unknown"
+    "postinstall": "bun scripts/postinstall.ts"
   },
   "dependencies": {
     "@pagefind/default-ui": "1.6.0",
@@ -59,7 +53,6 @@
     "estree-util-value-to-estree": "3.5.0",
     "github-slugger": "2.0.0",
     "globals": "17.14.0",
-    "lint-staged": "17.6.0",
     "mdast-util-mdx-jsx": "3.2.1",
     "mdast-util-mdxjs-esm": "2.0.1",
     "nitro": "3.0.261103-rc",

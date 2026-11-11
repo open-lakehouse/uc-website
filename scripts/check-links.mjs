@@ -3,7 +3,7 @@
 //
 // Usage (from the repo root):
 //   bun scripts/check-links.mjs           sources: every internal and external link
-//   bun scripts/check-links.mjs --staged  pre-commit: fails only on dead links the commit
+//   bun scripts/check-links.mjs --staged  before committing: fails only on dead links the commit
 //                                         adds, or creates by deleting or renaming a page
 //   bun scripts/check-links.mjs --dist    after `bun run build`: every page, llms.txt,
 //                                         llms-full.txt, robots.txt, and the sitemap in

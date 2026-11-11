@@ -22,7 +22,7 @@ This is a Bun-only project (`packageManager: bun@1.3.14`). Don't use npm,
 pnpm, or yarn, and don't add another lockfile.
 
 ```sh
-bun install    # also enables the git hooks in .githooks/
+bun install    # postinstall strips proxy URLs from bun.lock
 bun run dev    # dev server
 ```
 
@@ -45,7 +45,5 @@ bun run links:dist              # dead links in the build
 bun run strip-lock-proxy:check  # no proxy URLs in bun.lock
 ```
 
-The pre-commit hook (`.githooks/pre-commit`) also strips `bun.lock`, formats
-and lints staged files, and checks links. The pre-push hook
-(`.githooks/pre-push`) blocks pushes whose commits have proxy URLs in
-`bun.lock`. Don't skip either with `--no-verify`.
+The repo installs no git hooks; run the commands above yourself. Git still
+runs any globally configured hooks.
