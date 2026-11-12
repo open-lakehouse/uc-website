@@ -213,6 +213,13 @@
   display: none;
 }
 
+/* Highlighted code (plugins/shiki.ts) carries both themes: the light colors
+   inline, the dark ones as --shiki-dark. Backgrounds come from the block. */
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
 html {
   background: var(--uc-bg);
   color: var(--uc-text);

@@ -1,3 +1,5 @@
+import "./code-block.css";
+
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 import { copyToClipboard } from "./lib/clipboard";

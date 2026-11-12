@@ -1,5 +1,4 @@
 import "../../blog/blog-rich.css";
-import "virtual:expressive-code.css";
 
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";

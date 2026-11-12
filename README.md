@@ -72,9 +72,10 @@ git hooks of its own; CI runs lint, format, and the link check.
 
 - **Content**: `content-collections.ts` loads post and profile metadata and
   checks the frontmatter. Post bodies compile through `@mdx-js/rollup`
-  (`plugins/mdx.ts`) with GFM, SmartyPants, callouts (`:::tip` and friends),
-  and Expressive Code for code blocks. Images become WebP through
-  vite-imagetools.
+  (`plugins/mdx.ts`) with GFM, SmartyPants, and callouts (`:::tip` and
+  friends). Code blocks render like the docs': Shiki highlights them at build
+  time (`plugins/shiki.ts`) and `<Pre>` (`src/components/docs/code-block.tsx`)
+  draws the chrome. Images become WebP through vite-imagetools.
 - **Prerendering**: `vite.config.ts` lists `/`, every post, and the discovery
   files, and the crawler follows links from there. A link to an unknown page,
   or to a page's URL in another letter case, fails the build.

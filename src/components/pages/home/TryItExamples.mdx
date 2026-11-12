@@ -2,7 +2,7 @@
 
 <Example id="spark">
 
-```python frame="none"
+```python
 from pyspark.sql import SparkSession
 
 spark = (
@@ -27,7 +27,7 @@ spark.sql("SHOW SCHEMAS IN unity").show()
 
 <Example id="duckdb">
 
-```python frame="none"
+```python
 import duckdb
 
 con = duckdb.connect()
@@ -59,7 +59,7 @@ con.sql("""
 
 <Example id="pyiceberg">
 
-```python frame="none"
+```python
 import pyarrow as pa
 from pyiceberg.catalog import load_catalog
 from pyiceberg.expressions import EqualTo
@@ -95,7 +95,7 @@ print(pets.scan(row_filter=EqualTo("adopted", False)).to_pandas())
 
 <Example id="cli">
 
-```bash frame="none"
+```bash
 # Browse the sample data
 uc catalog list --output jsonPretty
 uc schema list --catalog unity --output jsonPretty
