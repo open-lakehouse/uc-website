@@ -7,12 +7,14 @@
 // After a filesystem miss, the routes following `handle: "filesystem"` run.
 // `src` matches the path without its query string, and a redirect keeps the
 // query: Vercel adds it to a Location that has none (confirm on the first
-// preview deploy).
+// preview deploy). A route with `has` host conditions matches only a request
+// to that exact host.
 
 export type Route =
   | { handle: string }
   | {
       src: string;
+      has?: { type: "host"; value: { eq: string } }[];
       dest?: string;
       headers?: Record<string, string>;
       status?: number;
@@ -29,6 +31,8 @@ export interface RouterOptions {
   overrides?: Record<string, { contentType?: string }>;
   /** Match every `src` case-insensitively, as if `caseSensitive` were ignored. */
   ignoreCaseSensitive?: boolean;
+  /** The request's host. Without it, no route with a host condition matches. */
+  host?: string;
 }
 
 export interface Result {
@@ -94,6 +98,7 @@ function splitPhases(routes: readonly Route[]): SourceRoute[][] {
 }
 
 function matches(r: SourceRoute, path: string, options: RouterOptions) {
+  if (r.has?.some(({ value }) => value.eq !== options.host)) return null;
   const flags = r.caseSensitive && !options.ignoreCaseSensitive ? "" : "i";
   return new RegExp(r.src, flags).exec(path);
 }
