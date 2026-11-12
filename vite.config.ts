@@ -11,7 +11,7 @@ import { imagetools } from "vite-imagetools";
 
 import { hostRedirects, redirects as siteRedirects } from "./site.config.mjs";
 import { caseRedirects } from "./src/lib/case-redirects.mjs";
-import { assetFileNames } from "./plugins/asset-file-names.ts";
+import { assetFileNames, dedupeImages } from "./plugins/asset-file-names.ts";
 import { contentCollections } from "./plugins/content-collections.ts";
 import { DOCS_CONTENT, docsMdxOptions } from "./plugins/docs-mdx.ts";
 import { expressiveCodeAssets } from "./plugins/expressive-code.ts";
@@ -114,11 +114,7 @@ export default defineConfig({
     rolldownOptions: {
       output: {
         sanitizeFileName,
-        assetFileNames: assetFileNames({
-          root: fileURLToPath(new URL(".", import.meta.url)),
-          contentDir: fileURLToPath(new URL("./src/content", import.meta.url)),
-          sanitize: sanitizeFileName,
-        }),
+        assetFileNames: assetFileNames(sanitizeFileName),
       },
     },
   },
@@ -129,6 +125,9 @@ export default defineConfig({
     expressiveCodeAssets(),
     notFoundPage(),
     tailwindcss(),
+    dedupeImages({
+      contentDir: fileURLToPath(new URL("./src/content", import.meta.url)),
+    }),
     imagetools(),
     tanstackStart({
       // Every post is listed, so posts build even if no page links to them.
