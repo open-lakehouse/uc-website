@@ -148,36 +148,18 @@
   min-width: 0;
 }
 
-/* The code is an Expressive Code block (TryItExamples.mdx) drawn as plain
-   code inside the window: no frame, border, background, shadow, or copy
-   button, in the window's font and spacing. */
-.try-panel {
-  --ec-brdWd: 0px;
-  --ec-brdRad: 0px;
-  --ec-codeBg: transparent;
-  --ec-frm-edBg: transparent;
-  --ec-frm-frameBoxShdCssVal: none;
-  --ec-codeFontFml: var(--font-mono);
-  --ec-codeFontSize: 0.8125rem;
-  --ec-codeLineHt: 1.75;
-  --ec-codePadBlk: 0px;
-  --ec-codePadInl: 0px;
-  --ec-gtrBrdWd: 0px;
-}
-
-.try-panel :global(.expressive-code pre) {
+/* The code is a Shiki block (TryItExamples.mdx, plugins/shiki.ts) drawn as
+   plain code inside the window: no chrome or copy button, in the window's
+   font and spacing. */
+.try-panel :global(pre.shiki) {
+  margin: 0;
   padding: 1.5rem;
   overflow-x: auto;
   min-height: 26rem;
-}
-
-.try-panel :global(.expressive-code .copy) {
-  display: none;
-}
-
-/* Expressive Code pads the first line for the copy button. */
-.try-panel.try-panel :global(.expressive-code .ec-line .code) {
-  padding-inline-end: 0;
+  background: transparent !important;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.75;
 }
 
 .try-link {

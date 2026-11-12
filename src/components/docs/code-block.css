@@ -1,0 +1,171 @@
+/* Code blocks: the chrome <Pre> (code-block.tsx) draws around build-time
+   Shiki output (plugins/shiki.ts), in the docs and in blog posts. A block
+   carries the console palette itself (.uc-console, tokens.css), so it reads
+   the same on any page. Shiki's dark colors switch on in tokens.css.
+
+   Rules inside a block are scoped under .cb, so they outrank the pages'
+   prose rules for links and inline code (.prose a, .prose code). */
+
+.cb {
+  position: relative;
+  margin: 1.5rem 0;
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--code-bg);
+  color: var(--code-fg);
+}
+.cb .cb-head {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 2.1rem;
+  padding: 0 2.75rem 0 0.8rem;
+  background: var(--panel);
+  border: 0;
+  border-bottom: 1px solid var(--code-border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--code-fg);
+  text-align: left;
+}
+.dark .cb .cb-head {
+  background: var(--surface);
+}
+.cb .cb-file {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cb .cb-script {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  padding-left: 0.75rem;
+  white-space: nowrap;
+  color: var(--muted-foreground);
+  text-decoration: none;
+}
+.cb .cb-script:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.cb .cb-script svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.cb .cb-file-icon,
+.cb .cb-chevron {
+  flex: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.45rem;
+  color: var(--subtle);
+}
+.cb .cb-head-toggle {
+  cursor: pointer;
+  color: var(--muted-foreground);
+  transition: color 0.12s;
+}
+.cb .cb-head-toggle:hover {
+  color: var(--code-fg);
+}
+.cb .cb-head-toggle .cb-chevron {
+  transition: transform 0.15s;
+}
+.cb .cb-head-toggle[aria-expanded="true"] .cb-chevron {
+  transform: rotate(90deg);
+}
+.cb[data-collapsed="true"] .cb-head-toggle {
+  border-bottom: 0;
+}
+/* Unlabelled blocks name their language top-right, beside the copy button. */
+.cb:not([data-lang="text"]):not([data-has-filename]):not(
+    [data-collapsed]
+  )::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.6rem;
+  right: 2.75rem;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: lowercase;
+  color: var(--subtle);
+  pointer-events: none;
+}
+
+/* The copy button (CodeCopyButton.tsx), also used outside a block (the docs
+   home's .terminal, docs.css). */
+.cb-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  color: var(--muted-foreground);
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    background 0.12s,
+    color 0.12s,
+    opacity 0.12s;
+}
+.cb[data-has-filename] .cb-copy,
+.cb[data-collapsed="true"] .cb-copy {
+  top: 0.22rem;
+  opacity: 0.7;
+  background: transparent;
+  border-color: transparent;
+}
+.cb:hover .cb-copy,
+.cb-copy:focus-visible {
+  opacity: 1;
+}
+.cb-copy:hover {
+  color: var(--code-fg);
+  background: var(--surface);
+}
+.cb-copy[data-copied="true"] {
+  color: var(--ok);
+  opacity: 1;
+}
+.cb-copy svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+@media (hover: none) {
+  .cb-copy {
+    opacity: 0.7;
+  }
+}
+
+.cb .cb-pre {
+  margin: 0;
+  background: transparent !important;
+  color: var(--code-fg);
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  font-family: var(--font-mono);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.cb .cb-pre code {
+  display: grid;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}

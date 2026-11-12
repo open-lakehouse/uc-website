@@ -2,7 +2,7 @@
 // order the Astro app applies (astro.config.mjs, @astrojs/markdown-remark,
 // and @astrojs/mdx). `.md` posts stay plain Markdown (format "detect").
 import type { Options } from "@mdx-js/rollup";
-import rehypeExpressiveCode from "rehype-expressive-code";
+import rehypeShiki from "@shikijs/rehype";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
@@ -11,7 +11,6 @@ import remarkSmartypants from "remark-smartypants";
 import rehypeTableScroll from "../src/lib/rehype-table-scroll.mjs";
 import remarkCallouts from "../src/lib/remark-callouts.mjs";
 import { rehypeMetaString, rehypeRawIn } from "./rehype-astro-compat.ts";
-import { rehypeExpressiveCodeOptions } from "./expressive-code.ts";
 import rehypeHeadingIds from "./rehype-heading-ids.ts";
 import { rehypeLocalImages, remarkLocalImages } from "./local-images.ts";
 import {
@@ -19,6 +18,7 @@ import {
   remarkRawBody,
   remarkStripAstroImports,
 } from "./post-module.ts";
+import { rehypeShikiOptions } from "./shiki.ts";
 
 export const mdxOptions: Options = {
   format: "detect",
@@ -38,7 +38,9 @@ export const mdxOptions: Options = {
     rehypeMetaString,
     rehypeRawIn("mdx"),
     rehypeTableScroll,
-    [rehypeExpressiveCode, rehypeExpressiveCodeOptions],
+    // Highlighted like the docs' fences (shiki.ts); posts map `pre` to the
+    // docs' <Pre> (src/components/blog/index.ts).
+    [rehypeShiki, rehypeShikiOptions],
     rehypeLocalImages,
     rehypeHeadingIds,
     rehypeRawIn("md"),

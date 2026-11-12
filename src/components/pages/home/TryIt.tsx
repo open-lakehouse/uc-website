@@ -1,5 +1,3 @@
-import "virtual:expressive-code.css";
-
 import clsx from "clsx";
 import {
   createContext,

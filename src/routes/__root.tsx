@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { Favicons } from "../components/Favicons";
 import { Footer } from "../components/pages/Footer";
@@ -100,10 +100,6 @@ function RootLayout() {
     select: (location) => location.pathname.startsWith("/docs/"),
   });
   useRevealOnScroll();
-  useEffect(() => {
-    // Code block copy buttons, for this page and any page navigated to.
-    void import("virtual:expressive-code.js");
-  }, []);
   return (
     <main>
       <Header githubStars={githubStars} wide={inDocs} />

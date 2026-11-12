@@ -358,7 +358,8 @@ a.post-tag:hover {
   margin: 3rem 0;
 }
 
-.blog-article.blog-article :global(.expressive-code) {
+/* Code blocks (<Pre>, code-block.css), spaced like the posts' other blocks. */
+.blog-article.blog-article :global(.cb) {
   margin: 1.75rem 0;
 }
 

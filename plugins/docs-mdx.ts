@@ -10,7 +10,6 @@ import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
-import type { ShikiTransformer } from "shiki";
 
 import remarkCallouts from "../src/vendor/docs-plugins/remark-callouts.mjs";
 import remarkDirectiveProseGuard from "../src/vendor/docs-plugins/remark-directive-prose-guard.mjs";
@@ -22,27 +21,10 @@ import remarkPrerequisites from "../src/vendor/docs-plugins/remark-prerequisites
 import remarkTabs from "../src/vendor/docs-plugins/remark-tabs.mjs";
 import remarkTldr from "../src/vendor/docs-plugins/remark-tldr.mjs";
 import remarkTrestleViews from "../src/vendor/docs-plugins/remark-trestle-views.mjs";
+import { rehypeShikiOptions } from "./shiki.ts";
 
 /** The docs' content files; the blog pipeline (mdx.ts) leaves them alone. */
 export const DOCS_CONTENT = /\/src\/content\/docs\/.*\.md$/;
-
-// Shiki rebuilds <pre>, dropping upstream data-*; remark-fence-meta stashes the
-// fence meta so this transformer can restore the attributes <Pre> reads.
-const TITLE_RE = /\btitle="([^"]*)"/;
-const COLLAPSE_RE = /(?:^|\s)collapse(?=\s|$)/;
-const SCRIPT_RE = /\bscript="([^"]*)"/;
-const codeChromeTransformer: ShikiTransformer = {
-  name: "docs:code-chrome",
-  pre(node) {
-    const raw = (this.options.meta?.__raw as string | undefined) ?? "";
-    const title = TITLE_RE.exec(raw)?.[1];
-    if (title) node.properties["data-filename"] = title;
-    if (this.options.lang) node.properties["data-lang"] = this.options.lang;
-    if (COLLAPSE_RE.test(raw)) node.properties["data-collapse"] = "true";
-    const script = SCRIPT_RE.exec(raw)?.[1];
-    if (script) node.properties["data-script"] = script;
-  },
-};
 
 export const docsMdxOptions: Options = {
   include: DOCS_CONTENT,
@@ -65,12 +47,6 @@ export const docsMdxOptions: Options = {
   rehypePlugins: [
     rehypeSlug,
     [rehypeAutolinkHeadings, { behavior: "wrap" }],
-    [
-      rehypeShiki,
-      {
-        themes: { light: "github-light", dark: "github-dark-default" },
-        transformers: [codeChromeTransformer],
-      },
-    ],
+    [rehypeShiki, rehypeShikiOptions],
   ],
 };

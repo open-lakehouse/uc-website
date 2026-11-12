@@ -14,7 +14,6 @@ import { readDocsSite } from "./src/lib/docs-site.mjs";
 import { assetFileNames, dedupeImages } from "./plugins/asset-file-names.ts";
 import { contentCollections } from "./plugins/content-collections.ts";
 import { DOCS_CONTENT, docsMdxOptions } from "./plugins/docs-mdx.ts";
-import { expressiveCodeAssets } from "./plugins/expressive-code.ts";
 import { mdxOptions } from "./plugins/mdx.ts";
 import { notFoundPage } from "./plugins/not-found-page.ts";
 import { listPostFiles } from "./plugins/post-files.ts";
@@ -98,7 +97,6 @@ export default defineConfig({
     contentCollections(),
     { enforce: "pre", ...mdx({ ...mdxOptions, exclude: DOCS_CONTENT }) },
     { enforce: "pre", ...mdx(docsMdxOptions) },
-    expressiveCodeAssets(),
     notFoundPage(),
     tailwindcss(),
     dedupeImages({

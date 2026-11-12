@@ -75,19 +75,16 @@ Trestle environment diagrams come from the docs-factory emitter only:
 
 `src` must exist under `public/`, in the same letter case: page URLs are lowercase, but files keep their names, and Vercel serves them case-sensitively. The emitter ships the snapshot and `public/trestle/trestle-webcomponent.mjs` with the post. Don't hand-author one.
 
-## Code blocks (Expressive Code)
+## Code blocks
 
-Fences render with a copy button and the site's dark theme (configured in `src/lib/expressive-code.mjs`). Useful options after the language:
+Fences render like the docs' code blocks: Shiki highlighting in the page's light or dark theme (`plugins/shiki.ts`), a copy button, and the language top-right (`src/components/docs/code-block.tsx`). Options after the language:
 
-| Syntax                      | Effect                                              |
-| --------------------------- | --------------------------------------------------- |
-| `title="server.properties"` | Editor-tab title (use for files the reader creates) |
-| `{2,5-7}`                   | Highlight lines                                     |
-| `ins={3}` / `del={4}`       | Mark lines as added or removed                      |
-| `"spark.jars.packages"`     | Highlight a literal term                            |
-| `frame="none"`              | Drop the editor or terminal frame                   |
+| Syntax                      | Effect                                                     |
+| --------------------------- | ---------------------------------------------------------- |
+| `title="server.properties"` | Filename header (use for files the reader creates)         |
+| `collapse`                  | Starts collapsed behind a "Show code" (or filename) toggle |
 
-`bash` and `sh` fences render as terminal windows automatically. Use a fence without a language for program output. Don't copy docs-factory metadata such as `srcpath=` or `srcregion=`, or a bare `collapse`; this site ignores them.
+Use a fence without a language for program output. Line and term highlighting (`{2,5-7}`, `ins=`, `del=`, `"term"`) and `frame=` aren't supported. Don't copy docs-factory metadata such as `srcpath=` or `srcregion=`; this site ignores it.
 
 ## Tables
 

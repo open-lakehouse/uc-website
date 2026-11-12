@@ -1,4 +1,7 @@
-// Chrome around build-time Shiki <pre> output; mdx-components maps `pre` here.
+// Chrome around build-time Shiki <pre> output (plugins/shiki.ts). The docs
+// (mdx-components.tsx) and blog posts (components/blog/index.ts) map `pre` here.
+import "./code-block.css";
+
 import { ChevronRight, ExternalLink, FileCode } from "lucide-react";
 import { Children, isValidElement, type ReactNode, useState } from "react";
 import CodeCopyButton from "./CodeCopyButton";
@@ -42,7 +45,7 @@ export function Pre({
 
   return (
     <div
-      className="cb"
+      className="uc-console cb"
       data-lang={lang}
       data-has-filename={hasFilename ? "true" : undefined}
       data-collapsed={collapsible && !expanded ? "true" : undefined}
