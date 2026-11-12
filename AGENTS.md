@@ -41,6 +41,7 @@ bun run lint                    # lint:fix to fix
 bun run format                  # format:fix to fix
 bun run typecheck
 bun run build
+bun run links --offline         # dead links and anchors in the sources
 bun run links:dist              # dead links in the build
 bun run strip-lock-proxy:check  # no proxy URLs in bun.lock
 ```

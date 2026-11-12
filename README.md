@@ -137,7 +137,18 @@ Redirecting `www` to the apex is a domain setting in Vercel.
 
 ## CI
 
-`.github/workflows/ci.yaml` runs `bun test`, lint, format, typecheck,
-`bun run build`, and the link check of the build on every pull request and
-push to `main`. The link check also requests the external URLs the site links
-to; add `--offline` to that step if an unrelated dead link makes it flaky.
+`.github/workflows/ci.yaml` runs `bun test`, lint, format, typecheck, and
+`bun run build` on every pull request and push to `main`.
+
+`.github/workflows/links.yaml` checks for dead links on the same events,
+weekly on Mondays, and on demand from the Actions tab:
+
+- **Sources**: internal links and anchors, reported at their file and line.
+- **Build (default)** and **Build (vercel)**: every page and file in each
+  build, as Vercel serves it. The default build also requests the external
+  URLs the site links to. URLs that passed within the last week are skipped,
+  from a cache, and the weekly run re-checks all of them.
+
+Dead links fail the job and show as annotations and in the job summary. Bot
+walls, timeouts, and 5xx answers are only warnings. A known false positive goes
+in `scripts/check-links.ignore`.
