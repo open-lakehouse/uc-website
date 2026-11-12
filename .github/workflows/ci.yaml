@@ -6,8 +6,9 @@ on:
     branches: [main]
 
 jobs:
+  # Dead links are checked in links.yaml.
   site:
-    name: Build, tests, and link check
+    name: Build and tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -20,4 +21,3 @@ jobs:
       - run: bun run format
       - run: bun run typecheck
       - run: bun run build
-      - run: bun scripts/check-links.mjs --dist .output/public
