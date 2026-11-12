@@ -2,7 +2,7 @@
   "schema": 1,
   "site": "unitycatalog-docs",
   "source": {
-    "commit": "5979711c292ee4760129a6cfd50385666e7834da",
+    "commit": "95886cf3a276add89120505c52f8feea523566a1",
     "dirty": false
   },
   "drafts": false,
@@ -1118,7 +1118,7 @@
     "public/docs/how-to/temporary-credentials/snippets/temporary_credentials.py": "5f746a51c89118b1c158b34cffc034dfc6bf9d42991f94187416c13a7972d954",
     "public/docs/how-to/temporary-credentials/snippets/temporary_credentials.sh": "b049b29e54aaf104c57fa4a8b6e687c9c2a0aed85fbc4e3b72fec63aa86e66ea",
     "public/docs/index.md": "5855548b5ca2986c818fdf7309f6320d1210fafa8f25ef0a48c06f7ca112db6b",
-    "public/docs/likec4/likec4-webcomponent.mjs": "010aa36906aa156ea89ec43016bd932afe97b426f1c146ade8505b3eed8fb75a",
+    "public/docs/likec4/likec4-webcomponent.mjs": "636a008fdfe6d33e8630c528769d5dc6529dee0432590b2cf1db3a41e1e2cd01",
     "public/docs/llms-full.txt": "aae27f04e5e4ffd961e131146a2db5578958875cd24c95d7da81d39eb7833d5d",
     "public/docs/llms.txt": "74f521e55394f8fd9a97df982cd0e142117e303605e6fb4cdb5079352241225e",
     "public/docs/scripts.json": "1e03c794a06aa81ff7c3bd8c0ab3a5b278fb50d03aab0989b52ba46647a42832",
