@@ -1,4 +1,3 @@
-import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import mdx from "@mdx-js/rollup";
@@ -11,6 +10,7 @@ import { imagetools } from "vite-imagetools";
 
 import { hostRedirects, redirects as siteRedirects } from "./site.config.mjs";
 import { caseRedirects } from "./src/lib/case-redirects.mjs";
+import { readDocsSite } from "./src/lib/docs-site.mjs";
 import { assetFileNames, dedupeImages } from "./plugins/asset-file-names.ts";
 import { contentCollections } from "./plugins/content-collections.ts";
 import { DOCS_CONTENT, docsMdxOptions } from "./plugins/docs-mdx.ts";
@@ -28,40 +28,16 @@ const sanitizeFileName = (name: string) => name.replace(/[^\w.-]+/g, "-");
 
 const postIds = listPostFiles().map(({ id }) => id);
 
-// The docs routes docs-factory emitted (src/generated/docs/site.json). They
-// list in the emitter's own /docs/sitemap.xml, so they join the pages here
-// (prerendered, case- and slash-redirected) but not pagePaths' sitemap.
-const docsSite = new URL("./src/generated/docs/site.json", import.meta.url);
-interface DocsSite {
-  pages: { route: string }[];
-  apis: { route: string }[];
-  apiIndex: string | null;
-}
-const docsPages: string[] = [];
-if (existsSync(docsSite)) {
-  const site = JSON.parse(readFileSync(docsSite, "utf8")) as DocsSite;
-  docsPages.push(
-    "/docs/",
-    ...site.pages.map((p) => p.route),
-    ...site.apis.map((a) => a.route),
-    ...(site.apiIndex ? [site.apiIndex] : []),
-  );
-}
-const pages = [...pagePaths(postIds), ...docsPages];
-
-// The docs' legacy URLs (docs.unitycatalog.io paths, under /docs/), which
-// docs-factory resolves against the pages it emits.
-const docsRedirectsFile = new URL(
-  "./src/generated/docs/redirects.json",
-  import.meta.url,
+// The docs docs-factory emitted. Their routes list in the emitter's own
+// /docs/sitemap.xml, so they join the pages here (prerendered, case- and
+// slash-redirected) but not pagePaths' sitemap. Their legacy URLs
+// (docs.unitycatalog.io paths, under /docs/) join the redirects.
+const docsSite = readDocsSite(
+  new URL("./src/generated/docs/", import.meta.url),
 );
-const docsRedirects = existsSync(docsRedirectsFile)
-  ? (JSON.parse(readFileSync(docsRedirectsFile, "utf8")) as {
-      redirects: Record<string, string>;
-      patterns: { source: string; destination: string }[];
-    })
-  : { redirects: {}, patterns: [] };
-const redirects = { ...siteRedirects, ...docsRedirects.redirects };
+const docsPages = docsSite.pages;
+const pages = [...pagePaths(postIds), ...docsPages];
+const redirects = { ...siteRedirects, ...docsSite.redirects };
 const pageRedirects = caseRedirects(pages);
 const redirectSources = new Set(
   Object.keys(redirects).flatMap((from) => [from, `${from}/`]),
@@ -154,7 +130,7 @@ export default defineConfig({
           version: 3,
           ...vercelOutputConfig({
             redirects,
-            patterns: docsRedirects.patterns,
+            patterns: docsSite.patterns,
             hostRedirects,
             pages,
             noindex: process.env.NOINDEX === "1",

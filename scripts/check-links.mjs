@@ -20,16 +20,26 @@
 // Known exceptions go in scripts/check-links.ignore.
 //
 // A link is dead when an internal path has no page or file, an #anchor has no
-// matching heading or id, or an external URL answers 404/410 or its host doesn't
-// resolve. Bot walls (401/403/429/999), timeouts, and 5xx are only warnings.
+// matching heading or id, or an external URL answers 404/410, its host doesn't
+// resolve, or its TLS certificate is invalid, twice: a dead answer is retried
+// once. Bot walls (401/403/429/999), timeouts, refused connections, and 5xx are
+// only warnings. The docs' pages, heading ids, and legacy redirects come from
+// what docs-factory emitted (src/lib/docs-site.mjs).
+//
+// In CI (CI=true) a missing network fails the check instead of skipping the
+// external URLs; pass --offline to skip them. In GitHub Actions each dead link
+// is also an error annotation, at its file and line in source mode, and the
+// results go to the job summary.
 
 import { execFileSync } from "node:child_process";
+import { lookup } from "node:dns/promises";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
 import { redirects, site } from "../site.config.mjs";
 import { caseRedirects } from "../src/lib/case-redirects.mjs";
+import { readDocsSite } from "../src/lib/docs-site.mjs";
 import { postId } from "../src/lib/post-id.mjs";
 
 if (process.env.SKIP_LINK_CHECK === "1") process.exit(0);
@@ -52,13 +62,17 @@ const IGNORE_FILE = "scripts/check-links.ignore";
 const CACHE_FILE = "node_modules/.cache/check-links/external.json";
 const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const TIMEOUT_MS = 15_000;
+const RETRY_DELAY_MS = 3_000;
 const CONCURRENCY = 8;
 const PER_HOST = 2;
+const CI = process.env.CI === "true";
+const GITHUB_ACTIONS = process.env.GITHUB_ACTIONS === "true";
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 unitycatalog-website-link-check";
 
 const SOURCE_FILE = /^(src\/.*\.(tsx|ts|md|mdx|mjs)|site\.config\.mjs)$/;
 const GENERATED_SOURCE = "src/routeTree.gen.ts";
+const DOCS_CONTENT = "src/content/docs/";
 const MARKDOWN = /\.mdx?$/;
 
 // Paths the build emits, so no source file backs them.
@@ -80,6 +94,13 @@ if (!fs.existsSync("site.config.mjs")) {
   console.error("Run this from the repo root.");
   process.exit(2);
 }
+
+const docs = readDocsSite(new URL("../src/generated/docs/", import.meta.url));
+// Docs legacy sections, matched in any letter case as Vercel matches `src`.
+const docsPatterns = docs.patterns.map(({ source }) => new RegExp(source, "i"));
+const docsRedirected = (p) =>
+  Object.hasOwn(docs.redirects, routeKey(p)) ||
+  docsPatterns.some((re) => re.test(p));
 
 const siteUrl = new URL(site);
 // Absolute links to these hosts are checked as internal paths.
@@ -314,29 +335,57 @@ async function fetchStatus(url) {
   return request(url, "GET");
 }
 
+// A dead answer is retried once, after a pause, so a blip in DNS or at the
+// host doesn't fail the check.
 async function checkExternal(url) {
+  const first = await checkExternalOnce(url);
+  if (first.verdict !== "dead") return first;
+  await new Promise((done) => setTimeout(done, RETRY_DELAY_MS));
+  return checkExternalOnce(url);
+}
+
+async function checkExternalOnce(url) {
   try {
     return verdictFor(await fetchStatus(url));
   } catch (err) {
-    const code = err?.cause?.code ?? err?.name ?? "error";
-    if (code === "TimeoutError" || code === "AbortError")
+    if (err?.name === "TimeoutError" || err?.name === "AbortError")
       return {
         verdict: "warn",
         reason: `timed out after ${TIMEOUT_MS / 1000}s`,
       };
-    if (/ENOTFOUND|ECONNREFUSED|CERT|SSL/.test(code))
-      return { verdict: "dead", reason: code };
+    // Bun puts the code on the error, Node on the error's cause.
+    const code = String(err?.code ?? err?.cause?.code ?? err?.name ?? "error");
+    if (/CERT|SSL/.test(code)) return { verdict: "dead", reason: code };
+    // Bun's fetch names a host that doesn't resolve variously
+    // (ConnectionRefused, FailedToOpenSocket), so DNS answers that.
+    if (!(await resolves(new URL(url).hostname)))
+      return { verdict: "dead", reason: "host doesn't resolve" };
+    // A refused connection can be the checking machine's network, such as
+    // a firewall or proxy, so it is only a warning.
     return { verdict: "warn", reason: code };
   }
 }
 
-async function online() {
+// False only when DNS says the host doesn't exist, not when it can't answer.
+async function resolves(host) {
   try {
-    await request("https://github.com", "HEAD", 5000);
+    await lookup(host);
     return true;
-  } catch {
-    return false;
+  } catch (err) {
+    return err?.code !== "ENOTFOUND";
   }
+}
+
+async function online() {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      await request("https://github.com", "HEAD", 5000);
+      return true;
+    } catch {
+      // try again
+    }
+  }
+  return false;
 }
 
 // Runs `fn` over `items` with a global and a per-host concurrency limit.
@@ -417,6 +466,9 @@ function buildRoutes(files, posts) {
         .replace(/\[\.\]/g, ".")
         .replace(/\/index$/, "") || "/";
     if (route.split("/").some((segment) => segment.startsWith("_"))) continue;
+    // The docs' splat route renders only the pages docs-factory emitted,
+    // which are listed below.
+    if (route === "/docs/$" && docs.pages.length) continue;
     if (route === "/blogs/$id") {
       for (const id of posts.keys()) routes.add(`/blogs/${id}`);
     } else if (route.includes("$")) {
@@ -427,10 +479,12 @@ function buildRoutes(files, posts) {
   for (const f of files)
     if (f.startsWith("public/")) routes.add(routeKey(f.slice("public".length)));
   for (const from of Object.keys(redirects)) routes.add(routeKey(from));
+  for (const page of docs.pages) routes.add(routeKey(page));
   const has = (p) => {
     const key = routeKey(p);
     return (
       routes.has(key) ||
+      docsRedirected(p) ||
       dynamic.some((re) => re.test(key)) ||
       GENERATED.some((re) => re.test(key))
     );
@@ -515,9 +569,10 @@ if (MODE === "dist") {
     return candidates.map((c) => built.get(c)).find(Boolean);
   };
   // Paths answered with a redirect even when no file exists there:
-  // config.json has the site.config.mjs redirects and a 301 from any other
-  // letter case or slash form of each page in the sitemap to the page; both
-  // match in any letter case.
+  // config.json has the site.config.mjs and docs redirects, the docs'
+  // legacy-section patterns, and a 301 from any other letter case or slash
+  // form of each page, in the sitemap or the docs, to the page; all match in
+  // any letter case.
   const sitemapFile = path.join(DIST, "sitemap-0.xml");
   const sitemapPages = !fs.existsSync(sitemapFile)
     ? []
@@ -527,9 +582,12 @@ if (MODE === "dist") {
           .matchAll(/<loc>([^<]+)<\/loc>/g),
       ].map((m) => decodeURI(new URL(m[1]).pathname));
   const distRedirects = new Set(Object.keys(redirects).map(routeKey));
-  const pageRedirects = caseRedirects(sitemapPages);
+  const pageRedirects = caseRedirects([
+    ...new Set([...sitemapPages, ...docs.pages]),
+  ]);
   const redirected = (p) =>
     distRedirects.has(routeKey(p)) ||
+    docsRedirected(p) ||
     (pageRedirects.has(routeKey(p)) && pageRedirects.get(routeKey(p)) !== p);
   // A path that only exists in another letter case.
   const caseless = new Set([...built.keys()].map((f) => f.toLowerCase()));
@@ -627,8 +685,24 @@ if (MODE === "dist") {
         componentIds.add(m[1]);
   const postIdCache = new Map();
   const idsForPost = (f) => {
-    if (!postIdCache.has(f)) postIdCache.set(f, headingIds(read(f)));
+    if (!postIdCache.has(f)) {
+      const ids = headingIds(read(f));
+      // docs-factory gives the docs' headings their ids; site.json has them.
+      const route = docs.files.get(f.slice(DOCS_CONTENT.length));
+      if (f.startsWith(DOCS_CONTENT) && route)
+        for (const id of docs.headings.get(route) ?? []) ids.add(id);
+      postIdCache.set(f, ids);
+    }
     return postIdCache.get(f);
+  };
+  // The heading ids of the docs page a path names, through one legacy
+  // redirect; undefined for other paths, and for a redirect whose
+  // destination has its own #heading, which replaces the link's.
+  const docsHeadingsAt = (p) => {
+    const destination = docs.redirects[routeKey(p)];
+    if (destination?.includes("#")) return undefined;
+    const page = (destination ?? p).replace(/\/?$/, "/").toLowerCase();
+    return docs.headings.get(page);
   };
 
   for (const file of scanned) {
@@ -668,6 +742,12 @@ if (MODE === "dist") {
         continue;
       }
       if (link.hash) {
+        const docsIds = docsHeadingsAt(link.path);
+        if (docsIds) {
+          if (!docsIds.has(link.hash) && !componentIds.has(link.hash))
+            report(`no heading or id "${link.hash}"`);
+          continue;
+        }
         const id = link.path
           .match(/^\/blogs\/([^/]+)\/?$/i)?.[1]
           ?.toLowerCase();
@@ -682,10 +762,18 @@ if (MODE === "dist") {
   );
 }
 
+// Why the external URLs went unchecked, if they did.
+let externalsSkipped = "";
+// In CI, skipping them for want of a network fails the check.
+let networkMissing = false;
 if (externals.size && OFFLINE) {
-  console.log(`Skipped ${externals.size} external URL(s) (offline).`);
+  externalsSkipped = `Skipped ${externals.size} external URL(s) (offline).`;
+  console.log(externalsSkipped);
 } else if (externals.size && !(await online())) {
-  console.log("No network connection; external URLs were not checked.");
+  externalsSkipped = `No network connection; ${externals.size} external URL(s) were not checked.`;
+  networkMissing = CI;
+  if (CI) console.error(`${externalsSkipped} Pass --offline to skip them.`);
+  else console.log(externalsSkipped);
 } else if (externals.size) {
   const cache = loadCache();
   const now = Date.now();
@@ -732,11 +820,77 @@ if (preexisting.length)
   console.log(
     `\n${preexisting.length} dead link(s) already exist in lines this commit doesn't touch; run \`bun run links\` to list them.`,
   );
-console.log(
-  `\n${blocking.length} dead, ${warnings.length} warning(s); ${internalCount} internal and ${externals.size} external link(s) checked.`,
-);
+const totals = `${blocking.length} dead, ${warnings.length} warning(s); ${internalCount} internal and ${externalsSkipped ? 0 : externals.size} external link(s) checked.`;
+console.log(`\n${totals}`);
 if (blocking.length && MODE === "staged")
   console.log(
     "Fix the links above, add a known false positive to scripts/check-links.ignore, or commit with SKIP_LINK_CHECK=1.",
   );
-process.exit(blocking.length ? 1 : 0);
+if (GITHUB_ACTIONS) reportToGitHub();
+process.exit(blocking.length || networkMissing ? 1 : 0);
+
+// ---------- GitHub Actions ----------
+
+// Workflow commands:
+// docs.github.com/actions/reference/workflows-and-actions/workflow-commands
+function escapeData(text) {
+  return text.replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");
+}
+function escapeProperty(text) {
+  return escapeData(text).replace(/:/g, "%3A").replace(/,/g, "%2C");
+}
+
+// An error annotation for each dead link: on its file and line when that is
+// a source line, as in source mode; otherwise on the run, naming where the
+// link is. Then the results, in the job summary.
+function reportToGitHub() {
+  for (const d of blocking) {
+    const source = MODE === "dist" ? null : d.at.match(/^([^,\s]+):(\d+)$/);
+    const where = source
+      ? `file=${escapeProperty(source[1])},line=${source[2]},`
+      : "";
+    const message = source
+      ? `${d.url} (${d.reason})`
+      : `${d.at}: ${d.url} (${d.reason})`;
+    console.log(`::error ${where}title=Dead link::${escapeData(message)}`);
+  }
+  if (networkMissing)
+    console.log(`::error title=No network::${escapeData(externalsSkipped)}`);
+
+  const summary = process.env.GITHUB_STEP_SUMMARY;
+  if (!summary) return;
+  const checked =
+    MODE === "dist"
+      ? `the build in \`${DIST}/\``
+      : MODE === "staged"
+        ? "staged changes"
+        : "sources";
+  const block = (title, rows, open) => [
+    `<details${open ? " open" : ""}><summary>${title}</summary>`,
+    "",
+    "```text",
+    ...rows,
+    "```",
+    "",
+    "</details>",
+    "",
+  ];
+  const out = [
+    `### Links: ${checked}`,
+    "",
+    `${blocking.length || networkMissing ? "Failed" : "Passed"}: ${totals}`,
+    "",
+    ...(externalsSkipped ? [externalsSkipped, ""] : []),
+    ...(blocking.length
+      ? block(
+          `Dead links (${blocking.length})`,
+          blocking.map((d) => `${d.at}  ${d.url}  (${d.reason})`),
+          true,
+        )
+      : []),
+    ...(warnings.length
+      ? block(`Warnings (${warnings.length})`, warnings, false)
+      : []),
+  ];
+  fs.appendFileSync(summary, `${out.join("\n")}\n`);
+}
