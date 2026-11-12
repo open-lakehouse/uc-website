@@ -9,7 +9,7 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
-import { redirects as siteRedirects } from "./site.config.mjs";
+import { hostRedirects, redirects as siteRedirects } from "./site.config.mjs";
 import { caseRedirects } from "./src/lib/case-redirects.mjs";
 import { assetFileNames } from "./plugins/asset-file-names.ts";
 import { contentCollections } from "./plugins/content-collections.ts";
@@ -156,6 +156,7 @@ export default defineConfig({
           ...vercelOutputConfig({
             redirects,
             patterns: docsRedirects.patterns,
+            hostRedirects,
             pages,
             noindex: process.env.NOINDEX === "1",
           }),

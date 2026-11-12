@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import { redirects } from "../site.config.mjs";
+import { hostRedirects, redirects, site } from "../site.config.mjs";
 import { caseRedirects } from "../src/lib/case-redirects.mjs";
 
 import { listPostFiles } from "../plugins/post-files";
@@ -21,7 +21,11 @@ import {
 
 const postIds = listPostFiles().map(({ id }) => id);
 const pages = pagePaths(postIds);
-const { routes, overrides } = vercelOutputConfig({ redirects, pages });
+const { routes, overrides } = vercelOutputConfig({
+  redirects,
+  hostRedirects,
+  pages,
+});
 
 // Nitro's routes after ours end with the filesystem and the server function.
 const output: Route[] = [
@@ -116,7 +120,12 @@ describe("vercelOutputConfig", () => {
 
   test("adds X-Robots-Tag: noindex to every response only when asked", () => {
     expect(routes[0]!.headers).not.toHaveProperty("X-Robots-Tag");
-    const staging = vercelOutputConfig({ redirects, pages, noindex: true });
+    const staging = vercelOutputConfig({
+      redirects,
+      hostRedirects,
+      pages,
+      noindex: true,
+    });
     expect(staging.routes[0]).toEqual({
       src: "^/.*$",
       headers: { ...securityHeaders, ...noindexHeaders },
@@ -208,6 +217,45 @@ describe("vercelOutputConfig", () => {
         expect(route(output, path, options), path).toMatchObject({
           status: 301,
           location,
+        });
+      }
+    });
+
+    test(`sends any path on docs.unitycatalog.io under /docs/ in one 301, ${name}`, () => {
+      const docs = { ...options, host: "docs.unitycatalog.io" };
+      const to = `${site}docs/`;
+      for (const [path, location] of [
+        ["/", to],
+        ["/tutorials/getting-started", `${to}tutorials/getting-started/`],
+        ["/tutorials/getting-started/", `${to}tutorials/getting-started/`],
+        ["/Quickstart?ref=x", `${to}Quickstart/?ref=x`],
+        ["/llms.txt", `${to}llms.txt`],
+        // The site's own pages and files, which this host never serves.
+        ["/blogs/", `${to}blogs/`],
+        ["/BLOGS", `${to}BLOGS/`],
+        ["/assets/main-a1b2c3.js", `${to}assets/main-a1b2c3.js`],
+      ] as const) {
+        expect(route(output, path, docs), path).toMatchObject({
+          status: 301,
+          location,
+        });
+      }
+    });
+
+    test(`serves other hosts as before, ${name}`, () => {
+      for (const host of [
+        new URL(site).host,
+        "uc-website-git-some-branch.vercel.app",
+        "docs.unitycatalog.io.example.com",
+      ]) {
+        const at = { ...options, host };
+        expect(route(output, "/", at), host).toEqual({
+          file: "index.html",
+          headers: expect.any(Object),
+        });
+        expect(route(output, "/blog", at), host).toMatchObject({
+          status: 301,
+          location: "/blogs/",
         });
       }
     });

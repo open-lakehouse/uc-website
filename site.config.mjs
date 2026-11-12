@@ -46,6 +46,18 @@ export const redirects = {
     "/blogs/managed-vs-external-tables",
 };
 
+/**
+ * Permanent (301) redirects for another host attached to the Vercel project:
+ * any path on the host goes to the same path under the destination URL on
+ * this site, with the query string. The redirects above, and the docs' own,
+ * then apply there.
+ * @type {Record<string, string>}
+ */
+export const hostRedirects = {
+  // The docs' old home. Its legacy paths redirect under /docs/.
+  "docs.unitycatalog.io": `${site}docs/`,
+};
+
 /** @type {Menus} */
 export const menus = {
   header: [

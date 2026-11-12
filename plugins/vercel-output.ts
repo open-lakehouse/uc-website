@@ -9,6 +9,8 @@ import { discoveryFiles } from "../src/lib/discovery-files.ts";
 /** A Build Output API route: vercel.com/docs/build-output-api/configuration#routes */
 export interface VercelRoute {
   src: string;
+  /** Matches only when the request's host is exactly `value.eq`. */
+  has?: [{ type: "host"; value: { eq: string } }];
   headers?: Record<string, string>;
   status?: number;
   continue?: boolean;
@@ -35,6 +37,7 @@ export const noindexHeaders: Record<string, string> = {
 export function vercelOutputConfig({
   redirects,
   patterns = [],
+  hostRedirects = {},
   pages,
   noindex = false,
 }: {
@@ -42,6 +45,8 @@ export function vercelOutputConfig({
   redirects: Record<string, string>;
   /** 301s whose source is a regex, such as a legacy docs section. */
   patterns?: ReadonlyArray<{ source: string; destination: string }>;
+  /** Host to destination URL ending in a slash, as in site.config.mjs. */
+  hostRedirects?: Record<string, string>;
   /** Every page's canonical path (src/lib/pages.ts). */
   pages: readonly string[];
   /**
@@ -65,6 +70,10 @@ export function vercelOutputConfig({
           : securityHeaders,
         continue: true,
       },
+      // Ahead of the page routes, so another host never serves a page or file.
+      ...Object.entries(hostRedirects).flatMap(([host, to]) =>
+        hostRedirect(host, to),
+      ),
       // Vercel matches `src` case-insensitively unless `caseSensitive` is set.
       // Routing stops here for each page's own URL, which then reaches the
       // page's file instead of the redirects below. If the flag were ignored,
@@ -115,6 +124,21 @@ function redirect(from: string, to: string): VercelRoute {
     headers: { Location: hash ? `${canonical}#${hash}` : canonical },
     status: 301,
   };
+}
+
+// Any path on `host` goes to the same path under `to`, an absolute URL ending
+// in a slash. A page path without its trailing slash gets it in the same 301.
+function hostRedirect(host: string, to: string): VercelRoute[] {
+  const has: VercelRoute["has"] = [{ type: "host", value: { eq: host } }];
+  return [
+    {
+      src: "^/((?:[^/]+/)*[^/.]+)$",
+      has,
+      headers: { Location: `${to}$1/` },
+      status: 301,
+    },
+    { src: "^/(.*)$", has, headers: { Location: `${to}$1` }, status: 301 },
+  ];
 }
 
 function escapeRegExp(text: string): string {

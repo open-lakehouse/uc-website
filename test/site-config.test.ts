@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import { redirects, site } from "../site.config.mjs";
+import { hostRedirects, redirects, site } from "../site.config.mjs";
 
 import { listPostFiles } from "../plugins/post-files";
 import { pagePaths } from "../src/lib/pages";
@@ -11,6 +11,31 @@ describe("site.config.mjs", () => {
   test("site is the https origin with a trailing slash", () => {
     expect(new URL(site).href).toBe(site);
     expect(site).toMatch(/^https:\/\/[^/]+\/$/);
+  });
+
+  describe("hostRedirects", () => {
+    const hosts = Object.entries(hostRedirects);
+
+    test("send the docs' old host to /docs/", () => {
+      expect(hostRedirects).toEqual({
+        "docs.unitycatalog.io": "https://unitycatalog.io/docs/",
+      });
+    });
+
+    test("are other lowercase hosts, never the site's own", () => {
+      for (const [host] of hosts) {
+        expect(host).toMatch(/^[a-z0-9-]+(\.[a-z0-9-]+)+$/);
+        expect(host).not.toBe(new URL(site).host);
+      }
+    });
+
+    test("go to a path on the site ending in a slash", () => {
+      for (const [host, to] of hosts) {
+        expect(to.startsWith(site), host).toBe(true);
+        expect(new URL(to).href, host).toBe(to);
+        expect(to, host).toMatch(/\/$/);
+      }
+    });
   });
 
   describe("redirects", () => {
