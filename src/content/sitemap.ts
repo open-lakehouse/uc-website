@@ -1,4 +1,4 @@
-// /sitemap-index.xml and /sitemap-0.xml from web's pages and posts. They list
+// /sitemap.xml, the index, and /sitemap-0.xml from web's pages and posts. They list
 // what @astrojs/sitemap lists for the Astro build: every page except the 404
 // page, and no redirect sources (Astro leaves out its redirect pages, and
 // here Vercel answers those paths before any page).

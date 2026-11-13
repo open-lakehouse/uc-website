@@ -139,13 +139,15 @@ describe("vercelOutputConfig", () => {
 
     test(`answers each site.config.mjs redirect with one 301, ${name}`, () => {
       for (const [from, to] of Object.entries(redirects)) {
+        // A page with its trailing slash; a file, such as /sitemap.xml, as is.
+        const location = /\/[^/.]+$/.test(to) ? `${to}/` : to;
         for (const path of [from, `${from}/`, from.toUpperCase()]) {
           expect(route(output, path, options), path).toMatchObject({
             status: 301,
-            location: `${to}/`,
+            location,
           });
         }
-        expect(route(output, `${to}/`, options).file).toBeString();
+        expect(route(output, location, options).file).toBeString();
       }
     });
 
@@ -320,13 +322,28 @@ describe("vercelOutputConfig", () => {
 
   test("redirects a file path to the file, without a trailing slash", () => {
     const { routes } = vercelOutputConfig({
-      redirects: { "/sitemap.xml": "/sitemap-index.xml" },
+      redirects: { "/sitemap-index.xml": "/sitemap.xml" },
       pages: [],
     });
-    expect(route(routes, "/sitemap.xml/", { files: new Set() })).toMatchObject({
+    expect(
+      route(routes, "/sitemap-index.xml/", { files: new Set() }),
+    ).toMatchObject({
       status: 301,
-      location: "/sitemap-index.xml",
+      location: "/sitemap.xml",
     });
+  });
+
+  test("serves the sitemap index at /sitemap.xml, and its old URL redirects there", () => {
+    for (const { ignoreCaseSensitive } of modes) {
+      const options = { files, ignoreCaseSensitive };
+      expect(route(output, "/sitemap.xml", options).file).toBe("sitemap.xml");
+      for (const path of ["/sitemap-index.xml", "/Sitemap-Index.xml?x=1"]) {
+        expect(route(output, path, options), path).toMatchObject({
+          status: 301,
+          location: path.endsWith("?x=1") ? "/sitemap.xml?x=1" : "/sitemap.xml",
+        });
+      }
+    }
   });
 
   test("keeps a destination's #heading after its trailing slash", () => {
@@ -380,7 +397,7 @@ describe("vercelOutputConfig", () => {
       "llms.txt": { contentType: "text/plain; charset=utf-8" },
       "llms-full.txt": { contentType: "text/plain; charset=utf-8" },
       "robots.txt": { contentType: "text/plain; charset=utf-8" },
-      "sitemap-index.xml": { contentType: "application/xml" },
+      "sitemap.xml": { contentType: "application/xml" },
       "sitemap-0.xml": { contentType: "application/xml" },
       "search-index.json": { contentType: "application/json; charset=utf-8" },
     });

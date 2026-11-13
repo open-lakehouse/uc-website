@@ -8,7 +8,7 @@ export function renderRobotsTxt(site: URL): string {
     "Allow: /",
     "",
     `# LLM-readable index and full text: ${new URL("/llms.txt", site).href}, ${new URL("/llms-full.txt", site).href}`,
-    `Sitemap: ${new URL("/sitemap-index.xml", site).href}`,
+    `Sitemap: ${new URL("/sitemap.xml", site).href}`,
     "",
   ].join("\n");
 }

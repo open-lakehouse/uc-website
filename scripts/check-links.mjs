@@ -6,8 +6,8 @@
 //   bun scripts/check-links.mjs --staged  before committing: fails only on dead links the commit
 //                                         adds, or creates by deleting or renaming a page
 //   bun scripts/check-links.mjs --dist    after `bun run build`: every page, llms.txt,
-//                                         llms-full.txt, robots.txt, and the sitemap in
-//                                         .output/public
+//                                         llms-full.txt, robots.txt, and the sitemaps
+//                                         (the site's and the docs') in .output/public
 //   bun scripts/check-links.mjs --dist .vercel/output/static
 //                                         the same for the Vercel build
 //
@@ -77,7 +77,7 @@ const MARKDOWN = /\.mdx?$/;
 
 // Paths the build emits, so no source file backs them.
 const GENERATED = [
-  /^\/sitemap-(index|\d+)\.xml$/,
+  /^\/sitemap(-\d+)?\.xml$/,
   /^\/assets\//,
   /^\/(favicon|apple-touch-icon|android-chrome|mstile)[\w.-]*$/,
   /^\/(manifest\.webmanifest|browserconfig\.xml|safari-pinned-tab\.svg)$/,
@@ -544,7 +544,7 @@ if (MODE === "dist") {
     (f) =>
       f.endsWith(".html") ||
       /\/(llms(-full)?|robots)\.txt$/.test(f) ||
-      /\/sitemap-[\w-]+\.xml$/.test(f),
+      /\/sitemap(-[\w-]+)?\.xml$/.test(f),
   );
   const idCache = new Map();
   const idsIn = (htmlFile) => {
