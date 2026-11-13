@@ -54,7 +54,7 @@ git hooks of its own; CI runs lint, format, and the link check.
   and author profiles, with their images. See
   [.cursor/skills/creating-blog-posts](.cursor/skills/creating-blog-posts/SKILL.md).
 - `src/routes/`: pages (`/`, `/blogs/`, `/blogs/$id/`, `/events/`) and the
-  discovery files (`/sitemap-index.xml`, `/sitemap-0.xml`, `/llms.txt`,
+  discovery files (`/sitemap.xml`, the index, `/sitemap-0.xml`, `/llms.txt`,
   `/llms-full.txt`, `/robots.txt`).
 - `src/components/`: React components, each with a colocated CSS Module.
   `src/styles/` holds the global styles and Tailwind setup.

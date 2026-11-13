@@ -77,10 +77,10 @@ describe("discovery files", () => {
   test("/robots.txt allows every crawler and names the sitemap", () => {
     const robots = renderRobotsTxt(new URL(site));
     expect(robots).toStartWith("User-agent: *\nAllow: /\n");
-    expect(robots).toContain(`Sitemap: ${url("/sitemap-index.xml")}\n`);
+    expect(robots).toContain(`Sitemap: ${url("/sitemap.xml")}\n`);
   });
 
-  test("/sitemap-index.xml lists /sitemap-0.xml and the docs' sitemap", () => {
+  test("/sitemap.xml lists /sitemap-0.xml and the docs' sitemap", () => {
     expect(locs(sitemapIndex())).toEqual([
       url("/sitemap-0.xml"),
       url("/docs/sitemap.xml"),

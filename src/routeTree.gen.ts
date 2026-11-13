@@ -16,7 +16,7 @@ import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SearchIndexDotjsonRouteImport } from './routes/search-index[.]json'
 import { Route as Sitemap0DotxmlRouteImport } from './routes/sitemap-0[.]xml'
-import { Route as SitemapIndexDotxmlRouteImport } from './routes/sitemap-index[.]xml'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as BlogsIdRouteImport } from './routes/blogs/$id'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
@@ -57,9 +57,9 @@ const Sitemap0DotxmlRoute = Sitemap0DotxmlRouteImport.update({
   path: '/sitemap-0.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapIndexDotxmlRoute = SitemapIndexDotxmlRouteImport.update({
-  id: '/sitemap-index.xml',
-  path: '/sitemap-index.xml',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
@@ -91,7 +91,7 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/search-index.json': typeof SearchIndexDotjsonRoute
   '/sitemap-0.xml': typeof Sitemap0DotxmlRoute
-  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blogs/$id': typeof BlogsIdRoute
   '/docs/$': typeof DocsSplatRoute
   '/blogs/': typeof BlogsIndexRoute
@@ -105,7 +105,7 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/search-index.json': typeof SearchIndexDotjsonRoute
   '/sitemap-0.xml': typeof Sitemap0DotxmlRoute
-  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blogs/$id': typeof BlogsIdRoute
   '/docs/$': typeof DocsSplatRoute
   '/blogs': typeof BlogsIndexRoute
@@ -120,7 +120,7 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/search-index.json': typeof SearchIndexDotjsonRoute
   '/sitemap-0.xml': typeof Sitemap0DotxmlRoute
-  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blogs/$id': typeof BlogsIdRoute
   '/docs/$': typeof DocsSplatRoute
   '/blogs/': typeof BlogsIndexRoute
@@ -136,7 +136,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/search-index.json'
     | '/sitemap-0.xml'
-    | '/sitemap-index.xml'
+    | '/sitemap.xml'
     | '/blogs/$id'
     | '/docs/$'
     | '/blogs/'
@@ -150,7 +150,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/search-index.json'
     | '/sitemap-0.xml'
-    | '/sitemap-index.xml'
+    | '/sitemap.xml'
     | '/blogs/$id'
     | '/docs/$'
     | '/blogs'
@@ -164,7 +164,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/search-index.json'
     | '/sitemap-0.xml'
-    | '/sitemap-index.xml'
+    | '/sitemap.xml'
     | '/blogs/$id'
     | '/docs/$'
     | '/blogs/'
@@ -179,7 +179,7 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SearchIndexDotjsonRoute: typeof SearchIndexDotjsonRoute
   Sitemap0DotxmlRoute: typeof Sitemap0DotxmlRoute
-  SitemapIndexDotxmlRoute: typeof SitemapIndexDotxmlRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogsIdRoute: typeof BlogsIdRoute
   DocsSplatRoute: typeof DocsSplatRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
@@ -237,11 +237,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Sitemap0DotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap-index.xml': {
-      id: '/sitemap-index.xml'
-      path: '/sitemap-index.xml'
-      fullPath: '/sitemap-index.xml'
-      preLoaderRoute: typeof SitemapIndexDotxmlRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs/': {
@@ -283,7 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SearchIndexDotjsonRoute: SearchIndexDotjsonRoute,
   Sitemap0DotxmlRoute: Sitemap0DotxmlRoute,
-  SitemapIndexDotxmlRoute: SitemapIndexDotxmlRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogsIdRoute: BlogsIdRoute,
   DocsSplatRoute: DocsSplatRoute,
   BlogsIndexRoute: BlogsIndexRoute,

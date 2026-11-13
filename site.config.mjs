@@ -44,6 +44,8 @@ export const redirects = {
     "/blogs/building-an-ml-and-ai-data-catalog-with-unity-catalog",
   "/blogs/unity-catalog-managed-vs-external-tables":
     "/blogs/managed-vs-external-tables",
+  // The sitemap index's old URL, which robots.txt named before /sitemap.xml.
+  "/sitemap-index.xml": "/sitemap.xml",
 };
 
 /**
